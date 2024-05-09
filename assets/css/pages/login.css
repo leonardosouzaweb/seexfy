@@ -1,0 +1,9 @@
+.login { width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; }
+.login .wrapper { width: 899px; height: 100vh; align-items: center; display: flex; align-items: center; justify-content: center; flex-direction: column; } 
+.login .wrapper .logo { margin-bottom: 50px; }
+.login .wrapper form { width: 90%; }
+.login .wrapper form label { font-weight: 500; display: block; margin-bottom: 5px; }
+.login .wrapper form .form-control { padding: 13px 15px; margin-bottom: 20px; width: 100%; border-radius: 15px; }
+.login .wrapper form .form-control:Focus { box-shadow: none; border: 1px solid #E9E9E9; }
+.login .wrapper form button { background:#E74C3C; width: 100%; padding: 11px; color: #fff; font-weight: 500; font-size: 20px; border: none; border-radius: 15px; margin-top: 30px; transition: all 0.3s; }
+.login .wrapper form button:hover { background:#d35648; }
