@@ -15,7 +15,7 @@
                 <img src="assets/images/logo.svg">
             </div>
 
-            <form action="home.php" method="POST">
+            <form action="#" method="POST">
                 <input type="text" class="form-control" placeholder="Digite seu email">  
                 <input type="password" class="form-control" placeholder="Digite sua senha"> 
                 <button>Acessar</button>
