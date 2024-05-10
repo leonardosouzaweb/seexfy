@@ -23,6 +23,15 @@
     .eventDetails .tab-content .tab-pane small { margin-top: 12px; display: block; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 15px; }
     .eventDetails .tab-content .tab-pane h3 { font-size: 20px; margin: 15px 0; font-weight: 600;}
     .eventDetails .tab-content .tab-pane p { font-size: 14px; line-height: 22px; margin: 0; }
+    .eventDetails .tab-content .tab-pane iframe { width: 100%; margin-top: 20px; height: 250px;}
+
+    .eventDetails .tab-content .tab-pane .buttons { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100% !important; margin-top: 20px; }
+    .eventDetails .tab-content .tab-pane .buttons button { width: 50% !important; border: none; display: flex; align-items: center; padding: 12px 20px; font-weight: 600; border-radius: 15px; }
+    .eventDetails .tab-content .tab-pane .buttons button:nth-child(1) { background: #05C8F7; color: #fff; }
+    .eventDetails .tab-content .tab-pane .buttons button:nth-child(1) img { width: 30px; margin-right: 10px; }
+
+    .eventDetails .tab-content .tab-pane .buttons button:nth-child(2) img { width: 20px; margin-right: 10px; }
+
     .eventDetails .tab-content .valuesEntrance { display: flex; align-items: center; width: 100%; justify-content: space-between; gap: 20px; }
     .eventDetails .tab-content .valuesEntrance div { display: flex; align-items: center; gap: 10px; padding: 7px 10px; justify-content: space-evenly; }
     .eventDetails .tab-content .valuesEntrance div p { font-weight: 600; margin: 0; }
@@ -34,4 +43,11 @@
     .eventDetails .tab-content .valuesEntrance div:nth-child(2) p { color: #fff; font-weight: 700; }
     .eventDetails .tab-content .valuesEntrance div:nth-child(3) { background: #05C8F7; }
     .eventDetails .tab-content .valuesEntrance div:nth-child(3) p { color: #fff; font-weight: 700; }
+
+    .eventDetails .tab-content .listUser { display: flex; align-items: center; width: 100%; justify-content: space-between; gap: 20px; position: relative; margin: 15px 0;}
+    .eventDetails .tab-content .listUser div { width: 100% !important; display: flex; align-items: center; gap: 20px; }
+    .eventDetails .tab-content .listUser div .listAvatar { background: #F0F0F0; width: 60px !important; height: 50px; border-radius: 50px; }
+
+    .eventDetails .tab-content .listUser div .listInfo span small { display: block; margin: 0; font-size: 12px; color: rgba(0,0,0,0.5); border: none; padding: 0px; }
+    .eventDetails .tab-content .listUser img.navGoUser { width: 15px; height: auto; position: absolute; right: 0px; top: 25px; }
 }
