@@ -4,6 +4,7 @@
 @import url('../css/pages/menu.css');
 @import url('../css/pages/index.css');
 @import url('../css/pages/modal.css');
+@import url('../css/pages/events.css');
 
 * { font-family: "Montserrat", sans-serif !important; }
 body { background:#f9f9f9 !important; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }

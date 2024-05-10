@@ -1,0 +1,12 @@
+@media only screen and (max-width:899px) {
+    .event { width: 100% !important; border-bottom: 1px solid #d1d1d1; border-radius: 0px !important; padding-bottom: 20px; margin-bottom: 20px; display: block; }
+    .event .cover { background: #F0F0F0; width: 100% !important; height: 100px !important; }
+    .event .infoEvent { display:flex; align-items: center; width: 100% !important; justify-content: space-between; gap: 15px; margin-top: 20px; }
+    .event .infoEvent div:nth-child(1) { background: #F0F0F0; width: 30%; border-radius: 15px; padding: 10px 0px 20px 0px; }
+    .event .infoEvent div:nth-child(1) span.day { text-align: center; display: block; font-size: 40px; font-weight: bold;}
+    .event .infoEvent div:nth-child(1) span.month { text-align: center; display: block; margin-top: -10px; }
+
+    .event .infoEvent div:nth-child(2) { width: 70%; }
+    .event .infoEvent div:nth-child(2) p { font-weight: 600; font-size: 14px;  margin-bottom: 0;}
+    .event .infoEvent div:nth-child(2) small { font-size: 12px; line-height: 17px; display: block; margin-top: 5px; }
+}
