@@ -3,9 +3,11 @@
 @import url('../css/pages/login.css');
 @import url('../css/pages/menu.css');
 @import url('../css/pages/index.css');
+@import url('../css/pages/modal.css');
 
 * { font-family: "Montserrat", sans-serif !important; }
-body { background:#f9f9f9 !important; }
+body { background:#f9f9f9 !important; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
 
 .empty { width: 100%; height: 100vh; display:flex; align-items: center; justify-content: center; flex-direction: column; }
 

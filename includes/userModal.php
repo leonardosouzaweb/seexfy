@@ -1,17 +1,39 @@
 <div class="modal fade" id="user" tabindex="-1" aria-labelledby="userLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="userLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="headProfile">
+					<div class="avatar"></div>
+					<div class="info">
+						<h3>Larissa</h3>
+						<p>São Paulo</p>
+						<span class="badge"><img src="assets/images/icons/iconBadge.svg">Verificado</span>
+					</div>
+				</div>
+				<div class="infoProfile">
+					<span>Informações</span>
+					<ul>
+						<li>Idade <span>23</span></li>
+						<li>Orientação Sexual <span>Heterossexual</span></li>
+						<li>Signo <span>Sagitário</span></li>
+						<li>Altura <span>1,59cm</span></li>
+						<li>Fuma <span>Não</span></li>
+						<li>Bebe <span>Sim</span></li>
+						<li>Tempo de Experiência <span>5 anos</span></li>
+					</ul>
+					<div class="divider"></div>
+					<span>Interesses</span>
+					<p>Mulher, Casal</p>
+					<div class="divider"></div>
+					<span>Descrição</span>
+					<p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. 
+					O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde 
+					o ano de 1500, quando uma misturou os caracteres de um texto para criar um 
+					espécime de livro. </p>
+
+					<button data-bs-dismiss="modal" aria-label="Close">Curtir</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

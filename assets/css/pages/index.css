@@ -1,12 +1,12 @@
 @media only screen and (max-width:899px) {
-    .home .content { padding: 0px 20px; margin-top: 20px;  }
+    .home .content { padding: 0px 20px; margin-top: 70px;  }
     .home .content h1 { font-size: 20px; margin: 20px 0;}
     .home .content .scroll { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; }
     .home .content .space { background: transparent; width: 100%; height: 80px; }
     .home .content div { width: 48%; height: auto; border-radius: 15px; position: relative; }
     .home .content div img { width: 100%; border-radius: 15px; }
 
-    .home .content div .info { position: absolute; bottom: 10px; left: 20px;  z-index: 1; background: transparent; }
+    .home .content div .info { position: absolute; bottom: 20px; left: 20px;  z-index: 1; background: transparent; }
     .home .content div .info span { color: #fff; display: flex; font-size: 18px; align-items: center; font-weight: 500; }
     .home .content div .info span img { width: 18px; margin-left: 5px; }
     .home .content div .info small { color: rgba(255,255,255,0.8); font-size: 11px; display: block; margin-top: 0px; }
