@@ -24,7 +24,7 @@
     .eventDetails .tab-content .tab-pane h3 { font-size: 20px; margin: 15px 0; font-weight: 600;}
     .eventDetails .tab-content .tab-pane p { font-size: 14px; line-height: 22px; margin: 0; }
     .eventDetails .tab-content .valuesEntrance { display: flex; align-items: center; width: 100%; justify-content: space-between; gap: 20px; }
-    .eventDetails .tab-content .valuesEntrance div { display: flex; align-items: center; gap: 10px; padding: 7px 10px;}
+    .eventDetails .tab-content .valuesEntrance div { display: flex; align-items: center; gap: 10px; padding: 7px 10px; justify-content: space-between; }
     .eventDetails .tab-content .valuesEntrance div p { font-weight: 600; margin: 0; }
     .eventDetails .tab-content .valuesEntrance div img { width: 25px; }
     .eventDetails .tab-content .valuesEntrance div:nth-child(1) { background: #F0F0F0; }
