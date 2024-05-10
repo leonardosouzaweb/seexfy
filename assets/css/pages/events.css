@@ -9,4 +9,29 @@
     .event .infoEvent div:nth-child(2) { width: 70%; }
     .event .infoEvent div:nth-child(2) p { font-weight: 600; font-size: 14px;  margin-bottom: 0;}
     .event .infoEvent div:nth-child(2) small { font-size: 12px; line-height: 17px; display: block; margin-top: 5px; }
+
+    .eventDetails { width: 100% !important; }
+    .eventDetails .cover { background: #F0F0F0; width: 100% !important; height: 100px !important; margin-bottom: 10px; }
+    .eventDetails .nav-tabs { justify-content: space-between; }
+    .eventDetails .nav-tabs .nav-item { width: auto; }
+    .eventDetails .nav-tabs .nav-item .nav-link { font-weight: 500; font-size: 14px; padding: 10px 0px; background: transparent; border-radius: 0px; border: none; color: #000; }
+    .eventDetails .nav-tabs .nav-item .nav-link.active { border-bottom: 2px solid #E74C3C; color: #E74C3C; font-weight: 600; }
+
+    .eventDetails .tab-content { width: 100% !important; }
+    .eventDetails .tab-content .tab-pane { width: 100% !important; }
+    .eventDetails .tab-content .tab-pane span { font-size: 18px; font-weight: 600; display: block; margin:15px 0; }
+    .eventDetails .tab-content .tab-pane small { margin-top: 12px; display: block; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 15px; }
+    .eventDetails .tab-content .tab-pane h3 { font-size: 20px; margin: 15px 0; font-weight: 600;}
+    .eventDetails .tab-content .tab-pane p { font-size: 14px; line-height: 22px; margin: 0; }
+    .eventDetails .tab-content .valuesEntrance { display: flex; align-items: center; width: 100%; justify-content: space-between; gap: 20px; }
+    .eventDetails .tab-content .valuesEntrance div { display: flex; align-items: center; gap: 10px; padding: 7px 10px;}
+    .eventDetails .tab-content .valuesEntrance div p { font-weight: 600; margin: 0; }
+    .eventDetails .tab-content .valuesEntrance div img { width: 25px; }
+    .eventDetails .tab-content .valuesEntrance div:nth-child(1) { background: #F0F0F0; }
+    .eventDetails .tab-content .valuesEntrance div:nth-child(1) img { width: 40px; }
+    .eventDetails .tab-content .valuesEntrance div:nth-child(2) { background: #FD73EF; }
+    .eventDetails .tab-content .valuesEntrance div:nth-child(2) img { width: 17px; }
+    .eventDetails .tab-content .valuesEntrance div:nth-child(2) p { color: #fff; font-weight: 700; }
+    .eventDetails .tab-content .valuesEntrance div:nth-child(3) { background: #05C8F7; }
+    .eventDetails .tab-content .valuesEntrance div:nth-child(3) p { color: #fff; font-weight: 700; }
 }

@@ -1,3 +1,4 @@
+<a href="eventInfo.php">
 <div class="event">
     <div class="cover"></div>
     <div class="infoEvent">
@@ -12,6 +13,7 @@
         </div>
     </div>
 </div>
+</a>
 
 <div class="event">
     <div class="cover"></div>
