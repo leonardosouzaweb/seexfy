@@ -8,7 +8,7 @@
             <img src="assets/images/icons/iconFilter.svg">
         </div>
         <div>
-            <img src="assets/images/icons/iconSearch.svg">
+            <a href="search.php"><img src="assets/images/icons/iconSearch.svg"></a>
         </div>
         <div>
             <div class="avatar"></div>

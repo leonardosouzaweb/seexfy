@@ -40,6 +40,19 @@
             Este texto não só sobreviveu 5 séculos, mas também o salto para a tipografia 
             electrónica, mantendo-se essencialmente inalterada. Foi popularizada nos anos 
             60 com a disponibilização das folhas de Letraset, que continham passagens com </p>
+
+            <h6>Evento organizado por:</h6>
+            <div class="listUser">
+                <div>
+                    <div class="listAvatar">
+                        <div class="status online"></div>
+                    </div>
+                    <div class="listInfo">
+                        <span>Luiz <small>23 anos, Single</small></span>
+                    </div>
+                </div>
+                <img src="assets/images/icons/iconNavProfile.svg" class="navGoUser">
+            </div>
         </div>
         <div class="tab-pane fade" id="location-tab-pane" role="tabpanel" aria-labelledby="location-tab" tabindex="0">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.7928386985745!2d-46.672880313697995!3d-23.611761424013036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a0988ec93b1%3A0xeeb875be91a2f749!2sHot%20Bar%20-%20Casa%20de%20Swing%20e%20Balada%20Liberal!5e0!3m2!1spt-BR!2sbr!4v1715312952027!5m2!1spt-BR!2sbr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

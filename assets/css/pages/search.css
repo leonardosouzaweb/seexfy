@@ -1,0 +1,18 @@
+@media only screen and (max-width:899px) {
+    .emptySearch { width: 100% !important; height: 50vh !important; margin: 30px 0; display: flex; align-items: center; flex-direction: column; justify-content: center; }
+    .emptySearch h3 { margin-bottom: 0px; font-weight: 700; margin-top: 30px; }
+    .emptySearch p { text-align: center; font-weight: 500; font-size: 14px; margin-top: 10px; opacity: 0.6;}
+    .emptySearch img { width: 60px !important; margin: 0 auto; display: block; border-radius: 0px !important; }
+
+    .resultSearch { width: 100% !important; }
+    .resultSearch .listUser { display: flex; align-items: center; width: 100% !important; justify-content: space-between; gap: 20px; position: relative; margin: 15px 0; }
+    .resultSearch .listUser div { width: 100% !important; display: flex; align-items: center; gap: 20px; }
+    .resultSearch .listUser div .listAvatar { background: #F0F0F0; width: 60px !important; height: 50px; border-radius: 50px; position: relative; }
+    .resultSearch .listUser div .listAvatar .status { width: 13px !important; height: 13px; background: transparent; border-radius: 30px; display: block; position: absolute; right: 0; bottom: 0;}
+    .resultSearch .listUser div .listAvatar .status.online { background: #2ECC71; }
+    .resultSearch .listUser div .listAvatar .status.offline { background: #E74C3C; }
+    
+    .resultSearch .listUser div .listInfo span { font-size: 18px; font-weight: 600; display: block; margin: 15px 0; }
+    .resultSearch .listUser div .listInfo span small { display: block; margin: 0; font-size: 12px; color: rgba(0,0,0,0.5); border: none; padding: 0px; }
+    .resultSearch .listUser img.navGoUser { width: 15px; height: auto; position: absolute; right: 0px; top: 25px; }
+}
