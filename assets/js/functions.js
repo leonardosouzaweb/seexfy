@@ -49,9 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-
-
 function setActiveNav() {
     var path = window.location.pathname;
     var navMenu = document.querySelectorAll('.bottomMenu div');
