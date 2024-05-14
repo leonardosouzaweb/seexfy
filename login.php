@@ -50,7 +50,7 @@
     <script>
         setTimeout(function() {
             $('#errorAlert').fadeOut('slow');
-        }, 3000);
+        }, 2000);
     </script>
 </body>
 </html>
