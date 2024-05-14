@@ -6,7 +6,6 @@
             <span>Larissa <img src="assets/images/icons/iconBadge.svg"></span>
             <small>São Paulo</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -15,7 +14,6 @@
             <span>Luiz</span>
             <small>Rio de Janeiro</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -24,7 +22,6 @@
             <span>Lucas</span>
             <small>Belo Horizonte</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -33,7 +30,6 @@
             <span>Manoela <img src="assets/images/icons/iconBadge.svg"></span>
             <small>Curitiba</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -42,7 +38,6 @@
             <span>Isabela <img src="assets/images/icons/iconBadge.svg"></span>
             <small>Belo Horizonte</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -51,7 +46,6 @@
             <span>Fernando</span>
             <small>Belo Horizonte</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -60,7 +54,6 @@
             <span>Leonardo</span>
             <small>Bahia</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -69,7 +62,6 @@
             <span>Amanda <img src="assets/images/icons/iconBadge.svg"></span>
             <small>São Paulo</small>
         </div>
-        <div class="mask"></div>
     </div>
     <!-- // -->
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -78,7 +70,6 @@
             <span>Larissa <img src="assets/images/icons/iconBadge.svg"></span>
             <small>São Paulo</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -87,7 +78,6 @@
             <span>Luiz</span>
             <small>Rio de Janeiro</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -96,7 +86,6 @@
             <span>Lucas</span>
             <small>Belo Horizonte</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -105,7 +94,6 @@
             <span>Manoela <img src="assets/images/icons/iconBadge.svg"></span>
             <small>Curitiba</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -114,7 +102,6 @@
             <span>Isabela <img src="assets/images/icons/iconBadge.svg"></span>
             <small>Belo Horizonte</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -123,7 +110,6 @@
             <span>Fernando</span>
             <small>Belo Horizonte</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -132,7 +118,6 @@
             <span>Leonardo</span>
             <small>Bahia</small>
         </div>
-        <div class="mask"></div>
     </div>
 
     <div data-bs-toggle="modal" data-bs-target="#user">
@@ -141,7 +126,6 @@
             <span>Amanda <img src="assets/images/icons/iconBadge.svg"></span>
             <small>São Paulo</small>
         </div>
-        <div class="mask"></div>
     </div>
     <!-- // -->
 </div>
