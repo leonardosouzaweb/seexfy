@@ -1,9 +1,24 @@
 .login { width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; }
 .login .wrapper { width: 899px; height: 100vh; align-items: center; display: flex; align-items: center; justify-content: center; flex-direction: column; } 
 .login .wrapper .logo { margin-bottom: 50px; }
+.login .wrapper .logo img { width: 150px; }
+.login .wrapper small { display: block; text-align: center; font-size: 11px; margin-top: 20px; line-height: 21px; padding: 0px 25px;}
+.login .wrapper small a { color: #E74C3C; font-weight: 600; text-decoration: underline;}
+
 .login .wrapper form { width: 90%; }
-.login .wrapper form label { font-weight: 500; display: block; margin-bottom: 5px; }
-.login .wrapper form .form-control { padding: 13px 15px; margin-bottom: 20px; width: 100%; border-radius: 15px; }
-.login .wrapper form .form-control:Focus { box-shadow: none; border: 1px solid #E9E9E9; }
-.login .wrapper form button { background:#E74C3C; width: 100%; padding: 11px; color: #fff; font-weight: 500; font-size: 20px; border: none; border-radius: 15px; margin-top: 30px; transition: all 0.3s; }
-.login .wrapper form button:hover { background:#d35648; }
+.login .wrapper form .alert-danger { color: #fff; background: #4c4c4c; font-size: 12px; font-weight: 600; padding: 10px; text-align: center; border: none; position: absolute; width: 90%; left: 0; right: 0; margin: 0 auto; border-radius: 15px; bottom: 20px; }
+.login .wrapper form label { font-size: 14px; font-weight: 500; display: block; margin-bottom: 7px; }
+.login .wrapper form .form-control { padding: 10px 15px; margin-bottom: 20px; width: 100%; border-radius: 15px; font-size: 14px; }
+.login .wrapper form .form-control:focus { box-shadow: none; border: 1px solid #E9E9E9; }
+.login .wrapper form a.btnAccess { background:#E74C3C; width: 100%; padding: 11px; border: none; border-radius: 15px; display: block; margin-top: 20px; transition: all 0.3s; }
+.login .wrapper form a.btnAccess button { background: transparent; border: none; width: 100%; text-align: center; color: #fff; font-weight: 700; font-size: 15px; }
+.login .wrapper form a.btnAccess:hover { background:#d35648; }
+
+
+.login .wrapper a.btnEnter { background:#E74C3C; width: 90%; padding: 11px; border: none; border-radius: 15px; display: block; margin-top: 40px; transition: all 0.3s; }
+.login .wrapper a.btnEnter button { background: transparent; border: none; width: 100%; text-align: center; color: #fff; font-weight: 700; font-size: 15px; }
+.login .wrapper a.btnEnter:hover { background:#d35648; }
+
+.login .wrapper a.btnLogin { background: transparent; border: 1px solid #949494; width: 90%; padding: 11px; border-radius: 15px; display: block; margin-top: 20px; transition: all 0.3s; }
+.login .wrapper a.btnLogin button { background: transparent; border: none; width: 100%; text-align: center; color: #423b3b; font-weight: 700; font-size: 15px; }
+.login .wrapper a.btnLogin:hover { background:#d35648; }

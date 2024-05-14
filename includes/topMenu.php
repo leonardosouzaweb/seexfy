@@ -5,7 +5,7 @@
 
     <div class="nav">
         <div>
-            <img src="assets/images/icons/iconFilter.svg">
+            <!-- <img src="assets/images/icons/iconFilter.svg"> -->
         </div>
         <div>
             <a href="search.php"><img src="assets/images/icons/iconSearch.svg"></a>

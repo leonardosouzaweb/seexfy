@@ -1,0 +1,50 @@
+@media only screen and (max-width:899px) {
+    .home .content { padding: 0px 20px; }
+    .home .content .headProfile { width: 100%; display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
+    .home .content .headProfile div span { font-weight: 700; font-size: 20px; }
+    .home .content .headProfile div p { font-size: 14px; margin: 0; }
+    .home .content .headProfile div button { float: right; }
+    .home .content .headProfile div button { background: #E74C3C; width:70%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; border-radius: 15px; }
+    
+    .home .content .infoProfile { width: 100%; }
+    /* SINGLE */
+    .home .content .infoProfile .detailProfileSingle { width: 100% !important;}
+    .home .content .infoProfile .detailProfileSingle .nav-tabs { justify-content: space-between; }
+    .home .content .infoProfile .detailProfileSingle .nav-tabs .nav-item .nav-link { font-weight: 500; font-size: 14px; padding: 10px 0px; background: transparent; border-radius: 0px; border: none; color: #000; }
+    .home .content .infoProfile .detailProfileSingle .nav-tabs .nav-item .nav-link.active { border-bottom: 2px solid #E74C3C; color: #E74C3C; font-weight: 600; }
+
+    .home .content .infoProfile .detailProfileSingle .tab-content { width: 100% !important;}
+    .home .content .infoProfile .detailProfileSingle .tab-content .tab-pane { width: 100% !important; }
+    /* .home .content .infoProfile .detailProfileSingle .tab-content .tab-pane.filter { filter: blur(0.8rem); user-select: none; pointer-events: none; } */
+
+    .home .content .infoProfile .detailProfileSingle span { font-weight: 600; color: #E74C3C; font-size: 18px; }
+    .home .content .infoProfile .detailProfileSingle ul { list-style: none; margin: 0; padding: 0; margin-bottom: 20px; margin-top: 5px; }
+    .home .content .infoProfile .detailProfileSingle ul li { display: flex; align-items: center; justify-content: space-between; font-weight: 600; line-height: 30px; }
+    .home .content .infoProfile .detailProfileSingle ul li span { color: initial; font-weight: initial; font-size: initial; }
+
+    .home .content .infoProfile .detailProfileSingle .gallery { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; width: 100%; margin-top: 15px; }
+    .home .content .infoProfile .detailProfileSingle .gallery div { width: 31%; height: 90px; background: #F0F0F0; display: flex; align-items: center; justify-content: center; }
+    .home .content .infoProfile .detailProfileSingle .gallery div img { width: 35%; border-radius: 0px; }
+
+    /* COUPLE */
+    .home .content .infoProfile .detailProfileGroup { width: 100% !important;}
+    .home .content .infoProfile .detailProfileGroup .nav-tabs { justify-content: space-between; }
+    .home .content .infoProfile .detailProfileGroup .nav-tabs .nav-item .nav-link { font-weight: 500; font-size: 14px; padding: 10px 0px; background: transparent; border-radius: 0px; border: none; color: #000; }
+    .home .content .infoProfile .detailProfileGroup .nav-tabs .nav-item .nav-link.active { border-bottom: 2px solid #E74C3C; color: #E74C3C; font-weight: 600; }
+
+    .home .content .infoProfile .detailProfileGroup .tab-content { width: 100% !important;}
+    .home .content .infoProfile .detailProfileGroup .tab-content .tab-pane { width: 100% !important;}
+    /* .home .content .infoProfile .detailProfileGroup .tab-content .tab-pane.filter { filter: blur(0.8rem); user-select: none; pointer-events: none; } */
+
+    .home .content .infoProfile .detailProfileGroup span { font-weight: 600; color: #E74C3C; font-size: 18px; }
+    .home .content .infoProfile .detailProfileGroup ul { list-style: none; margin: 0; padding: 0; margin-bottom: 20px; margin-top: 5px; }
+    .home .content .infoProfile .detailProfileGroup ul li { display: flex; align-items: center; justify-content: space-between; font-weight: 600; line-height: 30px; }
+    .home .content .infoProfile .detailProfileGroup ul li span { color: initial; font-weight: initial; font-size: initial; }
+
+    .home .content .infoProfile .detailProfileGroup .gallery { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; width: 100%; margin-top: 15px; }
+    .home .content .infoProfile .detailProfileGroup .gallery div { width: 31%; height: 90px; background: #F0F0F0; display: flex; align-items: center; justify-content: center; }
+    .home .content .infoProfile .detailProfileGroup .gallery div img { width: 35%; border-radius: 0px; }
+
+}
+
+

@@ -84,7 +84,61 @@
                 </div>
             </div>
 
-            <div class="step3"></div>
+            <div class="step3">
+                <h2>Como você prefere se chamar?</h2>
+                <small>Preencha o nome de usuário que mostre o melhor de você!</small>
+
+                <label>Nome de Usuário</label>
+                <input type="text" class="form-control">   
+
+                <div class="buttonsNav">
+                    <button>Voltar</button>
+                    <button>Continuar</button>
+                </div>
+            </div>
+
+            <div class="step4">
+                <h2>Você esta em?</h2>
+                <small>Vamos usar sua localização para exibir pessoas/casais próximos a você!</small>
+
+                <label>Cidade</label>
+                <input type="text" class="form-control">   
+
+                <div class="buttonsNav">
+                    <button>Voltar</button>
+                    <button>Continuar</button>
+                </div>
+            </div>
+
+            <div class="step5" style="display: none;">
+                <h2>Oba! Está acabando.</h2>
+                <small>Informe corretamente seu email para ativar sua conta. Ele é privado e não será exibido no perfil.</small>
+
+                <label>Seu melhor e-mail</label>
+                <input type="email" class="form-control">  
+
+                <label>Senha</label>
+                <input type="password" class="form-control">  
+
+                <div class="buttonsNav">
+                    <button>Voltar</button>
+                    <button>Avançar</button>
+                </div>
+            </div>
+
+            <div class="step6" style="display: none;">
+                <img src="assets/images/icons/iconLogo.svg">
+                <h2>Parabéns!</h2>
+                <small>Você será redirecionado em alguns segundos para acessar a plataforma!</small>
+
+                <div>
+                    <span>Fique atento as Regras!</span>
+                    <p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem 
+                    Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500</p>
+                </div>
+
+                <button>Acessar</button>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

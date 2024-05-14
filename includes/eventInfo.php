@@ -113,5 +113,6 @@
                 <img src="assets/images/icons/iconNavProfile.svg" class="navGoUser">
             </div>
         </div>
+        <div class="space"></div>
     </div>
 </div>
