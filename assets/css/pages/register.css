@@ -20,7 +20,7 @@
     .register .wrapper .step2 .form-check .form-check-input:checked { background-color: #E74C3C; border: 1px solid #E74C3C; }
     .register .wrapper .step2 .form-check .form-check-input:focus { box-shadow: none; border: 1px solid #dee2e6; }
 
-    .register .wrapper .step2 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; position: absolute; left: 0; right: 0; margin: 0 auto; width: 91%; bottom: 0; }
+    .register .wrapper .step2 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; }
     .register .wrapper .step2 .buttonsNav button:nth-child(1) { background: transparent; color: #979797; border: 1px solid #949494;}
     .register .wrapper .step2 .buttonsNav button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
     .register .wrapper .step2 .buttonsNav button:disabled { opacity: 0.5; }
@@ -33,7 +33,7 @@
     .register .wrapper .step3 .form-control { padding: 10px 15px; margin-bottom: 20px; width: 100%; border-radius: 15px; font-size: 14px; }
     .register .wrapper .step3 .form-control:focus { box-shadow: none; border: 1px solid #E9E9E9; }
 
-    .register .wrapper .step3 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; position: absolute; left: 0; right: 0; margin: 0 auto; width: 91%; bottom: 0; }
+    .register .wrapper .step3 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; }
     .register .wrapper .step3 .buttonsNav button:nth-child(1) { background: transparent; color: #979797; border: 1px solid #949494;}
     .register .wrapper .step3 .buttonsNav button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
     .register .wrapper .step3 .buttonsNav button:disabled { opacity: 0.5; }
@@ -46,7 +46,7 @@
     .register .wrapper .step4 .form-control { padding: 10px 15px; margin-bottom: 20px; width: 100%; border-radius: 15px; font-size: 14px; }
     .register .wrapper .step4 .form-control:focus { box-shadow: none; border: 1px solid #E9E9E9; }
 
-    .register .wrapper .step4 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; position: absolute; left: 0; right: 0; margin: 0 auto; width: 91%; bottom: 0; }
+    .register .wrapper .step4 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; }
     .register .wrapper .step4 .buttonsNav button:nth-child(1) { background: transparent; color: #979797; border: 1px solid #949494;}
     .register .wrapper .step4 .buttonsNav button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
     .register .wrapper .step4 .buttonsNav button:disabled { opacity: 0.5; }
@@ -65,7 +65,7 @@
     .register .wrapper .step5 .form-check .form-check-input:checked { background-color: #E74C3C; border: 1px solid #E74C3C; }
     .register .wrapper .step5 .form-check .form-check-input:focus { box-shadow: none; border: 1px solid #dee2e6; }
 
-    .register .wrapper .step5 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; position: absolute; left: 0; right: 0; margin: 0 auto; width: 91%; bottom: 0; }
+    .register .wrapper .step5 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; }
     .register .wrapper .step5 .buttonsNav button:nth-child(1) { background: transparent; color: #979797; border: 1px solid #949494;}
     .register .wrapper .step5 .buttonsNav button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
     .register .wrapper .step5 .buttonsNav button:disabled { opacity: 0.5; }
