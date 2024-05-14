@@ -1,4 +1,4 @@
-.login { width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; }
+.login { width: 100%; height: 70vh; display: flex; align-items: center; justify-content: center; }
 .login .wrapper { width: 899px; height: auto; align-items: center; display: flex; align-items: center; justify-content: center; flex-direction: column; } 
 .login .wrapper .logo { margin-bottom: 50px; }
 .login .wrapper .logo img { width: 150px; }
