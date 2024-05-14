@@ -73,11 +73,6 @@
                     <label class="form-check-label" for="travestis">Travestis</label>
                 </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="todos">
-                    <label class="form-check-label" for="todos">Todos</label>
-                </div>
-
                 <div class="buttonsNav">
                     <button>Voltar</button>
                     <button>Continuar</button>
