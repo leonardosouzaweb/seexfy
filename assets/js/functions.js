@@ -116,3 +116,20 @@ menuIcon.addEventListener("click", function() {
     overlay.style.display = menuOpen ? "none" : "block";
     menuOpen = !menuOpen;
 });
+
+function setActiveClass() {
+    var path = window.location.pathname;
+    var fileName = path.split('/').pop().split('.')[0];
+    var menuItems = document.querySelectorAll('.bottomMenu div');
+
+    menuItems.forEach(function(item) {
+        if (item.id === fileName) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', setActiveClass);
+window.addEventListener('popstate', setActiveClass);
