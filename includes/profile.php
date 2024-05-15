@@ -10,7 +10,7 @@
 </div>
 
 <div class="infoProfile">
-    <div class="detailProfileSingle" style="display:none;">
+    <div class="detailProfileSingle" style="display:block;">
         <span>Informações</span>
         <ul>
             <li>Idade <span>23</span></li>
@@ -21,40 +21,75 @@
             <li>Bebe <span>Sim</span></li>
             <li>Tempo de Experiência <span>5 Anos</span></li>
         </ul>
+        <div class="divider"></div>
 
         <span>Interesses</span>
-        <ul>
-            <li>Mulher</li>
-            <li>Casal</li>
-        </ul>
+        <p>Mulher, Casal</p>
+        <div class="divider"></div>
 
         <span>Descrição</span>
-        <p></p>
+        <p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. 
+	    O Lorem Ipsum tem vindo a ser o texto padrão.</p>
+        <div class="divider"></div>
 
         <span>Galeria de Fotos</span>
         <div class="gallery">
-            <div>
-                <img src="assets/images/icons/iconGallery.svg">
-            </div>
-            <div>
-                <img src="assets/images/icons/iconGallery.svg">
-            </div>
-            <div>
-                <img src="assets/images/icons/iconGallery.svg">
-            </div>
-            <div>
-                <img src="assets/images/icons/iconGallery.svg">
-            </div>
-            <div>
-                <img src="assets/images/icons/iconGallery.svg">
-            </div>
-            <div>
-                <img src="assets/images/icons/iconGallery.svg">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="like">
+                            <img src="assets/images/icons/iconHeart.svg">
+                            <small>120</small>
+                        </div>
+                        <img src="assets/images/gallery/1.png">
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="like">
+                            <img src="assets/images/icons/iconHeart.svg">
+                            <small>227</small>
+                        </div>
+                        <img src="assets/images/gallery/1.png">
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="like">
+                            <img src="assets/images/icons/iconHeart.svg">
+                            <small>360</small>
+                        </div>
+                        <img src="assets/images/gallery/1.png">
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="like">
+                            <img src="assets/images/icons/iconHeart.svg">
+                            <small>89</small>
+                        </div>
+                        <img src="assets/images/gallery/1.png">
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="like">
+                            <img src="assets/images/icons/iconHeart.svg">
+                            <small>560</small>
+                        </div>
+                        <img src="assets/images/gallery/1.png">
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="like">
+                            <img src="assets/images/icons/iconHeart.svg">
+                            <small>226</small>
+                        </div>
+                        <img src="assets/images/gallery/1.png">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
 
-    <div class="detailProfileGroup" style="display:block">
+    <div class="detailProfileGroup" style="display:none">
         <ul class="nav nav-tabs" id="infoProfile" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="woman-tab" data-bs-toggle="tab" data-bs-target="#woman-tab-pane" type="button" role="tab" aria-controls="woman-tab-pane" aria-selected="false">Mulher</button>
@@ -188,9 +223,7 @@
                 </div>
                 <!-- // -->
             </div>
-            <div class="space"></div>
         </div>
     </div>
-    
     <div class="space"></div>
 </div>

@@ -29,7 +29,7 @@
 					<p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. 
 					O Lorem Ipsum tem vindo a ser o texto padrão.</p>
 
-					<button data-bs-dismiss="modal" aria-label="Close">Curtir</button>
+					<a href="profile.php"><button data-bs-dismiss="modal" aria-label="Close">Curtir</button></a>
 				</div>
 			</div>
 		</div>

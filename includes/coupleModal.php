@@ -35,10 +35,7 @@
 							</ul>
 
 							<span>Interesses</span>
-							<ul>
-								<li>Mulheres</li>
-								<li>Casais</li>
-							</ul>
+							<p>Mulher, Casal</p>
 
 							<span>Descrição</span>
 							<p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. 
@@ -58,10 +55,7 @@
 							</ul>
 
 							<span>Interesses</span>
-							<ul>
-								<li>Mulheres</li>
-								<li>Casais</li>
-							</ul>
+							<p>Mulher, Casal</p>
 
 							<span>Descrição</span>
 							<p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. 
