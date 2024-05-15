@@ -1,3 +1,4 @@
+<div class="maskBottom"> </div>
 <div class="bottomMenu">
     <div id="home">
         <a href="home.php"><img src="assets/images/icons/iconHome.svg"></a>
