@@ -1,161 +1,161 @@
 <div class="scroll">
     <!-- // -->
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/1.png" class="marca">
-        <div class="info">
+    <div data-bs-toggle="modal" data-bs-target="#single">
+        <img src="assets/images/default/1.png">
+        <div class="info explore">
             <span>Larissa <img src="assets/images/icons/iconBadge.svg"></span>
             <small>São Paulo</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/2.png" class="marca">
-        <div class="info">
-            <span>Luiz</span>
+    <div data-bs-toggle="modal" data-bs-target="#couple">
+        <img src="assets/images/default/9.png">
+        <div class="info explore">
+            <span>CoupleSP <img src="assets/images/icons/iconFounder.svg"></span>
             <small>Rio de Janeiro</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/3.png" class="marca">
-        <div class="info">
+    <div data-bs-toggle="modal" data-bs-target="#single">
+        <img src="assets/images/default/3.png">
+        <div class="info explore">
             <span>Lucas</span>
             <small>Belo Horizonte</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/4.png" class="marca">
-        <div class="info">
-            <span>Manoela <img src="assets/images/icons/iconBadge.svg"></span>
+    <div data-bs-toggle="modal" data-bs-target="#single">
+        <img src="assets/images/default/4.png">
+        <div class="info explore">
+            <span>Manoela<img src="assets/images/icons/iconBadge.svg"></span>
             <small>Curitiba</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/5.png" class="marca">
-        <div class="info">
-            <span>Isabela <img src="assets/images/icons/iconBadge.svg"></span>
+    <div data-bs-toggle="modal" data-bs-target="#single">
+        <img src="assets/images/default/5.png">
+        <div class="info explore">
+            <span>Isabela<img src="assets/images/icons/iconBadge.svg"></span>
             <small>Belo Horizonte</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/6.png" class="marca">
-        <div class="info">
+    <div data-bs-toggle="modal" data-bs-target="#single">
+        <img src="assets/images/default/6.png">
+        <div class="info explore">
             <span>Fernando</span>
             <small>Belo Horizonte</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/7.png" class="marca">
-        <div class="info">
+    <div data-bs-toggle="modal" data-bs-target="#single">
+        <img src="assets/images/default/7.png">
+        <div class="info explore">
             <span>Leonardo</span>
             <small>Bahia</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/8.png" class="marca">
-        <div class="info">
-            <span>Amanda <img src="assets/images/icons/iconBadge.svg"></span>
+    <div data-bs-toggle="modal" data-bs-target="#single">
+        <img src="assets/images/default/8.png">
+        <div class="info explore">
+            <span>Amanda<img src="assets/images/icons/iconBadge.svg"></span>
             <small>São Paulo</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
     <!-- // -->
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/1.png" class="marca">
-        <div class="info">
-            <span>Larissa <img src="assets/images/icons/iconBadge.svg"></span>
+    <div data-bs-toggle="modal" data-bs-target="#single">
+        <img src="assets/images/default/1.png">
+        <div class="info explore">
+            <span>Larissa<img src="assets/images/icons/iconBadge.svg"></span>
             <small>São Paulo</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/2.png" class="marca">
-        <div class="info">
-            <span>Luiz</span>
+    <div data-bs-toggle="modal" data-bs-target="#modal">
+        <img src="assets/images/default/9.png">
+        <div class="info explore">
+            <span>CoupleSP</span>
             <small>Rio de Janeiro</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
+    <div data-bs-toggle="modal" data-bs-target="#single">
         <img src="assets/images/default/3.png">
-        <div class="info">
+        <div class="info explore">
             <span>Lucas</span>
             <small>Belo Horizonte</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/4.png" class="marca">
-        <div class="info">
-            <span>Manoela <img src="assets/images/icons/iconBadge.svg"></span>
+    <div data-bs-toggle="modal" data-bs-target="#single">
+        <img src="assets/images/default/4.png">
+        <div class="info explore">
+            <span>Manoela<img src="assets/images/icons/iconBadge.svg"></span>
             <small>Curitiba</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
+    <div data-bs-toggle="modal" data-bs-target="#single">
         <img src="assets/images/default/5.png">
-        <div class="info">
-            <span>Isabela <img src="assets/images/icons/iconBadge.svg"></span>
+        <div class="info explore">
+            <span>Isabela<img src="assets/images/icons/iconBadge.svg"></span>
             <small>Belo Horizonte</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/6.png" class="marca">
-        <div class="info">
+    <div data-bs-toggle="modal" data-bs-target="#single">
+        <img src="assets/images/default/6.png">
+        <div class="info explore">
             <span>Fernando</span>
             <small>Belo Horizonte</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/7.png" class="marca">
-        <div class="info">
+    <div data-bs-toggle="modal" data-bs-target="#single">
+        <img src="assets/images/default/7.png">
+        <div class="info explore">
             <span>Leonardo</span>
             <small>Bahia</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
 
-    <div data-bs-toggle="modal" data-bs-target="#user">
-        <img src="assets/images/default/8.png" class="marca">
-        <div class="info">
-            <span>Amanda <img src="assets/images/icons/iconBadge.svg"></span>
+    <div data-bs-toggle="modal" data-bs-target="#single">
+        <img src="assets/images/default/8.png">
+        <div class="info explore">
+            <span>Amanda<img src="assets/images/icons/iconBadge.svg"></span>
             <small>São Paulo</small>
-            <h5>1,3KM</h5>
+            <h5>1,3Km</h5>
         </div>
         <div class="mask"></div>
     </div>
