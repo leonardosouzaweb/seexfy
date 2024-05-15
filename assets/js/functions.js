@@ -105,26 +105,14 @@ function showStep(step) {
     step.style.display = "block";
 }
 
-// Selecionando o elemento do ícone do menu
 const menuIcon = document.getElementById("menuIcon");
-// Selecionando o elemento da lista do menu
 const menuList = document.querySelector(".menuList");
-// Selecionando o elemento da overlay
 const overlay = document.querySelector(".overlay");
-// Estado do menu
 let menuOpen = false;
 
-// Adicionando um ouvinte de evento de clique ao ícone do menu
 menuIcon.addEventListener("click", function() {
-    // Alternando entre as imagens dos ícones do menu
     menuIcon.src = menuOpen ? "assets/images/icons/iconMenu.svg" : "assets/images/icons/iconClose.svg";
-    
-    // Alternando a visibilidade da lista do menu
     menuList.style.display = menuOpen ? "none" : "block";
-    
-    // Alternando a visibilidade da overlay
     overlay.style.display = menuOpen ? "none" : "block";
-
-    // Atualizando o estado do menu
     menuOpen = !menuOpen;
 });

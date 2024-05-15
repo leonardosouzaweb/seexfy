@@ -5,7 +5,7 @@
 .modal-content .modal-body .headProfile .avatar { width: 109px; height: 109px; background: #f1f1f1; border-radius: 15px;}
 .modal-content .modal-body .headProfile .info h3 { margin: 0; margin-top: 5px; }
 .modal-content .modal-body .headProfile .info p { font-weight: 500; font-size: 13px; opacity: 0.5; }
-.modal-content .modal-body .headProfile .info span.badge { background: transparent; color: #44c8f7; border: 1px solid #e5e5e5; margin-top: 10px; padding: 5px 15px; }
+.modal-content .modal-body .headProfile .info span.badge { background: transparent; color: #2e2e2e; border: 1px solid #e5e5e5; margin-top: 10px; padding: 5px 15px; display: flex; align-items: center; gap: 5px;}
 .modal-content .modal-body .headProfile .info span.badge img { margin-right: 5px; }
 
 .modal-content .modal-body span { font-weight: 600; color: #E74C3C; }
@@ -15,3 +15,9 @@
 .modal-content .modal-body ul li span { font-weight: inherit; color: initial; opacity: 0.6; font-weight: 400; }
 .modal-content .modal-body p { font-size: 14px; line-height: 22px; margin: 0;}
 .modal-content .modal-body button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 20px; border-radius: 15px;}
+
+.modal-content .modal-body .nav-tabs { justify-content: space-between; margin-bottom: 20px; margin-top: -10px; }
+.modal-content .modal-body .nav-tabs .nav-item { width: 50%; }
+.modal-content .modal-body .nav-tabs .nav-item .nav-link { font-weight: 500; font-size: 14px; padding: 10px 0px; background: transparent; border-radius: 0px; border: none; color: #000; margin-top: 0px; }
+.modal-content .modal-body .nav-tabs .nav-item .nav-link.active { border-bottom: 2px solid #E74C3C; color: #E74C3C; font-weight: 600; }
+.modal-content .modal-body .tab-content .tab-pane ul { margin-bottom: 10px; } 

@@ -1,4 +1,4 @@
-<div class="modal fade" id="user" tabindex="-1" aria-labelledby="userLabel" aria-hidden="true">
+<div class="modal fade" id="single" tabindex="-1" aria-labelledby="singleLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-body">
@@ -26,10 +26,8 @@
 					<p>Mulher, Casal</p>
 					<div class="divider"></div>
 					<span>Descrição</span>
-					<p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. 
-					O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde 
-					o ano de 1500, quando uma misturou os caracteres de um texto para criar um 
-					espécime de livro. </p>
+					<p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. 
+					O Lorem Ipsum tem vindo a ser o texto padrão.</p>
 
 					<button data-bs-dismiss="modal" aria-label="Close">Curtir</button>
 				</div>
