@@ -3,7 +3,7 @@
     .home .wrapper { width: 899px; height: 100vh; align-items: center;  position: relative; } 
     .home .wrapper .topMenu { margin-top:-1px; position:fixed; gap: 20px; padding: 7px 20px; display: flex; width: 100%; z-index: 3; border: 0px solid #e3e3e3 !important; background-color: #fff; box-shadow: 0 0 16px 4px rgba(0, 0, 0, 0.09); }
     .home .wrapper .topMenu .overlay { background: rgba(0,0,0,0.8); width: 100%; position: absolute; height: 70vh; left: 0; top: 300px; }
-    .home .wrapper .topMenu .menu img { width: 25px; margin-top: 4px; }
+    .home .wrapper .topMenu .menu img { width: 22px; margin-top: 7px; opacity: 0.6; }
     .home .wrapper .topMenu .menu ul { list-style: none; background: #fff; width: 100%; position: absolute; left: 0; padding: 0px 20px 0px 20px; top: 50px; z-index: 1; display: none; }
     .home .wrapper .topMenu .menu ul li { line-height: 45px; font-size: 17px; }
     .home .wrapper .topMenu .menu ul li:first-child { margin-top: 10px; }
