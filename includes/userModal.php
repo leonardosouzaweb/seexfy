@@ -7,7 +7,7 @@
 					<div class="info">
 						<h3>Larissa</h3>
 						<p>São Paulo</p>
-						<span class="badge"><img src="assets/images/icons/iconBadge.svg">Verificado</span>
+						<!-- <span class="badge"><img src="assets/images/icons/iconBadge.svg">Verificado</span> -->
 					</div>
 				</div>
 				<div class="infoProfile">

@@ -29,47 +29,47 @@
                 </div>
                 <button>Eu Concordo</button>
             </div>
-
-            <div class="step2">
+    
+            <div class="step2" style="display: none;">
                 <h2>Quais são seus interesses?</h2>
                 <small>Lembre-se o que você marcar abaixo serão suas recomendações iniciais.</small>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="homens">
+                    <input class="form-check-input" type="checkbox" value="Homens" id="homens" name="interested_in[]">
                     <label class="form-check-label" for="homens">Homens</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="homensTrans">
+                    <input class="form-check-input" type="checkbox" value="Homens Transexuais" id="homensTrans" name="interested_in[]">
                     <label class="form-check-label" for="homensTrans">Homens Transexuais</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="mulheres">
+                    <input class="form-check-input" type="checkbox" value="Mulheres" id="mulheres" name="interested_in[]">
                     <label class="form-check-label" for="mulheres">Mulheres</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="mulheresTrans">
+                    <input class="form-check-input" type="checkbox" value="Mulheres Transexuais" id="mulheresTrans" name="interested_in[]">
                     <label class="form-check-label" for="mulheresTrans">Mulheres Transexuais</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="casaishm">
+                    <input class="form-check-input" type="checkbox" value="Casais Homem/Mulher" id="casaishm" name="interested_in[]">
                     <label class="form-check-label" for="casaishm">Casais Homem/Mulher</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="casaishh">
+                    <input class="form-check-input" type="checkbox" value="Casais Homem/Homem" id="casaishh" name="interested_in[]">
                     <label class="form-check-label" for="casaishh">Casais Homem/Homem</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="casaismm">
+                    <input class="form-check-input" type="checkbox" value="Casais Mulher/Mulher" id="casaismm" name="interested_in[]">
                     <label class="form-check-label" for="casaismm">Casais Mulher/Mulher</label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="travestis">
+                    <input class="form-check-input" type="checkbox" value="Travestis" id="travestis" name="interested_in[]">
                     <label class="form-check-label" for="travestis">Travestis</label>
                 </div>
 
@@ -79,29 +79,29 @@
                 </div>
             </div>
 
-            <div class="step3">
+            <div class="step3" style="display: none;">
                 <h2>Como você prefere se chamar?</h2>
                 <small>Preencha o nome de usuário que mostre o melhor de você!</small>
 
                 <label>Nome de Usuário</label>
-                <input type="text" class="form-control">   
+                <input type="text" class="form-control" name="username">   
 
                 <div class="buttonsNav">
-                    <button>Voltar</button>
-                    <button>Continuar</button>
+                    <button type="button">Voltar</button>
+                    <button type="button">Continuar</button>
                 </div>
             </div>
 
-            <div class="step4">
-                <h2>Você esta em?</h2>
+            <div class="step4" style="display: none;">
+                <h2>Você está em?</h2>
                 <small>Vamos usar sua localização para exibir pessoas/casais próximos a você!</small>
 
                 <label>Cidade</label>
-                <input type="text" class="form-control">   
+                <input type="text" class="form-control" name="city">   
 
                 <div class="buttonsNav">
-                    <button>Voltar</button>
-                    <button>Continuar</button>
+                    <button type="button">Voltar</button>
+                    <button type="button">Continuar</button>
                 </div>
             </div>
 
@@ -110,14 +110,14 @@
                 <small>Informe corretamente seu email para ativar sua conta. Ele é privado e não será exibido no perfil.</small>
 
                 <label>Seu melhor e-mail</label>
-                <input type="email" class="form-control">  
+                <input type="email" class="form-control" name="email">  
 
                 <label>Senha</label>
-                <input type="password" class="form-control">  
+                <input type="password" class="form-control" name="password">  
 
                 <div class="buttonsNav">
-                    <button>Voltar</button>
-                    <button>Avançar</button>
+                    <button type="button">Voltar</button>
+                    <button type="submit">Avançar</button>
                 </div>
             </div>
 
@@ -127,12 +127,12 @@
                 <small>Você será redirecionado em alguns segundos para acessar a plataforma!</small>
 
                 <div>
-                    <span>Fique atento as Regras!</span>
+                    <span>Fique atento às Regras!</span>
                     <p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem 
                     Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500</p>
                 </div>
 
-                <button>Acessar</button>
+                <button type="button">Acessar</button>
             </div>
         </div>
     </div>

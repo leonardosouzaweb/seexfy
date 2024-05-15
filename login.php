@@ -1,26 +1,5 @@
 <?php 
     include_once 'includes/head.php';
-
-    $invalidCredentials = false;
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $usuarios = array(
-            "teste@teste.com" => "123"
-        );
-
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-
-        if (array_key_exists($email, $usuarios) && $usuarios[$email] == $senha) {
-            header("Location: home.php");
-            exit();
-        } else {
-            $invalidCredentials = true;
-        }
-    }
-?>
-<?php 
-    include_once 'includes/head.php';
 ?>
 <body>
     <div class="login">
@@ -29,8 +8,8 @@
                 <img src="assets/images/logo.svg">
             </div>
 
-            <form action="#" method="POST">
-                <?php if ($invalidCredentials): ?>
+            <form method="POST">
+                <?php if (isset($invalidCredentials) && $invalidCredentials): ?>
                     <div id="errorAlert" class="alert alert-danger" role="alert">
                         Credenciais inválidas. Por favor, tente novamente.
                     </div>
