@@ -2,14 +2,13 @@
     <div class="menu">
         <img id="menuIcon" src="assets/images/icons/iconMenu.svg">
         <ul class="menuList">
-            <li>Minhas amizades</li>
-            <li>Explorar</li>
-            <li>Eventos</li>
-            <li>Radar</li>
-            <li>Assinatura</li>
-            <li>Configurações</li>
-            <li>Ajuda</li>
-            <li>Sair</li>
+            <a href="./home.php"><li>Explorar</li></a>
+            <a href="events.php"><li>Eventos</li></a>
+            <a href="radar.php"><li>Radar</li></a>
+            <a href="assinatura.php"><li>Assinatura</li></a>
+            <a href="configuracoes.php"><li>Configurações</li></a>
+            <a href="ajuda.php"><li>Ajuda</li></a>
+            <a href="./"><li>Sair</li></a>
         </ul>
     </div>
     <div class="logo">

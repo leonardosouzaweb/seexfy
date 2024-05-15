@@ -8,7 +8,7 @@
                 <img src="assets/images/logo.svg">
             </div>
 
-            <form method="POST">
+            <form method="POST" action="home.php">
                 <?php if (isset($invalidCredentials) && $invalidCredentials): ?>
                     <div id="errorAlert" class="alert alert-danger" role="alert">
                         Credenciais inválidas. Por favor, tente novamente.
@@ -20,7 +20,7 @@
 
                 <label>Digite sua senha</label>
                 <input type="password" class="form-control" name="senha">
-                <a href="" class="btnAccess"><button type="submit">Entrar</button></a>
+                <a class="btnAccess"><button type="submit">Entrar</button></a>
             </form>
         </div>
     </div>
