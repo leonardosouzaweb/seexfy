@@ -24,7 +24,9 @@
             <a href="search.php"><img src="assets/images/icons/iconSearch.svg"></a>
         </div>
         <div>
-            <div class="avatar"></div>
+            <div class="avatar">
+                <img src="assets/images/default/9.png">
+            </div>
         </div>
     </div>
     <div class="overlay" style="display:none"></div>
