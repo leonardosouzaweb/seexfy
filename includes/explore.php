@@ -3,7 +3,7 @@
     <div data-bs-toggle="modal" data-bs-target="#single">
         <img src="assets/images/default/1.png">
         <div class="info">
-            <span>Larissa<img src="assets/images/icons/iconBadge.svg"></span>
+            <span>Larissa <img src="assets/images/icons/iconBadge.svg"></span>
             <small>São Paulo</small>
         </div>
         <div class="mask"></div>
@@ -12,7 +12,7 @@
     <div data-bs-toggle="modal" data-bs-target="#couple">
         <img src="assets/images/default/9.png">
         <div class="info">
-            <span>CoupleSP</span>
+            <span>CoupleSP <img src="assets/images/icons/iconFounder.svg"></span>
             <small>Rio de Janeiro</small>
         </div>
         <div class="mask"></div>
