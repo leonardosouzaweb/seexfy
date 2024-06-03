@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php if (isset($error)): ?>
                     <div id="errorAlert" class="alert alert-danger"><?php echo $error; ?></div>
                 <?php endif; ?>
-                <label>Digite o usuário</label>
+                <label>Digite o email</label>
                 <input type="text" class="form-control" name="email" required>
 
                 <label>Digite sua senha</label>
