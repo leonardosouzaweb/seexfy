@@ -1,148 +1,30 @@
-<div class="scroll">
-    <!-- // -->
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/1.png">
-        <div class="info">
-            <span>Larissa <img src="assets/images/icons/iconBadge.svg"></span>
-            <small>São Paulo</small>
-        </div>
-        <div class="mask"></div>
-    </div>
+<?php
+    // Inclui a coluna avatar na consulta SQL
+    $sql = "SELECT username, city, maritalStatus, avatar FROM users";
+    $result = $conn->query($sql);
 
-    <div data-bs-toggle="modal" data-bs-target="#couple">
-        <img src="assets/images/default/9.png">
-        <div class="info">
-            <span>CoupleSP <img src="assets/images/icons/iconFounder.svg"></span>
-            <small>Rio de Janeiro</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/3.png">
-        <div class="info">
-            <span>Lucas</span>
-            <small>Belo Horizonte</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/4.png">
-        <div class="info">
-            <span>Manoela<img src="assets/images/icons/iconBadge.svg"></span>
-            <small>Curitiba</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/5.png">
-        <div class="info">
-            <span>Isabela<img src="assets/images/icons/iconBadge.svg"></span>
-            <small>Belo Horizonte</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/6.png">
-        <div class="info">
-            <span>Fernando</span>
-            <small>Belo Horizonte</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/7.png">
-        <div class="info">
-            <span>Leonardo</span>
-            <small>Bahia</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/8.png">
-        <div class="info">
-            <span>Amanda<img src="assets/images/icons/iconBadge.svg"></span>
-            <small>São Paulo</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-    <!-- // -->
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/1.png">
-        <div class="info">
-            <span>Larissa<img src="assets/images/icons/iconBadge.svg"></span>
-            <small>São Paulo</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#modal">
-        <img src="assets/images/default/9.png">
-        <div class="info">
-            <span>CoupleSP</span>
-            <small>Rio de Janeiro</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/3.png">
-        <div class="info">
-            <span>Lucas</span>
-            <small>Belo Horizonte</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/4.png">
-        <div class="info">
-            <span>Manoela<img src="assets/images/icons/iconBadge.svg"></span>
-            <small>Curitiba</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/5.png">
-        <div class="info">
-            <span>Isabela<img src="assets/images/icons/iconBadge.svg"></span>
-            <small>Belo Horizonte</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/6.png">
-        <div class="info">
-            <span>Fernando</span>
-            <small>Belo Horizonte</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/7.png">
-        <div class="info">
-            <span>Leonardo</span>
-            <small>Bahia</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="assets/images/default/8.png">
-        <div class="info">
-            <span>Amanda<img src="assets/images/icons/iconBadge.svg"></span>
-            <small>São Paulo</small>
-        </div>
-        <div class="mask"></div>
-    </div>
-    <!-- // -->
-</div>
-<div class="space"></div>
+    if ($result->num_rows > 0) {
+        echo '<div class="scroll">';
+        while ($row = $result->fetch_assoc()) {
+            echo '<div data-bs-toggle="modal"';
+            if ($row["maritalStatus"] == "Solteiro" || $row["maritalStatus"] == "Solteira") {
+                echo ' data-bs-target="#single"';
+            } elseif ($row["maritalStatus"] == "Casado" || $row["maritalStatus"] == "Casada") {
+                echo ' data-bs-target="#couple"';
+            }
+            echo '>';
+            // Usa o avatar do banco de dados
+            echo '<img src="' . $row["avatar"] . '">';
+            echo '<div class="info">';
+            echo '<span>' . $row["username"] . '</span>';
+            echo '<small>' . $row["city"] . '</small>';
+            echo '</div>';
+            echo '<div class="mask"></div>';
+            echo '</div>';
+        }
+        echo '</div>';
+        echo '<div class="space"></div>';
+    } else {
+        echo "Nenhum resultado encontrado.";
+    }
+?>

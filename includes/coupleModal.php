@@ -3,11 +3,13 @@
 		<div class="modal-content">
 			<div class="modal-body">
 				<div class="headProfile">
-					<div class="avatar"></div>
+					<div class="avatar">
+						<img src="<?php echo $user["avatar"]; ?>" alt="">
+					</div>
 					<div class="info">
-						<h3>CoupleSP</h3>
-						<p>São Paulo</p>
-						<span class="badge"><img src="assets/images/icons/iconFounder.svg">Fundadores</span>
+						<h3><?php echo $user["username"]; ?></h3>
+						<p><?php echo $user["city"]; ?></p>
+						<!-- <span class="badge"><img src="assets/images/icons/iconBadge.svg">Verificado</span> -->
 					</div>
 				</div>
 				<div class="infoProfile">
@@ -23,43 +25,39 @@
 					<!-- // -->
 					<div class="tab-content" id="infoProfileContent">
 						<div class="tab-pane fade show active filter" id="woman-tab-pane" role="tabpanel" aria-labelledby="couple-tab" tabindex="0">
-							<span>Informações</span>
-							<ul>
-								<li>Idade <span>30</span></li>
-								<li>Orientação Sexual <span>Bissexual</span></li>
-								<li>Signo <span>Capricórnio</span></li>
-								<li>Altura <span>1,59cm</span></li>
-								<li>Fuma <span>Não</span></li>
-								<li>Bebe <span>Sim</span></li>
-								<li>Tempo de Experiência <span>1 Ano</span></li>
-							</ul>
-
-							<span>Interesses</span>
-							<p>Mulher, Casal</p>
-
-							<span>Descrição</span>
-							<p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. 
-							O Lorem Ipsum tem vindo a ser o texto padrão.</p>
-							<!-- // -->
+						<ul>
+							<li>Idade <span><?php echo $user["age"]; ?></span></li>
+							<li>Orientação Sexual <span><?php echo $user["sexualOrientation"]; ?></span></li>
+							<li>Signo <span><?php echo $user["sign"]; ?></span></li>
+							<li>Altura <span><?php echo $user["height"]; ?></span></li>
+							<li>Fuma <span><?php echo $user["smokes"]; ?></span></li>
+							<li>Bebe <span><?php echo $user["drink"]; ?></span></li>
+							<li>Tempo de Experiência <span><?php echo $user["experience"]; ?></span></li>
+						</ul>
+						<div class="divider"></div>
+						<span>Interesses</span>
+						<p><?php echo $user["interests"]; ?></p>
+						<div class="divider"></div>
+						<span>Descrição</span>
+						<p><?php echo $user["description"]; ?></p>
+						<!-- // -->
 						</div>
 						<div class="tab-pane fade filter" id="man-tab-pane" role="tabpanel" aria-labelledby="woman-tab" tabindex="0">
-							<span>Informações</span>
 							<ul>
-								<li>Idade <span>28</span></li>
-								<li>Orientação Sexual <span>Heterossexual</span></li>
-								<li>Signo <span>Sagitário</span></li>
-								<li>Altura <span>1,85cm</span></li>
-								<li>Fuma <span>Não</span></li>
-								<li>Bebe <span>Sim</span></li>
-								<li>Tempo de Experiência <span>1 Ano</span></li>
+								<li>Idade <span><?php echo $user["agePartner"]; ?></span></li>
+								<li>Orientação Sexual <span><?php echo $user["sexualOrientationPartner"]; ?></span></li>
+								<li>Signo <span><?php echo $user["signPartner"]; ?></span></li>
+								<li>Altura <span><?php echo $user["heightPartner"]; ?></span></li>
+								<li>Fuma <span><?php echo $user["smokesPartner"]; ?></span></li>
+								<li>Bebe <span><?php echo $user["drinkPartner"]; ?></span></li>
+								<li>Tempo de Experiência <span><?php echo $user["experiencePartner"]; ?></span></li>
 							</ul>
-
+							<div class="divider"></div>
 							<span>Interesses</span>
-							<p>Mulher, Casal</p>
-
+							<p><?php echo $user["interests"]; ?></p>
+							<div class="divider"></div>
 							<span>Descrição</span>
-							<p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. 
-							O Lorem Ipsum tem vindo a ser o texto padrão.</p>
+							<p><?php echo $user["description"]; ?></p>
 							<!-- // -->
 						</div>
 					</div>

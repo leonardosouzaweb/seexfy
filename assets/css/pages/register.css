@@ -8,7 +8,7 @@
     .register .wrapper .step1 span { font-weight: 600; font-size: 13px; }
     .register .wrapper .step1 div { background: #f1f1f1; padding: 1rem; border-radius: 15px; margin-bottom: 20px; }
     .register .wrapper .step1 div p { font-size: 12px; line-height: 20px; margin: 0; margin-top: 5px; }
-    .register .wrapper .step1 button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
+    .register .wrapper .step1 .next { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
 
     .register .wrapper .step2 { padding: 0px 1rem; position: relative; height: 92.5%; }
     .register .wrapper .step2 h2 { font-weight: 600; font-size: 18px; margin-top: 30px; text-align: center; }
@@ -21,22 +21,20 @@
     .register .wrapper .step2 .form-check .form-check-input:focus { box-shadow: none; border: 1px solid #dee2e6; }
 
     .register .wrapper .step2 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; }
-    .register .wrapper .step2 .buttonsNav button:nth-child(1) { background: transparent; color: #979797; border: 1px solid #949494;}
-    .register .wrapper .step2 .buttonsNav button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
-    .register .wrapper .step2 .buttonsNav button:disabled { opacity: 0.5; }
+    .register .wrapper .step2 .buttonsNav .back { background: transparent; color: #979797; border: 1px solid #949494; width: 100%; font-size: 15px; text-align: center; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
+    .register .wrapper .step2 .buttonsNav .next { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
 
     .register .wrapper .step3 { padding: 0px 1rem; position: relative; height: 92.5%; }
     .register .wrapper .step3 h2 { font-weight: 600; font-size: 18px; margin-top: 30px; text-align: center; }
     .register .wrapper .step3 small { display: block; text-align: center; font-size: 12px; padding: 0px 40px; margin-bottom: 20px; opacity: 0.7; }
 
     .register .wrapper .step3 label { font-size: 14px; font-weight: 500; display: block; margin-bottom: 7px; }
-    .register .wrapper .step3 .form-control { padding: 10px 15px; margin-bottom: 20px; width: 100%; border-radius: 15px; font-size: 14px; }
-    .register .wrapper .step3 .form-control:focus { box-shadow: none; border: 1px solid #E9E9E9; }
+    .register .wrapper .step3 .form-select { padding: 10px 15px; margin-bottom: 20px; width: 100%; border-radius: 15px; font-size: 14px; }
+    .register .wrapper .step3 .form-select:focus { box-shadow: none; border: 1px solid #E9E9E9; }
 
     .register .wrapper .step3 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; }
-    .register .wrapper .step3 .buttonsNav button:nth-child(1) { background: transparent; color: #979797; border: 1px solid #949494;}
-    .register .wrapper .step3 .buttonsNav button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
-    .register .wrapper .step3 .buttonsNav button:disabled { opacity: 0.5; }
+    .register .wrapper .step3 .buttonsNav .back { background: transparent; color: #979797; border: 1px solid #949494; width: 100%; font-size: 15px; text-align: center; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
+    .register .wrapper .step3 .buttonsNav .next { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
 
     .register .wrapper .step4 { padding: 0px 1rem; position: relative; height: 92.5%; }
     .register .wrapper .step4 h2 { font-weight: 600; font-size: 18px; margin-top: 30px; text-align: center; }
@@ -47,9 +45,9 @@
     .register .wrapper .step4 .form-control:focus { box-shadow: none; border: 1px solid #E9E9E9; }
 
     .register .wrapper .step4 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; }
-    .register .wrapper .step4 .buttonsNav button:nth-child(1) { background: transparent; color: #979797; border: 1px solid #949494;}
-    .register .wrapper .step4 .buttonsNav button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
-    .register .wrapper .step4 .buttonsNav button:disabled { opacity: 0.5; }
+    .register .wrapper .step4 .buttonsNav .back { background: transparent; color: #979797; border: 1px solid #949494; width: 100%; font-size: 15px; text-align: center; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
+    .register .wrapper .step4 .buttonsNav .next { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
+
 
     .register .wrapper .step5 { padding: 0px 1rem; position: relative; height: 92.5%; }
     .register .wrapper .step5 h2 { font-weight: 600; font-size: 18px; margin-top: 30px; text-align: center; }
@@ -66,19 +64,30 @@
     .register .wrapper .step5 .form-check .form-check-input:focus { box-shadow: none; border: 1px solid #dee2e6; }
 
     .register .wrapper .step5 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; }
-    .register .wrapper .step5 .buttonsNav button:nth-child(1) { background: transparent; color: #979797; border: 1px solid #949494;}
-    .register .wrapper .step5 .buttonsNav button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
-    .register .wrapper .step5 .buttonsNav button:disabled { opacity: 0.5; }
+    .register .wrapper .step5 .buttonsNav .back { background: transparent; color: #979797; border: 1px solid #949494; width: 100%; font-size: 15px; text-align: center; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
+    .register .wrapper .step5 .buttonsNav .next { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
+
 
     .register .wrapper .step6 { padding: 0px 1rem; position: relative; height: 92.5%; }
-    .register .wrapper .step6 img { margin: 0 auto; display: block; margin-top: 30px; }
     .register .wrapper .step6 h2 { font-weight: 600; font-size: 18px; margin-top: 30px; text-align: center; }
     .register .wrapper .step6 small { display: block; text-align: center; font-size: 12px; padding: 0px 40px; margin-bottom: 20px; opacity: 0.7; }
-    .register .wrapper .step6 span { font-weight: 600; font-size: 13px; }
-    .register .wrapper .step6 div { background: #f1f1f1; padding: 1rem; border-radius: 15px; margin-bottom: 20px; }
-    .register .wrapper .step6 div p { font-size: 12px; line-height: 20px; margin: 0; margin-top: 5px; }
-    .register .wrapper .step6 button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 600; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
 
+    .register .wrapper .step6 label { font-size: 14px; font-weight: 500; display: block; margin-bottom: 7px; }
+    .register .wrapper .step6 .form-control { padding: 10px 15px; margin-bottom: 20px; width: 100%; border-radius: 15px; font-size: 14px; }
+    .register .wrapper .step6 .form-control:focus { box-shadow: none; border: 1px solid #E9E9E9; }
+
+    .register .wrapper .step6 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; }
+    .register .wrapper .step6 .buttonsNav .back { background: transparent; color: #979797; border: 1px solid #949494; width: 100%; font-size: 15px; text-align: center; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
+    .register .wrapper .step6 .buttonsNav .next { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
+
+    .register .wrapper .step7 { padding: 0px 1rem; position: relative; height: 92.5%; }
+    .register .wrapper .step7 img { margin: 0 auto; display: block; margin-top: 30px; }
+    .register .wrapper .step7 h2 { font-weight: 600; font-size: 18px; margin-top: 30px; text-align: center; }
+    .register .wrapper .step7 small { display: block; text-align: center; font-size: 12px; padding: 0px 40px; margin-bottom: 20px; opacity: 0.7; }
+    .register .wrapper .step7 span { font-weight: 600; font-size: 13px; }
+    .register .wrapper .step7 div { background: #f1f1f1; padding: 1rem; border-radius: 15px; margin-bottom: 20px; }
+    .register .wrapper .step7 div p { font-size: 12px; line-height: 20px; margin: 0; margin-top: 5px; }
+    .register .wrapper .step7 button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 600; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
 
 }
 

@@ -1,9 +1,29 @@
-<?php 
+<?php
     include_once 'includes/head.php';
+    session_start();
+
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: login.php");
+        exit(); 
+    }
+
+    include_once 'config/db.php';
+
+    $user_id = $_SESSION['user_id'];
+    $sql = "SELECT maritalStatus, username, city, interests, fullname, age, sexualOrientation, sign, height, smokes, drink, experience, description, agePartner, sexualOrientationPartner, signPartner, heightPartner, smokesPartner, drinkPartner, experiencePartner, description, gender, avatar FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    $stmt->close();
 ?>
+
 <body>
     <div class="empty">
         <img src="assets/images/logo.svg">
+        <span>REDE DE ENCONTROS E DESCOBERTAS</span>
     </div>
 
     <div class="home">
@@ -13,9 +33,9 @@
             ?>
 
             <div class="content">
-                <h1>Explorar</h1>
+                <h2>Explorar</h2>
                 <?php 
-                    include_once 'includes/explore.php'
+                    include_once 'includes/explore.php';
                 ?>
             </div>
 

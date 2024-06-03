@@ -1,139 +1,190 @@
 <?php 
-    include_once 'includes/head.php';
+include_once 'includes/head.php';
+include_once 'config/db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Coletar dados do formulário
+    $username = $_POST['username'];
+    $city = $_POST['city'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $interests = implode(", ", $_POST['interests']);
+    $maritalStatus = $_POST['maritalStatus'];
+
+    // Definir o valor de gender baseado em maritalStatus
+    $gender = '';
+    switch ($maritalStatus) {
+        case 'Solteiro':
+            $gender = 'Masculino';
+            break;
+        case 'Solteira':
+            $gender = 'Feminino';
+            break;
+        case 'Casado':
+            $gender = 'Casado';
+            break;
+        case 'Casada':
+            $gender = 'Casada';
+            break;
+    }
+    
+    // Caminho do avatar padrão
+    $defaultAvatar = 'assets/images/default/defaultAvatar.svg';
+
+
+    // Inserir dados na tabela 'users'
+    $sql = "INSERT INTO users (username, city, email, password, interests, maritalStatus, gender, avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssssss", $username, $city, $email, $password, $interests, $maritalStatus, $gender, $defaultAvatar);
+
+    if ($stmt->execute()) {
+        header("Location: login.php");
+        exit();
+    } else {
+        echo "Erro: " . $sql . "<br>" . $conn->error;
+    }
+
+    $stmt->close();
+    $conn->close();
+}
 ?>
+
 <body>
-    <div class="empty">
+<div class="empty">
         <img src="assets/images/logo.svg">
     </div>
     <div class="register">
         <div class="wrapper">
-            <div class="step1">
-                <img src="assets/images/logo.svg">
-                <h2>Olá, seja bem vindo a Seexfy!</h2>
-                <small>Antes de iniciar o cadastro, siga atentamente às nossas regras!</small>
-
-                <div>
-                    <span>Dados pessoais</span>
-                    <p>O Seexfy é um app de encontros, para usá-lo você concorda que trataremos dados sensíveis fornecidos por você, no cadastro
-                    como: preferências e orientação sexual, que poderão ficar visíveis na plataforma.</p>
+            <form id="registerForm" method="POST">
+                <!-- Step 1: Introduction and Agreement -->
+                <div class="step step1">
+                    <img src="assets/images/logo.svg">
+                    <h2>Olá, seja bem vindo a Seexfy!</h2>
+                    <small>Antes de iniciar o cadastro, siga atentamente às nossas regras!</small>
+                    <div>
+                        <span>Dados pessoais</span>
+                        <p>O Seexfy é um app de encontros, para usá-lo você concorda que trataremos dados sensíveis fornecidos por você, no cadastro como: preferências e orientação sexual, que poderão ficar visíveis na plataforma.</p>
+                    </div>
+                    <div>
+                        <span>Sem Fakes!</span>
+                        <p>Certifique que as informações e fotos compartilhadas no app são verdadeiras.</p>
+                    </div>
+                    <div>
+                        <span>Siga os valores</span>
+                        <p>Somos um ambiente seguro e receptivo, respeite quem participa e reporte comportamentos que não estejam de acordos com nossas regras.</p>
+                    </div>
+                    <div class="next">Eu Concordo</div>
                 </div>
 
-                <div>
-                    <span>Sem Fakes!</span>
-                    <p>Certifique que as informações e fotos compartilhadas no app são verdadeiras.</p>
+                <!-- Step 2: Interests Selection -->
+                <div class="step step2" style="display: none;">
+                    <h2>Quais são seus interesses?</h2>
+                    <small>Lembre-se o que você marcar abaixo serão suas recomendações iniciais.</small>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="interests[]" value="Homens" id="homens">
+                        <label class="form-check-label" for="homens">Homens</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="interests[]" value="Homens Transexuais" id="homensTrans">
+                        <label class="form-check-label" for="homensTrans">Homens Transexuais</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="interests[]" value="Mulheres" id="mulheres">
+                        <label class="form-check-label" for="mulheres">Mulheres</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="interests[]" value="Mulheres Transexuais" id="mulheresTrans">
+                        <label class="form-check-label" for="mulheresTrans">Mulheres Transexuais</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="interests[]" value="Casais Homem/Mulher" id="casaishm">
+                        <label class="form-check-label" for="casaishm">Casais Homem/Mulher</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="interests[]" value="Casais Homem/Homem" id="casaishh">
+                        <label class="form-check-label" for="casaishh">Casais Homem/Homem</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="interests[]" value="Casais Mulher/Mulher" id="casaismm">
+                        <label class="form-check-label" for="casaismm">Casais Mulher/Mulher</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="interests[]" value="Travestis" id="travestis">
+                        <label class="form-check-label" for="travestis">Travestis</label>
+                    </div>
+                    <div class="buttonsNav">
+                        <div class="back">Voltar</div>
+                        <div class="next">Continuar</div>
+                    </div>
                 </div>
 
-                <div>
-                    <span>Siga os valores</span>
-                    <p>Somos um ambiente seguro e receptivo, respeite quem participa e reporte comportamentos que não estejam de acordos com nossas regras.</p>
-                </div>
-                <button>Eu Concordo</button>
-            </div>
-    
-            <div class="step2" style="display: none;">
-                <h2>Quais são seus interesses?</h2>
-                <small>Lembre-se o que você marcar abaixo serão suas recomendações iniciais.</small>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Homens" id="homens" name="interested_in[]">
-                    <label class="form-check-label" for="homens">Homens</label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Homens Transexuais" id="homensTrans" name="interested_in[]">
-                    <label class="form-check-label" for="homensTrans">Homens Transexuais</label>
+                <!-- Step 3: Username Selection -->
+                <div class="step step3" style="display: none;">
+                    <h2>Seu status é</h2>
+                    <small>Solteiro? Casado?</small>
+                    <select name="maritalStatus" class="form-select">
+                        <option value="">Selecione...</option>
+                        <option value="Solteiro">Solteiro</option>
+                        <option value="Solteira">Solteira</option>
+                        <option value="Casado">Casado</option>
+                        <option value="Casada">Casada</option>
+                    </select>
+                    <div class="buttonsNav">
+                        <div class="back">Voltar</div>
+                        <div class="next">Continuar</div>
+                    </div>
                 </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Mulheres" id="mulheres" name="interested_in[]">
-                    <label class="form-check-label" for="mulheres">Mulheres</label>
+                <!-- Step 3: Username Selection -->
+                <div class="step step4" style="display: none;">
+                    <h2>Como prefere se chamar?</h2>
+                    <small>Preencha o nome de usuário, as pessoas poderão encontrar mais facilmente!</small>
+                    <label>Nome de Usuário</label>
+                    <input type="text" class="form-control" name="username" required>   
+                    <div class="buttonsNav">
+                        <div class="back">Voltar</div>
+                        <div class="next">Continuar</div>
+                    </div>
                 </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Mulheres Transexuais" id="mulheresTrans" name="interested_in[]">
-                    <label class="form-check-label" for="mulheresTrans">Mulheres Transexuais</label>
+                <!-- Step 4: Location Selection -->
+                <div class="step step5" style="display: none;">
+                    <h2>Você está em?</h2>
+                    <small>Vamos usar sua localização para exibir pessoas/casais próximos a você!</small>
+                    <label>Cidade</label>
+                    <input type="text" class="form-control" name="city" required>   
+                    <div class="buttonsNav">
+                        <div class="back">Voltar</div>
+                        <div class="next">Continuar</div>
+                    </div>
                 </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Casais Homem/Mulher" id="casaishm" name="interested_in[]">
-                    <label class="form-check-label" for="casaishm">Casais Homem/Mulher</label>
+                <!-- Step 5: Email and Password -->
+                <div class="step step6" style="display: none;">
+                    <h2>Oba! Está acabando.</h2>
+                    <small>Informe corretamente seu email para ativar sua conta. Ele é privado e não será exibido no perfil.</small>
+                    <label>Seu melhor e-mail</label>
+                    <input type="email" class="form-control" name="email" required>  
+                    <label>Senha</label>
+                    <input type="password" class="form-control" name="password" required>  
+                    <div class="buttonsNav">
+                        <div class="back">Voltar</div>
+                        <div class="next">Continuar</div>
+                    </div>
                 </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Casais Homem/Homem" id="casaishh" name="interested_in[]">
-                    <label class="form-check-label" for="casaishh">Casais Homem/Homem</label>
+                <!-- Step 6: Congratulations -->
+                <div class="step step7" style="display: none;">
+                    <img src="assets/images/icons/iconLogo.svg">
+                    <h2>Parabéns!</h2>
+                    <small>Você será redirecionado em alguns segundos para acessar a plataforma!</small>
+                    <div>
+                        <span>Fique atento às Regras!</span>
+                        <p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500</p>
+                    </div>
+                    <button type="submit">Acessar</button>
                 </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Casais Mulher/Mulher" id="casaismm" name="interested_in[]">
-                    <label class="form-check-label" for="casaismm">Casais Mulher/Mulher</label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Travestis" id="travestis" name="interested_in[]">
-                    <label class="form-check-label" for="travestis">Travestis</label>
-                </div>
-
-                <div class="buttonsNav">
-                    <button>Voltar</button>
-                    <button>Continuar</button>
-                </div>
-            </div>
-
-            <div class="step3" style="display: none;">
-                <h2>Como você prefere se chamar?</h2>
-                <small>Preencha o nome de usuário que mostre o melhor de você!</small>
-
-                <label>Nome de Usuário</label>
-                <input type="text" class="form-control" name="username">   
-
-                <div class="buttonsNav">
-                    <button type="button">Voltar</button>
-                    <button type="button">Continuar</button>
-                </div>
-            </div>
-
-            <div class="step4" style="display: none;">
-                <h2>Você está em?</h2>
-                <small>Vamos usar sua localização para exibir pessoas/casais próximos a você!</small>
-
-                <label>Cidade</label>
-                <input type="text" class="form-control" name="city">   
-
-                <div class="buttonsNav">
-                    <button type="button">Voltar</button>
-                    <button type="button">Continuar</button>
-                </div>
-            </div>
-
-            <div class="step5" style="display: none;">
-                <h2>Oba! Está acabando.</h2>
-                <small>Informe corretamente seu email para ativar sua conta. Ele é privado e não será exibido no perfil.</small>
-
-                <label>Seu melhor e-mail</label>
-                <input type="email" class="form-control" name="email">  
-
-                <label>Senha</label>
-                <input type="password" class="form-control" name="password">  
-
-                <div class="buttonsNav">
-                    <button type="button">Voltar</button>
-                    <button type="submit">Avançar</button>
-                </div>
-            </div>
-
-            <div class="step6" style="display: none;">
-                <img src="assets/images/icons/iconLogo.svg">
-                <h2>Parabéns!</h2>
-                <small>Você será redirecionado em alguns segundos para acessar a plataforma!</small>
-
-                <div>
-                    <span>Fique atento às Regras!</span>
-                    <p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem 
-                    Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500</p>
-                </div>
-
-                <button type="button">Acessar</button>
-            </div>
+            </form>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

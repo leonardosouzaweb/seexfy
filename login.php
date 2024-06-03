@@ -1,26 +1,55 @@
 <?php 
-    include_once 'includes/head.php';
+include_once 'includes/head.php';
+include_once 'config/db.php';
+
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    $sql = "SELECT * FROM users WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        if (password_verify($senha, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            header("Location: home.php");
+            exit();
+        } else {
+            $error = "Senha incorreta.";
+        }
+    } else {
+        $error = "Usuário não encontrado.";
+    }
+
+    $stmt->close();
+    $conn->close();
+}
 ?>
 <body>
     <div class="login">
         <div class="wrapper">
             <div class="logo">
                 <img src="assets/images/logo.svg">
+                <span>REDE DE ENCONTROS E DESCOBERTAS</span>
             </div>
 
-            <form method="POST" action="home.php">
-                <?php if (isset($invalidCredentials) && $invalidCredentials): ?>
-                    <div id="errorAlert" class="alert alert-danger" role="alert">
-                        Credenciais inválidas. Por favor, tente novamente.
-                    </div>
+            <form method="POST">
+                <?php if (isset($error)): ?>
+                    <div id="errorAlert" class="alert alert-danger"><?php echo $error; ?></div>
                 <?php endif; ?>
-
-                <label>Digite seu e-mail</label>
-                <input type="text" class="form-control" name="email">
+                <label>Digite o usuário</label>
+                <input type="text" class="form-control" name="email" required>
 
                 <label>Digite sua senha</label>
-                <input type="password" class="form-control" name="senha">
-                <a class="btnAccess"><button type="submit">Entrar</button></a>
+                <input type="password" class="form-control" name="senha" required>
+                <button type="submit">Entrar</button>
             </form>
         </div>
     </div>

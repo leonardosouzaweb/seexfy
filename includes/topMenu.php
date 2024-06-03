@@ -1,6 +1,6 @@
 <div class="topMenu">
     <div class="menu">
-        <img id="menuIcon" src="assets/images/icons/iconMenu.svg">
+        <img id="menuIcon" src="assets/images/icons/iconMenu.svg" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
         <ul class="menuList">
             <a href="./home.php"><li>Explorar</li></a>
             <a href="events.php"><li>Eventos</li></a>
@@ -24,7 +24,7 @@
         </div>
         <div>
             <div class="avatar">
-                <img src="assets/images/default/9.png">
+                <a href="profile.php"><img src="<?php echo ($user['avatar']); ?>"></a>
             </div>
         </div>
     </div>

@@ -1,100 +1,34 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const backBtns = document.querySelectorAll(".buttonsNav button:first-of-type");
-    const continueBtns = document.querySelectorAll(".buttonsNav button:last-of-type");
-    const agreeBtn = document.querySelector(".step1 button");
-    const finalizeBtn = document.querySelector(".step5 .buttonsNav button:last-of-type");
+document.addEventListener("DOMContentLoaded", function() {
+    const steps = document.querySelectorAll(".step");
+    let currentStep = 0;
 
-    const accessBtn = document.querySelector(".step6 button");
-    accessBtn.addEventListener("click", function () {
-        window.location.href = "home.php"; 
-    });
-
-    function isAtLeastOneInterestSelected() {
-        const checkboxes = document.querySelectorAll(".step2 input[type='checkbox']");
-        return Array.from(checkboxes).some(checkbox => checkbox.checked);
-    }
-
-    function isFieldFilled(field) {
-        return field.value.trim() !== "";
-    }
-
-    function updateContinueButtonState(step) {
-        const continueBtn = step.querySelector(".buttonsNav button:last-of-type");
-        switch (step.className) {
-            case "step2":
-                continueBtn.disabled = !isAtLeastOneInterestSelected();
-                break;
-            case "step3":
-            case "step4":
-                const inputField = step.querySelector("input[type='text']");
-                continueBtn.disabled = !isFieldFilled(inputField);
-                break;
-            case "step5":
-                const emailField = step.querySelector("input[type='email']");
-                const passwordField = step.querySelector("input[type='password']");
-                continueBtn.disabled = !isFieldFilled(emailField) || !isFieldFilled(passwordField);
-                break;
-            default:
-                break;
-        }
-    }
-
-    backBtns.forEach(function(backBtn) {
-        backBtn.addEventListener("click", function () {
-            const currentStep = document.querySelector('.register > .wrapper > div[class^="step"]:not([style*="none"])');
-            const previousStep = currentStep.previousElementSibling;
-            showStep(previousStep);
+    function showStep(step) {
+        steps.forEach((s, index) => {
+            s.style.display = index === step ? "block" : "none";
         });
-    });
+    }
 
-    continueBtns.forEach(function(continueBtn) {
-        continueBtn.addEventListener("click", function () {
-            const currentStep = document.querySelector('.register > .wrapper > div[class^="step"]:not([style*="none"])');
-            const nextStep = currentStep.nextElementSibling;
-            if (nextStep) {
-                showStep(nextStep);
-                updateContinueButtonState(nextStep); 
-            } else {
-                const lastStep = document.querySelector('.register > .wrapper > div.step6');
-                showStep(lastStep);
+    document.querySelectorAll(".next").forEach(button => {
+        button.addEventListener("click", function() {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                showStep(currentStep);
             }
         });
     });
 
-    agreeBtn.addEventListener("click", function () {
-        const step = document.querySelector('.step2');
-        showStep(step);
-        updateContinueButtonState(step); 
+    document.querySelectorAll(".back").forEach(button => {
+        button.addEventListener("click", function() {
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
     });
 
-    finalizeBtn.addEventListener("click", function () {
-        const step = document.querySelector('.step5');
-        showStep(step);
-        updateContinueButtonState(step);
+    showStep(currentStep);
     
-        // Verifica se o botão clicado foi o de "Avançar"
-        if (finalizeBtn.textContent === "Avançar") {
-            const nextStep = document.querySelector('.step6');
-            showStep(nextStep);
-        }
-    });
-
-    const checkboxes = document.querySelectorAll(".step2 input[type='checkbox']");
-    checkboxes.forEach(function (checkbox) {
-        checkbox.addEventListener("change", function () {
-            const step = document.querySelector('.step2');
-            updateContinueButtonState(step); 
-        });
-    });
-
-    const textFields = document.querySelectorAll(".step3 input[type='text'], .step4 input[type='text'], .step5 input[type='email'], .step5 input[type='password']");
-    textFields.forEach(function (textField) {
-        textField.addEventListener("input", function () {
-            const step = textField.closest("div[class^='step']");
-            updateContinueButtonState(step);
-        });
-    });
-    showStep(document.querySelector('.step1'));
+    
 });
 
 function showStep(step) {
@@ -133,3 +67,4 @@ function setActiveClass() {
 
 document.addEventListener('DOMContentLoaded', setActiveClass);
 window.addEventListener('popstate', setActiveClass);
+

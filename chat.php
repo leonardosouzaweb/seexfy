@@ -1,4 +1,25 @@
-<?php include_once 'includes/head.php'; ?>
+<?php
+    include_once 'includes/head.php';
+    session_start(); 
+
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: login.php");
+        exit(); 
+    }
+
+    include_once 'config/db.php';
+
+    $user_id = $_SESSION['user_id'];
+    $sqlUser = "SELECT maritalStatus, username, avatar FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sqlUser);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    $stmt->close();
+    $conn->close();
+?>
 
 <body>
     <div class="empty">
@@ -8,30 +29,13 @@
         <div class="wrapper">
             <?php include_once 'includes/topMenu.php'; ?>
             <div class="content">
-                <h1>Chat</h1>
-                <div class="chat-container">
-                    <div class="message" onclick="showChat()">Mensagem de Chat</div>
-                    <div class="chat" id="chat" style="display: none;">
-                        <!-- Conteúdo do Chat -->
-                        <div class="chat-message">Olá! Esta é uma mensagem de chat.</div>
-                        <div class="chat-message">Como posso ajudá-lo?</div>
-                    </div>
-                </div>
+                <h1>Chat</h1>                
             </div>
             <?php include_once 'includes/bottomMenu.php'; ?>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/functions.js"></script>
-    <script>
-        function showChat() {
-            var chat = document.getElementById('chat');
-            if (chat.style.display === 'none') {
-                chat.style.display = 'block';
-            } else {
-                chat.style.display = 'none';
-            }
-        }
-    </script>
+    <script src="assets/js/functionsChat.js"></script>
 </body>
 </html>

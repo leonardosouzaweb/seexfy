@@ -7,7 +7,7 @@
     .resultSearch { width: 100% !important; }
     .resultSearch .listUser { display: flex; align-items: center; width: 100% !important; justify-content: space-between; gap: 20px; position: relative; margin: 15px 0; }
     .resultSearch .listUser div { width: 100% !important; display: flex; align-items: center; gap: 20px; }
-    .resultSearch .listUser div .listAvatar { background: #F0F0F0; width: 60px !important; height: 50px; border-radius: 50px; position: relative; }
+    .resultSearch .listUser div .listAvatar { background: #F0F0F0; width: 60px !important; height: 50px; border-radqius: 50px; position: relative; }
     .resultSearch .listUser div .listAvatar .status { width: 13px !important; height: 13px; background: transparent; border-radius: 30px; display: block; position: absolute; right: 0; bottom: 0;}
     .resultSearch .listUser div .listAvatar .status.online { background: #2ECC71; }
     .resultSearch .listUser div .listAvatar .status.offline { background: #E74C3C; }

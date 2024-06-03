@@ -1,5 +1,41 @@
-<?php 
+<?php
     include_once 'includes/head.php';
+    session_start(); 
+
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: login.php");
+        exit(); 
+    }
+
+    include_once 'config/db.php';
+
+    $user_id = $_SESSION['user_id'];
+    $sqlUser = "SELECT maritalStatus, username, city, interests, fullname, age, sexualOrientation, sign, height, smokes, drink, experience, description, agePartner, sexualOrientationPartner, signPartner, heightPartner, smokesPartner, drinkPartner, experiencePartner, description, gender, avatar FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sqlUser);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    if ($user && isset($user['maritalStatus'])) {
+        $maritalStatus = $user['maritalStatus'];
+        if ($maritalStatus == "Solteiro" || $maritalStatus == "Solteira") {
+            $displaySingle = "block";
+            $displayGroup = "none";
+        } elseif ($maritalStatus == "Casado" || $maritalStatus == "Casada") {
+            $displaySingle = "none";
+            $displayGroup = "block";
+        } else {
+            $displaySingle = "none";
+            $displayGroup = "none";
+        }
+    } else {
+        $displaySingle = "none";
+        $displayGroup = "none";
+    }
+
+    $stmt->close();
+    $conn->close();
 ?>
 <body>
     <div class="empty">
@@ -27,7 +63,39 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/functions.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function applyHeightMask(input) {
+                input.addEventListener('input', function () {
+                    let value = input.value;
+                    value = value.replace(/[^0-9]/g, '');
+
+                    if (value.length > 1) {
+                        value = value.slice(0, 1) + '.' + value.slice(1);
+                    }
+
+                    value = value.slice(0, 4);
+                    input.value = value;
+
+                    const numberValue = parseFloat(value);
+                    if (isNaN(numberValue) || numberValue <= 0 || numberValue >= 3) {
+                        input.classList.add('error');
+                    } else {
+                        input.classList.remove('error');
+                    }
+                });
+            }
+
+            const heightInput = document.getElementById('heightInput');
+            const heightPartnerInput = document.getElementById('heightPartnerInput');
+
+            applyHeightMask(heightInput);
+            applyHeightMask(heightPartnerInput);
+            
+        });
+
         var swiper = new Swiper(".swiper", {
             slidesPerView: "auto",
             spaceBetween: 20,
@@ -38,18 +106,69 @@
         });
         document.querySelectorAll('.like').forEach(item => {
             item.addEventListener('click', event => {
-                // Obtém a imagem dentro da div "like"
                 var img = item.querySelector('img');
-                // Verifica se a imagem atual é a imagem normal ou a imagem ativa
                 if (img.src.includes('iconHeart.svg')) {
-                    // Se for a imagem normal, troca para a imagem ativa
                     img.src = 'assets/images/icons/iconHeartActive.svg';
                 } else {
-                    // Se for a imagem ativa, troca para a imagem normal
                     img.src = 'assets/images/icons/iconHeart.svg';
                 }
             });
         });
+    </script>
+
+    <script>
+        function saveUserData() {
+            var age = document.getElementById("ageInput").value;
+            var orientation = document.getElementById("orientationInput").value;
+            var sign = document.getElementById("signInput").value;
+            var height = document.getElementById("heightInput").value;
+            var smokes = document.getElementById("smokesInput").value;
+            var drink = document.getElementById("drinkInput").value;
+            var experience = document.getElementById("experienceInput").value;
+            var description = document.getElementById("descriptionInput").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "api/updateUserDetail.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText);
+                    document.getElementById("modalEditUser").style.display = "none";
+                    location.reload();
+                }
+            };
+
+            var data = "age=" + age + "&orientation=" + orientation + "&sign=" + sign + "&height=" + height + "&smokes=" + smokes + "&drink=" + drink + "&experience=" + experience + "&description=" + description;
+
+            console.log("Data: " + data);
+            xhr.send(data);
+        }
+
+        function saveUserPartner() {
+            var agePartner = document.getElementById("ageInputPartner").value;
+            var sexualOrientationPartner = document.getElementById("sexualOrientationPartner").value;
+            var signPartner = document.getElementById("signInputPartner").value;
+            var heightPartner = document.getElementById("heightInputPartner").value;
+            var smokesPartner = document.getElementById("smokesInputPartner").value;
+            var drinkPartner = document.getElementById("drinkInputPartner").value;
+            var experiencePartner = document.getElementById("experienceInputPartner").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "api/updateUserDetailPartner.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText);
+                    document.getElementById("modalEditPartner").style.display = "none";
+                    location.reload();
+                }
+            };
+
+            var dataPartner = "agePartner=" + agePartner + "&sexualOrientationPartner=" + sexualOrientationPartner + "&signPartner=" + signPartner + "&heightPartner=" + heightPartner + "&smokesPartner=" + smokesPartner + "&drinkPartner=" + drinkPartner + "&experiencePartner=" + experiencePartner;
+
+            console.log("DataPartner: " + dataPartner);
+            xhr.send(dataPartner);
+        }
     </script>
 </body>
 </html>

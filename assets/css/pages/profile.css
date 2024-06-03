@@ -19,7 +19,8 @@
     .home .content .infoProfile .detailProfileSingle .tab-content .tab-pane { width: 100% !important; }
     /* .home .content .infoProfile .detailProfileSingle .tab-content .tab-pane.filter { filter: blur(0.8rem); user-select: none; pointer-events: none; } */
 
-    .home .content .infoProfile .detailProfileSingle span { font-weight: 600; color: #E74C3C; font-size: 16px; }
+    .home .content .infoProfile .detailProfileSingle span { font-weight: 600; color: #E74C3C; font-size: 16px; display: flex; justify-content: space-between; align-items: center; }
+    .home .content .infoProfile .detailProfileSingle span img { width: 23px; }
     .home .content .infoProfile .detailProfileSingle ul { list-style: none; margin: 0; padding: 0; margin-top: 5px; }
     .home .content .infoProfile .detailProfileSingle ul li { display: flex; align-items: center; justify-content: space-between; font-weight: 600; line-height: 30px; font-size: 14px; }
     .home .content .infoProfile .detailProfileSingle ul li span { color: initial; font-weight: initial; font-size: 14px; opacity: 0.6; }
@@ -28,12 +29,19 @@
 
     .home .content .infoProfile .detailProfileSingle .gallery { width: 100%;  margin-top: 20px; }
     .home .content .infoProfile .detailProfileSingle .gallery .swiper { width: auto; margin: 0 auto; display: block; height: 260px;}
+    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-pagination { display: flex; align-items: center; justify-content: center; }
     .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-wrapper { display: flex; }
     .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide { width: 40%; position: relative; }
     .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide.filter { filter: blur(0.4rem); user-select: none; pointer-events: none; border-radius: 20px;}
 
+    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .addImage { width: 100%; height: 210px; border-radius: 15px; border: 2px dashed #d0d0d0; display: flex; align-items: center; justify-content: center; flex-direction: column; position: absolute; z-index: 1;}
+    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .addImage img { width: 25px !important; border-radius: 0px !important; object-fit: initial !important; height: auto !important;}
+    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .addImage p { color:#747474; font-weight: 600; font-size: 13px; text-align: center; margin-top: 10px; padding: 0px 20px; line-height: 15px; margin-bottom: 0;}
+    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .addImage button { background: #E74C3C; color: #fff; font-weight: bold; font-size: 12px; border: none; padding: 2px 15px; border-radius: 10px;}
+    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .addImage #fileInput { display: none; }
+
     .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .block { width: 100%; height: 210px; border-radius: 15px; background: #000000e6; display: flex; align-items: center; justify-content: center; flex-direction: column; position: absolute; z-index: 1;}
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .block img { width: 25px !important; border-radius: none !important; object-fit: initial !important; height: auto !important;}
+    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .block img { width: 25px !important; border-radius: 0 !important; object-fit: initial !important; height: auto !important;}
     .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .block p { color:#ffffff9f; font-weight: 600; font-size: 13px; text-align: center; margin-top: 10px; padding: 0px 20px; line-height: 15px; }
     .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .block button { background: #E74C3C; color: #fff; font-weight: bold; font-size: 12px; border: none; padding: 2px 15px; border-radius: 10px;}
     
@@ -56,7 +64,8 @@
     .home .content .infoProfile .detailProfileGroup .tab-content { width: 100% !important;}
     .home .content .infoProfile .detailProfileGroup .tab-content .tab-pane { width: 100% !important;}
 
-    .home .content .infoProfile .detailProfileGroup span { font-weight: 600; color: #E74C3C; font-size: 16px; }
+    .home .content .infoProfile .detailProfileGroup span { font-weight: 600; color: #E74C3C; font-size: 16px; display: flex; justify-content: space-between; align-items: center; }
+    .home .content .infoProfile .detailProfileGroup span img { width: 23px; }
     .home .content .infoProfile .detailProfileGroup ul { list-style: none; margin: 0; padding: 0; margin-top: 5px; }
     .home .content .infoProfile .detailProfileGroup ul li { display: flex; align-items: center; justify-content: space-between; font-weight: 600; line-height: 30px; font-size: 14px; }
     .home .content .infoProfile .detailProfileGroup ul li span { color: initial; font-weight: initial; font-size: 14px; opacity: 0.6; }
@@ -65,6 +74,7 @@
 
     .home .content .infoProfile .detailProfileGroup .gallery { width: 100%;  margin-top: 20px; }
     .home .content .infoProfile .detailProfileGroup .gallery .swiper { width: auto; margin: 0 auto; display: block; height: 260px;}
+    .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-pagination { display: flex; align-items: center; justify-content: center; }
     .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-wrapper { display: flex; }
     .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-slide { width: 40%; position: relative; }
     .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-slide.filter { filter: blur(0.8rem); user-select: none; pointer-events: none; }

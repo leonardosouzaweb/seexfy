@@ -6,6 +6,7 @@
         <div class="wrapper">
             <div class="logo">
                 <img src="assets/images/logo.svg">
+                <span>REDE DE ENCONTROS E DESCOBERTAS</span>
             </div>
 
             <a href="register.php" class="btnEnter"><button>Cadastrar</button></a>
