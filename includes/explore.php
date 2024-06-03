@@ -1,5 +1,4 @@
 <?php
-    // Inclui a coluna avatar na consulta SQL
     $sql = "SELECT username, city, maritalStatus, avatar FROM users";
     $result = $conn->query($sql);
 
@@ -28,3 +27,6 @@
         echo "Nenhum resultado encontrado.";
     }
 ?>
+
+
+

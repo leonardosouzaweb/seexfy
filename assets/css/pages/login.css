@@ -11,9 +11,9 @@
 .login .wrapper form label { font-size: 14px; font-weight: 500; display: block; margin-bottom: 7px; }
 .login .wrapper form .form-control { padding: 10px 15px; margin-bottom: 20px; width: 100%; border-radius: 15px; font-size: 14px; }
 .login .wrapper form .form-control:focus { box-shadow: none; border: 1px solid #E9E9E9; }
-.login .wrapper form a.btnAccess { display: block; margin-top: 20px; transition: all 0.3s; }
-.login .wrapper form a.btnAccess button { background:#E74C3C; width: 100%; padding: 11px;  border-radius: 15px; border: none; width: 100%; text-align: center; color: #fff; font-weight: 700; font-size: 15px; }
-.login .wrapper form a.btnAccess button:disabled { opacity: 0.5; }
+.login .wrapper form a { display: block; margin-top: 20px; transition: all 0.3s; }
+.login .wrapper form button { background:#E74C3C; width: 100%; padding: 11px;  border-radius: 15px; border: none; width: 100%; text-align: center; color: #fff; font-weight: 700; font-size: 15px; }
+.login .wrapper form button:disabled { opacity: 0.5; }
 
 
 .login .wrapper a.btnEnter { background:#E74C3C; width: 90%; padding: 11px; border: none; border-radius: 15px; display: block; margin-top: 40px; transition: all 0.3s; }
