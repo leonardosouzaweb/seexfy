@@ -8,7 +8,7 @@
             <a href="<?php echo $base_url; ?>assinatura"><li>Assinatura</li></a>
             <a href="<?php echo $base_url; ?>configuracoes"><li>Configurações</li></a>
             <a href="<?php echo $base_url; ?>ajuda"><li>Ajuda</li></a>
-            <a href="./"><li>Sair</li></a>
+            <a href="<?php echo $base_url; ?>logout"><li>Sair</li></a>
         </ul>
     </div>
     <div class="logo">
