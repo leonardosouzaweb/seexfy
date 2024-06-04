@@ -140,7 +140,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h2>Como prefere se chamar?</h2>
                     <small>Preencha o nome de usuário, as pessoas poderão encontrar mais facilmente!</small>
                     <label>Nome de Usuário</label>
-                    <input type="text" class="form-control" name="username" required>   
+                    <div class="username">
+                        <input type="text" class="form-control" name="username" required>
+                        <span class="availability-icon"></span>
+                    </div>
                     <div class="buttonsNav">
                         <div class="back">Voltar</div>
                         <div class="next">Continuar</div>
@@ -189,5 +192,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/functions.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function() {
+            var timeoutId;
+
+            function checkUsernameAvailability(username) {
+                clearTimeout(timeoutId); 
+                timeoutId = setTimeout(function() {
+                    $.ajax({
+                        url: 'api/checkUser.php', 
+                        method: 'POST',
+                        data: { username: username },
+                        success: function(response) {
+                            if (response === 'disponivel') {
+                                $('.availability-icon').removeClass('indisponivel').addClass('disponivel');
+                            } else {
+                                $('.availability-icon').removeClass('disponivel').addClass('indisponivel');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Erro ao verificar disponibilidade do nome de usuário:', error);
+                        }
+                    });
+                }, 500); 
+            }
+
+            $('input[name="username"]').on('keyup', function() {
+                var username = $(this).val().trim();
+                if (username.length >= 3) { 
+                    checkUsernameAvailability(username);
+                } else {
+                    $('.availability-icon').removeClass('disponivel indisponivel');
+                }
+            });
+        });
+
+        $(function() {
+            $.ajax({
+                url: 'https://servicodados.ibge.gov.br/api/v1/localidades/municipios',
+                type: 'GET',
+                success: function(response) {
+                    var cities = response.map(function(city) {
+                        return city.nome;
+                    });
+                    $("input[name='city']").autocomplete({
+                        source: cities
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Erro ao obter lista de cidades:', error);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

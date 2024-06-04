@@ -17,6 +17,9 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
+// Verificar se o usuário logado é o dono do perfil
+$isOwner = ($_SESSION['username'] === $username);
+
 if ($user && isset($user['maritalStatus'])) {
     $maritalStatus = $user['maritalStatus'];
     if ($maritalStatus == "Solteiro" || $maritalStatus == "Solteira") {
@@ -56,7 +59,6 @@ $conn->close();
             <?php include_once 'includes/topMenu.php'; ?>
 
             <div class="content">
-                <!-- Seu código de exibição do perfil aqui -->
                 <?php include_once 'includes/profile.php'; ?>
             </div>
 
@@ -132,7 +134,7 @@ $conn->close();
             var description = document.getElementById("descriptionInput").value;
 
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "api/updateUserDetail.php", true);
+            xhr.open("POST", "../api/updateUserDetail.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
@@ -158,7 +160,7 @@ $conn->close();
             var experiencePartner = document.getElementById("experienceInputPartner").value;
 
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "api/updateUserDetailPartner.php", true);
+            xhr.open("POST", "../api/updateUserDetailPartner.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {

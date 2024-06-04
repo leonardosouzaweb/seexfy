@@ -11,7 +11,11 @@
 
 <div class="infoProfile">
     <div class="detailProfileSingle" style="display:<?php echo $displaySingle; ?>;">
-        <span>Informações <img src="<?php echo $base_url; ?>assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditUser"></span>
+        <span>Informações 
+        <?php if ($isOwner): ?>
+            <img src="<?php echo $base_url; ?>assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditUser">
+        <?php endif; ?>
+        </span>
         <ul>
             <li>Idade <span><?php echo ($user['age']) ? ($user['age']) . ' anos' : '---'; ?></span></li>
             <li>Orientação Sexual <span><?php echo ($user['sexualOrientation']) ? ($user['sexualOrientation']) : '---'; ?></span></li>
@@ -63,7 +67,11 @@
         <div class="tab-content" id="infoProfileContent">
             <div class="tab-pane fade show active filter" id="woman-tab-pane" role="tabpanel" aria-labelledby="woman-tab" tabindex="0">
                 <!-- MULHER -->
-                <span>Informações <img src="<?php echo $base_url; ?>assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditUser"></span>
+                <span>Informações 
+                <?php if ($isOwner): ?>
+                    <img src="<?php echo $base_url; ?>assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditUser">
+                <?php endif; ?>
+                </span>
                 <ul>
                     <li>Idade <span><?php echo ($user['age']) ? ($user['age']) . ' anos' : '---'; ?></span></li>
                     <li>Orientação Sexual <span><?php echo ($user['sexualOrientation']) ? ($user['sexualOrientation']) : '---'; ?></span></li>
@@ -118,7 +126,11 @@
             </div>
             <div class="tab-pane fade filter" id="man-tab-pane" role="tabpanel" aria-labelledby="man-tab" tabindex="0">
                 <!-- HOMEM -->
-                <span>Informações <img src="<?php echo $base_url; ?>assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditPartner"></span>
+                <span>Informações 
+                <?php if ($isOwner): ?>
+                    <img src="<?php echo $base_url; ?>assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditPartner">
+                <?php endif; ?>
+                </span>
                 <ul>
                     <li>Idade <span><?php echo ($user['agePartner']) ? ($user['agePartner']) . ' anos' : '---'; ?></span></li>
                     <li>Orientação Sexual <span><?php echo ($user['sexualOrientationPartner']) ? ($user['sexualOrientationPartner']) : '---'; ?></span></li>

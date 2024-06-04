@@ -41,8 +41,12 @@
     .register .wrapper .step4 small { display: block; text-align: center; font-size: 12px; padding: 0px 40px; margin-bottom: 20px; opacity: 0.7; }
 
     .register .wrapper .step4 label { font-size: 14px; font-weight: 500; display: block; margin-bottom: 7px; }
-    .register .wrapper .step4 .form-control { padding: 10px 15px; margin-bottom: 20px; width: 100%; border-radius: 15px; font-size: 14px; }
-    .register .wrapper .step4 .form-control:focus { box-shadow: none; border: 1px solid #E9E9E9; }
+    .register .wrapper .step4 .username { position: relative; }
+    .register .wrapper .step4 .username .availability-icon { position: absolute; top: 9px; right: 10px; width: 25px; height: 25px; }
+    .register .wrapper .step4 .username .availability-icon.disponivel { content: ""; background-image: url('../../images/icons/icCheckOk.svg'); background-size: 100%; display: block; width:25px; height: 25px; }
+    .register .wrapper .step4 .username .availability-icon.indisponivel { content: ""; background-image: url('../../images/icons/icCheckNo.svg'); background-size: 100%; display: block; width:25px; height: 25px; }
+    .register .wrapper .step4 .username .form-control { padding: 10px 15px; margin-bottom: 20px; width: 100%; border-radius: 15px; font-size: 14px; }
+    .register .wrapper .step4 .username .form-control:focus { box-shadow: none; border: 1px solid #E9E9E9; }
 
     .register .wrapper .step4 .buttonsNav { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; }
     .register .wrapper .step4 .buttonsNav .back { background: transparent; color: #979797; border: 1px solid #949494; width: 100%; font-size: 15px; text-align: center; font-weight: 700; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
@@ -89,6 +93,8 @@
     .register .wrapper .step7 div p { font-size: 12px; line-height: 20px; margin: 0; margin-top: 5px; }
     .register .wrapper .step7 button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 600; padding: 10px 0px; margin-top: 10px; border-radius: 15px; }
 
+    .ui-menu { background: white; width: 90% !important; position: absolute !important; left: 0 !important; top: 190px !important; right: 0 !important; margin: 0 auto; box-shadow: 0px 18px 36px -18px rgba(0, 0, 0, 0.1), 0px 30px 45px -30px rgba(50, 50, 93, 0.25); border-radius: 10px; padding: 20px 25px; max-height: 300px; overflow-y: scroll; list-style: none; }
+    .ui-menu li.ui-menu-item { line-height: 45px; font-size: 14px; font-weight: 500; }
 }
 
 
