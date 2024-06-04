@@ -1,19 +1,10 @@
 RewriteEngine On
 
 # Redirecionar usuários não logados para a página de erro
-RewriteCond %{REQUEST_URI} !^/login.php
-RewriteCond %{REQUEST_URI} !^/oops
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !^/home.php
-RewriteCond %{REQUEST_URI} !^/registro.php
-RewriteCond %{REQUEST_URI} !^/entrar.php
-RewriteCond %{REQUEST_URI} !^/eventos.php
-RewriteCond %{REQUEST_URI} !^/radar.php
-RewriteCond %{REQUEST_URI} !^/pesquisar.php
-RewriteCond %{REQUEST_URI} !^/chat.php
-RewriteCond %{REQUEST_URI} !^/logout.php
-RewriteRule ^ /oops.php [L,R=302]
+RewriteCond %{REQUEST_URI} !^/oops.php
+RewriteRule ^ /oops.php [L]
 
 # Suas regras existentes
 RewriteRule ^registro$ registro.php [L]
@@ -24,6 +15,5 @@ RewriteRule ^radar$ radar.php [L]
 RewriteRule ^pesquisar$ pesquisar.php [L]
 RewriteRule ^chat$ chat.php [L]
 RewriteRule ^logout$ logout.php [L]
-RewriteRule ^oops$ oops.php [L]
 
 RewriteRule ^perfil/([a-zA-Z0-9_-]+)$ perfil.php?username=$1 [NC,L]
