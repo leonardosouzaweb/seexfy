@@ -1,12 +1,4 @@
 RewriteEngine On
-
-# Redirecionar usuários não logados para a página de erro
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !^/oops.php
-RewriteRule ^ /oops.php [L]
-
-# Suas regras existentes
 RewriteRule ^registro$ registro.php [L]
 RewriteRule ^entrar$ entrar.php [L]
 RewriteRule ^home$ home.php [L]
