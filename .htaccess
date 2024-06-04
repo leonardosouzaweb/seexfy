@@ -2,7 +2,7 @@ RewriteEngine On
 
 # Redirecionar usuários não logados para a página de erro
 RewriteCond %{REQUEST_URI} !^/login.php
-RewriteCond %{REQUEST_URI} !^/oops.php
+RewriteCond %{REQUEST_URI} !^/oops
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !^/home.php
