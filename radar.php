@@ -3,7 +3,7 @@
     session_start(); 
 
     if (!isset($_SESSION['user_id'])) {
-        header("Location: login.php");
+        header("Location: ./entrar");
         exit(); 
     }
 
@@ -22,7 +22,7 @@
 ?>
 <body>
     <div class="empty">
-        <img src="assets/images/logo.svg">
+        <img src="<?php echo $base_url; ?>assets/images/logo.svg">
     </div>
 
     <div class="home">
@@ -33,7 +33,7 @@
 
             <div class="content">
                 <div class="radar">
-                    <img src="assets/images/icons/IconRadar2x.svg">
+                    <img src="<?php echo $base_url; ?>assets/images/icons/IconRadar2x.svg">
                     <h2>Radar</h2>
                     <p>Clique no botão abaixo para encontrar pessoas próximas a você.</p>
                     <button id="activeLocation">Ativar localização</button>

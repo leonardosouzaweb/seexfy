@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssssss", $username, $city, $email, $password, $interests, $maritalStatus, $gender, $defaultAvatar);
 
     if ($stmt->execute()) {
-        header("Location: login.php");
+        header("Location: ./entrar");
         exit();
     } else {
         echo "Erro: " . $sql . "<br>" . $conn->error;
@@ -51,14 +51,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 <div class="empty">
-        <img src="assets/images/logo.svg">
+        <img src="<?php echo $base_url; ?>assets/images/logo.svg">
     </div>
     <div class="register">
         <div class="wrapper">
             <form id="registerForm" method="POST">
                 <!-- Step 1: Introduction and Agreement -->
                 <div class="step step1">
-                    <img src="assets/images/logo.svg">
+                    <img src="<?php echo $base_url; ?>assets/images/logo.svg">
                     <h2>Olá, seja bem vindo a Seexfy!</h2>
                     <small>Antes de iniciar o cadastro, siga atentamente às nossas regras!</small>
                     <div>
@@ -175,7 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <!-- Step 6: Congratulations -->
                 <div class="step step7" style="display: none;">
-                    <img src="assets/images/icons/iconLogo.svg">
+                    <img src="<?php echo $base_url; ?>assets/images/icons/iconLogo.svg">
                     <h2>Parabéns!</h2>
                     <small>Você será redirecionado em alguns segundos para acessar a plataforma!</small>
                     <div>

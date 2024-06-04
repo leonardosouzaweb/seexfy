@@ -11,7 +11,7 @@
 
 <div class="infoProfile">
     <div class="detailProfileSingle" style="display:<?php echo $displaySingle; ?>;">
-        <span>Informações <img src="assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditUser"></span>
+        <span>Informações <img src="<?php echo $base_url; ?>assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditUser"></span>
         <ul>
             <li>Idade <span><?php echo ($user['age']) ? ($user['age']) . ' anos' : '---'; ?></span></li>
             <li>Orientação Sexual <span><?php echo ($user['sexualOrientation']) ? ($user['sexualOrientation']) : '---'; ?></span></li>
@@ -37,7 +37,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="addImage">
-                            <img src="assets/images/icons/iconGallery.svg" class="iconGallery">
+                            <img src="<?php echo $base_url; ?>assets/images/icons/iconGallery.svg" class="iconGallery">
                             <p class="iconGallery">Adicionar imagem</p>
 
                         </div>
@@ -63,7 +63,7 @@
         <div class="tab-content" id="infoProfileContent">
             <div class="tab-pane fade show active filter" id="woman-tab-pane" role="tabpanel" aria-labelledby="woman-tab" tabindex="0">
                 <!-- MULHER -->
-                <span>Informações <img src="assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditUser"></span>
+                <span>Informações <img src="<?php echo $base_url; ?>assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditUser"></span>
                 <ul>
                     <li>Idade <span><?php echo ($user['age']) ? ($user['age']) . ' anos' : '---'; ?></span></li>
                     <li>Orientação Sexual <span><?php echo ($user['sexualOrientation']) ? ($user['sexualOrientation']) : '---'; ?></span></li>
@@ -89,50 +89,26 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
+                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
                                     <small>120</small>
                                 </div>
-                                <img src="assets/images/gallery/1.png">
+                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
                             </div>
 
                             <div class="swiper-slide">
                                 <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
+                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
                                     <small>227</small>
                                 </div>
-                                <img src="assets/images/gallery/1.png">
+                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
                             </div>
                             
                             <div class="swiper-slide">
                                 <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
+                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
                                     <small>360</small>
                                 </div>
-                                <img src="assets/images/gallery/1.png">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
-                                    <small>89</small>
-                                </div>
-                                <img src="assets/images/gallery/1.png">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
-                                    <small>560</small>
-                                </div>
-                                <img src="assets/images/gallery/1.png">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
-                                    <small>226</small>
-                                </div>
-                                <img src="assets/images/gallery/1.png">
+                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
                             </div>
                         </div>
                         <div class="swiper-pagination"></div>
@@ -142,7 +118,7 @@
             </div>
             <div class="tab-pane fade filter" id="man-tab-pane" role="tabpanel" aria-labelledby="man-tab" tabindex="0">
                 <!-- HOMEM -->
-                <span>Informações <img src="assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditPartner"></span>
+                <span>Informações <img src="<?php echo $base_url; ?>assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditPartner"></span>
                 <ul>
                     <li>Idade <span><?php echo ($user['agePartner']) ? ($user['agePartner']) . ' anos' : '---'; ?></span></li>
                     <li>Orientação Sexual <span><?php echo ($user['sexualOrientationPartner']) ? ($user['sexualOrientationPartner']) : '---'; ?></span></li>
@@ -168,50 +144,18 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
+                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
                                     <small>120</small>
                                 </div>
-                                <img src="assets/images/gallery/1.png">
+                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
                             </div>
 
                             <div class="swiper-slide">
                                 <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
+                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
                                     <small>227</small>
                                 </div>
-                                <img src="assets/images/gallery/1.png">
-                            </div>
-                            
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
-                                    <small>360</small>
-                                </div>
-                                <img src="assets/images/gallery/1.png">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
-                                    <small>89</small>
-                                </div>
-                                <img src="assets/images/gallery/1.png">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
-                                    <small>560</small>
-                                </div>
-                                <img src="assets/images/gallery/1.png">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
-                                    <small>226</small>
-                                </div>
-                                <img src="assets/images/gallery/1.png">
+                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
                             </div>
                         </div>
                         <div class="swiper-pagination"></div>
@@ -227,50 +171,18 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
+                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
                                     <small>120</small>
                                 </div>
-                                <img src="assets/images/gallery/1.png">
+                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
                             </div>
 
                             <div class="swiper-slide">
                                 <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
+                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
                                     <small>227</small>
                                 </div>
-                                <img src="assets/images/gallery/1.png">
-                            </div>
-                            
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
-                                    <small>360</small>
-                                </div>
-                                <img src="assets/images/gallery/1.png">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
-                                    <small>89</small>
-                                </div>
-                                <img src="assets/images/gallery/1.png">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
-                                    <small>560</small>
-                                </div>
-                                <img src="assets/images/gallery/1.png">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="assets/images/icons/iconHeart.svg">
-                                    <small>226</small>
-                                </div>
-                                <img src="assets/images/gallery/1.png">
+                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
                             </div>
                         </div>
                         <div class="swiper-pagination"></div>
@@ -289,7 +201,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="title">
-                    <span>Editar Informações <img src="assets/images/icons/icClose.svg" data-bs-dismiss="modal" aria-label="Close"></span>
+                    <span>Editar Informações <img src="<?php echo $base_url; ?>assets/images/icons/icClose.svg" data-bs-dismiss="modal" aria-label="Close"></span>
                 </div>
 
                 <label for="ageInput">Idade</label>
@@ -335,7 +247,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="title">
-                    <span>Editar Informações2 <img src="assets/images/icons/icClose.svg" data-bs-dismiss="modal" aria-label="Close"></span>
+                    <span>Editar Informações2 <img src="<?php echo $base_url; ?>assets/images/icons/icClose.svg" data-bs-dismiss="modal" aria-label="Close"></span>
                 </div>
 
                 <label for="ageInputPartner">Idade</label>

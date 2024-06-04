@@ -16,15 +16,15 @@
             <span>Valores</span>
             <div class="valuesEntrance">
                 <div>
-                    <img src="assets/images/icons/iconCouple.svg">
+                    <img src="<?php echo $base_url; ?>assets/images/icons/iconCouple.svg">
                     <p>R$250</p>
                 </div>
                 <div>
-                    <img src="assets/images/icons/iconWoman.svg">
+                    <img src="<?php echo $base_url; ?>assets/images/icons/iconWoman.svg">
                     <p>R$150</p>
                 </div>
                 <div>
-                    <img src="assets/images/icons/iconMale.svg">
+                    <img src="<?php echo $base_url; ?>assets/images/icons/iconMale.svg">
                     <p>R$350</p>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                         <span>Luiz <small>23 anos, Single</small></span>
                     </div>
                 </div>
-                <img src="assets/images/icons/iconNavProfile.svg" class="navGoUser">
+                <img src="<?php echo $base_url; ?>assets/images/icons/iconNavProfile.svg" class="navGoUser">
             </div>
         </div>
         <div class="tab-pane fade" id="location-tab-pane" role="tabpanel" aria-labelledby="location-tab" tabindex="0">
@@ -60,8 +60,8 @@
             <p>Alameda dos Pamaris, 83 - Moema, São Paulo - SP, 04086-020</p>
             
             <div class="buttons">
-                <button><img src="assets/images/icons/iconWaze.svg">Ir com Waze</button>
-                <button><img src="assets/images/icons/iconMaps.svg">Ir com Maps</button>
+                <button><img src="<?php echo $base_url; ?>assets/images/icons/iconWaze.svg">Ir com Waze</button>
+                <button><img src="<?php echo $base_url; ?>assets/images/icons/iconMaps.svg">Ir com Maps</button>
             </div>
         </div>
         <div class="tab-pane fade" id="confirm-tab-pane" role="tabpanel" aria-labelledby="confirm-tab" tabindex="0">
@@ -74,7 +74,7 @@
                         <span>Luiz <small>23 anos, Single</small></span>
                     </div>
                 </div>
-                <img src="assets/images/icons/iconNavProfile.svg" class="navGoUser">
+                <img src="<?php echo $base_url; ?>assets/images/icons/iconNavProfile.svg" class="navGoUser">
             </div>
             <!-- // -->
             <div class="listUser">
@@ -86,7 +86,7 @@
                         <span>Larissa <small>32 anos, Single</small></span>
                     </div>
                 </div>
-                <img src="assets/images/icons/iconNavProfile.svg" class="navGoUser">
+                <img src="<?php echo $base_url; ?>assets/images/icons/iconNavProfile.svg" class="navGoUser">
             </div>
             <!-- // -->
             <div class="listUser">
@@ -98,7 +98,7 @@
                         <span>Fernando <small>42 anos, Single</small></span>
                     </div>
                 </div>
-                <img src="assets/images/icons/iconNavProfile.svg" class="navGoUser">
+                <img src="<?php echo $base_url; ?>assets/images/icons/iconNavProfile.svg" class="navGoUser">
             </div>
             <!-- // -->
             <div class="listUser">
@@ -110,7 +110,7 @@
                         <span>Larissa <small>23 anos, Single</small></span>
                     </div>
                 </div>
-                <img src="assets/images/icons/iconNavProfile.svg" class="navGoUser">
+                <img src="<?php echo $base_url; ?>assets/images/icons/iconNavProfile.svg" class="navGoUser">
             </div>
         </div>
         <div class="space"></div>

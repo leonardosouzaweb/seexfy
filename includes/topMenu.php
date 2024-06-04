@@ -1,18 +1,18 @@
 <div class="topMenu">
     <div class="menu">
-        <img id="menuIcon" src="assets/images/icons/iconMenu.svg" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+        <img id="menuIcon" src="<?php echo $base_url; ?>assets/images/icons/iconMenu.svg" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
         <ul class="menuList">
-            <a href="./home.php"><li>Explorar</li></a>
-            <a href="events.php"><li>Eventos</li></a>
-            <a href="radar.php"><li>Radar</li></a>
-            <a href="assinatura.php"><li>Assinatura</li></a>
-            <a href="configuracoes.php"><li>Configurações</li></a>
-            <a href="ajuda.php"><li>Ajuda</li></a>
+            <a href="<?php echo $base_url; ?>home"><li>Explorar</li></a>
+            <a href="<?php echo $base_url; ?>eventos"><li>Eventos</li></a>
+            <a href="<?php echo $base_url; ?>radar"><li>Radar</li></a>
+            <a href="<?php echo $base_url; ?>assinatura"><li>Assinatura</li></a>
+            <a href="<?php echo $base_url; ?>configuracoes"><li>Configurações</li></a>
+            <a href="<?php echo $base_url; ?>ajuda"><li>Ajuda</li></a>
             <a href="./"><li>Sair</li></a>
         </ul>
     </div>
     <div class="logo">
-        <a href="home.php"><img src="assets/images/logo.svg" alt="Logo Seexyfy"></a>
+        <a href="<?php echo $base_url; ?>home"><img src="<?php echo $base_url; ?>assets/images/logo.svg" alt="Logo Seexyfy"></a>
     </div>
 
     <div class="nav">
@@ -20,11 +20,11 @@
             <!-- <img src="assets/images/icons/iconFilter.svg"> -->
         </div>
         <div>
-            <a href="search.php"><img src="assets/images/icons/iconSearch.svg"></a>
+            <a href="<?php echo $base_url; ?>pesquisar"><img src="<?php echo $base_url; ?>assets/images/icons/iconSearch.svg"></a>
         </div>
         <div>
             <div class="avatar">
-                <a href="profile.php"><img src="<?php echo ($user['avatar']); ?>"></a>
+                <a href="<?php echo $base_url; ?>perfil/<?php echo $user["username"]; ?>"><img src="<?php echo ($user['avatar']); ?>"></a>
             </div>
         </div>
     </div>

@@ -2,12 +2,12 @@
 .modal-content { background: #fff; width: 95%; margin: 0 auto; border: none; border-radius: 15px; }
 .modal-content .modal-body { padding: 20px;}
 .modal-content .modal-body .headProfile { display: flex; gap: 20px; align-items: center; margin-bottom: 20px; }
-.modal-content .modal-body .headProfile .avatar { width: 109px; height: 109px; background: #f1f1f1; border-radius: 15px;}
+.modal-content .modal-body .headProfile .avatar { width: 109px !important; height: 109px !important; background: #f1f1f1; border-radius: 15px;}
 .modal-content .modal-body .headProfile .avatar img { width: 100%; }
-.modal-content .modal-body .headProfile .info h3 { margin: 0; margin-top: 5px; }
-.modal-content .modal-body .headProfile .info p { font-weight: 500; font-size: 13px; opacity: 0.5; margin-bottom: 0; }
-.modal-content .modal-body .headProfile .info span.badge { background: transparent; color: #2e2e2e; border: 1px solid #e5e5e5; margin-top: 10px; padding: 5px 15px; display: flex; align-items: center; gap: 5px;}
-.modal-content .modal-body .headProfile .info span.badge img { margin-right: 5px; }
+.modal-content .modal-body .headProfile .infoTitle h3 { margin: 0; margin-top: 5px; }
+.modal-content .modal-body .headProfile .infoTitle p { font-weight: 500; font-size: 13px; opacity: 0.5; margin-bottom: 0; }
+.modal-content .modal-body .headProfile .infoTitle span.badge { background: transparent; color: #2e2e2e; border: 1px solid #e5e5e5; margin-top: 10px; padding: 5px 15px; display: flex; align-items: center; gap: 5px;}
+.modal-content .modal-body .headProfile .infoTitle span.badge img { margin-right: 5px; }
 
 .modal-content .modal-body .itens { display: flex; width: 100%; gap: 20px; }
 .modal-content .modal-body .form-control { margin-bottom: 15px; }

@@ -5,12 +5,12 @@
     <div class="login">
         <div class="wrapper">
             <div class="logo">
-                <img src="assets/images/logo.svg">
+                <img src="<?php echo $base_url; ?>assets/images/logo.svg">
                 <span>REDE DE ENCONTROS E DESCOBERTAS</span>
             </div>
 
-            <a href="register.php" class="btnEnter"><button>Cadastrar</button></a>
-            <a href="login.php" class="btnLogin"><button>Entrar</button></a>
+            <a href="./registro" class="btnEnter"><button>Cadastrar</button></a>
+            <a href="./entrar" class="btnLogin"><button>Entrar</button></a>
             <small>Ao selecionar cadastrar ou entrar, você concocrda com nossos <a href="">Termos de Uso.</a>Saiba como tratamos seus dados em nossa <a href="">Política de Privacidade</a></small>
         </div>
     </div>

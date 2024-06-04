@@ -1,5 +1,5 @@
 <div class="emptySearch" style="display:none">
-    <img src="assets/images/icons/iconEmpty.svg">
+    <img src="<?php echo $base_url; ?>assets/images/icons/iconEmpty.svg">
     <h3>Oops!</h3>
     <p>Nenhum resultado encontrado.</p>
 </div>
@@ -13,7 +13,7 @@
                 <span>Luiz <small>23 anos, Single</small></span>
             </div>
         </div>
-        <img src="assets/images/icons/iconNavProfile.svg" class="navGoUser">
+        <img src="<?php echo $base_url; ?>assets/images/icons/iconNavProfile.svg" class="navGoUser">
     </div>
     <!-- // -->
     <div class="listUser">
@@ -25,7 +25,7 @@
                 <span>Larissa <small>32 anos, Single</small></span>
             </div>
         </div>
-        <img src="assets/images/icons/iconNavProfile.svg" class="navGoUser">
+        <img src="<?php echo $base_url; ?>assets/images/icons/iconNavProfile.svg" class="navGoUser">
     </div>
     <!-- // -->
     <div class="listUser">
@@ -37,7 +37,7 @@
                 <span>Fernando <small>42 anos, Single</small></span>
             </div>
         </div>
-        <img src="assets/images/icons/iconNavProfile.svg" class="navGoUser">
+        <img src="<?php echo $base_url; ?>assets/images/icons/iconNavProfile.svg" class="navGoUser">
     </div>
     <!-- // -->
     <div class="listUser">
@@ -49,6 +49,6 @@
                 <span>Larissa <small>23 anos, Single</small></span>
             </div>
         </div>
-        <img src="assets/images/icons/iconNavProfile.svg" class="navGoUser">
+        <img src="<?php echo $base_url; ?>assets/images/icons/iconNavProfile.svg" class="navGoUser">
     </div>
 </div>

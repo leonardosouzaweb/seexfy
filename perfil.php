@@ -1,67 +1,71 @@
 <?php
-    include_once 'includes/head.php';
-    session_start(); 
+include_once 'includes/head.php';
+session_start(); 
 
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: login.php");
-        exit(); 
-    }
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ./entrar");
+    exit(); 
+}
 
-    include_once 'config/db.php';
+include_once 'config/db.php';
 
-    $user_id = $_SESSION['user_id'];
-    $sqlUser = "SELECT maritalStatus, username, city, interests, fullname, age, sexualOrientation, sign, height, smokes, drink, experience, description, agePartner, sexualOrientationPartner, signPartner, heightPartner, smokesPartner, drinkPartner, experiencePartner, description, gender, avatar FROM users WHERE id = ?";
-    $stmt = $conn->prepare($sqlUser);
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
+$username = $_GET['username'];
+$sqlUser = "SELECT maritalStatus, username, city, interests, fullname, age, sexualOrientation, sign, height, smokes, drink, experience, description, agePartner, sexualOrientationPartner, signPartner, heightPartner, smokesPartner, drinkPartner, experiencePartner, description, gender, avatar FROM users WHERE username = ?";
+$stmt = $conn->prepare($sqlUser);
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
 
-    if ($user && isset($user['maritalStatus'])) {
-        $maritalStatus = $user['maritalStatus'];
-        if ($maritalStatus == "Solteiro" || $maritalStatus == "Solteira") {
-            $displaySingle = "block";
-            $displayGroup = "none";
-        } elseif ($maritalStatus == "Casado" || $maritalStatus == "Casada") {
-            $displaySingle = "none";
-            $displayGroup = "block";
-        } else {
-            $displaySingle = "none";
-            $displayGroup = "none";
-        }
+if ($user && isset($user['maritalStatus'])) {
+    $maritalStatus = $user['maritalStatus'];
+    if ($maritalStatus == "Solteiro" || $maritalStatus == "Solteira") {
+        $displaySingle = "block";
+        $displayGroup = "none";
+    } elseif ($maritalStatus == "Casado" || $maritalStatus == "Casada") {
+        $displaySingle = "none";
+        $displayGroup = "block";
     } else {
         $displaySingle = "none";
         $displayGroup = "none";
     }
+} else {
+    $displaySingle = "none";
+    $displayGroup = "none";
+}
 
-    $stmt->close();
-    $conn->close();
+$stmt->close();
+$conn->close();
 ?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de <?php echo $username; ?></title>
+    <!-- Seus estilos CSS aqui -->
+</head>
 <body>
     <div class="empty">
-        <img src="assets/images/logo.svg">
+        <img src="<?php echo $base_url; ?>assets/images/logo.svg">
     </div>
 
     <div class="home">
         <div class="wrapper">
-            <?php 
-                include_once 'includes/topMenu.php';
-            ?>
+            <?php include_once 'includes/topMenu.php'; ?>
 
             <div class="content">
-                <?php 
-                    include_once 'includes/profile.php'
-                ?>
+                <!-- Seu código de exibição do perfil aqui -->
+                <?php include_once 'includes/profile.php'; ?>
             </div>
 
-            <?php 
-                include_once 'includes/bottomMenu.php';
-            ?>
+            <?php include_once 'includes/bottomMenu.php'; ?>
         </div>
     </div>
     <!-- END -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/functions.js"></script>
+    <script src="<?php echo $base_url; ?>assets/js/functions.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     

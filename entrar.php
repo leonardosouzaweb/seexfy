@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($senha, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
-            header("Location: home.php");
+            header("Location: ./home");
             exit();
         } else {
             $error = "Senha incorreta.";
@@ -36,8 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="login">
         <div class="wrapper">
             <div class="logo">
-                <img src="assets/images/logo.svg">
-                <span>REDE DE ENCONTROS E DESCOBERTAS</span>
+                <img src="<?php echo $base_url; ?>assets/images/logo.svg">
             </div>
 
             <form method="POST">

@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteRule ^registro$ registro.php [L]
+RewriteRule ^entrar$ entrar.php [L]
+RewriteRule ^home$ home.php [L]
+RewriteRule ^eventos$ eventos.php [L]
+RewriteRule ^radar$ radar.php [L]
+RewriteRule ^pesquisar$ pesquisar.php [L]
+RewriteRule ^chat$ chat.php [L]
+
+RewriteRule ^perfil/([a-zA-Z0-9_-]+)$ perfil.php?username=$1 [NC,L]
