@@ -87,6 +87,8 @@ $conn->close();
             .then(data => {
                 if (data.success) {
                     document.getElementById('avatarImage').src = data.newAvatarPath;
+                    location.reload();
+
                 } else {
                     console.error(data.error);
                 }
