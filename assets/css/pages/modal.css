@@ -1,6 +1,6 @@
 .modal { background: rgba(0,0,0,0.6); }
 .modal-content { background: #fff; width: 95%; margin: 0 auto; border: none; border-radius: 15px; }
-.modal-content .modal-body { padding: 20px;}
+.modal-content .modal-body { padding: 20px; }
 .modal-content .modal-body .headProfile { display: flex; gap: 20px; align-items: center; margin-bottom: 20px; }
 .modal-content .modal-body .headProfile .avatar { width: 109px !important; height: 109px !important; background: #f1f1f1; border-radius: 15px;}
 .modal-content .modal-body .headProfile .avatar img { width: 100%; }
@@ -11,6 +11,7 @@
 
 .modal-content .modal-body .itens { display: flex; width: 100%; gap: 20px; }
 .modal-content .modal-body .form-control { margin-bottom: 15px; }
+.modal-content .modal-body .form-control:focus { box-shadow: none; border: 1px solid #f1f1f1; }
 
 .modal-content .modal-body span { font-weight: 600; color: #E74C3C; display: flex; justify-content: space-between; }
 .modal-content .modal-body span img { width: 23px; }
@@ -20,6 +21,11 @@
 .modal-content .modal-body ul li span { font-weight: inherit; color: initial; opacity: 0.6; font-weight: 400; margin-bottom: 0; }
 .modal-content .modal-body p { font-size: 14px; line-height: 22px; margin: 0; margin-bottom: 15px; }
 .modal-content .modal-body button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 20px; border-radius: 15px;}
+.modal-content .modal-body small { font-size: 13px; background: #f1f1f1; padding: 10px 20px; display: block; width: 100%; border-radius: 15px; margin-bottom: 20px; }
+.modal-content .modal-body img.verification { width: 60%; margin: 0 auto; display: block; }
+.modal-content .modal-body label { font-weight: 600; font-size: 12px; }
+.modal-content .modal-body .form-control[type=file] { font-size: 13px; }
+.modal-content .modal-body .form-control[type=file]:focus { box-shadow: none; border: 1px solid #f1f1f1; }
 
 .modal-content .modal-body .nav-tabs { justify-content: space-between; margin-bottom: 20px; margin-top: -10px; }
 .modal-content .modal-body .nav-tabs .nav-item { width: 50%; }

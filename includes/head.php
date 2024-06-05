@@ -26,4 +26,5 @@ $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_N
     <link rel="apple-touch-icon" href="<?php echo $base_url; ?>assets/images/favicon.png">
     <meta name="msapplication-TileImage" content="<?php echo $base_url; ?>assets/images/favicon.png">
     <meta name="msapplication-TileColor" content="#ffffff">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>

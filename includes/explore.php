@@ -7,7 +7,7 @@
         echo '<div class="scroll">';
         while ($row = $result->fetch_assoc()) {
             echo '<div class="user" data-id="' . $row["id"] . '">';
-            echo '<img src="'. $base_url .'' . $row["avatar"] . '">';
+            echo '<img src="'. $base_url .'assets/uploads/' . $row["avatar"] . '">';
             echo '<div class="info">';
             echo '<span>' . $row["username"] . '</span>';
             echo '<small>' . $row["city"] . '</small>';
@@ -18,7 +18,7 @@
         echo '</div>';
         echo '<div class="space"></div>';
     } else {
-        echo "Nenhum resultado encontrado.";
+        echo "<p>Nenhum usuário encontrado</p>";
     }
 ?>
 

@@ -1,7 +1,18 @@
 <div class="headProfile">
     <div>
-        <span><?php echo ($user['username']); ?></span>
-        <p>Mora em <?php echo ($user['city']); ?></p>
+        <form id="avatarUploadForm" enctype="multipart/form-data">
+            <div class="avatarProfile">
+                <input type="file" id="avatarInput" name="avatar" style="display:none;">
+                <img src="<?php echo $base_url; ?>/assets/uploads/<?php echo ($user['avatar']); ?>">
+                <?php if ($isOwner): ?>
+                    <img src="<?php echo $base_url; ?>assets/images/icons/icCamera.svg" class="upload" id="uploadIcon">
+                <?php endif; ?>
+            </div>
+        </form>
+        <div class="infoUser">
+            <span><?php echo ($user['username']); ?></span>
+            <p><?php echo ($user['city']); ?></p>
+        </div>
     </div>
 
     <div>

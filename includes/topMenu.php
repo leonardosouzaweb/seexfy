@@ -24,7 +24,7 @@
         </div>
         <div>
             <div class="avatar">
-                <a href="<?php echo $base_url; ?>perfil/<?php echo $user["username"]; ?>"><img src="<?php echo ($user['avatar']); ?>"></a>
+                <a href="<?php echo $base_url; ?>perfil/<?php echo $user["username"]; ?>"><img src="<?php echo $base_url; ?>/assets/uploads/<?php echo ($user['avatar']); ?>"></a>
             </div>
         </div>
     </div>

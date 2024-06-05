@@ -72,6 +72,27 @@ $conn->close();
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <script>
+        document.getElementById('avatarImage').addEventListener('click', function() {
+            document.getElementById('avatarInput').click();
+        });
+
+        document.getElementById('avatarInput').addEventListener('change', function() {
+            var formData = new FormData(document.getElementById('avatarUploadForm'));
+            
+            fetch('../api/uploadAvatar.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('avatarImage').src = data.newAvatarPath;
+                } else {
+                    console.error(data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
         document.addEventListener('DOMContentLoaded', function () {
             function applyHeightMask(input) {
                 input.addEventListener('input', function () {

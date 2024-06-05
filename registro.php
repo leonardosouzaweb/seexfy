@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // Caminho do avatar padrão
-    $defaultAvatar = 'assets/images/default/defaultAvatar.svg';
+    $defaultAvatar = 'defaultAvatar.svg';
 
 
     // Inserir dados na tabela 'users'
@@ -221,6 +221,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $('input[name="username"]').on('keyup', function() {
                 var username = $(this).val().trim();
+                var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/;
+                if (emojiRegex.test(username)) {
+                    $(this).val(username.replace(emojiRegex, ''));
+                }
                 if (username.length >= 3) { 
                     checkUsernameAvailability(username);
                 } else {

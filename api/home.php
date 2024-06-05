@@ -3,7 +3,7 @@ include_once 'includes/head.php';
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: ./entrar");
     exit(); 
 }
 
