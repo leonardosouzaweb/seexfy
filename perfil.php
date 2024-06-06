@@ -62,64 +62,64 @@ $conn->close();
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-       document.getElementById('avatarImage').addEventListener('click', function() {
-    document.getElementById('avatarInput').click();
-});
+        document.getElementById('avatarImage').addEventListener('click', function() {
+            document.getElementById('avatarInput').click();
+        });
 
-document.getElementById('avatarInput').addEventListener('change', function(event) {
-    var file = event.target.files[0];
-    if (file) {
-        var img = new Image();
-        var reader = new FileReader();
+        document.getElementById('avatarInput').addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            if (file) {
+                var img = new Image();
+                var reader = new FileReader();
 
-        reader.onload = function(e) {
-            img.src = e.target.result;
+                reader.onload = function(e) {
+                    img.src = e.target.result;
 
-            img.onload = function() {
-                var canvas = document.createElement('canvas');
-                var ctx = canvas.getContext('2d');
-                
-                var desiredSize = 350;
-                canvas.width = desiredSize;
-                canvas.height = desiredSize;
+                    img.onload = function() {
+                        var canvas = document.createElement('canvas');
+                        var ctx = canvas.getContext('2d');
+                        
+                        var desiredSize = 350;
+                        canvas.width = desiredSize;
+                        canvas.height = desiredSize;
 
-                var offsetX = 0;
-                var offsetY = 0;
-                var size = Math.min(img.width, img.height);
-                
-                if (img.width > img.height) {
-                    offsetX = (img.width - size) / 2;
-                } else {
-                    offsetY = (img.height - size) / 2;
+                        var offsetX = 0;
+                        var offsetY = 0;
+                        var size = Math.min(img.width, img.height);
+                        
+                        if (img.width > img.height) {
+                            offsetX = (img.width - size) / 2;
+                        } else {
+                            offsetY = (img.height - size) / 2;
+                        }
+
+                        ctx.drawImage(img, offsetX, offsetY, size, size, 0, 0, desiredSize, desiredSize);
+
+                        canvas.toBlob(function(blob) {
+                            var formData = new FormData();
+                            formData.append('avatar', blob, 'avatar.jpg');
+
+                            fetch('../api/uploadAvatar.php', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    document.getElementById('avatarImage').src = data.newAvatarPath;
+                                    location.reload();
+                                } else {
+                                    console.error(data.error);
+                                }
+                            })
+                            .catch(error => console.error('Error:', error));
+                        }, 'image/jpeg');
+                    }
                 }
 
-                ctx.drawImage(img, offsetX, offsetY, size, size, 0, 0, desiredSize, desiredSize);
-
-                canvas.toBlob(function(blob) {
-                    var formData = new FormData();
-                    formData.append('avatar', blob, 'avatar.jpg');
-
-                    fetch('../api/uploadAvatar.php', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            document.getElementById('avatarImage').src = data.newAvatarPath;
-                            location.reload();
-                        } else {
-                            console.error(data.error);
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-                }, 'image/jpeg');
+                reader.readAsDataURL(file);
             }
-        }
-
-        reader.readAsDataURL(file);
-    }
-});
+        });
         document.addEventListener('DOMContentLoaded', function () {
             function applyHeightMask(input) {
                 input.addEventListener('input', function () {
