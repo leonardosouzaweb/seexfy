@@ -6,6 +6,10 @@
     .home .content h2 { font-size: 25px; font-weight: bold; letter-spacing: -0.35px; margin-bottom: 20px; }
     .home .content .form-control { padding: 10px 15px; border-radius: 15px; border: 1px solid #e9e9e9; font-size: 14px; }
     .home .content .form-control:focus { border: 1px solid #dbdbdb; box-shadow: none;}
+
+    .home .content .form-select { padding: 10px 15px; border-radius: 15px; border: 1px solid #e9e9e9; font-size: 14px; margin-bottom: 10px; }
+    .home .content .form-select:focus { border: 1px solid #dbdbdb; box-shadow: none;}
+
     .home .content .scroll { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; background: transparent; height: auto; justify-content: space-between; }
     .home .content .scroll div { width: 48%; height: 186px; border-radius: 15px; position: relative; margin-bottom: 10px; }
     .home .content .scroll div img { width: 100%; height: 186px; border-radius: 15px; object-fit: cover; }

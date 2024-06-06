@@ -1,164 +1,51 @@
-<div class="scroll">
-    <!-- // -->
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/1.png">
-        <div class="info explore">
-            <span>Larissa <img src="<?php echo $base_url; ?>assets/images/icons/iconBadge.svg"></span>
-            <small>São Paulo</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
+<?php
+    $loggedUserId = $_SESSION['user_id'];
+    $sql = "SELECT id, username, city, maritalStatus, avatar FROM users WHERE id != $loggedUserId";
+    $result = $conn->query($sql);
 
-    <div data-bs-toggle="modal" data-bs-target="#couple">
-        <img src="<?php echo $base_url; ?>assets/images/default/9.png">
-        <div class="info explore">
-            <span>CoupleSP <img src="<?php echo $base_url; ?>assets/images/icons/iconFounder.svg"></span>
-            <small>Rio de Janeiro</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
+    if ($result->num_rows > 0) {
+        echo '<div class="scroll">';
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="user" data-id="' . $row["id"] . '">';
+            echo '<img src="'. $base_url .'assets/uploads/' . $row["avatar"] . '">';
+            echo '<div class="info">';
+            echo '<span>' . $row["username"] . '</span>';
+            echo '<small>' . $row["city"] . '</small>';
+            echo '</div>';
+            echo '<div class="mask"></div>';
+            echo '</div>';
+        }
+        echo '</div>';
+        echo '<div class="space"></div>';
+    } else {
+        echo "<p>Nenhum usuário encontrado</p>";
+    }
+?>
 
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/3.png">
-        <div class="info explore">
-            <span>Lucas</span>
-            <small>Belo Horizonte</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/4.png">
-        <div class="info explore">
-            <span>Manoela<img src="<?php echo $base_url; ?>assets/images/icons/iconBadge.svg"></span>
-            <small>Curitiba</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/5.png">
-        <div class="info explore">
-            <span>Isabela<img src="<?php echo $base_url; ?>assets/images/icons/iconBadge.svg"></span>
-            <small>Belo Horizonte</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/6.png">
-        <div class="info explore">
-            <span>Fernando</span>
-            <small>Belo Horizonte</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/7.png">
-        <div class="info explore">
-            <span>Leonardo</span>
-            <small>Bahia</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/8.png">
-        <div class="info explore">
-            <span>Amanda<img src="<?php echo $base_url; ?>assets/images/icons/iconBadge.svg"></span>
-            <small>São Paulo</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-    <!-- // -->
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/1.png">
-        <div class="info explore">
-            <span>Larissa<img src="<?php echo $base_url; ?>assets/images/icons/iconBadge.svg"></span>
-            <small>São Paulo</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#modal">
-        <img src="<?php echo $base_url; ?>assets/images/default/9.png">
-        <div class="info explore">
-            <span>CoupleSP</span>
-            <small>Rio de Janeiro</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/3.png">
-        <div class="info explore">
-            <span>Lucas</span>
-            <small>Belo Horizonte</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/4.png">
-        <div class="info explore">
-            <span>Manoela<img src="<?php echo $base_url; ?>assets/images/icons/iconBadge.svg"></span>
-            <small>Curitiba</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/5.png">
-        <div class="info explore">
-            <span>Isabela<img src="<?php echo $base_url; ?>assets/images/icons/iconBadge.svg"></span>
-            <small>Belo Horizonte</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/6.png">
-        <div class="info explore">
-            <span>Fernando</span>
-            <small>Belo Horizonte</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/7.png">
-        <div class="info explore">
-            <span>Leonardo</span>
-            <small>Bahia</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-
-    <div data-bs-toggle="modal" data-bs-target="#single">
-        <img src="<?php echo $base_url; ?>assets/images/default/8.png">
-        <div class="info explore">
-            <span>Amanda<img src="<?php echo $base_url; ?>assets/images/icons/iconBadge.svg"></span>
-            <small>São Paulo</small>
-            <h5>1,3Km</h5>
-        </div>
-        <div class="mask"></div>
-    </div>
-    <!-- // -->
+<div id="customModal" class="modal">
+	<div class="modal-dialog modal-dialog-centered">
+		<div id="modal-content" class="modal-content"></div>
+	</div>
 </div>
-<div class="space"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('.user').click(function(){
+        var userId = $(this).data('id');
+        $.ajax({
+            url: 'api/getUserDetail.php',
+            method: 'post',
+            data: {id: userId},
+            success: function(response){
+                $('#modal-content').html(response);
+                $('#customModal').show();
+            }
+        });
+    });
+
+    $('.close').click(function(){
+        $('#customModal').hide();
+    });
+});
+</script>

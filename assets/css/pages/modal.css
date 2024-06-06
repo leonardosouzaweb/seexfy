@@ -9,7 +9,9 @@
 .modal-content .modal-body .headProfile .infoTitle span.badge { background: transparent; color: #2e2e2e; border: 1px solid #e5e5e5; margin-top: 10px; padding: 5px 15px; display: flex; align-items: center; gap: 5px;}
 .modal-content .modal-body .headProfile .infoTitle span.badge img { margin-right: 5px; }
 
-.modal-content .modal-body .itens { display: flex; width: 100%; gap: 20px; }
+.modal-content .modal-body .itens { display: flex; width: 100%; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
+.modal-content .modal-body .itens div { width: 46.8%; }
+.modal-content .modal-body .itens div .form-control { margin-bottom: 0; }
 .modal-content .modal-body .form-control { margin-bottom: 15px; }
 .modal-content .modal-body .form-control:focus { box-shadow: none; border: 1px solid #f1f1f1; }
 
@@ -23,7 +25,7 @@
 .modal-content .modal-body button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 20px; border-radius: 15px;}
 .modal-content .modal-body small { font-size: 13px; background: #f1f1f1; padding: 10px 20px; display: block; width: 100%; border-radius: 15px; margin-bottom: 20px; }
 .modal-content .modal-body img.verification { width: 60%; margin: 0 auto; display: block; }
-.modal-content .modal-body label { font-weight: 600; font-size: 12px; }
+.modal-content .modal-body label { font-weight: 500; font-size: 13px; }
 .modal-content .modal-body .form-control[type=file] { font-size: 13px; }
 .modal-content .modal-body .form-control[type=file]:focus { box-shadow: none; border: 1px solid #f1f1f1; }
 
@@ -34,4 +36,3 @@
 .modal-content .modal-body .tab-content .tab-pane ul { margin-bottom: 10px; } 
 
 
-.modal-content .modal-body .cropper-container { width: 300px !important; height: 300px !important; }

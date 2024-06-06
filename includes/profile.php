@@ -223,45 +223,87 @@
 <div class="modal fade" id="modalEditUser" tabindex="-1" aria-labelledby="modalEditUserLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-body">
-                <div class="title">
-                    <span>Editar Informações <img src="<?php echo $base_url; ?>assets/images/icons/icClose.svg" data-bs-dismiss="modal" aria-label="Close"></span>
-                </div>
-
-                <label for="ageInput">Idade</label>
-                <input type="text" class="form-control" id="ageInput" value="<?php echo ($user['age']); ?>">
-
-                <label for="orientationInput">Orientação Sexual</label>
-                <input type="text" class="form-control" id="orientationInput" value="<?php echo ($user['sexualOrientation']); ?>">
-
-                <label for="signInput">Signo</label>
-                <input type="text" class="form-control" id="signInput" value="<?php echo ($user['sign']); ?>">
-
-                <div class="itens">
-                    <div>
-                        <label for="heightInput">Altura</label>
-                        <input type="text" class="form-control" id="heightInput" value="<?php echo ($user['height']); ?>">
-                    </div>
-
-                    <div>
-                        <label for="smokesInput">Fuma</label>
-                        <input type="text" class="form-control" id="smokesInput" value="<?php echo ($user['smokes']); ?>">
-                    </div>
-
-                    <div>
-                        <label for="drinkInput">Bebe</label>
-                        <input type="text" class="form-control" id="drinkInput" value="<?php echo ($user['drink']); ?>">
-                    </div>
-                </div>
-
-                <label for="experienceInput">Tempo de Experiência no Meio Liberal</label>
-                <input type="text" class="form-control" id="experienceInput" value="<?php echo ($user['experience']); ?>">
-
-                <label for="descriptionInput">Descrição</label>
-                <textarea class="form-control" id="descriptionInput"></textarea>
-
-                <button onclick="saveUserData()">Salvar</button>
+        <div class="modal-body">
+            <div class="title">
+                <span>Editar Informações <img src="<?php echo $base_url; ?>assets/images/icons/icClose.svg" data-bs-dismiss="modal" aria-label="Close"></span>
             </div>
+
+            <label for="orientationInput">Orientação Sexual</label>
+            <select class="form-select" id="orientationInput">
+                <?php 
+                $orientations = ['Heterossexual', 'Homossexual', 'Bissexual', 'Assexual', 'Pansexual'];
+                foreach ($orientations as $orientation) {
+                    $selected = $user['sexualOrientation'] == $orientation ? 'selected' : '';
+                    echo "<option value='$orientation' $selected>$orientation</option>";
+                }
+                ?>
+            </select>
+
+            <label for="signInput">Signo</label>
+            <select class="form-select" id="signInput">
+                <?php 
+                $signs = ['Áries', 'Touro', 'Gêmeos', 'Câncer', 'Leão', 'Virgem', 'Libra', 'Escorpião', 'Sagitário', 'Capricórnio', 'Aquário', 'Peixes'];
+                foreach ($signs as $sign) {
+                    $selected = $user['sign'] == $sign ? 'selected' : '';
+                    echo "<option value='$sign' $selected>$sign</option>";
+                }
+                ?>
+            </select>
+
+            <div class="itens">
+                <div>
+                    <label for="ageInput">Idade</label>
+                    <input type="text" class="form-control" id="ageInput" value="<?php echo ($user['age']); ?>">
+                </div>
+                <div>
+                    <label for="heightInput">Altura</label>
+                    <input type="text" class="form-control" id="heightInput" value="<?php echo ($user['height']); ?>">
+                </div>
+
+                <div>
+                    <label for="smokesInput">Fuma</label>
+                    <select class="form-select" id="smokesInput">
+                        <?php 
+                        $smokesOptions = ['Sim', 'Não', 'Às vezes'];
+                        foreach ($smokesOptions as $option) {
+                            $selected = $user['smokes'] == $option ? 'selected' : '';
+                            echo "<option value='$option' $selected>$option</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="drinkInput">Bebe</label>
+                    <select class="form-select" id="drinkInput">
+                        <?php 
+                        $drinkOptions = ['Sim', 'Não', 'Às vezes'];
+                        foreach ($drinkOptions as $option) {
+                            $selected = $user['drink'] == $option ? 'selected' : '';
+                            echo "<option value='$option' $selected>$option</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+
+            <label for="experienceInput">Tempo de Experiência no Meio Liberal</label>
+            <select class="form-select" id="experienceInput">
+                <?php 
+                $experienceOptions = ['1', '2', '3', '4', '5', '10+'];
+                foreach ($experienceOptions as $option) {
+                    $label = $option == '1' ? '1 ano' : "$option anos";
+                    $selected = $user['experience'] == $option ? 'selected' : '';
+                    echo "<option value='$option' $selected>$label</option>";
+                }
+                ?>
+            </select>
+
+            <label for="descriptionInput">Descrição</label>
+            <textarea class="form-control" id="descriptionInput"><?php echo ($user['description']); ?></textarea>
+
+            <button onclick="saveUserData()">Salvar</button>
+        </div>
         </div>
     </div>
 </div>

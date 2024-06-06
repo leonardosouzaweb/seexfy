@@ -1,24 +1,6 @@
 <?php
     include_once 'includes/head.php';
-    session_start(); 
-
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: ./entrar");
-        exit(); 
-    }
-
-    include_once 'config/db.php';
-
-    $user_id = $_SESSION['user_id'];
-    $sqlUser = "SELECT maritalStatus, username, avatar FROM users WHERE id = ?";
-    $stmt = $conn->prepare($sqlUser);
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-
-    $stmt->close();
-    $conn->close();
+    session_start();
 ?>
 <body>
     <div class="empty">
@@ -56,7 +38,7 @@
                         console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
                         $("#activeLocation").text("Localização Ativada").addClass("active");
                         setTimeout(function() {
-                            window.location.href = "explore.php";
+                            window.location.href = "explorar.php";
                         }, 2000);
                     }, function(error) {
                         console.error("Erro ao obter a localização:", error);
@@ -69,6 +51,5 @@
         });
     </script>
     <script src="assets/js/functions.js"></script>
-    <script src="assets/js/blockImage.js"></script>
 </body>
 </html>

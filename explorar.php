@@ -17,18 +17,8 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
-if ($user['verification'] == 0) {
-    // O usuário não verificou a conta, exibir modal aqui
-    echo "<script>
-            $(document).ready(function(){
-                $('#verification').modal('show');
-            });
-          </script>";
-}
-
 $stmt->close();
 ?>
-
 <body>
     <div class="empty">
         <img src="<?php echo $base_url; ?>assets/images/logo.svg">
@@ -43,7 +33,7 @@ $stmt->close();
             <div class="content">
                 <h2>Explorar</h2>
                 <?php 
-                    include_once 'includes/explore.php';
+                    include_once 'includes/radar.php'
                 ?>
             </div>
 
@@ -52,36 +42,7 @@ $stmt->close();
             ?>
         </div>
     </div>
-    <?php include_once 'includes/verification.php'?>
-    <!-- END -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo $base_url; ?>assets/js/functions.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#verifyAccountBtn').click(function() {
-                var user_id = "<?php echo $user['id']; ?>";
-                var filePhoto = $('#filePhoto')[0].files[0];
-                var formData = new FormData();
-                formData.append('user_id', user_id);
-                formData.append('filePhoto', filePhoto);
-
-                $.ajax({
-                    url: 'api/verifyUser.php',
-                    type: 'POST',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function(response) {
-                        $('#verification').modal('hide');
-                        if (response.trim() === "success") {
-                            location.reload(); 
-                        } else {
-                            
-                        }
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
