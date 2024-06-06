@@ -17,15 +17,6 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
-if ($user['verification'] == 0) {
-    // O usuário não verificou a conta, exibir modal aqui
-    echo "<script>
-            $(document).ready(function(){
-                $('#verification').modal('show');
-            });
-          </script>";
-}
-
 $stmt->close();
 ?>
 
@@ -52,7 +43,6 @@ $stmt->close();
             ?>
         </div>
     </div>
-    <?php include_once 'includes/verification.php'?>
     <!-- END -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo $base_url; ?>assets/js/functions.js"></script>
