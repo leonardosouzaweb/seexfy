@@ -13,6 +13,7 @@
     .home .content .headProfile div button { background: #E74C3C; width:100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; border-radius: 15px; }
     
     .home .content .infoProfile { width: 100%; margin-top: 20px; }
+
     /* SINGLE */
     .home .content .infoProfile .detailProfileSingle { width: 100% !important;}
     .home .content .infoProfile .detailProfileSingle .nav-tabs { justify-content: space-between; }

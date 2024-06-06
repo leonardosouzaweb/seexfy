@@ -1,7 +1,7 @@
 <?php
-$base_url = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
-$base_url .= "://$_SERVER[HTTP_HOST]";
-$base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+    $base_url = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
+    $base_url .= "://$_SERVER[HTTP_HOST]";
+    $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 ?>
 <!doctype html>
 <html lang="pt">
@@ -15,9 +15,7 @@ $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_N
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="icon" type="image/png" href="<?php echo $base_url; ?>assets/images/favicon.png">
 
-    <!-- Add manifest file -->
     <link rel="manifest" href="<?php echo $base_url; ?>manifest.json">
-    <!-- Configure meta tags for PWA -->
     <meta name="theme-color" content="#ffffff">
     <meta name="description" content="Seexy">
     <meta name="apple-mobile-web-app-capable" content="yes">

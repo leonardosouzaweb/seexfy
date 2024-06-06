@@ -1,13 +1,13 @@
 <div class="headProfile">
     <div>
         <form id="avatarUploadForm" enctype="multipart/form-data">
-            <div class="avatarProfile">
-                <input type="file" id="avatarInput" name="avatar" style="display:none;">
-                <img src="<?php echo $base_url; ?>/assets/uploads/<?php echo ($user['avatar']); ?>" id="avatarImage">
-                <?php if ($isOwner): ?>
+            <?php if ($isOwner): ?>
+                <div class="avatarProfile">
+                    <input type="file" id="avatarInput" name="avatar" style="display:none;">
+                    <img src="<?php echo $base_url; ?>/assets/uploads/<?php echo ($user['avatar']); ?>" id="avatarImage">
                     <img src="<?php echo $base_url; ?>assets/images/icons/icCamera.svg" class="upload" id="uploadIcon">
-                <?php endif; ?>
-            </div>
+                </div>
+            <?php endif; ?>
         </form>
         <div class="infoUser">
             <span><?php echo ($user['username']); ?></span>
@@ -19,6 +19,7 @@
         <button>Interagir</button>
     </div>
 </div>
+
 
 <div class="infoProfile">
     <div class="detailProfileSingle" style="display:<?php echo $displaySingle; ?>;">

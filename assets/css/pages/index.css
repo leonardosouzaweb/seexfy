@@ -1,3 +1,5 @@
+.home { display: none; }
+
 @media only screen and (max-width:899px) {
     .home .content { padding: 0px 20px; margin-top: 70px;  }
     .home .content h1 { font-size: 20px; margin: 20px 0; font-weight: 600;}
