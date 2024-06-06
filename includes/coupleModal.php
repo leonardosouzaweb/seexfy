@@ -6,7 +6,6 @@
 		<div class="infoTitle">
 			<h3><?php echo $row["username"]; ?></h3>
 			<p><?php echo $row["city"]; ?></p>
-			<!-- <span class="badge"><img src="assets/images/icons/iconBadge.svg">Verificado</span> -->
 		</div>
 	</div>
 	<div class="infoProfile">

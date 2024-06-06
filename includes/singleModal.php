@@ -6,7 +6,9 @@
 		<div class="infoTitle">
 			<h3><?php echo $row["username"]; ?></h3>
 			<p><?php echo $row["city"]; ?></p>
-			<!-- <span class="badge"><img src="assets/images/icons/iconBadge.svg">Verificado</span> -->
+			<?php if ($row["id"] == 1 || $row["id"] == 2): ?>
+				<span class="badge"><img src="assets/images/icons/iconFounder.svg">Fundador</span>
+			<?php endif; ?>
 		</div>
 	</div>
 	<div class="infoProfile">

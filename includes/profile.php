@@ -223,87 +223,87 @@
 <div class="modal fade" id="modalEditUser" tabindex="-1" aria-labelledby="modalEditUserLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-        <div class="modal-body">
-            <div class="title">
-                <span>Editar Informações <img src="<?php echo $base_url; ?>assets/images/icons/icClose.svg" data-bs-dismiss="modal" aria-label="Close"></span>
+            <div class="modal-body">
+                <div class="title">
+                    <span class="mb-2">Editar Informações <img src="<?php echo $base_url; ?>assets/images/icons/icClose.svg" data-bs-dismiss="modal" aria-label="Close"></span>
+                </div>
+
+                <label for="orientationInput">Orientação Sexual</label>
+                <select class="form-select" id="orientationInput">
+                    <?php 
+                    $orientations = ['Heterossexual', 'Homossexual', 'Bissexual', 'Assexual', 'Pansexual'];
+                    foreach ($orientations as $orientation) {
+                        $selected = $user['sexualOrientation'] == $orientation ? 'selected' : '';
+                        echo "<option value='$orientation' $selected>$orientation</option>";
+                    }
+                    ?>
+                </select>
+
+                <label for="signInput">Signo</label>
+                <select class="form-select" id="signInput">
+                    <?php 
+                    $signs = ['Áries', 'Touro', 'Gêmeos', 'Câncer', 'Leão', 'Virgem', 'Libra', 'Escorpião', 'Sagitário', 'Capricórnio', 'Aquário', 'Peixes'];
+                    foreach ($signs as $sign) {
+                        $selected = $user['sign'] == $sign ? 'selected' : '';
+                        echo "<option value='$sign' $selected>$sign</option>";
+                    }
+                    ?>
+                </select>
+
+                <div class="itens">
+                    <div>
+                        <label for="ageInput">Idade</label>
+                        <input type="text" class="form-control" id="ageInput" value="<?php echo ($user['age']); ?>">
+                    </div>
+                    <div>
+                        <label for="heightInput">Altura</label>
+                        <input type="text" class="form-control" id="heightInput" value="<?php echo ($user['height']); ?>">
+                    </div>
+
+                    <div>
+                        <label for="smokesInput">Fuma</label>
+                        <select class="form-select" id="smokesInput">
+                            <?php 
+                            $smokesOptions = ['Sim', 'Não'];
+                            foreach ($smokesOptions as $option) {
+                                $selected = $user['smokes'] == $option ? 'selected' : '';
+                                echo "<option value='$option' $selected>$option</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="drinkInput">Bebe</label>
+                        <select class="form-select" id="drinkInput">
+                            <?php 
+                            $drinkOptions = ['Sim', 'Não'];
+                            foreach ($drinkOptions as $option) {
+                                $selected = $user['drink'] == $option ? 'selected' : '';
+                                echo "<option value='$option' $selected>$option</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+
+                <label for="experienceInput">Tempo de Experiência no Meio Liberal</label>
+                <select class="form-select" id="experienceInput">
+                    <?php 
+                    $experienceOptions = ['1', '2', '3', '4', '5', '10+'];
+                    foreach ($experienceOptions as $option) {
+                        $label = $option == '1' ? '1 ano' : "$option anos";
+                        $selected = $user['experience'] == $option ? 'selected' : '';
+                        echo "<option value='$option' $selected>$label</option>";
+                    }
+                    ?>
+                </select>
+
+                <label for="descriptionInput">Descrição</label>
+                <textarea class="form-control" id="descriptionInput"><?php echo ($user['description']); ?></textarea>
+
+                <button onclick="saveUserData()">Salvar</button>
             </div>
-
-            <label for="orientationInput">Orientação Sexual</label>
-            <select class="form-select" id="orientationInput">
-                <?php 
-                $orientations = ['Heterossexual', 'Homossexual', 'Bissexual', 'Assexual', 'Pansexual'];
-                foreach ($orientations as $orientation) {
-                    $selected = $user['sexualOrientation'] == $orientation ? 'selected' : '';
-                    echo "<option value='$orientation' $selected>$orientation</option>";
-                }
-                ?>
-            </select>
-
-            <label for="signInput">Signo</label>
-            <select class="form-select" id="signInput">
-                <?php 
-                $signs = ['Áries', 'Touro', 'Gêmeos', 'Câncer', 'Leão', 'Virgem', 'Libra', 'Escorpião', 'Sagitário', 'Capricórnio', 'Aquário', 'Peixes'];
-                foreach ($signs as $sign) {
-                    $selected = $user['sign'] == $sign ? 'selected' : '';
-                    echo "<option value='$sign' $selected>$sign</option>";
-                }
-                ?>
-            </select>
-
-            <div class="itens">
-                <div>
-                    <label for="ageInput">Idade</label>
-                    <input type="text" class="form-control" id="ageInput" value="<?php echo ($user['age']); ?>">
-                </div>
-                <div>
-                    <label for="heightInput">Altura</label>
-                    <input type="text" class="form-control" id="heightInput" value="<?php echo ($user['height']); ?>">
-                </div>
-
-                <div>
-                    <label for="smokesInput">Fuma</label>
-                    <select class="form-select" id="smokesInput">
-                        <?php 
-                        $smokesOptions = ['Sim', 'Não', 'Às vezes'];
-                        foreach ($smokesOptions as $option) {
-                            $selected = $user['smokes'] == $option ? 'selected' : '';
-                            echo "<option value='$option' $selected>$option</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="drinkInput">Bebe</label>
-                    <select class="form-select" id="drinkInput">
-                        <?php 
-                        $drinkOptions = ['Sim', 'Não', 'Às vezes'];
-                        foreach ($drinkOptions as $option) {
-                            $selected = $user['drink'] == $option ? 'selected' : '';
-                            echo "<option value='$option' $selected>$option</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-            </div>
-
-            <label for="experienceInput">Tempo de Experiência no Meio Liberal</label>
-            <select class="form-select" id="experienceInput">
-                <?php 
-                $experienceOptions = ['1', '2', '3', '4', '5', '10+'];
-                foreach ($experienceOptions as $option) {
-                    $label = $option == '1' ? '1 ano' : "$option anos";
-                    $selected = $user['experience'] == $option ? 'selected' : '';
-                    echo "<option value='$option' $selected>$label</option>";
-                }
-                ?>
-            </select>
-
-            <label for="descriptionInput">Descrição</label>
-            <textarea class="form-control" id="descriptionInput"><?php echo ($user['description']); ?></textarea>
-
-            <button onclick="saveUserData()">Salvar</button>
-        </div>
         </div>
     </div>
 </div>
@@ -313,39 +313,84 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="title">
-                    <span>Editar Informações2 <img src="<?php echo $base_url; ?>assets/images/icons/icClose.svg" data-bs-dismiss="modal" aria-label="Close"></span>
+                    <span class="mb-2">Editar Informações <img src="<?php echo $base_url; ?>assets/images/icons/icClose.svg" data-bs-dismiss="modal" aria-label="Close"></span>
                 </div>
 
-                <label for="ageInputPartner">Idade</label>
-                <input type="text" class="form-control" id="ageInputPartner" value="<?php echo ($user['agePartner']); ?>">
-
                 <label for="sexualOrientationPartner">Orientação Sexual</label>
-                <input type="text" class="form-control" id="sexualOrientationPartner" value="<?php echo ($user['sexualOrientationPartner']); ?>">
+                <select class="form-select" id="sexualOrientationPartner">
+                    <?php 
+                    $orientations = ['Heterossexual', 'Homossexual', 'Bissexual', 'Assexual', 'Pansexual'];
+                    foreach ($orientations as $orientation) {
+                        $selected = $user['sexualOrientation'] == $orientation ? 'selected' : '';
+                        echo "<option value='$orientation' $selected>$orientation</option>";
+                    }
+                    ?>
+                </select>
 
-                <label for="signInputPartner">Signo</label>
-                <input type="text" class="form-control" id="signInputPartner" value="<?php echo ($user['signPartner']); ?>">
+                <label for="signPartner">Signo</label>
+                <select class="form-select" id="signPartner">
+                    <?php 
+                    $signs = ['Áries', 'Touro', 'Gêmeos', 'Câncer', 'Leão', 'Virgem', 'Libra', 'Escorpião', 'Sagitário', 'Capricórnio', 'Aquário', 'Peixes'];
+                    foreach ($signs as $sign) {
+                        $selected = $user['sign'] == $sign ? 'selected' : '';
+                        echo "<option value='$sign' $selected>$sign</option>";
+                    }
+                    ?>
+                </select>
 
                 <div class="itens">
                     <div>
-                        <label for="heightInputPartner">Altura</label>
-                        <input type="text" class="form-control" id="heightInputPartner" value="<?php echo ($user['heightPartner']); ?>">
+                        <label for="agePartner">Idade</label>
+                        <input type="text" class="form-control" id="agePartner" value="<?php echo ($user['age']); ?>">
+                    </div>
+                    <div>
+                        <label for="heightPartner">Altura</label>
+                        <input type="text" class="form-control" id="heightPartner" value="<?php echo ($user['height']); ?>">
                     </div>
 
                     <div>
-                        <label for="smokesInputPartner">Fuma</label>
-                        <input type="text" class="form-control" id="smokesInputPartner" value="<?php echo ($user['smokesPartner']); ?>">
+                        <label for="smokesPartner">Fuma</label>
+                        <select class="form-select" id="smokesPartner">
+                            <?php 
+                            $smokesOptions = ['Sim', 'Não'];
+                            foreach ($smokesOptions as $option) {
+                                $selected = $user['smokes'] == $option ? 'selected' : '';
+                                echo "<option value='$option' $selected>$option</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
 
                     <div>
-                        <label for="drinkInputPartner">Bebe</label>
-                        <input type="text" class="form-control" id="drinkInputPartner" value="<?php echo ($user['drinkPartner']); ?>">
+                        <label for="drinkPartner">Bebe</label>
+                        <select class="form-select" id="drinkPartner">
+                            <?php 
+                            $drinkOptions = ['Sim', 'Não'];
+                            foreach ($drinkOptions as $option) {
+                                $selected = $user['drink'] == $option ? 'selected' : '';
+                                echo "<option value='$option' $selected>$option</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
                 </div>
 
-                <label for="experienceInputPartner">Tempo de Experiência no Meio Liberal</label>
-                <input type="text" class="form-control" id="experienceInputPartner" value="<?php echo ($user['experiencePartner']); ?>">
+                <label for="experiencePartner">Tempo de Experiência no Meio Liberal</label>
+                <select class="form-select" id="experiencePartner">
+                    <?php 
+                    $experienceOptions = ['1', '2', '3', '4', '5', '10+'];
+                    foreach ($experienceOptions as $option) {
+                        $label = $option == '1' ? '1 ano' : "$option anos";
+                        $selected = $user['experience'] == $option ? 'selected' : '';
+                        echo "<option value='$option' $selected>$label</option>";
+                    }
+                    ?>
+                </select>
 
-                <button onclick="saveUserPartner()">Salvar</button>
+                <label for="descriptionInput">Descrição</label>
+                <textarea class="form-control" id="descriptionInput"><?php echo ($user['description']); ?></textarea>
+
+                <button onclick="saveUserData()">Salvar</button>
             </div>
         </div>
     </div>
