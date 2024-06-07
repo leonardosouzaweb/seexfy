@@ -14,13 +14,13 @@
 	<div class="infoProfile">
 		<span>Informações</span>
 		<ul>
-			<li>Idade <span><?php echo $row["age"]; ?></span></li>
-			<li>Orientação Sexual <span><?php echo $row["sexualOrientation"]; ?></span></li>
-			<li>Signo <span><?php echo $row["sign"]; ?></span></li>
-			<li>Altura <span><?php echo $row["height"]; ?></span></li>
-			<li>Fuma <span><?php echo $row["smokes"]; ?></span></li>
-			<li>Bebe <span><?php echo $row["drink"]; ?></span></li>
-			<li>Tempo de Experiência <span><?php echo $row["experience"]; ?></span></li>
+			<li>Idade <span><?php echo ($row['age']) ? ($row['age']) . ' anos' : '---'; ?></span></li>
+            <li>Orientação Sexual <span><?php echo ($row['sexualOrientation']) ? ($row['sexualOrientation']) : '---'; ?></span></li>
+            <li>Signo <span><?php echo ($row['sign']) ? ($row['sign']) : '---'; ?></span></li>
+            <li>Altura <span><?php echo ($row['height']) ? ($row['height']) . 'cm' : '---'; ?></span></li>
+            <li>Fuma <span><?php echo ($row['smokes']) ? ($row['smokes']) : '---'; ?></span></li>
+            <li>Bebe <span><?php echo ($row['drink']) ? ($row['drink']) : '---'; ?></span></li>
+            <li>Tempo de Experiência <span><?php echo ($row['experience']) ? ($row['experience']) : '---'; ?></span></li>
 		</ul>
 		<div class="divider"></div>
 		<span>Interesses</span>

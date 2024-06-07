@@ -29,7 +29,7 @@
         <div class="wrapper">
             <?php include_once 'includes/topMenu.php'; ?>
             <div class="content">
-                <h1>Chat</h1>                
+                <h1>Chat</h1>
             </div>
             <?php include_once 'includes/bottomMenu.php'; ?>
         </div>

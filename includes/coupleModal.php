@@ -22,13 +22,13 @@
     <div class="tab-content" id="infoProfileContent">
         <div class="tab-pane fade show active filter" id="woman-tab-pane" role="tabpanel" aria-labelledby="couple-tab" tabindex="0">
         <ul>
-            <li>Idade <span><?php echo $row["age"]; ?></span></li>
-            <li>Orientação Sexual <span><?php echo $row["sexualOrientation"]; ?></span></li>
-            <li>Signo <span><?php echo $row["sign"]; ?></span></li>
-            <li>Altura <span><?php echo $row["height"]; ?></span></li>
-            <li>Fuma <span><?php echo $row["smokes"]; ?></span></li>
-            <li>Bebe <span><?php echo $row["drink"]; ?></span></li>
-            <li>Tempo de Experiência <span><?php echo $row["experience"]; ?></span></li>
+            <li>Idade <span><?php echo ($row['age']) ? ($row['age']) . ' anos' : '---'; ?></span></li>
+            <li>Orientação Sexual <span><?php echo ($row['sexualOrientation']) ? ($row['sexualOrientation']) : '---'; ?></span></li>
+            <li>Signo <span><?php echo ($row['sign']) ? ($row['sign']) : '---'; ?></span></li>
+            <li>Altura <span><?php echo ($row['height']) ? ($row['height']) . 'cm' : '---'; ?></span></li>
+            <li>Fuma <span><?php echo ($row['smokes']) ? ($row['smokes']) : '---'; ?></span></li>
+            <li>Bebe <span><?php echo ($row['drink']) ? ($row['drink']) : '---'; ?></span></li>
+            <li>Tempo de Experiência <span><?php echo ($row['experience']) ? ($row['experience']) : '---'; ?></span></li>
         </ul>
         <div class="divider"></div>
         <span>Interesses</span>
@@ -40,13 +40,13 @@
         </div>
         <div class="tab-pane fade filter" id="man-tab-pane" role="tabpanel" aria-labelledby="woman-tab" tabindex="0">
             <ul>
-                <li>Idade <span><?php echo $row["agePartner"]; ?></span></li>
-                <li>Orientação Sexual <span><?php echo $row["sexualOrientationPartner"]; ?></span></li>
-                <li>Signo <span><?php echo $row["signPartner"]; ?></span></li>
-                <li>Altura <span><?php echo $row["heightPartner"]; ?></span></li>
-                <li>Fuma <span><?php echo $row["smokesPartner"]; ?></span></li>
-                <li>Bebe <span><?php echo $row["drinkPartner"]; ?></span></li>
-                <li>Tempo de Experiência <span><?php echo $row["experiencePartner"]; ?></span></li>
+                <li>Idade <span><?php echo ($row['agePartner']) ? ($row['agePartner']) . ' anos' : '---'; ?></span></li>
+                <li>Orientação Sexual <span><?php echo ($row['sexualOrientationPartner']) ? ($row['sexualOrientationPartner']) : '---'; ?></span></li>
+                <li>Signo <span><?php echo ($row['signPartner']) ? ($row['signPartner']) : '---'; ?></span></li>
+                <li>Altura <span><?php echo ($row['heightPartner']) ? ($row['heightPartner']) . 'cm' : '---'; ?></span></li>
+                <li>Fuma <span><?php echo ($row['smokesPartner']) ? ($row['smokesPartner']) : '---'; ?></span></li>
+                <li>Bebe <span><?php echo ($row['drinkPartner']) ? ($row['drinkPartner']) : '---'; ?></span></li>
+                <li>Tempo de Experiência <span><?php echo ($row['experiencePartner']) ? ($row['experiencePartner']) : '---'; ?></span></li>
             </ul>
             <div class="divider"></div>
             <span>Interesses</span>

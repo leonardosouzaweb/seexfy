@@ -55,7 +55,6 @@
                         <div class="addImage">
                             <img src="<?php echo $base_url; ?>assets/images/icons/iconGallery.svg" class="iconGallery">
                             <p class="iconGallery">Adicionar imagem</p>
-
                         </div>
                     </div>
                 </div>

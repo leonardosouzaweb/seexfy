@@ -1,6 +1,24 @@
 <?php
     include_once 'includes/head.php';
-    session_start();
+    session_start(); 
+
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: ./entrar");
+        exit(); 
+    }
+
+    include_once 'config/db.php';
+
+    $user_id = $_SESSION['user_id'];
+    $sqlUser = "SELECT maritalStatus, username, avatar FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sqlUser);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    $stmt->close();
+    $conn->close();
 ?>
 <body>
     <div class="empty">
