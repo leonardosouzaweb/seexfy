@@ -58,15 +58,18 @@
 
             <div class="photo-grid">
                 <?php
-                $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
-                $stmtPhotos = $conn->prepare($sqlPhotos);
-                $stmtPhotos->bind_param("i", $_SESSION['user_id']);
-                $stmtPhotos->execute();
-                $resultPhotos = $stmtPhotos->get_result();
+                    $username = $_GET['username'];
+                    $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
+                        SELECT id FROM users WHERE username = ?
+                    )";
+                    $stmtPhotos = $conn->prepare($sqlPhotos);
+                    $stmtPhotos->bind_param("s", $username);
+                    $stmtPhotos->execute();
+                    $resultPhotos = $stmtPhotos->get_result();
 
-                while ($photo = $resultPhotos->fetch_assoc()) {
-                    echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
-                }
+                    while ($photo = $resultPhotos->fetch_assoc()) {
+                        echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                    }
                 ?>
             </div>
         </div>
@@ -122,15 +125,18 @@
 
                     <div class="photo-grid">
                         <?php
-                        $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
-                        $stmtPhotos = $conn->prepare($sqlPhotos);
-                        $stmtPhotos->bind_param("i", $_SESSION['user_id']);
-                        $stmtPhotos->execute();
-                        $resultPhotos = $stmtPhotos->get_result();
+                            $username = $_GET['username'];
+                            $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
+                                SELECT id FROM users WHERE username = ?
+                            )";
+                            $stmtPhotos = $conn->prepare($sqlPhotos);
+                            $stmtPhotos->bind_param("s", $username);
+                            $stmtPhotos->execute();
+                            $resultPhotos = $stmtPhotos->get_result();
 
-                        while ($photo = $resultPhotos->fetch_assoc()) {
-                            echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
-                        }
+                            while ($photo = $resultPhotos->fetch_assoc()) {
+                                echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                            }
                         ?>
                     </div>
                 </div>
@@ -173,15 +179,18 @@
 
                     <div class="photo-grid">
                         <?php
-                        $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
-                        $stmtPhotos = $conn->prepare($sqlPhotos);
-                        $stmtPhotos->bind_param("i", $_SESSION['user_id']);
-                        $stmtPhotos->execute();
-                        $resultPhotos = $stmtPhotos->get_result();
+                            $username = $_GET['username'];
+                            $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
+                                SELECT id FROM users WHERE username = ?
+                            )";
+                            $stmtPhotos = $conn->prepare($sqlPhotos);
+                            $stmtPhotos->bind_param("s", $username);
+                            $stmtPhotos->execute();
+                            $resultPhotos = $stmtPhotos->get_result();
 
-                        while ($photo = $resultPhotos->fetch_assoc()) {
-                            echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
-                        }
+                            while ($photo = $resultPhotos->fetch_assoc()) {
+                                echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                            }
                         ?>
                     </div>
                 </div>
@@ -200,36 +209,18 @@
 
                     <div class="photo-grid">
                         <?php
-                        $username = basename($_SERVER['REQUEST_URI']); // Obtém o username da URL
+                            $username = $_GET['username'];
+                            $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
+                                SELECT id FROM users WHERE username = ?
+                            )";
+                            $stmtPhotos = $conn->prepare($sqlPhotos);
+                            $stmtPhotos->bind_param("s", $username);
+                            $stmtPhotos->execute();
+                            $resultPhotos = $stmtPhotos->get_result();
 
-                        if ($username) {
-                            $sqlUserId = "SELECT user_id FROM users WHERE username = ?";
-                            $stmtUserId = $conn->prepare($sqlUserId);
-                            $stmtUserId->bind_param("s", $username);
-                            $stmtUserId->execute();
-                            $resultUserId = $stmtUserId->get_result();
-
-                            if ($resultUserId->num_rows > 0) {
-                                $user = $resultUserId->fetch_assoc();
-                                $visitedUserId = $user['user_id'];
-
-                                // Consulta SQL para selecionar os caminhos das fotos do usuário visitado
-                                $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
-                                $stmtPhotos = $conn->prepare($sqlPhotos);
-                                $stmtPhotos->bind_param("i", $visitedUserId);
-                                $stmtPhotos->execute();
-                                $resultPhotos = $stmtPhotos->get_result();
-
-                                // Loop através dos resultados e exibe cada foto
-                                while ($photo = $resultPhotos->fetch_assoc()) {
-                                    echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
-                                }
-                            } else {
-                                echo 'Usuário não encontrado.';
+                            while ($photo = $resultPhotos->fetch_assoc()) {
+                                echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
                             }
-                        } else {
-                            echo 'Nome de usuário não especificado.';
-                        }
                         ?>
                     </div>
                 </div>
