@@ -60,13 +60,41 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        var modal = document.getElementById("photoModal");
+        var modalImg = document.getElementById("modalImg");
+        var images = document.getElementsByClassName("modal-trigger");
+        var closeButton = document.querySelector("#photoModal .close");
+
+        for (var i = 0; i < images.length; i++) {
+            images[i].onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        if (closeButton) {
+            closeButton.onclick = function () {
+                closeModal();
+            };
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
         document.getElementById('photoInput').addEventListener('change', function() {
             var formData = new FormData();
             var files = this.files;
-            var filesProcessed = 0; // Contador de arquivos processados
+            var filesProcessed = 0;
 
             for (var i = 0; i < files.length; i++) {
-                resizeImage(files[i], 280, 420, function(resizedFile) {
+                resizeImage(files[i], 560, 840, function(resizedFile) {
                     formData.append('photos[]', resizedFile, resizedFile.name);
                     filesProcessed++;
 

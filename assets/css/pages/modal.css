@@ -1,4 +1,8 @@
 .modal { background: rgba(0,0,0,0.6); }
+.modal .modal-dialog { position: relative; }
+.modal .modal-dialog .close { position: absolute; top: 215px; right: 0; background: white; z-index: 3; border: none; border-radius: 20px; }
+.modal .modal-dialog .close img { width: 35px; padding: 11px; }
+.modal .modal-dialog #modalImg { border: none; background: transparent; }
 .modal-content { background: #fff; width: 95%; margin: 0 auto; border: none; border-radius: 15px; }
 .modal-content .modal-body { padding: 20px; }
 .modal-content .modal-body .headProfile { display: flex; gap: 20px; align-items: center; margin-bottom: 20px; }

@@ -59,18 +59,18 @@
 
             <div class="photo-grid">
                 <?php
-                    $username = $_GET['username'];
-                    $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
-                        SELECT id FROM users WHERE username = ?
-                    )";
-                    $stmtPhotos = $conn->prepare($sqlPhotos);
-                    $stmtPhotos->bind_param("s", $username);
-                    $stmtPhotos->execute();
-                    $resultPhotos = $stmtPhotos->get_result();
+                $username = $_GET['username'];
+                $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
+                    SELECT id FROM users WHERE username = ?
+                )";
+                $stmtPhotos = $conn->prepare($sqlPhotos);
+                $stmtPhotos->bind_param("s", $username);
+                $stmtPhotos->execute();
+                $resultPhotos = $stmtPhotos->get_result();
 
-                    while ($photo = $resultPhotos->fetch_assoc()) {
-                        echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
-                    }
+                while ($photo = $resultPhotos->fetch_assoc()) {
+                    echo '<div class="photo-item"><img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                }
                 ?>
             </div>
         </div>
@@ -406,5 +406,15 @@
                 <button onclick="saveUserData()">Salvar</button>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="photoModal" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="close" onclick="closeModal()">
+            <img src="<?php echo $base_url; ?>assets/images/icons/icClose.svg" >
+        </div>
+        <img class="modal-content" id="modalImg">
     </div>
 </div>
