@@ -199,17 +199,24 @@
                     <?php endif; ?>
 
                     <div class="photo-grid">
-                        <?php
-                        $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
-                        $stmtPhotos = $conn->prepare($sqlPhotos);
-                        $stmtPhotos->bind_param("i", $_SESSION['user_id']);
-                        $stmtPhotos->execute();
-                        $resultPhotos = $stmtPhotos->get_result();
+                    <?php
+// Certifique-se de que $_SESSION['user_id'] está definido e é seguro usar
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
 
-                        while ($photo = $resultPhotos->fetch_assoc()) {
-                            echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
-                        }
-                        ?>
+    $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
+    $stmtPhotos = $conn->prepare($sqlPhotos);
+    $stmtPhotos->bind_param("i", $user_id); // Vinculando o user_id atual
+    $stmtPhotos->execute();
+    $resultPhotos = $stmtPhotos->get_result();
+
+    while ($photo = $resultPhotos->fetch_assoc()) {
+        echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+    }
+} else {
+    echo "Erro: user_id não está definido na sessão.";
+}
+?>
                     </div>
                 </div>
                 <!-- // -->
