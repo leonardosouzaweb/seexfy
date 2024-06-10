@@ -66,11 +66,10 @@
             var filesProcessed = 0; // Contador de arquivos processados
 
             for (var i = 0; i < files.length; i++) {
-                resizeImage(files[i], 140, 220, function(resizedFile) {
+                resizeImage(files[i], 280, 420, function(resizedFile) {
                     formData.append('photos[]', resizedFile, resizedFile.name);
                     filesProcessed++;
 
-                    // Verifica se todos os arquivos foram processados antes de fazer o upload
                     if (filesProcessed === files.length) {
                         uploadImage(formData);
                     }

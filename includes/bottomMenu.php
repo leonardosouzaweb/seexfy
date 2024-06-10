@@ -3,7 +3,7 @@
         <a href="<?php echo $base_url; ?>home"><img src="<?php echo $base_url; ?>assets/images/icons/iconHome.svg"></a>
     </div>
 
-    <div id="events">
+    <div id="eventos">
         <a href="<?php echo $base_url; ?>eventos"><img src="<?php echo $base_url; ?>assets/images/icons/iconEvent.svg"></a>
     </div>
 
