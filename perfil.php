@@ -149,6 +149,9 @@
             .then(data => {
                 if (data.success) {
                     document.querySelector('.photo-grid').innerHTML = data.photosHTML;
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000);
                 } else {
                     console.error(data.error);
                 }
