@@ -27,7 +27,7 @@
 		<p><?php echo ($row['interests']) ? ($row['interests']) : '---'; ?></span></p>
 		<div class="divider"></div>
 		<span>Descrição</span>
-		<p>><?php echo ($row['description']) ? ($row['description']) : '---'; ?></span></p>
+		<p><?php echo ($row['description']) ? ($row['description']) : '---'; ?></span></p>
 
 		<a href="./perfil/<?php echo $row["username"]; ?>"><button data-bs-dismiss="modal" aria-label="Close">Curtir</button></a>
 	</div>
