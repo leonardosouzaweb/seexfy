@@ -200,23 +200,22 @@
 
                     <div class="photo-grid">
                     <?php
-// Certifique-se de que $_SESSION['user_id'] está definido e é seguro usar
-if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'];
+                        if (isset($_GET['user_id'])) {
+                            $user_id = $_GET['user_id'];
 
-    $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
-    $stmtPhotos = $conn->prepare($sqlPhotos);
-    $stmtPhotos->bind_param("i", $user_id); // Vinculando o user_id atual
-    $stmtPhotos->execute();
-    $resultPhotos = $stmtPhotos->get_result();
+                            $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
+                            $stmtPhotos = $conn->prepare($sqlPhotos);
+                            $stmtPhotos->bind_param("i", $user_id); // Vinculando o user_id relacionado às fotos
+                            $stmtPhotos->execute();
+                            $resultPhotos = $stmtPhotos->get_result();
 
-    while ($photo = $resultPhotos->fetch_assoc()) {
-        echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
-    }
-} else {
-    echo "Erro: user_id não está definido na sessão.";
-}
-?>
+                            while ($photo = $resultPhotos->fetch_assoc()) {
+                                echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                            }
+                        } else {
+                            echo "Erro: user_id não foi fornecido na URL.";
+                        }
+                        ?>
                     </div>
                 </div>
                 <!-- // -->
