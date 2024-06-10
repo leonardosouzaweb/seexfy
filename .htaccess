@@ -96,20 +96,3 @@ ExpiresByType application/font-woff2 "access plus 1 month"
 ExpiresDefault "access 1 month"
 </IfModule>
 # END ADD EXPIRES HEADERS #
-
-# BEGIN ADD CACHE CONTROL HEADERS
-<ifModule mod_headers.c>
-<filesMatch "\.(ico|jpe?g|png|gif|swf)$">
-Header set Cache-Control "public"
-</filesMatch>
-<filesMatch "\.(css)$">
-Header set Cache-Control "public"
-</filesMatch>
-<filesMatch "\.(js)$">
-Header set Cache-Control "private"
-</filesMatch>
-<filesMatch "\.(x?html?|php)$">
-Header set Cache-Control "private, must-revalidate"
-</filesMatch>
-</ifModule>
-# END ADD CACHE CONTROL HEADERS
