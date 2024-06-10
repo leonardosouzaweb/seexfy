@@ -1,7 +1,6 @@
 <div class="headProfile">
     <div>
         <form id="avatarUploadForm" enctype="multipart/form-data">
-            
                 <div class="avatarProfile">
                     <img src="<?php echo $base_url; ?>/assets/uploads/<?php echo ($user['avatar']); ?>" id="avatarImage">
                     <?php if ($isOwner): ?>
@@ -17,7 +16,9 @@
     </div>
 
     <div>
-        <button>Interagir</button>
+        <?php if ($isOwner): ?>
+            <button>Interagir</button>
+        <?php endif; ?>
     </div>
 </div>
 
