@@ -15,9 +15,11 @@
         </div>
     </div>
 
+    <?php if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] !== $user['user_id']): ?>
     <div>
         <button>Interagir</button>
     </div>
+    <?php endif; ?>
 </div>
 
 <div class="infoProfile">
