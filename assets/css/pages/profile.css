@@ -32,7 +32,7 @@
     .home .content .infoProfile .detailProfileSingle p { font-size: 14px; line-height: 22px; margin: 0; margin-bottom: 15px; }
     .home .content .infoProfile .detailProfileSingle .divider { border: 1px solid #f1f1f1; margin: 10px 0; }
 
-    .home .content .infoProfile .detailProfileSingle .gallery { width: 100%; margin-top: 20px; margin-bottom: 50px; }
+    .home .content .infoProfile .detailProfileSingle .gallery { width: 100%; margin-top: 10px; margin-bottom: 50px; }
     .home .content .infoProfile .detailProfileSingle .gallery .inputfile { width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
     .home .content .infoProfile .detailProfileSingle .gallery .inputfile + label { max-width: 100%; width: 100%; font-size: 20px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; display: flex; align-items: center; overflow: hidden; padding: 0.625rem 1.25rem; gap: 10px; }
     .home .content .infoProfile .detailProfileSingle .gallery .inputfile + label { color: #fff; background-color: #e74c3c; border-radius: 15px; margin-bottom: 20px; }
@@ -80,7 +80,7 @@
     .home .content .infoProfile .detailProfileGroup p { font-size: 14px; line-height: 22px; margin: 0; margin-bottom: 15px; }
     .home .content .infoProfile .detailProfileGroup .divider { border: 1px solid #f1f1f1; margin: 10px 0; }
 
-    .home .content .infoProfile .detailProfileGroup .gallery { width: 100%; margin-top: 20px; margin-bottom: 50px; }
+    .home .content .infoProfile .detailProfileGroup .gallery { width: 100%; margin-top: 10px; margin-bottom: 50px; }
     .home .content .infoProfile .detailProfileGroup .gallery .inputfile { width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
     .home .content .infoProfile .detailProfileGroup .gallery .inputfile + label { max-width: 100%; width: 100%; font-size: 20px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; display: flex; align-items: center; overflow: hidden; padding: 0.625rem 1.25rem; gap: 10px; }
     .home .content .infoProfile .detailProfileGroup .gallery .inputfile + label { color: #fff; background-color: #e74c3c; border-radius: 15px; margin-bottom: 20px; }

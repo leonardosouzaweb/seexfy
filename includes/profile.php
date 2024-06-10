@@ -58,7 +58,7 @@
             <?php endif; ?>
 
             <div class="photo-grid">
-                <?php
+            <?php
                 $username = $_GET['username'];
                 $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
                     SELECT id FROM users WHERE username = ?
@@ -68,10 +68,17 @@
                 $stmtPhotos->execute();
                 $resultPhotos = $stmtPhotos->get_result();
 
-                while ($photo = $resultPhotos->fetch_assoc()) {
-                    echo '<div class="photo-item"><img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                // Verificar se há fotos
+                if ($resultPhotos->num_rows > 0) {
+                    echo '<div class="photo-grid">';
+                    while ($photo = $resultPhotos->fetch_assoc()) {
+                        echo '<div class="photo-item"><img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                    }
+                    echo '</div>';
+                } else {
+                    echo '<p>O usuário não possui fotos.</p>';
                 }
-                ?>
+            ?>
             </div>
         </div>
     </div>
