@@ -1,14 +1,14 @@
 @media only screen and (max-width:899px) {
     .home .content { padding: 0px 20px; }
     .home .content .headProfile { width: 100%; display: flex; align-items: center; margin-bottom: 5px; gap: 20px; border-bottom: 1px solid #e8e8e8; padding-bottom: 20px;}
-    .home .content .headProfile div:nth-child(1) { width: 80%; display: flex;  }
+    .home .content .headProfile div:nth-child(1) { width: 80%; display: flex; gap: 10px; }
     .home .content .headProfile div:nth-child(1) .avatarProfile { width: 100%; position: relative; }
     .home .content .headProfile div:nth-child(1) .avatarProfile img.upload { position: absolute; width: 20px; height: auto; bottom: 0; right: 0px; left: 35px; object-fit: cover; }
     .home .content .headProfile div:nth-child(1) .infoUser { width: 70%; }
     .home .content .headProfile div:nth-child(2) { width: 50%; }
-    .home .content .headProfile div span { font-weight: 700; font-size: 20px; }
+    .home .content .headProfile div span { font-weight: 700; font-size: 18px; }
     .home .content .headProfile div img { width: 50px; height: 50px; display: inline-block; margin-right: 10px; border-radius: 100px; object-fit: cover; }
-    .home .content .headProfile div p { font-size: 14px; margin: 0; }
+    .home .content .headProfile div p { font-size: 12px; margin: 0; }
     .home .content .headProfile div button { float: right; }
     .home .content .headProfile div button { background: #E74C3C; width:100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; border-radius: 15px; }
     
@@ -32,31 +32,34 @@
     .home .content .infoProfile .detailProfileSingle p { font-size: 14px; line-height: 22px; margin: 0; margin-bottom: 15px; }
     .home .content .infoProfile .detailProfileSingle .divider { border: 1px solid #f1f1f1; margin: 10px 0; }
 
-    .home .content .infoProfile .detailProfileSingle .gallery { width: 100%;  margin-top: 20px; }
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper { width: auto; margin: 0 auto; display: block; height: 260px;}
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-pagination { display: flex; align-items: center; justify-content: center; }
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-wrapper { display: flex; }
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide { width: 40%; position: relative; }
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide.filter { filter: blur(0.4rem); user-select: none; pointer-events: none; border-radius: 20px;}
+    .home .content .infoProfile .detailProfileSingle .gallery { width: 100%; margin-top: 20px; margin-bottom: 50px; }
+    .home .content .infoProfile .detailProfileSingle .gallery .inputfile { width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
+    .home .content .infoProfile .detailProfileSingle .gallery .inputfile + label { max-width: 100%; width: 100%; font-size: 20px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; display: flex; align-items: center; overflow: hidden; padding: 0.625rem 1.25rem; gap: 10px; }
+    .home .content .infoProfile .detailProfileSingle .gallery .inputfile + label { color: #fff; background-color: #e74c3c; border-radius: 15px; margin-bottom: 20px; }
+    .home .content .infoProfile .detailProfileSingle .gallery .inputfile + label svg { width: 1em; height: 1em; vertical-align: middle; fill: currentColor; margin-top: -0.25em; margin-right: 0.25em; }
+    .home .content .infoProfile .detailProfileSingle .gallery .inputfile + label span { color: #fff; }
 
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .addImage { width: 100%; height: 210px; border-radius: 15px; border: 2px dashed #d0d0d0; display: flex; align-items: center; justify-content: center; flex-direction: column; position: absolute; z-index: 1;}
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .addImage img { width: 25px !important; border-radius: 0px !important; object-fit: initial !important; height: auto !important;}
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .addImage p { color:#747474; font-weight: 600; font-size: 13px; text-align: center; margin-top: 10px; padding: 0px 20px; line-height: 15px; margin-bottom: 0;}
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .addImage button { background: #E74C3C; color: #fff; font-weight: bold; font-size: 12px; border: none; padding: 2px 15px; border-radius: 10px;}
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .addImage #fileInput { display: none; }
-
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .block { width: 100%; height: 210px; border-radius: 15px; background: #000000e6; display: flex; align-items: center; justify-content: center; flex-direction: column; position: absolute; z-index: 1;}
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .block img { width: 25px !important; border-radius: 0 !important; object-fit: initial !important; height: auto !important;}
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .block p { color:#ffffff9f; font-weight: 600; font-size: 13px; text-align: center; margin-top: 10px; padding: 0px 20px; line-height: 15px; }
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .block button { background: #E74C3C; color: #fff; font-weight: bold; font-size: 12px; border: none; padding: 2px 15px; border-radius: 10px;}
     
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .like { display: flex; align-items: center; background: #484848; padding: 3px 7px; border-radius: 15px; position: absolute; bottom: 60px; left: 15px; gap: 5px;}
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .like.active { background: #E74C3C; }
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .like img { width: 14px !important; object-fit: initial !important; height: auto !important; }
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide .like small { color: #fff; font-weight: 700; font-size: 12px; }
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-slide:nth-child(2n) { width: 40%; }
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-wrapper .swiper-slide img { width: 100%; height: 210px; object-fit: cover; border-radius: 20px;}
-    .home .content .infoProfile .detailProfileSingle .gallery .swiper .swiper-pagination-bullet-active { background: #E74C3C; }
+    .home .content .infoProfile .detailProfileSingle .gallery .photo-grid { width: 100%; display: flex; flex-wrap: nowrap; gap: 20px; overflow-x: auto; overflow-y: hidden; }
+    .home .content .infoProfile .detailProfileSingle .gallery .photo-grid .photo-item { flex: 0 0 40%; }
+    .home .content .infoProfile .detailProfileSingle .gallery .photo-grid .photo-item img { width: 100%; height: 220px; border-radius: 20px; }
+
+
+    .home .content .infoProfile .detailProfileSingle .gallery .addImage { width: 100%; height: 210px; border-radius: 15px; border: 2px dashed #d0d0d0; display: flex; align-items: center; justify-content: center; flex-direction: column; position: absolute; z-index: 1;}
+    .home .content .infoProfile .detailProfileSingle .gallery .addImage img { width: 25px !important; border-radius: 0px !important; object-fit: initial !important; height: auto !important;}
+    .home .content .infoProfile .detailProfileSingle .gallery .addImage p { color:#747474; font-weight: 600; font-size: 13px; text-align: center; margin-top: 10px; padding: 0px 20px; line-height: 15px; margin-bottom: 0;}
+    .home .content .infoProfile .detailProfileSingle .gallery .addImage button { background: #E74C3C; color: #fff; font-weight: bold; font-size: 12px; border: none; padding: 2px 15px; border-radius: 10px;}
+    .home .content .infoProfile .detailProfileSingle .gallery .addImage #fileInput { display: none; }
+
+    .home .content .infoProfile .detailProfileSingle .gallery .block { width: 100%; height: 210px; border-radius: 15px; background: #000000e6; display: flex; align-items: center; justify-content: center; flex-direction: column; position: absolute; z-index: 1;}
+    .home .content .infoProfile .detailProfileSingle .gallery .block img { width: 25px !important; border-radius: 0 !important; object-fit: initial !important; height: auto !important;}
+    .home .content .infoProfile .detailProfileSingle .gallery .block p { color:#ffffff9f; font-weight: 600; font-size: 13px; text-align: center; margin-top: 10px; padding: 0px 20px; line-height: 15px; }
+    .home .content .infoProfile .detailProfileSingle .gallery .block button { background: #E74C3C; color: #fff; font-weight: bold; font-size: 12px; border: none; padding: 2px 15px; border-radius: 10px;}
+    
+    .home .content .infoProfile .detailProfileSingle .gallery .like { display: flex; align-items: center; background: #484848; padding: 3px 7px; border-radius: 15px; position: absolute; bottom: 60px; left: 15px; gap: 5px;}
+    .home .content .infoProfile .detailProfileSingle .gallery .like.active { background: #E74C3C; }
+    .home .content .infoProfile .detailProfileSingle .gallery .like img { width: 14px !important; object-fit: initial !important; height: auto !important; }
+    .home .content .infoProfile .detailProfileSingle .gallery .like small { color: #fff; font-weight: 700; font-size: 12px; }
 
 
     /* COUPLE */
@@ -77,19 +80,17 @@
     .home .content .infoProfile .detailProfileGroup p { font-size: 14px; line-height: 22px; margin: 0; margin-bottom: 15px; }
     .home .content .infoProfile .detailProfileGroup .divider { border: 1px solid #f1f1f1; margin: 10px 0; }
 
-    .home .content .infoProfile .detailProfileGroup .gallery { width: 100%;  margin-top: 20px; }
-    .home .content .infoProfile .detailProfileGroup .gallery .swiper { width: auto; margin: 0 auto; display: block; height: 260px;}
-    .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-pagination { display: flex; align-items: center; justify-content: center; }
-    .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-wrapper { display: flex; }
-    .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-slide { width: 40%; position: relative; }
-    .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-slide.filter { filter: blur(0.8rem); user-select: none; pointer-events: none; }
-    .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-slide .like { display: flex; align-items: center; background: #484848; padding: 3px 7px; border-radius: 15px; position: absolute; bottom: 60px; left: 15px; gap: 5px;}
-    .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-slide .like.active { background: #E74C3C; }
-    .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-slide .like img { width: 14px !important; object-fit: initial !important;}
-    .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-slide .like small { color: #fff; font-weight: 700; font-size: 12px; }
-    .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-slide:nth-child(2n) { width: 40%; }
-    .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-wrapper .swiper-slide img { width: 100%; height: auto; object-fit: cover; border-radius: 20px;}
-    .home .content .infoProfile .detailProfileGroup .gallery .swiper .swiper-pagination-bullet-active { background: #E74C3C; }
+    .home .content .infoProfile .detailProfileGroup .gallery { width: 100%; margin-top: 20px; margin-bottom: 50px; }
+    .home .content .infoProfile .detailProfileGroup .gallery .inputfile { width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
+    .home .content .infoProfile .detailProfileGroup .gallery .inputfile + label { max-width: 100%; width: 100%; font-size: 20px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; display: flex; align-items: center; overflow: hidden; padding: 0.625rem 1.25rem; gap: 10px; }
+    .home .content .infoProfile .detailProfileGroup .gallery .inputfile + label { color: #fff; background-color: #e74c3c; border-radius: 15px; margin-bottom: 20px; }
+    .home .content .infoProfile .detailProfileGroup .gallery .inputfile + label svg { width: 1em; height: 1em; vertical-align: middle; fill: currentColor; margin-top: -0.25em; margin-right: 0.25em; }
+    .home .content .infoProfile .detailProfileGroup .gallery .inputfile + label span { color: #fff; }
+
+    
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid { width: 100%; display: flex; flex-wrap: nowrap; gap: 20px; overflow-x: auto; overflow-y: hidden; }
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item { flex: 0 0 40%; }
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item img { width: 100%; height: 220px; border-radius: 20px; }
 
 }
 

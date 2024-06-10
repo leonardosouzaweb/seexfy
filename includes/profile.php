@@ -1,13 +1,14 @@
 <div class="headProfile">
     <div>
         <form id="avatarUploadForm" enctype="multipart/form-data">
-            <?php if ($isOwner): ?>
+            
                 <div class="avatarProfile">
-                    <input type="file" id="avatarInput" name="avatar" style="display:none;">
                     <img src="<?php echo $base_url; ?>/assets/uploads/<?php echo ($user['avatar']); ?>" id="avatarImage">
+                    <?php if ($isOwner): ?>
+                    <input type="file" id="avatarInput" name="avatar" style="display:none;">
                     <img src="<?php echo $base_url; ?>assets/images/icons/icCamera.svg" class="upload" id="uploadIcon">
+                    <?php endif; ?>
                 </div>
-            <?php endif; ?>
         </form>
         <div class="infoUser">
             <span><?php echo ($user['username']); ?></span>
@@ -19,7 +20,6 @@
         <button>Interagir</button>
     </div>
 </div>
-
 
 <div class="infoProfile">
     <div class="detailProfileSingle" style="display:<?php echo $displaySingle; ?>;">
@@ -49,16 +49,25 @@
 
         <span>Galeria de Fotos</span>
         <div class="gallery">
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="addImage">
-                            <img src="<?php echo $base_url; ?>assets/images/icons/iconGallery.svg" class="iconGallery">
-                            <p class="iconGallery">Adicionar imagem</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
+            <?php if ($isOwner): ?>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <input type="file" id="photoInput" class="inputfile" name="photoInput" accept="image/*" multiple/>
+                <label for="photoInput"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Selecionar foto</span></label>
+            </form>
+            <?php endif; ?>
+
+            <div class="photo-grid">
+                <?php
+                $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
+                $stmtPhotos = $conn->prepare($sqlPhotos);
+                $stmtPhotos->bind_param("i", $_SESSION['user_id']);
+                $stmtPhotos->execute();
+                $resultPhotos = $stmtPhotos->get_result();
+
+                while ($photo = $resultPhotos->fetch_assoc()) {
+                    echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -104,33 +113,25 @@
 
                 <span>Galeria de Fotos</span>
                 <div class="gallery">
-                    <div class="swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
-                                    <small>120</small>
-                                </div>
-                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
-                            </div>
+                    <?php if ($isOwner): ?>
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <input type="file" id="photoInput" class="inputfile" name="photoInput" accept="image/*" multiple/>
+                        <label for="photoInput"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Selecionar foto</span></label>
+                    </form>
+                    <?php endif; ?>
 
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
-                                    <small>227</small>
-                                </div>
-                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
-                            </div>
-                            
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
-                                    <small>360</small>
-                                </div>
-                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
-                            </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
+                    <div class="photo-grid">
+                        <?php
+                        $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
+                        $stmtPhotos = $conn->prepare($sqlPhotos);
+                        $stmtPhotos->bind_param("i", $_SESSION['user_id']);
+                        $stmtPhotos->execute();
+                        $resultPhotos = $stmtPhotos->get_result();
+
+                        while ($photo = $resultPhotos->fetch_assoc()) {
+                            echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                        }
+                        ?>
                     </div>
                 </div>
                 <!-- // -->
@@ -163,25 +164,25 @@
 
                 <span>Galeria de Fotos</span>
                 <div class="gallery">
-                    <div class="swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
-                                    <small>120</small>
-                                </div>
-                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
-                            </div>
+                    <?php if ($isOwner): ?>
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <input type="file" id="photoInput" class="inputfile" name="photoInput" accept="image/*" multiple/>
+                        <label for="photoInput"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Selecionar foto</span></label>
+                    </form>
+                    <?php endif; ?>
 
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
-                                    <small>227</small>
-                                </div>
-                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
-                            </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
+                    <div class="photo-grid">
+                        <?php
+                        $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
+                        $stmtPhotos = $conn->prepare($sqlPhotos);
+                        $stmtPhotos->bind_param("i", $_SESSION['user_id']);
+                        $stmtPhotos->execute();
+                        $resultPhotos = $stmtPhotos->get_result();
+
+                        while ($photo = $resultPhotos->fetch_assoc()) {
+                            echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                        }
+                        ?>
                     </div>
                 </div>
                 <!-- // -->
@@ -190,25 +191,25 @@
                 <!-- CASAL -->
                 <span>Galeria de Fotos</span>
                 <div class="gallery">
-                    <div class="swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
-                                    <small>120</small>
-                                </div>
-                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
-                            </div>
+                    <?php if ($isOwner): ?>
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <input type="file" id="photoInput" class="inputfile" name="photoInput" accept="image/*" multiple/>
+                        <label for="photoInput"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Selecionar foto</span></label>
+                    </form>
+                    <?php endif; ?>
 
-                            <div class="swiper-slide">
-                                <div class="like">
-                                    <img src="<?php echo $base_url; ?>assets/images/icons/iconHeart.svg">
-                                    <small>227</small>
-                                </div>
-                                <img src="<?php echo $base_url; ?>assets/images/gallery/1.png">
-                            </div>
-                        </div>
-                        <div class="swiper-pagination"></div>
+                    <div class="photo-grid">
+                        <?php
+                        $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
+                        $stmtPhotos = $conn->prepare($sqlPhotos);
+                        $stmtPhotos->bind_param("i", $_SESSION['user_id']);
+                        $stmtPhotos->execute();
+                        $resultPhotos = $stmtPhotos->get_result();
+
+                        while ($photo = $resultPhotos->fetch_assoc()) {
+                            echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                        }
+                        ?>
                     </div>
                 </div>
                 <!-- // -->

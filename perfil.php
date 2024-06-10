@@ -1,44 +1,42 @@
 <?php
-include_once 'includes/head.php';
-session_start(); 
+    include_once 'includes/head.php';
+    session_start(); 
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: ./entrar");
-    exit(); 
-}
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: ./entrar");
+        exit(); 
+    }
 
-include_once 'config/db.php';
+    include_once 'config/db.php';
 
-$username = $_GET['username'];
-$sqlUser = "SELECT maritalStatus, username, city, interests, fullname, age, sexualOrientation, sign, height, smokes, drink, experience, description, agePartner, sexualOrientationPartner, signPartner, heightPartner, smokesPartner, drinkPartner, experiencePartner, description, gender, avatar FROM users WHERE username = ?";
-$stmt = $conn->prepare($sqlUser);
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_assoc();
+    $username = $_GET['username'];
+    $sqlUser = "SELECT maritalStatus, username, city, interests, fullname, age, sexualOrientation, sign, height, smokes, drink, experience, description, agePartner, sexualOrientationPartner, signPartner, heightPartner, smokesPartner, drinkPartner, experiencePartner, description, gender, avatar FROM users WHERE username = ?";
+    $stmt = $conn->prepare($sqlUser);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
 
-// Verificar se o usuário logado é o dono do perfil
-$isOwner = ($_SESSION['username'] === $username);
+    $isOwner = ($_SESSION['username'] === $username);
 
-if ($user && isset($user['maritalStatus'])) {
-    $maritalStatus = $user['maritalStatus'];
-    if ($maritalStatus == "Solteiro" || $maritalStatus == "Solteira") {
-        $displaySingle = "block";
-        $displayGroup = "none";
-    } elseif ($maritalStatus == "Casado" || $maritalStatus == "Casada") {
-        $displaySingle = "none";
-        $displayGroup = "block";
+    if ($user && isset($user['maritalStatus'])) {
+        $maritalStatus = $user['maritalStatus'];
+        if ($maritalStatus == "Solteiro" || $maritalStatus == "Solteira") {
+            $displaySingle = "block";
+            $displayGroup = "none";
+        } elseif ($maritalStatus == "Casado" || $maritalStatus == "Casada") {
+            $displaySingle = "none";
+            $displayGroup = "block";
+        } else {
+            $displaySingle = "none";
+            $displayGroup = "none";
+        }
     } else {
         $displaySingle = "none";
         $displayGroup = "none";
     }
-} else {
-    $displaySingle = "none";
-    $displayGroup = "none";
-}
 
-$stmt->close();
-$conn->close();
+    $stmt->close();
 ?>
 <body>
     <div class="empty">
@@ -62,6 +60,68 @@ $conn->close();
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        document.getElementById('photoInput').addEventListener('change', function() {
+            var formData = new FormData();
+            var files = this.files;
+
+            for (var i = 0; i < files.length; i++) {
+                resizeImage(files[i], 140, 220, function(resizedFile) {
+                    formData.append('photos[]', resizedFile, resizedFile.name);
+                    uploadImage(formData);
+                });
+            }
+        });
+
+        function resizeImage(file, maxWidth, maxHeight, callback) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function(event) {
+                var img = new Image();
+                img.src = event.target.result;
+                img.onload = function() {
+                    var width = img.width;
+                    var height = img.height;
+
+                    if (width > maxWidth || height > maxHeight) {
+                        var ratio = Math.min(maxWidth / width, maxHeight / height);
+                        width = width * ratio;
+                        height = height * ratio;
+                    }
+
+                    var canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    var ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    canvas.toBlob(function(blob) {
+                        var resizedFile = new File([blob], file.name, { type: 'image/jpeg', lastModified: Date.now() });
+                        callback(resizedFile);
+                    }, 'image/jpeg');
+                };
+            };
+        }
+
+        function uploadImage(formData) {
+            fetch('../api/uploadImage.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.querySelector('.photo-grid').innerHTML = data.photosHTML;
+                } else {
+                    console.error(data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+    </script>
+
+    <script>
         document.getElementById('avatarImage').addEventListener('click', function() {
             document.getElementById('avatarInput').click();
         });
@@ -74,7 +134,6 @@ $conn->close();
 
                 reader.onload = function(e) {
                     img.src = e.target.result;
-
                     img.onload = function() {
                         var canvas = document.createElement('canvas');
                         var ctx = canvas.getContext('2d');
@@ -94,7 +153,6 @@ $conn->close();
                         }
 
                         ctx.drawImage(img, offsetX, offsetY, size, size, 0, 0, desiredSize, desiredSize);
-
                         canvas.toBlob(function(blob) {
                             var formData = new FormData();
                             formData.append('avatar', blob, 'avatar.jpg');
@@ -120,35 +178,7 @@ $conn->close();
                 reader.readAsDataURL(file);
             }
         });
-        document.addEventListener('DOMContentLoaded', function () {
-            function applyHeightMask(input) {
-                input.addEventListener('input', function () {
-                    let value = input.value;
-                    value = value.replace(/[^0-9]/g, '');
 
-                    if (value.length > 1) {
-                        value = value.slice(0, 1) + '.' + value.slice(1);
-                    }
-
-                    value = value.slice(0, 4);
-                    input.value = value;
-
-                    const numberValue = parseFloat(value);
-                    if (isNaN(numberValue) || numberValue <= 0 || numberValue >= 3) {
-                        input.classList.add('error');
-                    } else {
-                        input.classList.remove('error');
-                    }
-                });
-            }
-
-            const heightInput = document.getElementById('heightInput');
-            const heightPartnerInput = document.getElementById('heightPartnerInput');
-
-            applyHeightMask(heightInput);
-            applyHeightMask(heightPartnerInput);
-            
-        });
 
         var swiper = new Swiper(".swiper", {
             slidesPerView: "auto",
