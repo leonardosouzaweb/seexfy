@@ -60,32 +60,31 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         var modal = document.getElementById("photoModal");
-        var modalImg = document.getElementById("modalImg");
-        var images = document.getElementsByClassName("modal-trigger");
-        var closeButton = document.querySelector("#photoModal .close");
+    var modalImg = document.getElementById("modalImg");
+    var images = document.getElementsByClassName("modal-trigger");
+    var body = document.body;
 
-        for (var i = 0; i < images.length; i++) {
-            images[i].onclick = function () {
-                modal.style.display = "block";
-                modalImg.src = this.src;
-            }
+    // Abrir modal ao clicar na imagem
+    for (var i = 0; i < images.length; i++) {
+        images[i].onclick = function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            body.style.overflow = "hidden"; // Impede o scroll do body
         }
+    }
 
-        function closeModal() {
-            modal.style.display = "none";
-        }
+    // Função para fechar a modal
+    function closeModal() {
+        modal.style.display = "none";
+        body.style.overflow = "auto"; // Habilita o scroll do body novamente
+    }
 
-        if (closeButton) {
-            closeButton.onclick = function () {
-                closeModal();
-            };
+    // Fechar modal ao clicar fora da imagem
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
         }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
+    }
 
         document.getElementById('photoInput').addEventListener('change', function() {
             var formData = new FormData();

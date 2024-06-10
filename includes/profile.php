@@ -412,9 +412,6 @@
 <!-- Modal -->
 <div id="photoModal" class="modal">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="close" onclick="closeModal()">
-            <img src="<?php echo $base_url; ?>assets/images/icons/icClose.svg" >
-        </div>
         <img class="modal-content" id="modalImg">
     </div>
 </div>
