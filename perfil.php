@@ -63,11 +63,17 @@
         document.getElementById('photoInput').addEventListener('change', function() {
             var formData = new FormData();
             var files = this.files;
+            var filesProcessed = 0; // Contador de arquivos processados
 
             for (var i = 0; i < files.length; i++) {
                 resizeImage(files[i], 140, 220, function(resizedFile) {
                     formData.append('photos[]', resizedFile, resizedFile.name);
-                    uploadImage(formData);
+                    filesProcessed++;
+
+                    // Verifica se todos os arquivos foram processados antes de fazer o upload
+                    if (filesProcessed === files.length) {
+                        uploadImage(formData);
+                    }
                 });
             }
         });
