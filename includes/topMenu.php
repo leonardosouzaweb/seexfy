@@ -25,7 +25,7 @@
         <div>
             <div class="avatar">
                 <a href="<?php echo $base_url; ?>perfil/<?php echo ($_SESSION["username"]); ?>">
-                    <img src="<?php echo $base_url; ?>assets/icons/icUser.svg">
+                    <img src="<?php echo $base_url; ?>assets/images/icons/icUser.svg">
                 </a>
             </div>
         </div>
