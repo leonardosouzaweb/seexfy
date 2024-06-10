@@ -58,33 +58,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo $base_url; ?>assets/js/functions.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pica/5.0.0/pica.min.js"></script>
+
     <script>
         var modal = document.getElementById("photoModal");
-    var modalImg = document.getElementById("modalImg");
-    var images = document.getElementsByClassName("modal-trigger");
-    var body = document.body;
+        var modalImg = document.getElementById("modalImg");
+        var images = document.getElementsByClassName("modal-trigger");
+        var body = document.body;
 
-    // Abrir modal ao clicar na imagem
-    for (var i = 0; i < images.length; i++) {
-        images[i].onclick = function () {
-            modal.style.display = "block";
-            modalImg.src = this.src;
-            body.style.overflow = "hidden"; // Impede o scroll do body
+        for (var i = 0; i < images.length; i++) {
+            images[i].onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                body.style.overflow = "hidden"; 
+            }
         }
-    }
 
-    // Função para fechar a modal
-    function closeModal() {
-        modal.style.display = "none";
-        body.style.overflow = "auto"; // Habilita o scroll do body novamente
-    }
-
-    // Fechar modal ao clicar fora da imagem
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            closeModal();
+        function closeModal() {
+            modal.style.display = "none";
+            body.style.overflow = "auto"; 
         }
-    }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
 
         document.getElementById('photoInput').addEventListener('change', function() {
             var formData = new FormData();
@@ -110,20 +109,27 @@
                 var img = new Image();
                 img.src = event.target.result;
                 img.onload = function() {
+                    var canvas = document.createElement('canvas');
+                    var ctx = canvas.getContext('2d');
+
                     var width = img.width;
                     var height = img.height;
 
-                    if (width > maxWidth || height > maxHeight) {
-                        var ratio = Math.min(maxWidth / width, maxHeight / height);
-                        width = width * ratio;
-                        height = height * ratio;
+                    if (width > height) {
+                        if (width > maxWidth) {
+                            height *= maxWidth / width;
+                            width = maxWidth;
+                        }
+                    } else {
+                        if (height > maxHeight) {
+                            width *= maxHeight / height;
+                            height = maxHeight;
+                        }
                     }
 
-                    var canvas = document.createElement('canvas');
                     canvas.width = width;
                     canvas.height = height;
 
-                    var ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, width, height);
 
                     canvas.toBlob(function(blob) {
@@ -149,7 +155,6 @@
             })
             .catch(error => console.error('Error:', error));
         }
-
     </script>
 
     <script>
