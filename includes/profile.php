@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <?php if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] !== $user['user_id']): ?>
+    <?php if (!isset($_SESSION['username']) || $_SESSION['username'] !== $user['username']): ?>
     <div>
         <button>Interagir</button>
     </div>
