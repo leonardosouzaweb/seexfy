@@ -199,21 +199,36 @@
                     <?php endif; ?>
 
                     <div class="photo-grid">
-                    <?php
-                        if (isset($_GET['user_id'])) {
-                            $user_id = $_GET['user_id'];
+                        <?php
+                        $username = basename($_SERVER['REQUEST_URI']); // Obtém o username da URL
 
-                            $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
-                            $stmtPhotos = $conn->prepare($sqlPhotos);
-                            $stmtPhotos->bind_param("i", $user_id); // Vinculando o user_id relacionado às fotos
-                            $stmtPhotos->execute();
-                            $resultPhotos = $stmtPhotos->get_result();
+                        if ($username) {
+                            $sqlUserId = "SELECT user_id FROM users WHERE username = ?";
+                            $stmtUserId = $conn->prepare($sqlUserId);
+                            $stmtUserId->bind_param("s", $username);
+                            $stmtUserId->execute();
+                            $resultUserId = $stmtUserId->get_result();
 
-                            while ($photo = $resultPhotos->fetch_assoc()) {
-                                echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                            if ($resultUserId->num_rows > 0) {
+                                $user = $resultUserId->fetch_assoc();
+                                $visitedUserId = $user['user_id'];
+
+                                // Consulta SQL para selecionar os caminhos das fotos do usuário visitado
+                                $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = ?";
+                                $stmtPhotos = $conn->prepare($sqlPhotos);
+                                $stmtPhotos->bind_param("i", $visitedUserId);
+                                $stmtPhotos->execute();
+                                $resultPhotos = $stmtPhotos->get_result();
+
+                                // Loop através dos resultados e exibe cada foto
+                                while ($photo = $resultPhotos->fetch_assoc()) {
+                                    echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                                }
+                            } else {
+                                echo 'Usuário não encontrado.';
                             }
                         } else {
-                            echo "Erro: user_id não foi fornecido na URL.";
+                            echo 'Nome de usuário não especificado.';
                         }
                         ?>
                     </div>
