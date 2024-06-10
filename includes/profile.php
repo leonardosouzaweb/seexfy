@@ -16,9 +16,7 @@
     </div>
 
     <div>
-        <?php if ($isOwner): ?>
-            <button>Interagir</button>
-        <?php endif; ?>
+        <button>Interagir</button>
     </div>
 </div>
 
