@@ -17,7 +17,7 @@
 
     .home .wrapper .maskBottom { width: 100%; height: 100px; background: rgb(0, 0, 0);
         background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%); position: fixed; bottom: 0; z-index: 2;}
-    .home .wrapper .bottomMenu { background: #E74C3C; width: 100%; padding:10px 0px 25px 0px; position: fixed; bottom: 0; left:0; right: 0; margin: 0 auto;  z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 20px;  }
+    .home .wrapper .bottomMenu { background: #E74C3C; width: 100%; padding:10px 0px 32px 0px; position: fixed; bottom: 0; left:0; right: 0; margin: 0 auto;  z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 20px;  }
     .home .wrapper .bottomMenu div { position: relative; width: 25%; }
     .home .wrapper .bottomMenu div.active:after { background: #E74C3C; border-radius: 50px; content: ''; width: 50px; height: 50px; position: absolute; top: -20px; left: 0; right: 0; margin: 0 auto; }
     .home .wrapper .bottomMenu div.active img { margin: 0 auto; display: block; position: relative; z-index: 1; opacity: 1; }
