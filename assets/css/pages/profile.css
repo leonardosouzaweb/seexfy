@@ -42,7 +42,7 @@
     
     .home .content .infoProfile .detailProfileSingle .gallery .photo-grid { width: 100%; display: flex; flex-wrap: nowrap; gap: 20px; overflow-x: auto; overflow-y: hidden; }
     .home .content .infoProfile .detailProfileSingle .gallery .photo-grid .photo-item { flex: 0 0 40%; }
-    .home .content .infoProfile .detailProfileSingle .gallery .photo-grid .photo-item img { width: 100%; height: 220px; border-radius: 20px; }
+    .home .content .infoProfile .detailProfileSingle .gallery .photo-grid .photo-item img { width: 100%; height: 220px; border-radius: 20px; object-fit: cover; }
 
 
     .home .content .infoProfile .detailProfileSingle .gallery .addImage { width: 100%; height: 210px; border-radius: 15px; border: 2px dashed #d0d0d0; display: flex; align-items: center; justify-content: center; flex-direction: column; position: absolute; z-index: 1;}
@@ -90,7 +90,7 @@
     
     .home .content .infoProfile .detailProfileGroup .gallery .photo-grid { width: 100%; display: flex; flex-wrap: nowrap; gap: 20px; overflow-x: auto; overflow-y: hidden; }
     .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item { flex: 0 0 40%; }
-    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item img { width: 100%; height: 220px; border-radius: 20px; }
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item img { width: 100%; height: 220px; border-radius: 20px; object-fit: cover; }
 
 }
 
