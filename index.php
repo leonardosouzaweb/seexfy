@@ -1,10 +1,5 @@
 <?php 
     session_start();
-    function sanitize_output($buffer) {
-        return htmlspecialchars($buffer, ENT_QUOTES, 'UTF-8');
-    }
-
-    ob_start("sanitize_output");
 
     if (isset($_SESSION['user_id'])) {
         header("Location: ./home");
