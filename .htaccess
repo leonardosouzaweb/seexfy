@@ -9,6 +9,7 @@ RewriteRule ^chat$ chat.php [L]
 RewriteRule ^logout$ logout.php [L]
 
 RewriteRule ^perfil/([a-zA-Z0-9_-]+)$ perfil.php?username=$1 [NC,L]
+RewriteRule ^chat/([a-zA-Z0-9_-]+)$ chat.php?username=$1 [NC,L]
 
 # BEGIN GZIP COMPRESSION
 <IfModule mod_gzip.c>

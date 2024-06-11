@@ -1,0 +1,33 @@
+.chatList { width: 100%; }
+.chatList .listUser { display: flex; align-items: center; width: 100% !important; justify-content: space-between; gap: 20px; position: relative; margin: 15px 0; border-bottom: 1px solid #f1f1f1; }
+.chatList .listUser div { width: 100% !important; display: flex; align-items: center; gap: 20px; }
+
+.chatList .listUser div .listAvatar { background: #F0F0F0; width: 60px !important; height: 50px; border-radius: 50px; position: relative; }
+.chatList .listUser div .listAvatar img { width: 100%; border-radius: 50px;}
+.chatList .listUser div .listAvatar .status { width: 13px !important; height: 13px; background: transparent; border-radius: 30px; display: block; position: absolute; right: 0; bottom: 0;}
+.chatList .listUser div .listAvatar .status.online { background: #2ECC71; }
+.chatList .listUser div .listAvatar .status.offline { background: #E74C3C; }
+
+.chatList .listUser div .listInfo span { font-size: 18px; font-weight: 600; display: block; margin: 15px 0; }
+.chatList .listUser div .listInfo span small { display: block; margin: 0; font-size: 12px; color: rgba(0,0,0,0.5); border: none; padding: 0px;}
+
+.chatList .listUser img.navGoUser { width: 10px; height: auto; position: absolute; right: 0px; top: 30px; }
+
+.chat { background: #f9f9f9; display: none; }
+.chat .chatHeader { display: flex; align-items: center; justify-content: center; background-color: #fff; padding: 12px; border-radius: 10px; flex-direction: column; }
+.chat .chatHeader p { margin:0; font-size: 16px; font-weight: 600; text-align: center;}
+.chat .chatHeader p small { display: block; font-size: 11px; color: rgba(0,0,0,0.5); margin-bottom: 10px; }
+.chat .chatHeader img { width: 55px; margin-top: -35px; margin-bottom: 10px; border-radius: 50px; }
+
+.chat .chatMessage { height: 60vh; max-height: 540px; }
+.chat .chatMessage .user1 { background: #fff; padding: 10px 15px; width: 70%; margin-top: 20px; border-radius: 10px; position: relative; }
+.chat .chatMessage .user1 p { font-size: 13px; margin-bottom: 0px; }
+.chat .chatMessage .user1 p small { font-size: 10px; font-weight: 600; margin-top: 5px; display: block; text-align: right; }
+.chat .chatMessage .user1 .reactions { display: none; position: absolute; }
+.chat .chatMessage .user1 .reactions button { background: #fff; border: 2px solid #f1f1f1; padding: 0px 7px; font-size: 13px; border-radius: 20px; margin: 0px 1px; }
+
+.chat .chatMessage .user2 { background: #e9e9e9; padding: 10px 15px; width: 70%; float: right; margin-top: 20px; border-radius: 10px; }
+.chat .chatMessage .user2 p { font-size: 13px; margin-bottom: 0px; }
+.chat .chatMessage .user2 p small { font-size: 10px; font-weight: 600; margin-top: 5px; display: block; text-align: right; }
+.chat .chatMessage .user2 .reactions { display: none; position: absolute; }
+.chat .chatMessage .user2 .reactions button { background: #fff; border: 2px solid #f1f1f1; padding: 0px 7px; font-size: 13px; border-radius: 20px; margin: 0px 1px; }

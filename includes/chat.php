@@ -1,21 +1,44 @@
-<div class="chat-container">
-    <div class="chat-list">
-        <ul>
-            <li onclick="openChat(1)">Chat 1</li>
-            <li onclick="openChat(2)">Chat 2</li>
-            <li onclick="openChat(3)">Chat 3</li>
-        </ul>
+<div class="chatList">
+    <div class="listUser">
+        <div>
+            <div class="listAvatar">
+                <img src="http://localhost/seexfy/assets/uploads/defaultAvatar.svg">
+            </div>
+            <div class="listInfo">
+                <span>Leo <small>Solteiro</small></span>
+            </div>
+        </div>
+        <a href="./perfil/Leo"><img src="http://localhost/seexfy/assets/images/icons/iconNavProfile.svg" class="navGoUser" id="startChat"></a>
     </div>
-    <div class="chat-box">
-        <div class="chat-header">
-            <h2>Chat Box</h2>
+</div>
+
+<div class="chat">
+    <div class="chatHeader">
+        <img src="http://localhost/seexfy/assets/uploads/defaultAvatar.svg">
+        <p>Leo <small>Solteiro / Offline</small></p>
+        <!-- <img src="assets/images/icons/icClose.svg"> -->
+    </div>
+
+    <div class="chatMessage">
+        <div class="user1">
+            <p>Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
+            <small>21:30</small></p>
+            <div class="reactions">
+                <button>😂</button>
+                <button>😍</button>
+                <button>😲</button>
+            </div>
         </div>
-        <div class="chat-messages" id="chat-messages">
-            <!-- Messages will be loaded here -->
+        <div class="user2">
+            <p>Isso é uma resposta de teste <small>21:30</small></p>
+            <div class="reactions">
+                <button>😂</button>
+                <button>😍</button>
+                <button>😲</button>
+            </div>
         </div>
-        <div class="chat-input">
-            <input type="text" id="message" placeholder="Type a message">
-            <button onclick="sendMessage()">Send</button>
-        </div>
+    </div>
+    <div class="sendMessage">
+        <input type="text" class="form-control" placeholder="Digite sua mensagem">
     </div>
 </div>

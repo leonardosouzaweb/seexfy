@@ -6,6 +6,22 @@ $response = ['success' => false];
 
 if (isset($_FILES['avatar']) && isset($_SESSION['user_id'])) {
     $userId = $_SESSION['user_id'];
+    
+    // Recupera o nome de usuário do banco de dados
+    $sqlGetUsername = "SELECT username FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sqlGetUsername);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $stmt->bind_result($username);
+    $stmt->fetch();
+    $stmt->close();
+
+    if (!$username) {
+        $response['error'] = 'User not found.';
+        echo json_encode($response);
+        exit();
+    }
+
     $fileTmpPath = $_FILES['avatar']['tmp_name'];
     $fileName = $_FILES['avatar']['name'];
     $fileSize = $_FILES['avatar']['size'];
@@ -15,9 +31,15 @@ if (isset($_FILES['avatar']) && isset($_SESSION['user_id'])) {
 
     $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
     if (in_array($fileExtension, $allowedfileExtensions)) {
-        $uploadFileDir = '../assets/uploads/';
+        // Cria o diretório do usuário se não existir
+        $uploadBaseDir = '../assets/uploads/';
+        $userDir = $uploadBaseDir . $username . '/';
+        if (!file_exists($userDir)) {
+            mkdir($userDir, 0777, true);
+        }
+
         $newFileName = md5(time() . $fileName) . '.' . $fileExtension;  // Gera um novo nome de arquivo usando uma hash
-        $dest_path = $uploadFileDir . $newFileName;
+        $dest_path = $userDir . $newFileName;
 
         if (move_uploaded_file($fileTmpPath, $dest_path)) {
             $sqlUpdate = "UPDATE users SET avatar = ? WHERE id = ?";

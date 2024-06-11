@@ -61,6 +61,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pica/5.0.0/pica.min.js"></script>
 
     <script>
+        document.getElementById('interactButton').addEventListener('click', function() {
+            var username = this.getAttribute('data-username');
+            if (username) {
+                window.location.href = '<?php echo $base_url; ?>chat/' + encodeURIComponent(username);
+            } else {
+            }
+        });
+
         var modal = document.getElementById("photoModal");
         var modalImg = document.getElementById("modalImg");
         var images = document.getElementsByClassName("modal-trigger");
