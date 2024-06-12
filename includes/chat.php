@@ -36,17 +36,7 @@
     <div class="chatHeader"></div>
 
     <div class="chatMessage">
-    <?php foreach ($messages as $message): ?>
-        <?php if ($message['sender_id'] == $_SESSION['user_id']): ?>
-            <div class="user1">
-                <p><?php echo $message['message']; ?> <small><?php echo $message['sent_at']; ?></small></p>
-            </div>
-        <?php else: ?>
-            <div class="user2">
-                <p><?php echo $message['message']; ?> <small><?php echo $message['sent_at']; ?></small></p>
-            </div>
-        <?php endif; ?>
-    <?php endforeach; ?>
+        aa
     </div>
     <div class="sendMessage">
         <form id="messageForm">

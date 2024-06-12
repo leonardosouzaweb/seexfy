@@ -37,6 +37,7 @@ $user = $result->fetch_assoc();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            
             function iniciarInteracao(username, receiverId) {
                 var chatHeader = document.querySelector('.chatHeader');
                 chatHeader.innerHTML = `

@@ -13,10 +13,13 @@ if (isset($_GET['receiver_id'])) {
     $messages = $resultMessages->fetch_all(MYSQLI_ASSOC);
 
     foreach ($messages as $message) {
+        // Formatando a hora
+        $sent_time_formatted = date('H:i', strtotime($message['sent_at']));
+        
         if ($message['sender_id'] == $_SESSION['user_id']) {
-            echo '<div class="user1"><p>' . $message['message'] . ' <small>' . $message['sent_at'] . '</small></p></div>';
+            echo '<div class="user1"><p>' . $message['message'] . ' <small>' . $sent_time_formatted . '</small></p></div>';
         } else {
-            echo '<div class="user2"><p>' . $message['message'] . ' <small>' . $message['sent_at'] . '</small></p></div>';
+            echo '<div class="user2"><p>' . $message['message'] . ' <small>' . $sent_time_formatted . '</small></p></div>';
         }
     }
 } else {
