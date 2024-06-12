@@ -1,7 +1,7 @@
 .home { display: none; }
 
 @media only screen and (max-width:899px) {
-    .home { display: flex; }
+    .home { display: flex;  }
     .home .content { padding: 0px 20px; margin-top: 70px;  }
     .home .content h1 { font-size: 20px; margin: 20px 0; font-weight: 600;}
     .home .content h2 { font-size: 25px; font-weight: bold; letter-spacing: -0.35px; margin-bottom: 20px; }
