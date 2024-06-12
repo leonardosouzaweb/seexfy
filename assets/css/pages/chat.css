@@ -20,7 +20,7 @@
 .chat .chatHeader img { width: 47px; border-radius: 50px; }
 
 .chat .chatMessage { height: 70%; overflow-y: scroll; max-height: 70%; }
-.chat .chatMessage .user1 { background: #fff; padding: 10px 15px; width: 70%; margin-top: 20px; border-radius: 10px; position: relative; }
+.chat .chatMessage .user1 { background: #fff; padding: 10px 15px; width: 70%; margin-top: 20px; border-radius: 10px; position: relative; position: relative; right: -100px; }
 .chat .chatMessage .user1 p { font-size: 13px; margin-bottom: 0px; }
 .chat .chatMessage .user1 p small { font-size: 10px; font-weight: 600; margin-top: 5px; display: block; text-align: right; }
 .chat .chatMessage .user1 .reactions { display: none; position: absolute; }
