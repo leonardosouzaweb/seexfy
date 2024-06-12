@@ -29,7 +29,7 @@
     <div class="home">
         <div class="wrapper">
             <div class="content">
-                <h1>Pesquisar</h1>
+                <h2>Pesquisar</h2>
                 <input type="text" id="searchInput" class="form-control" placeholder="Buscar perfil...">
                 <div id="searchResults"></div>
             </div>
@@ -71,7 +71,7 @@
                                 userElement.innerHTML = `
                                     <div>
                                         <div class="listAvatar">
-                                            <img src="${base_url}assets/uploads/${user.avatar}" alt="${user.username}">
+                                            <img src="${base_url}assets/uploads/users/${user.username}/${user.avatar}" alt="${user.username}">
                                         </div>
                                         <div class="listInfo">
                                             <span>${user.username} <small>${user.age ? user.age + ' anos, ' : ''}${user.maritalStatus}</small></span>

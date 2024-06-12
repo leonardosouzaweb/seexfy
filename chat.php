@@ -39,8 +39,6 @@ $user = $result->fetch_assoc();
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             function iniciarInteracao(username, receiverId) {
-                console.log("Receiver ID:", receiverId);
-
                 var chatHeader = document.querySelector('.chatHeader');
 
                 var xhr = new XMLHttpRequest();
@@ -50,11 +48,12 @@ $user = $result->fetch_assoc();
                         var userData = JSON.parse(xhr.responseText);
                         console.log("UserData:", userData); 
                         var receiverAvatar = userData.avatar;
+                        var maritalStatus = userData.maritalStatus;
 
                         var avatarUrl = "<?php echo $base_url; ?>assets/uploads/users/" + username + "/" + receiverAvatar;
                         chatHeader.innerHTML = `
                             <img src="${avatarUrl}">
-                            <p>${username} <small>Solteiro / Offline</small></p>
+                            <p>${username} <small>${maritalStatus}</small></p>
                         `;
 
                         document.querySelector('.chatList').style.display = 'none';

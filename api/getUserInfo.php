@@ -4,7 +4,7 @@ include_once '../api/db.php';
 if (isset($_GET['id'])) {
     $user_id = $_GET['id'];
 
-    $sqlUser = "SELECT username, avatar FROM users WHERE id = ?";
+    $sqlUser = "SELECT username, avatar, maritalStatus FROM users WHERE id = ?";
     $stmt = $conn->prepare($sqlUser);
     $stmt->bind_param("i", $user_id);
     $stmt->execute();

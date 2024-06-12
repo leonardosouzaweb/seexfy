@@ -2,13 +2,12 @@
     <div class="menu">
         <img id="menuIcon" src="<?php echo $base_url; ?>assets/images/icons/iconMenu.svg" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
         <ul class="menuList">
-            <a href="<?php echo $base_url; ?>home"><li>Explorar</li></a>
-            <a href="<?php echo $base_url; ?>eventos"><li>Eventos</li></a>
-            <a href="<?php echo $base_url; ?>radar"><li>Radar</li></a>
-            <a href="<?php echo $base_url; ?>assinatura"><li>Assinatura</li></a>
-            <a href="<?php echo $base_url; ?>configuracoes"><li>Configurações</li></a>
-            <a href="<?php echo $base_url; ?>ajuda"><li>Ajuda</li></a>
-            <a href="<?php echo $base_url; ?>logout"><li>Sair</li></a>
+            <a href="<?php echo $base_url; ?>home"><li><img src="<?php echo $base_url; ?>assets/images/icons/iconHomeBlack.svg"> Explorar <small>Encontre pessoas</small></li></a>
+            <a href="<?php echo $base_url; ?>eventos"><li><img src="<?php echo $base_url; ?>assets/images/icons/iconEventBlack.svg"> Eventos <small>Os melhores eventos</small></li></a>
+            <a href="<?php echo $base_url; ?>radar"><li><img src="<?php echo $base_url; ?>assets/images/icons/iconRadarBlack.svg"> Radar <small>Hora do match!</small></li></a>
+            <a href="<?php echo $base_url; ?>assinatura"><li><img src="<?php echo $base_url; ?>assets/images/icons/iconAssBlack.svg"> Assinatura <small>Não vai esquecer em</small></li></a>
+            <a href="<?php echo $base_url; ?>ajuda"><li><img src="<?php echo $base_url; ?>assets/images/icons/iconHelpBlack.svg"> Ajuda <small>Podemos te ajudar!</small></li></a>
+            <a href="<?php echo $base_url; ?>logout"><li><img src="<?php echo $base_url; ?>assets/images/icons/iconLogoutBlack.svg"> Sair <small>Já vai embora?</small></li></a>
         </ul>
     </div>
     <div class="logo">

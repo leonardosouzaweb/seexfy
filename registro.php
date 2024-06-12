@@ -144,6 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="text" class="form-control" name="username" required>
                         <span class="availability-icon"></span>
                     </div>
+                    <div class="error-msg" style="display: none; color: #e74c3c; font-size: 12px; background: #e74c3c17; padding: 10px 20px; border-radius: 10px; position: relative; top: -9px;">O nome de usuário não pode conter letras maiúsculas, espaços ou caracteres especiais.</div>
                     <div class="buttonsNav">
                         <div class="back">Voltar</div>
                         <div class="next">Continuar</div>
@@ -199,10 +200,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             var timeoutId;
 
             function checkUsernameAvailability(username) {
-                clearTimeout(timeoutId); 
+                clearTimeout(timeoutId);
                 timeoutId = setTimeout(function() {
                     $.ajax({
-                        url: 'api/checkUser.php', 
+                        url: 'api/checkUser.php',
                         method: 'POST',
                         data: { username: username },
                         success: function(response) {
@@ -216,7 +217,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             console.error('Erro ao verificar disponibilidade do nome de usuário:', error);
                         }
                     });
-                }, 500); 
+                }, 500);
+            }
+
+            function validateUsername(username) {
+                var regex = /^[a-z0-9_]+$/i; // Aceita apenas letras minúsculas, números e underscore (_)
+                return regex.test(username);
             }
 
             $('input[name="username"]').on('keyup', function() {
@@ -225,10 +231,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (emojiRegex.test(username)) {
                     $(this).val(username.replace(emojiRegex, ''));
                 }
-                if (username.length >= 3) { 
-                    checkUsernameAvailability(username);
-                } else {
+                if (username === '') {
+                    $('.error-msg').hide(); // Esconder mensagem de erro quando o campo estiver vazio
                     $('.availability-icon').removeClass('disponivel indisponivel');
+                } else {
+                    if (validateUsername(username)) {
+                        $('.error-msg').hide();
+                        if (username.length >= 3) {
+                            checkUsernameAvailability(username);
+                        } else {
+                            $('.availability-icon').removeClass('disponivel indisponivel');
+                        }
+                    } else {
+                        $('.error-msg').show();
+                        $('.availability-icon').removeClass('disponivel indisponivel');
+                    }
                 }
             });
         });
