@@ -314,14 +314,12 @@
                 <label for="experienceInput">Tempo de Experiência no Meio Liberal</label>
                 <select class="form-select" id="experienceInput">
                     <option value="">Selecione...</option>
-                    <?php 
-                    $experienceOptions = ['1', '2', '3', '4', '5', '10+'];
-                    foreach ($experienceOptions as $option) {
-                        $label = $option == '1' ? '1 ano' : "$option anos";
-                        $selected = $user['experience'] == $option ? 'selected' : '';
-                        echo "<option value='$option' $selected>$label</option>";
-                    }
-                    ?>
+                    <option value="1 Ano">1 Ano</option>
+                    <option value="2 Anos">2 Anos</option>
+                    <option value="3 Anos">3 Anos</option>
+                    <option value="4 Ano4">4 Anos</option>
+                    <option value="5 Anos">5 Anos</option>
+                    <option value="10 Anos">10+ Anos</option>
                 </select>
 
                 <label for="descriptionInput">Descrição</label>
@@ -407,14 +405,12 @@
                 <label for="experiencePartner">Tempo de Experiência no Meio Liberal</label>
                 <select class="form-select" id="experiencePartner">
                     <option value="">Selecione...</option>
-                    <?php 
-                    $experienceOptions = ['1', '2', '3', '4', '5', '10+'];
-                    foreach ($experienceOptions as $option) {
-                        $label = $option == '1' ? '1 ano' : "$option anos";
-                        $selected = $user['experience'] == $option ? 'selected' : '';
-                        echo "<option value='$option' $selected>$label</option>";
-                    }
-                    ?>
+                    <option value="1 Ano">1 Ano</option>
+                    <option value="2 Anos">2 Anos</option>
+                    <option value="3 Anos">3 Anos</option>
+                    <option value="4 Ano4">4 Anos</option>
+                    <option value="5 Anos">5 Anos</option>
+                    <option value="10 Anos">10+ Anos</option>
                 </select>
 
                 <label for="descriptionInput">Descrição</label>
