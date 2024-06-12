@@ -59,6 +59,29 @@
     <script src="<?php echo $base_url; ?>assets/js/functions.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pica/5.0.0/pica.min.js"></script>
+    <script>
+        document.getElementById('interactButton').addEventListener('click', function() {
+            var username = this.getAttribute('data-username');
+            if (username) {
+                fetch('<?php echo $base_url; ?>api/addInteraction.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username: username })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = '<?php echo $base_url; ?>chat';
+                    } else {
+                        console.error(data.error);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        });
+    </script>
 
     <script>
         var modal = document.getElementById("photoModal");
@@ -139,28 +162,6 @@
                 };
             };
         }
-
-        document.getElementById('interactButton').addEventListener('click', function() {
-            var username = this.getAttribute('data-username');
-            if (username) {
-                fetch('<?php echo $base_url; ?>api/addInteraction.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ username: username })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        window.location.href = '<?php echo $base_url; ?>chat';
-                    } else {
-                        console.error(data.error);
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-            }
-        });
 
         function uploadImage(formData) {
             fetch('../api/uploadImage.php', {
