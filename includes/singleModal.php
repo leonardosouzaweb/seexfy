@@ -1,7 +1,7 @@
 <div class="modal-body">
 	<div class="headProfile">
 		<div class="avatar">
-			<img src="./assets/uploads/<?php echo $row["avatar"]; ?>">
+			<img src="./assets/uploads/users/<?php echo $row["username"]; ?>/<?php echo $row["avatar"]; ?>">
 		</div>
 		<div class="infoTitle">
 			<h3><?php echo $row["username"]; ?></h3>
