@@ -13,13 +13,13 @@
 
 .chatList .listUser img.navGoUser { width: 10px; height: auto; position: absolute; right: 0px; top: 30px; }
 
-.chat { display: none; background: pink; height: calc(100vh - 170px); max-height: calc(100vh - 170px);  }
+.chat { display: none; height: calc(100vh - 170px); max-height: calc(100vh - 170px);  }
 .chat .chatHeader { display: flex; align-items: center; gap: 20px; margin-top: 30px; border-bottom: 1px solid #f1f1f1; padding-bottom: 20px; }
 .chat .chatHeader p { margin:0; font-size: 18px; font-weight: 600; text-align: left;}
 .chat .chatHeader p small { display: block; font-size: 11px; color: rgba(0,0,0,0.5); }
 .chat .chatHeader img { width: 47px; border-radius: 50px; }
 
-.chat .chatMessage { }
+.chat .chatMessage { height: 75%; overflow-y: scroll; max-height: 75%; }
 .chat .chatMessage .user1 { background: #fff; padding: 10px 15px; width: 70%; margin-top: 20px; border-radius: 10px; position: relative; }
 .chat .chatMessage .user1 p { font-size: 13px; margin-bottom: 0px; }
 .chat .chatMessage .user1 p small { font-size: 10px; font-weight: 600; margin-top: 5px; display: block; text-align: right; }
@@ -32,5 +32,5 @@
 .chat .chatMessage .user2 .reactions { display: none; position: absolute; }
 .chat .chatMessage .user2 .reactions button { background: #fff; border: 2px solid #f1f1f1; padding: 0px 7px; font-size: 13px; border-radius: 20px; margin: 0px 1px; }
 
-.chat .sendMessage { margin-top: 30px; }
+.chat .sendMessage { position: absolute; bottom: 0; width: 90%; }
  

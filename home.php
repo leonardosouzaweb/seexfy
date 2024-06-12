@@ -55,12 +55,12 @@ $stmt->close();
     <script src="<?php echo htmlspecialchars($base_url, ENT_QUOTES, 'UTF-8'); ?>assets/js/functions.js"></script>
     <script>
         function adjustWrapperHeight() {
-        const wrapper = document.querySelector('.home .wrapper');
-        const topMenuHeight = document.querySelector('.home .topMenu').offsetHeight;
-        const bottomMenuHeight = document.querySelector('.home .bottomMenu').offsetHeight;
-        const viewportHeight = window.innerHeight;
+            const wrapper = document.querySelector('.home .wrapper');
+            const topMenuHeight = document.querySelector('.home .topMenu').offsetHeight;
+            const bottomMenuHeight = document.querySelector('.home .bottomMenu').offsetHeight;
+            const viewportHeight = window.innerHeight;
 
-        wrapper.style.height = `${viewportHeight - topMenuHeight - bottomMenuHeight}px`;
+            wrapper.style.height = `${viewportHeight - topMenuHeight - bottomMenuHeight}px`;
         }
 
         // Ajustar a altura ao carregar a página e ao redimensionar a janela
