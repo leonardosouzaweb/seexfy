@@ -37,7 +37,22 @@ $user = $result->fetch_assoc();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            function iniciarInteracao(username, receiverId, receiverAvatar) {
+            function iniciarInteracao(username, receiverId) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'api/getUserInfo.php?id=' + receiverId, true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        var userData = JSON.parse(xhr.responseText);
+                        var receiverAvatar = userData.avatar;
+                        exibirAvatar(username, receiverAvatar);
+                    } else {
+                        console.log("Erro ao buscar informações do usuário. Status: " + xhr.status);
+                    }
+                };
+                xhr.send();
+            }
+
+            function exibirAvatar(username, receiverAvatar) {
                 var chatHeader = document.querySelector('.chatHeader');
                 chatHeader.innerHTML = `
                     <img src="<?php echo $base_url; ?>assets/uploads/users/${username}/${receiverAvatar}">
@@ -45,8 +60,6 @@ $user = $result->fetch_assoc();
                 `;
                 document.querySelector('.chatList').style.display = 'none';
                 document.querySelector('.chat').style.display = 'block';
-
-                document.getElementById('receiverId').value = receiverId;
 
                 carregarMensagens();
             }
@@ -57,8 +70,7 @@ $user = $result->fetch_assoc();
                     event.preventDefault();
                     var username = link.dataset.username;
                     var receiverId = link.dataset.userid;
-                    var receiverAvatar = link.dataset.avatar; // Adicionado
-                    iniciarInteracao(username, receiverId, receiverAvatar);
+                    iniciarInteracao(username, receiverId);
                 });
             });
 
