@@ -1,6 +1,6 @@
 @media only screen and (max-width:899px) {
-    .home { width: 100%; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .home .wrapper { width: 899px; height: calc(100vh - 50px); align-items: center;  position: relative; overflow: hidden; } 
+    .home { width: 100%; display: flex; align-items: center; justify-content: center; }
+    .home .wrapper { width: 899px; align-items: center; position: relative; } 
     .home .wrapper .topMenu { margin-top:-1px; position:fixed; gap: 20px; height:50px; padding: 7px 20px; display: flex; width: 100%; z-index: 3; border: 0px solid #e3e3e3 !important; background-color: #fff; box-shadow: 0 0 16px 4px rgba(0, 0, 0, 0.09); }
     .home .wrapper .topMenu .overlay { background: rgba(0,0,0,0.8); width: 100%; position: absolute; height: 70vh; left: 0; top: 300px; }
     .home .wrapper .topMenu .menu img { width: 22px; margin-top: 7px; opacity: 0.6; }

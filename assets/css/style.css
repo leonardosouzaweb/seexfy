@@ -10,7 +10,6 @@
 @import url('../css/pages/radar.css');
 @import url('../css/pages/profile.css');
 @import url('../css/pages/chat.css');
-@import url('../css/pages/onboard.css');
 
 * { font-family: "Montserrat", sans-serif !important; touch-action: manipulation; }
 body { background:#f9f9f9 !important; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }

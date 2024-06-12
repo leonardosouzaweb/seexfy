@@ -2,7 +2,7 @@
     <div>
         <form id="avatarUploadForm" enctype="multipart/form-data">
             <div class="avatarProfile">
-                <img src="<?php echo $base_url; ?>assets/uploads/<?php echo ($user['avatar']); ?>" id="avatarImage">
+                <img src="<?php echo $base_url; ?>assets/uploads/users/<?php echo ($user['username']); ?>/<?php echo ($user['avatar']); ?>" id="avatarImage">
                 <?php if ($isOwner): ?>
                 <input type="file" id="avatarInput" name="avatar" style="display:none;">
                 <img src="<?php echo $base_url; ?>assets/images/icons/icCamera.svg" class="upload" id="uploadIcon">

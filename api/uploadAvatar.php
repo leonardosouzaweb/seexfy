@@ -32,7 +32,7 @@ if (isset($_FILES['avatar']) && isset($_SESSION['user_id'])) {
     $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
     if (in_array($fileExtension, $allowedfileExtensions)) {
         // Cria o diretório do usuário se não existir
-        $uploadBaseDir = '../assets/uploads/';
+        $uploadBaseDir = '../assets/uploads/users/';
         $userDir = $uploadBaseDir . $username . '/';
         if (!file_exists($userDir)) {
             mkdir($userDir, 0777, true);

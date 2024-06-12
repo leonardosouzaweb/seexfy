@@ -7,7 +7,7 @@
         echo '<div class="scroll">';
         while ($row = $result->fetch_assoc()) {
             echo '<div class="user" data-id="' . $row["id"] . '">';
-            echo '<img src="'. $base_url .'assets/uploads/' . $row["avatar"] . '">';
+            echo '<img src="'. $base_url .'assets/uploads/users/' . $row["username"] . '/'. $row["avatar"] . '">';
             echo '<div class="info">';
             echo '<span>' . $row["username"] . '</span>';
             echo '<small>' . $row["city"] . '</small>';
