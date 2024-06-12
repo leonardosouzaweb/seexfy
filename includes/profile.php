@@ -76,7 +76,7 @@
                     }
                     echo '</div>';
                 } else {
-                    echo '<p>O usuário não possui fotos.</p>';
+                    echo '<p>Você não publicou nenhuma foto!</p>';
                 }
             ?>
             </div>
@@ -250,6 +250,7 @@
 
                 <label for="orientationInput">Orientação Sexual</label>
                 <select class="form-select" id="orientationInput">
+                    <option value="">Selecione...</option>
                     <?php 
                     $orientations = ['Heterossexual', 'Homossexual', 'Bissexual', 'Assexual', 'Pansexual'];
                     foreach ($orientations as $orientation) {
@@ -261,6 +262,7 @@
 
                 <label for="signInput">Signo</label>
                 <select class="form-select" id="signInput">
+                    <option value="">Selecione...</option>
                     <?php 
                     $signs = ['Áries', 'Touro', 'Gêmeos', 'Câncer', 'Leão', 'Virgem', 'Libra', 'Escorpião', 'Sagitário', 'Capricórnio', 'Aquário', 'Peixes'];
                     foreach ($signs as $sign) {
@@ -283,6 +285,7 @@
                     <div>
                         <label for="smokesInput">Fuma</label>
                         <select class="form-select" id="smokesInput">
+                            <option value="">Selecione...</option>
                             <?php 
                             $smokesOptions = ['Sim', 'Não'];
                             foreach ($smokesOptions as $option) {
@@ -296,6 +299,7 @@
                     <div>
                         <label for="drinkInput">Bebe</label>
                         <select class="form-select" id="drinkInput">
+                            <option value="">Selecione...</option>
                             <?php 
                             $drinkOptions = ['Sim', 'Não'];
                             foreach ($drinkOptions as $option) {
@@ -309,6 +313,7 @@
 
                 <label for="experienceInput">Tempo de Experiência no Meio Liberal</label>
                 <select class="form-select" id="experienceInput">
+                    <option value="">Selecione...</option>
                     <?php 
                     $experienceOptions = ['1', '2', '3', '4', '5', '10+'];
                     foreach ($experienceOptions as $option) {
@@ -322,7 +327,7 @@
                 <label for="descriptionInput">Descrição</label>
                 <textarea class="form-control" id="descriptionInput"><?php echo ($user['description']); ?></textarea>
 
-                <button onclick="saveUserData()">Salvar</button>
+                <button id="saveButton" onclick="saveUserData()" disabled>Salvar</button>
             </div>
         </div>
     </div>
@@ -338,6 +343,7 @@
 
                 <label for="sexualOrientationPartner">Orientação Sexual</label>
                 <select class="form-select" id="sexualOrientationPartner">
+                    <option value="">Selecione...</option>
                     <?php 
                     $orientations = ['Heterossexual', 'Homossexual', 'Bissexual', 'Assexual', 'Pansexual'];
                     foreach ($orientations as $orientation) {
@@ -349,6 +355,7 @@
 
                 <label for="signPartner">Signo</label>
                 <select class="form-select" id="signPartner">
+                    <option value="">Selecione...</option>
                     <?php 
                     $signs = ['Áries', 'Touro', 'Gêmeos', 'Câncer', 'Leão', 'Virgem', 'Libra', 'Escorpião', 'Sagitário', 'Capricórnio', 'Aquário', 'Peixes'];
                     foreach ($signs as $sign) {
@@ -371,6 +378,7 @@
                     <div>
                         <label for="smokesPartner">Fuma</label>
                         <select class="form-select" id="smokesPartner">
+                            <option value="">Selecione...</option>
                             <?php 
                             $smokesOptions = ['Sim', 'Não'];
                             foreach ($smokesOptions as $option) {
@@ -384,6 +392,7 @@
                     <div>
                         <label for="drinkPartner">Bebe</label>
                         <select class="form-select" id="drinkPartner">
+                            <option value="">Selecione...</option>
                             <?php 
                             $drinkOptions = ['Sim', 'Não'];
                             foreach ($drinkOptions as $option) {
@@ -397,6 +406,7 @@
 
                 <label for="experiencePartner">Tempo de Experiência no Meio Liberal</label>
                 <select class="form-select" id="experiencePartner">
+                    <option value="">Selecione...</option>
                     <?php 
                     $experienceOptions = ['1', '2', '3', '4', '5', '10+'];
                     foreach ($experienceOptions as $option) {
@@ -410,7 +420,7 @@
                 <label for="descriptionInput">Descrição</label>
                 <textarea class="form-control" id="descriptionInput"><?php echo ($user['description']); ?></textarea>
 
-                <button onclick="saveUserData()">Salvar</button>
+                <button id="saveButtonPartner" onclick="saveUserPartner()" disabled>Salvar</button>
             </div>
         </div>
     </div>

@@ -303,7 +303,58 @@
             console.log("DataPartner: " + dataPartner);
             xhr.send(dataPartner);
         }
-        
+
+        // Função para verificar se todos os campos estão preenchidos para o usuário
+        function checkFieldsUser() {
+            var age = document.getElementById("ageInput").value;
+            var orientation = document.getElementById("orientationInput").value;
+            var sign = document.getElementById("signInput").value;
+            var height = document.getElementById("heightInput").value;
+            var smokes = document.getElementById("smokesInput").value;
+            var drink = document.getElementById("drinkInput").value;
+            var experience = document.getElementById("experienceInput").value;
+            var description = document.getElementById("descriptionInput").value;
+
+            var allFilled = age && orientation && sign && height && smokes && drink && experience && description;
+
+            var saveButton = document.getElementById("saveButton");
+            saveButton.disabled = !allFilled;
+        }
+
+        // Função para verificar se todos os campos estão preenchidos para o parceiro
+        function checkFieldsPartner() {
+            var agePartner = document.getElementById("ageInputPartner").value;
+            var sexualOrientationPartner = document.getElementById("sexualOrientationPartner").value;
+            var signPartner = document.getElementById("signInputPartner").value;
+            var heightPartner = document.getElementById("heightInputPartner").value;
+            var smokesPartner = document.getElementById("smokesInputPartner").value;
+            var drinkPartner = document.getElementById("drinkInputPartner").value;
+            var experiencePartner = document.getElementById("experienceInputPartner").value;
+
+            var allFilled = agePartner && sexualOrientationPartner && signPartner && heightPartner && smokesPartner && drinkPartner && experiencePartner;
+
+            var saveButton = document.getElementById("saveButtonPartner");
+            saveButton.disabled = !allFilled;
+        }
+
+        // Adicione listeners para chamar a função checkFields() sempre que houver uma mudança nos campos
+        document.getElementById("ageInput").addEventListener("input", checkFieldsUser);
+        document.getElementById("orientationInput").addEventListener("input", checkFieldsUser);
+        document.getElementById("signInput").addEventListener("input", checkFieldsUser);
+        document.getElementById("heightInput").addEventListener("input", checkFieldsUser);
+        document.getElementById("smokesInput").addEventListener("input", checkFieldsUser);
+        document.getElementById("drinkInput").addEventListener("input", checkFieldsUser);
+        document.getElementById("experienceInput").addEventListener("input", checkFieldsUser);
+        document.getElementById("descriptionInput").addEventListener("input", checkFieldsUser);
+
+        document.getElementById("ageInputPartner").addEventListener("input", checkFieldsPartner);
+        document.getElementById("sexualOrientationPartner").addEventListener("input", checkFieldsPartner);
+        document.getElementById("signInputPartner").addEventListener("input", checkFieldsPartner);
+        document.getElementById("heightInputPartner").addEventListener("input", checkFieldsPartner);
+        document.getElementById("smokesInputPartner").addEventListener("input", checkFieldsPartner);
+        document.getElementById("drinkInputPartner").addEventListener("input", checkFieldsPartner);
+        document.getElementById("experienceInputPartner").addEventListener("input", checkFieldsPartner);
+
     </script>
 </body>
 </html>
