@@ -34,10 +34,7 @@
 
 <div class="chat">
     <div class="chatHeader"></div>
-
-    <div class="chatMessage">
-        aa
-    </div>
+    <div class="chatMessage"></div>
     <div class="sendMessage">
         <form id="messageForm">
             <input type="hidden" id="receiverId" value="">
