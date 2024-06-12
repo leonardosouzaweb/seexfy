@@ -87,8 +87,7 @@ $user = $result->fetch_assoc();
                     if (xhr.status === 200) {
                         console.log("Mensagens carregadas com sucesso!");
                         document.querySelector('.chatMessage').innerHTML = xhr.responseText;
-                        // Próximo carregamento após 3 segundos (3000 milissegundos)
-                        setTimeout(carregarMensagens, 3000);
+                        // setTimeout(carregarMensagens, 3000);
                     } else {
                         console.log("Erro ao carregar mensagens. Status: " + xhr.status);
                         // Tentar novamente após 5 segundos em caso de erro
