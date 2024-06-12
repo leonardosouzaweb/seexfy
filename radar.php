@@ -24,13 +24,9 @@
     <div class="empty">
         <img src="<?php echo $base_url; ?>assets/images/logo.svg">
     </div>
-
+    <?php include_once 'includes/topMenu.php'; ?>
     <div class="home">
         <div class="wrapper">
-            <?php 
-                include_once 'includes/topMenu.php';
-            ?>
-
             <div class="content">
                 <div class="radar">
                     <img src="<?php echo $base_url; ?>assets/images/icons/IconRadar2x.svg">
@@ -39,12 +35,9 @@
                     <button id="activeLocation">Ativar localização</button>
                 </div>
             </div>
-
-            <?php 
-                include_once 'includes/bottomMenu.php';
-            ?>
         </div>
     </div>
+    <?php include_once 'includes/bottomMenu.php'; ?>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

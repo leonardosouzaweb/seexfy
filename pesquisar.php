@@ -25,24 +25,17 @@
     <div class="empty">
         <img src="<?php echo $base_url; ?>assets/images/logo.svg">
     </div>
-
+    <?php include_once 'includes/topMenu.php'; ?>
     <div class="home">
         <div class="wrapper">
-            <?php 
-                include_once 'includes/topMenu.php';
-            ?>
-
             <div class="content">
                 <h1>Pesquisar</h1>
                 <input type="text" id="searchInput" class="form-control" placeholder="Buscar perfil...">
                 <div id="searchResults"></div>
             </div>
-
-            <?php 
-                include_once 'includes/bottomMenu.php';
-            ?>
         </div>
     </div>
+    <?php include_once 'includes/bottomMenu.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo $base_url; ?>assets/js/functions.js"></script>
     <script>

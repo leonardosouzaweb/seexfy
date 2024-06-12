@@ -1,23 +1,21 @@
 @media only screen and (max-width:899px) {
-    .home { width: 100%; display: flex; align-items: center; justify-content: center; }
-    .home .wrapper { width: 899px; align-items: center; position: relative; } 
-    .home .wrapper .topMenu { margin-top:-1px; position:fixed; gap: 20px; height:50px; padding: 7px 20px; display: flex; width: 100%; z-index: 3; border: 0px solid #e3e3e3 !important; background-color: #fff; box-shadow: 0 0 16px 4px rgba(0, 0, 0, 0.09); }
-    .home .wrapper .topMenu .overlay { background: rgba(0,0,0,0.8); width: 100%; position: absolute; height: 70vh; left: 0; top: 300px; }
-    .home .wrapper .topMenu .menu img { width: 22px; margin-top: 7px; opacity: 0.6; }
-    .home .wrapper .topMenu .menu ul { list-style: none; background: #fff; width: 100%; position: absolute; left: 0; padding: 0px 20px 0px 20px; top: 50px; z-index: 1; display: none; }
-    .home .wrapper .topMenu .menu ul li { line-height: 45px; font-size: 17px; font-weight: 500; }
-    .home .wrapper .topMenu .menu ul li:first-child { margin-top: 10px; }
-    .home .wrapper .topMenu .menu ul li:last-child { margin-bottom: 15px; }
+    .topMenu { margin-top:-1px; position:fixed; gap: 20px; height:50px; padding: 7px 20px; display: flex; width: 100%; z-index: 3; border: 0px solid #e3e3e3 !important; background-color: #fff; box-shadow: 0 0 16px 4px rgba(0, 0, 0, 0.09); }
+    .topMenu .overlay { background: rgba(0,0,0,0.8); width: 100%; position: absolute; height: 70vh; left: 0; top: 300px; }
+    .topMenu .menu img { width: 22px; margin-top: 7px; opacity: 0.6; }
+    .topMenu .menu ul { list-style: none; background: #fff; width: 100%; position: absolute; left: 0; padding: 0px 20px 0px 20px; top: 50px; z-index: 1; display: none; }
+    .topMenu .menu ul li { line-height: 45px; font-size: 17px; font-weight: 500; }
+    .topMenu .menu ul li:first-child { margin-top: 10px; }
+    .topMenu .menu ul li:last-child { margin-bottom: 15px; }
 
-    .home .wrapper .topMenu .logo img { width: 100px; }
+    .topMenu .logo img { width: 100px; }
 
-    .home .wrapper .topMenu .nav { display: flex; align-items: center; gap: 25px; margin-left: auto; }
-    .home .wrapper .topMenu .nav .avatar { width: 20px !important; height: 25px !important; }
-    .home .wrapper .topMenu .nav .avatar img { width: 100%; height: 22px !important; object-fit: cover; }
+    .topMenu .nav { display: flex; align-items: center; gap: 25px; margin-left: auto; }
+    .topMenu .nav .avatar { width: 20px !important; height: 25px !important; }
+    .topMenu .nav .avatar img { width: 100%; height: 22px !important; object-fit: cover; }
 
-    .home .wrapper .bottomMenu { background: #000; width: 100%; height: 50px; position: fixed; bottom: 0; left:0; right: 0; margin: 0 auto;  z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 20px;  }
-    .home .wrapper .bottomMenu div { position: relative; width: 25%; }
-    .home .wrapper .bottomMenu div.active:after { background: #000; border-radius: 50px; content: ''; width: 50px; height: 50px; position: absolute; top: -20px; left: 0; right: 0; margin: 0 auto; }
-    .home .wrapper .bottomMenu div.active img { margin: 0 auto; display: block; position: relative; z-index: 1; opacity: 1; }
-    .home .wrapper .bottomMenu div img { margin: 0 auto; display: block; position: relative; z-index: 1; opacity: 0.5; width: 23px; }
+    .bottomMenu { background: #000; width: 100%; height: 50px; position: fixed; bottom: 0; left:0; right: 0; margin: 0 auto;  z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 20px;  }
+    .bottomMenu div { position: relative; width: 25%; }
+    .bottomMenu div.active:after { background: #000; border-radius: 50px; content: ''; width: 50px; height: 50px; position: absolute; top: -20px; left: 0; right: 0; margin: 0 auto; }
+    .bottomMenu div.active img { margin: 0 auto; display: block; position: relative; z-index: 1; opacity: 1; }
+    .bottomMenu div img { margin: 0 auto; display: block; position: relative; z-index: 1; opacity: 0.5; width: 23px; }
 }

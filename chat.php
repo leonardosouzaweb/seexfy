@@ -22,18 +22,19 @@ $user = $result->fetch_assoc();
     <div class="empty">
         <img src="<?php echo $base_url; ?>assets/images/logo.svg">
     </div>
+    <?php include_once 'includes/topMenu.php'; ?>
     <div class="home">
         <div class="wrapper">
-            <?php include_once 'includes/topMenu.php'; ?>
+            
             <div class="content">
-                <h1>Chat</h1>
+                <h2>Chat</h2>
                 <div class="chatContainer">
                     <?php include_once 'includes/chat.php'; ?>
                 </div>
             </div>
-            <?php include_once 'includes/bottomMenu.php'; ?>
         </div>
     </div>
+    <?php include_once 'includes/bottomMenu.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {

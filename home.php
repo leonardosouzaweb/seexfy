@@ -31,26 +31,18 @@ $stmt->close();
     <div class="empty">
         <img src="<?php echo htmlspecialchars($base_url, ENT_QUOTES, 'UTF-8'); ?>assets/images/logo.svg">
     </div>
-
+    <?php include_once 'includes/topMenu.php'; ?>
     <div class="home">
         <div class="wrapper">
-            <?php 
-                include_once 'includes/topMenu.php';
-            ?>
-
             <div class="content">
                 <h2>Explorar</h2>
                 <?php 
                     include_once 'includes/explore.php';
                 ?>
             </div>
-
-            <?php 
-                include_once 'includes/bottomMenu.php';
-            ?>
         </div>
     </div>
-    <!-- END -->
+    <?php include_once 'includes/bottomMenu.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo htmlspecialchars($base_url, ENT_QUOTES, 'UTF-8'); ?>assets/js/functions.js"></script>
 </body>
