@@ -33,7 +33,7 @@
 .chat .chatMessage .user2 .reactions { display: none; position: absolute; }
 .chat .chatMessage .user2 .reactions button { background: #fff; border: 2px solid #f1f1f1; padding: 0px 7px; font-size: 13px; border-radius: 20px; margin: 0px 1px; }
 
-.chat .sendMessage { position: fixed; bottom: 50px; width: 100%; background: black; left: 0; padding: 15px 10px; border-bottom: 2px solid #424242; }
+.chat .sendMessage { position: fixed; z-index:3; bottom: 0px; width: 100%; background: black; left: 0; padding: 15px 10px; border-bottom: 2px solid #424242; }
 .chat .sendMessage form { width: 100%; display: flex; align-items: center; gap: 20px; }
 .chat .sendMessage form button { background: #e74c3c; border: none; color: #fff; font-weight: bold; padding: 9px 20px; border-radius: 15px; }
  
