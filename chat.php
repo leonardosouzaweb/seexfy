@@ -105,6 +105,18 @@ $user = $result->fetch_assoc();
 
             // Inicia o carregamento das mensagens assim que a página é carregada
             carregarMensagens();
+
+            function adjustWrapperHeight() {
+        const wrapper = document.querySelector('.home .wrapper');
+        const topMenuHeight = document.querySelector('.home .topMenu').offsetHeight;
+        const bottomMenuHeight = document.querySelector('.home .bottomMenu').offsetHeight;
+        const viewportHeight = window.innerHeight;
+
+        wrapper.style.height = `${viewportHeight - topMenuHeight - bottomMenuHeight}px`;
+        }
+
+        // Ajustar a altura ao carregar a página e ao redimensionar a janela
+        window.addEventListener('load', adjustWrapperHeight);
         });
     </script>
 </body>
