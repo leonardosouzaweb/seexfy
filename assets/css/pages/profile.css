@@ -1,5 +1,4 @@
 @media only screen and (max-width:899px) {
-    .home .content { padding: 0px 20px; }
     .home .content .headProfile { width: 100%; display: flex; align-items: center; margin-bottom: 5px; gap: 20px; border-bottom: 1px solid #e8e8e8; padding-bottom: 20px;}
     .home .content .headProfile div:nth-child(1) { width: 80%; display: flex; gap: 10px; }
     .home .content .headProfile div:nth-child(1) .avatarProfile { width: 100%; position: relative; }
