@@ -52,7 +52,6 @@
         <form id="messageForm">
             <input type="hidden" id="receiverId" value="">
             <input type="text" id="messageInput" class="form-control" placeholder="Digite sua mensagem">
-            <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
 </div>
