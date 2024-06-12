@@ -1,44 +1,58 @@
+<?php
+    $sqlInteractions = "SELECT u.id, u.username, u.maritalStatus, u.avatar FROM interactions i JOIN users u ON i.interacted_user_id = u.id WHERE i.user_id = ?";
+    $stmtInteractions = $conn->prepare($sqlInteractions);
+    $stmtInteractions->bind_param("i", $user_id);
+    $stmtInteractions->execute();
+    $resultInteractions = $stmtInteractions->get_result();
+    $interactions = $resultInteractions->fetch_all(MYSQLI_ASSOC);
+
+    // Buscar as mensagens trocadas entre os usuários
+    $sqlMessages = "SELECT * FROM messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY sent_at ASC";
+    $stmtMessages = $conn->prepare($sqlMessages);
+    $stmtMessages->bind_param("iiii", $_SESSION['user_id'], $receiver_id, $receiver_id, $_SESSION['user_id']);
+    $stmtMessages->execute();
+    $resultMessages = $stmtMessages->get_result();
+    $messages = $resultMessages->fetch_all(MYSQLI_ASSOC);
+?>
 <div class="chatList">
+<?php foreach ($interactions as $interaction): ?>
     <div class="listUser">
         <div>
             <div class="listAvatar">
-                <img src="http://localhost/seexfy/assets/uploads/defaultAvatar.svg">
+                <img src="<?php echo $base_url; ?>assets/uploads/<?php echo $interaction['avatar']; ?>">
             </div>
             <div class="listInfo">
-                <span>Leo <small>Solteiro</small></span>
+                <span><?php echo $interaction['username']; ?> <small><?php echo $interaction['maritalStatus']; ?></small></span>
             </div>
         </div>
-        <a href="./perfil/Leo"><img src="http://localhost/seexfy/assets/images/icons/iconNavProfile.svg" class="navGoUser" id="startChat"></a>
+        <a href="#" class="navGoUser" data-username="<?php echo $interaction['username']; ?>" data-userid="<?php echo $interaction['id']; ?>">
+            <img src="<?php echo $base_url; ?>assets/images/icons/iconNavProfile.svg">
+        </a>
     </div>
+<?php endforeach; ?>
 </div>
 
 <div class="chat">
-    <div class="chatHeader">
-        <img src="http://localhost/seexfy/assets/uploads/defaultAvatar.svg">
-        <p>Leo <small>Solteiro / Offline</small></p>
-        <!-- <img src="assets/images/icons/icClose.svg"> -->
-    </div>
+    <div class="chatHeader"></div>
 
     <div class="chatMessage">
-        <div class="user1">
-            <p>Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
-            <small>21:30</small></p>
-            <div class="reactions">
-                <button>😂</button>
-                <button>😍</button>
-                <button>😲</button>
+    <?php foreach ($messages as $message): ?>
+        <?php if ($message['sender_id'] == $_SESSION['user_id']): ?>
+            <div class="user1">
+                <p><?php echo $message['message']; ?> <small><?php echo $message['sent_at']; ?></small></p>
             </div>
-        </div>
-        <div class="user2">
-            <p>Isso é uma resposta de teste <small>21:30</small></p>
-            <div class="reactions">
-                <button>😂</button>
-                <button>😍</button>
-                <button>😲</button>
+        <?php else: ?>
+            <div class="user2">
+                <p><?php echo $message['message']; ?> <small><?php echo $message['sent_at']; ?></small></p>
             </div>
-        </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
     </div>
     <div class="sendMessage">
-        <input type="text" class="form-control" placeholder="Digite sua mensagem">
+        <form id="messageForm">
+            <input type="hidden" id="receiverId" value="">
+            <input type="text" id="messageInput" class="form-control" placeholder="Digite sua mensagem">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
     </div>
 </div>

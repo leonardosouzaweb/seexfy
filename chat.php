@@ -1,23 +1,21 @@
 <?php
-    include_once 'includes/head.php';
-    session_start(); 
+include_once 'includes/head.php';
+session_start(); 
 
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: ./entrar");
-        exit(); 
-    }
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ./entrar");
+    exit(); 
+}
 
-    include_once 'config/db.php';
+include_once 'config/db.php';
 
-    $user_id = $_SESSION['user_id'];
-    $sqlUser = "SELECT maritalStatus, username, avatar FROM users WHERE id = ?";
-    $stmt = $conn->prepare($sqlUser);
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-
-    $conn->close();
+$user_id = $_SESSION['user_id'];
+$sqlUser = "SELECT maritalStatus, username, avatar FROM users WHERE id = ?";
+$stmt = $conn->prepare($sqlUser);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
 ?>
 
 <body>
@@ -29,7 +27,9 @@
             <?php include_once 'includes/topMenu.php'; ?>
             <div class="content">
                 <h1>Chat</h1>
-                <?php include_once 'includes/chat.php'; ?>
+                <div class="chatContainer">
+                    <?php include_once 'includes/chat.php'; ?>
+                </div>
             </div>
             <?php include_once 'includes/bottomMenu.php'; ?>
         </div>
@@ -37,61 +37,74 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var startChatBtn = document.getElementById('startChat');
-            var chatList = document.querySelector('.chatList');
-            var chat = document.querySelector('.chat');
+            function iniciarInteracao(username, receiverId) {
+                var chatHeader = document.querySelector('.chatHeader');
+                chatHeader.innerHTML = `
+                    <img src="<?php echo $base_url; ?>assets/uploads/defaultAvatar.svg">
+                    <p>${username} <small>Solteiro / Offline</small></p>
+                `;
+                document.querySelector('.chatList').style.display = 'none';
+                document.querySelector('.chat').style.display = 'block';
 
-            startChatBtn.addEventListener('click', function(event) {
-                event.preventDefault();
+                document.getElementById('receiverId').value = receiverId;
 
-                chatList.style.display = 'none';
-                chat.style.display = 'block';
-            });
+                carregarMensagens();
+            }
 
-            // Função para adicionar evento de clique nas divs user1 e user2
-        function addReactionDisplayEvent() {
-            var user1 = document.querySelector('.user1');
-            var user2 = document.querySelector('.user2');
-
-            // Adiciona evento de clique na div user1
-            user1.addEventListener('click', function() {
-                var reactions = this.querySelector('.reactions');
-                reactions.style.display = "block";
-            });
-
-            // Adiciona evento de clique na div user2
-            user2.addEventListener('click', function() {
-                var reactions = this.querySelector('.reactions');
-                reactions.style.display = "block";
-            });
-        }
-
-        // Função para adicionar evento de clique nas reações
-        function addReactionClickEvent() {
-            var reactionButtons = document.querySelectorAll('.reactions button');
-
-            reactionButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    // Esconde todas as reações
-                    var allReactions = document.querySelectorAll('.reactions');
-                    allReactions.forEach(function(reaction) {
-                        reaction.style.display = "none";
-                    });
-
-                    // Remove a classe 'selected' de todas as reações
-                    reactionButtons.forEach(function(btn) {
-                        btn.classList.remove('selected');
-                    });
-
-                    // Adiciona a classe 'selected' apenas à reação clicada
-                    this.classList.add('selected');
+            var profileLinks = document.querySelectorAll('.navGoUser');
+            profileLinks.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var username = link.dataset.username;
+                    var receiverId = link.dataset.userid;
+                    iniciarInteracao(username, receiverId);
                 });
             });
-        }
 
-        // Chama a função para adicionar os eventos quando o DOM estiver carregado
-        addReactionDisplayEvent();
-        addReactionClickEvent();
+            document.getElementById('messageForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var messageInput = document.getElementById('messageInput').value;
+                var receiverId = document.getElementById('receiverId').value;
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'api/messages.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        document.getElementById('messageInput').value = '';
+                        carregarMensagens();
+                    }
+                };
+                xhr.send('message=' + encodeURIComponent(messageInput) + '&receiver_id=' + encodeURIComponent(receiverId));
+            });
+
+            function carregarMensagens() {
+                var receiverId = document.getElementById('receiverId').value;
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'api/loadMessages.php?receiver_id=' + encodeURIComponent(receiverId), true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        console.log("Mensagens carregadas com sucesso!");
+                        document.querySelector('.chatMessage').innerHTML = xhr.responseText;
+                        // Próximo carregamento após 3 segundos (3000 milissegundos)
+                        setTimeout(carregarMensagens, 3000);
+                    } else {
+                        console.log("Erro ao carregar mensagens. Status: " + xhr.status);
+                        // Tentar novamente após 5 segundos em caso de erro
+                        setTimeout(carregarMensagens, 5000);
+                    }
+                };
+                xhr.onerror = function() {
+                    console.log("Erro de rede ao tentar carregar mensagens.");
+                    // Tentar novamente após 5 segundos em caso de erro de rede
+                    setTimeout(carregarMensagens, 5000);
+                };
+                xhr.send();
+            }
+
+            // Inicia o carregamento das mensagens assim que a página é carregada
+            carregarMensagens();
         });
     </script>
 </body>
