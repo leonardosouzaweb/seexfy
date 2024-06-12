@@ -41,7 +41,7 @@ $user = $result->fetch_assoc();
             function iniciarInteracao(username, receiverId) {
                 var chatHeader = document.querySelector('.chatHeader');
                 chatHeader.innerHTML = `
-                    <img src="<?php echo $base_url; ?>assets/uploads/defaultAvatar.svg">
+                    <img src="<?php echo $base_url; ?>assets/uploads/users/<?php echo $user['username']; ?>">
                     <p>${username} <small>Solteiro / Offline</small></p>
                 `;
                 document.querySelector('.chatList').style.display = 'none';
