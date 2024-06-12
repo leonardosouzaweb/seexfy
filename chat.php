@@ -38,30 +38,34 @@ $user = $result->fetch_assoc();
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             function iniciarInteracao(username, receiverId) {
+                console.log("Receiver ID:", receiverId);
+
+                var chatHeader = document.querySelector('.chatHeader');
+
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'api/getUserInfo.php?id=' + receiverId, true);
                 xhr.onload = function() {
                     if (xhr.status === 200) {
                         var userData = JSON.parse(xhr.responseText);
+                        console.log("UserData:", userData); 
                         var receiverAvatar = userData.avatar;
-                        exibirAvatar(username, receiverAvatar);
+
+                        var avatarUrl = "<?php echo $base_url; ?>assets/uploads/users/" + username + "/" + receiverAvatar;
+                        chatHeader.innerHTML = `
+                            <img src="${avatarUrl}">
+                            <p>${username} <small>Solteiro / Offline</small></p>
+                        `;
+
+                        document.querySelector('.chatList').style.display = 'none';
+                        document.querySelector('.chat').style.display = 'block';
+
+                        document.getElementById('receiverId').value = receiverId;
+                        carregarMensagens();
                     } else {
                         console.log("Erro ao buscar informações do usuário. Status: " + xhr.status);
                     }
                 };
                 xhr.send();
-            }
-
-            function exibirAvatar(username, receiverAvatar) {
-                var chatHeader = document.querySelector('.chatHeader');
-                chatHeader.innerHTML = `
-                    <img src="<?php echo $base_url; ?>assets/uploads/users/${username}/${receiverAvatar}">
-                    <p>${username} <small>Solteiro / Offline</small></p>
-                `;
-                document.querySelector('.chatList').style.display = 'none';
-                document.querySelector('.chat').style.display = 'block';
-
-                carregarMensagens();
             }
 
             var profileLinks = document.querySelectorAll('.navGoUser');
@@ -86,9 +90,8 @@ $user = $result->fetch_assoc();
                     if (xhr.status === 200) {
                         document.getElementById('messageInput').value = '';
                         carregarMensagens();
-                        // Fecha o teclado em dispositivos móveis
                         if (/Mobi|Android/i.test(navigator.userAgent)) {
-                            document.activeElement.blur(); // Remove o foco do elemento ativo
+                            document.activeElement.blur();
                         }
                     }
                 };
@@ -97,43 +100,27 @@ $user = $result->fetch_assoc();
 
             function carregarMensagens() {
                 var receiverId = document.getElementById('receiverId').value;
-
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'api/loadMessages.php?receiver_id=' + encodeURIComponent(receiverId), true);
                 xhr.onload = function() {
                     if (xhr.status === 200) {
                         console.log("Mensagens carregadas com sucesso!");
                         document.querySelector('.chatMessage').innerHTML = xhr.responseText;
-                        setTimeout(carregarMensagens, 3000);
+                        // setTimeout(carregarMensagens, 3000);
                     } else {
                         console.log("Erro ao carregar mensagens. Status: " + xhr.status);
-                        // Tentar novamente após 5 segundos em caso de erro
                         setTimeout(carregarMensagens, 5000);
                     }
                 };
                 xhr.onerror = function() {
                     console.log("Erro de rede ao tentar carregar mensagens.");
-                    // Tentar novamente após 5 segundos em caso de erro de rede
                     setTimeout(carregarMensagens, 5000);
                 };
                 xhr.send();
             }
 
-            // Inicia o carregamento das mensagens assim que a página é carregada
             carregarMensagens();
-
-            function adjustWrapperHeight() {
-                const wrapper = document.querySelector('.home .wrapper');
-                const topMenuHeight = document.querySelector('.home .topMenu').offsetHeight;
-                const bottomMenuHeight = document.querySelector('.home .bottomMenu').offsetHeight;
-                const viewportHeight = window.innerHeight;
-
-                wrapper.style.height = `${viewportHeight - topMenuHeight - bottomMenuHeight}px`;
-                }
-
-                // Ajustar a altura ao carregar a página e ao redimensionar a janela
-                window.addEventListener('load', adjustWrapperHeight);
-            });
+        });
     </script>
 </body>
 </html>
