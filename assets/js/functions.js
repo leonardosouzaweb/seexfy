@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     showStep(currentStep);
     
-    
 });
 
 function showStep(step) {
