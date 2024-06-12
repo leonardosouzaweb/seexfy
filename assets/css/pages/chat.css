@@ -13,7 +13,7 @@
 
 .chatList .listUser img.navGoUser { width: 10px; height: auto; position: absolute; right: 0px; top: 30px; }
 
-.chat { display: none; background: blue; height: calc(100vh - 170px); max-height: calc(100vh - 170px);  }
+.chat { display: none; background: pink; height: calc(100vh - 170px); max-height: calc(100vh - 170px);  }
 .chat .chatHeader { display: flex; align-items: center; gap: 20px; margin-top: 30px; border-bottom: 1px solid #f1f1f1; padding-bottom: 20px; }
 .chat .chatHeader p { margin:0; font-size: 18px; font-weight: 600; text-align: left;}
 .chat .chatHeader p small { display: block; font-size: 11px; color: rgba(0,0,0,0.5); }
