@@ -37,11 +37,10 @@ $user = $result->fetch_assoc();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            
-            function iniciarInteracao(username, receiverId) {
+            function iniciarInteracao(username, receiverId, receiverAvatar) {
                 var chatHeader = document.querySelector('.chatHeader');
                 chatHeader.innerHTML = `
-                    <img src="<?php echo $base_url; ?>assets/uploads/users/<?php echo $user['username']; ?>/<?php echo $user['avatar']; ?>">
+                    <img src="<?php echo $base_url; ?>assets/uploads/users/${username}/${receiverAvatar}">
                     <p>${username} <small>Solteiro / Offline</small></p>
                 `;
                 document.querySelector('.chatList').style.display = 'none';
@@ -58,7 +57,8 @@ $user = $result->fetch_assoc();
                     event.preventDefault();
                     var username = link.dataset.username;
                     var receiverId = link.dataset.userid;
-                    iniciarInteracao(username, receiverId);
+                    var receiverAvatar = link.dataset.avatar; // Adicionado
+                    iniciarInteracao(username, receiverId, receiverAvatar);
                 });
             });
 
