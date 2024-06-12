@@ -19,7 +19,7 @@
     <div class="listUser">
         <div>
             <div class="listAvatar">
-                <img src="<?php echo $base_url; ?>assets/uploads/users/<?php echo $interaction['username']; ?><?php echo $interaction['avatar']; ?>">
+                <img src="<?php echo $base_url; ?>assets/uploads/users/<?php echo $interaction['username']; ?>/<?php echo $interaction['avatar']; ?>">
             </div>
             <div class="listInfo">
                 <span><?php echo $interaction['username']; ?> <small><?php echo $interaction['maritalStatus']; ?></small></span>
