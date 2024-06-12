@@ -74,6 +74,10 @@ $user = $result->fetch_assoc();
                     if (xhr.status === 200) {
                         document.getElementById('messageInput').value = '';
                         carregarMensagens();
+                        // Fecha o teclado em dispositivos móveis
+                        if (/Mobi|Android/i.test(navigator.userAgent)) {
+                            document.activeElement.blur(); // Remove o foco do elemento ativo
+                        }
                     }
                 };
                 xhr.send('message=' + encodeURIComponent(messageInput) + '&receiver_id=' + encodeURIComponent(receiverId));
