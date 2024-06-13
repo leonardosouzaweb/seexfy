@@ -10,12 +10,10 @@ $resultLocationLoggedUser = $stmt->get_result();
 $locationLoggedUser = $resultLocationLoggedUser->fetch_assoc();
 $stmt->close();
 
-// Verificar se a localização do usuário logado está disponível
 if ($locationLoggedUser) {
     $latitudeLoggedUser = $locationLoggedUser['latitude'];
     $longitudeLoggedUser = $locationLoggedUser['longitude'];
 
-    // Consulta para obter usuários e a localização mais recente
     $sql = "SELECT u.id, u.username, u.city, u.maritalStatus, u.avatar, ul.latitude, ul.longitude
             FROM users u
             LEFT JOIN (
@@ -36,16 +34,10 @@ if ($locationLoggedUser) {
     $users = [];
 
     while ($row = $result->fetch_assoc()) {
-        $distance = "N/A"; // Valor padrão caso a localização não esteja disponível
+        $distance = "N/A";
         if ($row['latitude'] && $row['longitude']) {
-            // Calcula a distância usando a fórmula de Haversine
-            $theta = $longitudeLoggedUser - $row['longitude'];
-            $dist = sin(deg2rad($latitudeLoggedUser)) * sin(deg2rad($row['latitude'])) +  cos(deg2rad($latitudeLoggedUser)) * cos(deg2rad($row['latitude'])) * cos(deg2rad($theta));
-            $dist = acos($dist);
-            $dist = rad2deg($dist);
-            $miles = $dist * 60 * 1.1515;
-            $kilometers = $miles * 1.609344;
-            $distance = round($kilometers, 2);
+            $distance = haversineGreatCircleDistance($latitudeLoggedUser, $longitudeLoggedUser, $row['latitude'], $row['longitude']);
+            $distance = round($distance, 2) . ' km';
         }
         $row['distance'] = $distance;
         $users[] = $row;
@@ -53,7 +45,6 @@ if ($locationLoggedUser) {
     $stmt->close();
     $conn->close();
 
-    // Ordenar usuários pela distância
     usort($users, function($a, $b) {
         return $a['distance'] <=> $b['distance'];
     });
@@ -79,6 +70,22 @@ if ($locationLoggedUser) {
 } else {
     echo "<p>Localização do usuário logado não disponível</p>";
 }
+
+function haversineGreatCircleDistance($latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, $earthRadius = 6371) {
+    $latFrom = deg2rad($latitudeFrom);
+    $lonFrom = deg2rad($longitudeFrom);
+    $latTo = deg2rad($latitudeTo);
+    $lonTo = deg2rad($longitudeTo);
+
+    $latDelta = $latTo - $latFrom;
+    $lonDelta = $lonTo - $lonFrom;
+
+    $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
+      cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+    return $angle * $earthRadius;
+}
+?>
+
 ?>
 
 
