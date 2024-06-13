@@ -33,26 +33,40 @@ if ($locationLoggedUser) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        echo '<div class="scroll">';
-        while ($row = $result->fetch_assoc()) {
-            $distance = "N/A"; // Valor padrão caso a localização não esteja disponível
-            if ($row['latitude'] && $row['longitude']) {
-                // Calcula a distância usando a fórmula de Haversine
-                $theta = $longitudeLoggedUser - $row['longitude'];
-                $dist = sin(deg2rad($latitudeLoggedUser)) * sin(deg2rad($row['latitude'])) +  cos(deg2rad($latitudeLoggedUser)) * cos(deg2rad($row['latitude'])) * cos(deg2rad($theta));
-                $dist = acos($dist);
-                $dist = rad2deg($dist);
-                $miles = $dist * 60 * 1.1515;
-                $kilometers = $miles * 1.609344;
-                $distance = round($kilometers, 2) . ' km';
-            }
+    $users = [];
 
-            echo '<div class="user" data-id="' . $row["id"] . '">';
-            echo '<img src="'. $base_url .'assets/uploads/users/' . $row["username"] . '/'. $row["avatar"] . '">';
+    while ($row = $result->fetch_assoc()) {
+        $distance = "N/A"; // Valor padrão caso a localização não esteja disponível
+        if ($row['latitude'] && $row['longitude']) {
+            // Calcula a distância usando a fórmula de Haversine
+            $theta = $longitudeLoggedUser - $row['longitude'];
+            $dist = sin(deg2rad($latitudeLoggedUser)) * sin(deg2rad($row['latitude'])) +  cos(deg2rad($latitudeLoggedUser)) * cos(deg2rad($row['latitude'])) * cos(deg2rad($theta));
+            $dist = acos($dist);
+            $dist = rad2deg($dist);
+            $miles = $dist * 60 * 1.1515;
+            $kilometers = $miles * 1.609344;
+            $distance = round($kilometers, 2);
+        }
+        $row['distance'] = $distance;
+        $users[] = $row;
+    }
+    $stmt->close();
+    $conn->close();
+
+    // Ordenar usuários pela distância
+    usort($users, function($a, $b) {
+        return $a['distance'] <=> $b['distance'];
+    });
+
+    if (count($users) > 0) {
+        echo '<div class="scroll">';
+        foreach ($users as $user) {
+            echo '<div class="user" data-id="' . $user["id"] . '">';
+            echo '<img src="'. $base_url .'assets/uploads/' . $user["avatar"] . '">';
             echo '<div class="info">';
-            echo '<span>' . $row["username"] . '</span>';
-            echo '<small>Distância: ' . $distance . '</small>';
+            echo '<span>' . $user["username"] . '</span>';
+            echo '<small>' . $user["city"] . '</small>';
+            echo '<small>Distância: ' . $user['distance'] . ' km</small>';
             echo '</div>';
             echo '<div class="mask"></div>';
             echo '</div>';
@@ -66,6 +80,7 @@ if ($locationLoggedUser) {
     echo "<p>Localização do usuário logado não disponível</p>";
 }
 ?>
+
 
 <div id="customModal" class="modal">
 	<div class="modal-dialog modal-dialog-centered">
