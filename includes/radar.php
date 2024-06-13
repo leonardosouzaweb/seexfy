@@ -49,10 +49,9 @@ if ($locationLoggedUser) {
             }
 
             echo '<div class="user" data-id="' . $row["id"] . '">';
-            echo '<img src="'. $base_url .'assets/uploads/' . $row["avatar"] . '">';
+            echo '<img src="'. $base_url .'assets/uploads/users/' . $row["username"] . '/'. $row["avatar"] . '">';
             echo '<div class="info">';
             echo '<span>' . $row["username"] . '</span>';
-            echo '<small>' . $row["city"] . '</small>';
             echo '<small>Distância: ' . $distance . '</small>';
             echo '</div>';
             echo '<div class="mask"></div>';
