@@ -23,7 +23,7 @@
 </div>
 
 <div class="infoProfile">
-    <div class="detailProfileSingle" style="display:<?php echo $displaySingle; ?>;">
+    <div class="detailProfileSingle <?php echo $classSingle; ?>" style="display:<?php echo $displaySingle; ?>;">
         <span>Informações 
         <?php if ($isOwner): ?>
             <img src="<?php echo $base_url; ?>assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditUser">
@@ -83,7 +83,7 @@
         </div>
     </div>
 
-    <div class="detailProfileGroup" style="display:<?php echo $displayGroup; ?>;">
+    <div class="detailProfileGroup <?php echo $classGroup; ?>" style="display:<?php echo $displayGroup; ?>;">
         <ul class="nav nav-tabs" id="infoProfile" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="woman-tab" data-bs-toggle="tab" data-bs-target="#woman-tab-pane" type="button" role="tab" aria-controls="woman-tab-pane" aria-selected="false">Mulher</button>

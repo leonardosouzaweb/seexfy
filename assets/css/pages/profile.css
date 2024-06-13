@@ -15,6 +15,7 @@
 
     /* SINGLE */
     .home .content .infoProfile .detailProfileSingle { width: 100% !important;}
+    .home .content .infoProfile .detailProfileSingle.filter { filter: blur(0.2rem); }
     .home .content .infoProfile .detailProfileSingle .nav-tabs { justify-content: space-between; }
     .home .content .infoProfile .detailProfileSingle .nav-tabs .nav-item .nav-link { font-weight: 500; font-size: 14px; padding: 10px 0px; background: transparent; border-radius: 0px; border: none; color: #000; }
     .home .content .infoProfile .detailProfileSingle .nav-tabs .nav-item .nav-link.active { border-bottom: 2px solid #E74C3C; color: #E74C3C; font-weight: 600; }
@@ -63,6 +64,7 @@
 
     /* COUPLE */
     .home .content .infoProfile .detailProfileGroup { width: 100% !important;}
+    .home .content .infoProfile .detailProfileGroup.filter { filter: blur(0.2rem); }
     .home .content .infoProfile .detailProfileGroup .nav-tabs { justify-content: space-between; margin-top: -20px; margin-bottom: 20px; }
     .home .content .infoProfile .detailProfileGroup .nav-tabs .nav-item { width: 33%; }
     .home .content .infoProfile .detailProfileGroup .nav-tabs .nav-item .nav-link { font-weight: 500; font-size: 14px; padding: 10px 0px; background: transparent; border-radius: 0px; border: none; color: #000; width: 100%; }

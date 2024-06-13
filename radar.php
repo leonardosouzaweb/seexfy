@@ -1,24 +1,24 @@
 <?php
-    include_once 'includes/head.php';
-    session_start(); 
+include_once 'includes/head.php';
+session_start();
 
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: ./entrar");
-        exit(); 
-    }
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ./entrar");
+    exit();
+}
 
-    include_once 'config/db.php';
+include_once 'config/db.php';
 
-    $user_id = $_SESSION['user_id'];
-    $sqlUser = "SELECT maritalStatus, username, avatar FROM users WHERE id = ?";
-    $stmt = $conn->prepare($sqlUser);
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
+$user_id = $_SESSION['user_id'];
+$sqlUser = "SELECT id, maritalStatus, username, avatar FROM users WHERE id = ?";
+$stmt = $conn->prepare($sqlUser);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
 
-    $stmt->close();
-    $conn->close();
+$stmt->close();
+$conn->close();
 ?>
 <body>
     <div class="empty">
@@ -38,7 +38,7 @@
         </div>
     </div>
     <?php include_once 'includes/bottomMenu.php'; ?>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -48,9 +48,27 @@
                     navigator.geolocation.getCurrentPosition(function(position) {
                         console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
                         $("#activeLocation").text("Localização Ativada").addClass("active");
-                        setTimeout(function() {
-                            window.location.href = "explorar.php";
-                        }, 2000);
+
+                        // Enviar localização para o servidor
+                        $.ajax({
+                            url: 'api/saveLocation.php',
+                            type: 'POST',
+                            data: {
+                                latitude: position.coords.latitude,
+                                longitude: position.coords.longitude
+                            },
+                            success: function(response) {
+                                console.log("Localização salva com sucesso:", response);
+                                setTimeout(function() {
+                                    window.location.href = "explorar.php";
+                                }, 2000);
+                            },
+                            error: function(xhr, status, error) {
+                                console.error("Erro ao salvar a localização:", error);
+                                alert("Ocorreu um erro ao salvar a sua localização. Por favor, tente novamente.");
+                            }
+                        });
+
                     }, function(error) {
                         console.error("Erro ao obter a localização:", error);
                         alert("Para utilizar esta funcionalidade, por favor, habilite a geolocalização no seu navegador.");

@@ -35,6 +35,7 @@
         $displaySingle = "none";
         $displayGroup = "none";
     }
+    
 
     $stmt->close();
 ?>
