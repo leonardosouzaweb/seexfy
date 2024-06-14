@@ -12,8 +12,13 @@ if (isset($_GET['receiver_id'])) {
     $resultMessages = $stmtMessages->get_result();
     $messages = $resultMessages->fetch_all(MYSQLI_ASSOC);
 
+    // Configurar o fuso horário para o correto
+    date_default_timezone_set('America/Sao_Paulo');
+
     foreach ($messages as $message) {
-        $sent_time_formatted = date('H:i', strtotime($message['sent_at']));
+        // Converter a hora para o fuso horário correto antes de formatar
+        $sent_time = strtotime($message['sent_at']);
+        $sent_time_formatted = date('H:i', $sent_time);
         
         if ($message['sender_id'] == $_SESSION['user_id']) {
             echo '<div class="user1"><p>' . $message['message'] . ' <small>' . $sent_time_formatted . '</small></p></div>';
