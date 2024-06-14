@@ -18,7 +18,7 @@ if (isset($_GET['receiver_id'])) {
     foreach ($messages as $message) {
         // Converter a hora para o fuso horário correto antes de formatar
         $sent_time = strtotime($message['sent_at']);
-        $sent_time_formatted = date('d/m/Y - H:i:s', $sent_time); // Formato dia/mês/ano - hora:minuto:segundo
+        $sent_time_formatted = date('H:i', $sent_time); // Apenas hora:minuto
         
         if ($message['sender_id'] == $_SESSION['user_id']) {
             echo '<div class="user1"><p>' . $message['message'] . ' <small>' . $sent_time_formatted . '</small></p></div>';
