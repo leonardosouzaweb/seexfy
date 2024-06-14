@@ -19,7 +19,8 @@ if (isset($_GET['receiver_id'])) {
         // Converter a hora para o fuso horário correto antes de formatar
         $sent_time = strtotime($message['sent_at']);
         $sent_time_formatted = date('H:i', $sent_time); // Apenas hora:minuto
-        
+        $sent_time_formatted = date('H:i', strtotime($message['sent_at'].' America/Sao_Paulo')); // Hora:minuto com fuso horário
+
         if ($message['sender_id'] == $_SESSION['user_id']) {
             echo '<div class="user1"><p>' . $message['message'] . ' <small>' . $sent_time_formatted . '</small></p></div>';
         } else {
