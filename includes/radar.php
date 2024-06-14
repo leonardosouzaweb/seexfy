@@ -16,14 +16,30 @@ function calculateDistance($origin, $destination) {
     }
 }
 
-// Obter o endereço do usuário logado
-$sqlLocation = "SELECT address FROM user_locations WHERE user_id = ?";
-$stmtLocation = $conn->prepare($sqlLocation);
-$stmtLocation->bind_param("i", $loggedUserId);
-$stmtLocation->execute();
-$resultLocation = $stmtLocation->get_result();
-$userLocation = $resultLocation->fetch_assoc();
-$stmtLocation->close();
+$user_id = $_SESSION['user_id'];
+
+// Verificar se já existe um registro de localização para o usuário
+$sqlCheckLocation = "SELECT id FROM user_locations WHERE user_id = ?";
+$stmtCheckLocation = $conn->prepare($sqlCheckLocation);
+$stmtCheckLocation->bind_param("i", $user_id);
+$stmtCheckLocation->execute();
+$stmtCheckLocation->store_result();
+
+if ($stmtCheckLocation->num_rows > 0) {
+    // Já existe um registro de localização, faremos um UPDATE
+    $sqlUpdateLocation = "UPDATE user_locations SET latitude = ?, longitude = ?, address = ? WHERE user_id = ?";
+    $stmtUpdateLocation = $conn->prepare($sqlUpdateLocation);
+    $stmtUpdateLocation->bind_param("ddsi", $_POST['latitude'], $_POST['longitude'], $_POST['address'], $user_id);
+    $stmtUpdateLocation->execute();
+    $stmtUpdateLocation->close();
+} else {
+    // Não existe registro de localização, faremos uma INSERT
+    $sqlInsertLocation = "INSERT INTO user_locations (user_id, latitude, longitude, address) VALUES (?, ?, ?, ?)";
+    $stmtInsertLocation = $conn->prepare($sqlInsertLocation);
+    $stmtInsertLocation->bind_param("idds", $user_id, $_POST['latitude'], $_POST['longitude'], $_POST['address']);
+    $stmtInsertLocation->execute();
+    $stmtInsertLocation->close();
+}
 
 // Verificar se o usuário possui endereço registrado
 if ($userLocation && isset($userLocation['address'])) {
