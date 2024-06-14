@@ -52,34 +52,18 @@ menuIcon.addEventListener("click", function() {
 
 function setActiveClass() {
     var path = window.location.pathname;
-    console.log('Current path:', path); // Log para depurar o caminho atual
     var fileName = path.split('/').pop().split('.')[0];
-    console.log('File name:', fileName); // Log para depurar o nome do arquivo
     var menuItems = document.querySelectorAll('.bottomMenu div');
 
     menuItems.forEach(function(item) {
-        var icon = item.querySelector('.menu-icon');
-        if (icon) {
-            if (item.id === fileName) {
-                item.classList.add('active');
-                console.log('Adding active class to:', item.id); // Log para depurar a adição da classe active
-                // Trocar a imagem para a versão ativa
-                icon.src = icon.getAttribute('data-src-active');
-            } else {
-                item.classList.remove('active');
-                // Voltar para a imagem original (inativa)
-                icon.src = icon.getAttribute('data-src-inactive');
-            }
+        if (item.id === fileName) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
         }
     });
 }
 
 document.addEventListener('DOMContentLoaded', setActiveClass);
 window.addEventListener('popstate', setActiveClass);
-
-
-
-
-
-
 
