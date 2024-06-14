@@ -6,7 +6,6 @@
     .home .content .radar button { background: #E74C3C; width: 60%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; margin-top: 30px; border-radius: 15px; }
     .home .content .radar button:disabled { opacity: 0.5; }
     .home .content .radar button.active { background: #2ecc71; }
-    .home .content .radar .btn-active-location.loading:after { content: ' Carregando...'; }
     .home .content .radar .btn-active-location:disabled { cursor: not-allowed; }
 }
 
