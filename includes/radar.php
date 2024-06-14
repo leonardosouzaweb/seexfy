@@ -1,8 +1,23 @@
 <?php
 $loggedUserId = $_SESSION['user_id'];
 
-// Obter a latitude e longitude do usuário logado
-$sqlLocation = "SELECT latitude, longitude FROM user_locations WHERE user_id = ?";
+// Função para calcular a distância entre dois endereços usando a API do Google Maps
+function calculateDistance($origin, $destination) {
+    $apiKey = 'AIzaSyBdpWnU3SpD_Tk3wT2QF0Myo6U-TiUmQRg'; // Sua chave da API do Google Maps
+    $origin = urlencode($origin);
+    $destination = urlencode($destination);
+    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=$origin&destinations=$destination&key=$apiKey";
+    $data = json_decode(file_get_contents($url), true);
+
+    if ($data['status'] == 'OK') {
+        return $data['rows'][0]['elements'][0]['distance']['text'];
+    } else {
+        return false;
+    }
+}
+
+// Obter o endereço do usuário logado
+$sqlLocation = "SELECT address FROM user_locations WHERE user_id = ?";
 $stmtLocation = $conn->prepare($sqlLocation);
 $stmtLocation->bind_param("i", $loggedUserId);
 $stmtLocation->execute();
@@ -10,12 +25,11 @@ $resultLocation = $stmtLocation->get_result();
 $userLocation = $resultLocation->fetch_assoc();
 $stmtLocation->close();
 
-// Verificar se o usuário possui localização registrada
-if ($userLocation && isset($userLocation['latitude'], $userLocation['longitude'])) {
-    $userLatitude = $userLocation['latitude'];
-    $userLongitude = $userLocation['longitude'];
+// Verificar se o usuário possui endereço registrado
+if ($userLocation && isset($userLocation['address'])) {
+    $userAddress = $userLocation['address'];
 
-    $sql = "SELECT users.id, users.username, users.city, users.maritalStatus, users.avatar, user_locations.latitude, user_locations.longitude FROM users INNER JOIN user_locations ON users.id = user_locations.user_id WHERE users.id != ? AND user_locations.latitude IS NOT NULL AND user_locations.longitude IS NOT NULL";
+    $sql = "SELECT users.id, users.username, users.city, users.maritalStatus, users.avatar, user_locations.address AS user_address FROM users INNER JOIN user_locations ON users.id = user_locations.user_id WHERE users.id != ? AND user_locations.address IS NOT NULL";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $loggedUserId);
@@ -25,16 +39,20 @@ if ($userLocation && isset($userLocation['latitude'], $userLocation['longitude']
     if ($result->num_rows > 0) {
         echo '<div class="scroll">';
         while ($row = $result->fetch_assoc()) {
-            // Calcular a distância entre os usuários
-            $distance = calculateDistance($userLatitude, $userLongitude, $row['latitude'], $row['longitude']);
-            echo '<div class="user" data-id="' . $row["id"] . '">';
-            echo '<img src="'. $base_url .'assets/uploads/users/' . $row["username"] . '/'. $row["avatar"] . '">';
-            echo '<div class="info">';
-            echo '<span>' . $row["username"] . '</span>';
-            echo '<small>' . number_format($distance, 1) . ' KM</small>';
-            echo '</div>';
-            echo '<div class="mask"></div>';
-            echo '</div>';
+            // Calcular a distância entre os endereços
+            $distance = calculateDistance($userAddress, $row['user_address']);
+            if ($distance !== false) {
+                echo '<div class="user" data-id="' . $row["id"] . '">';
+                echo '<img src="'. $base_url .'assets/uploads/users/' . $row["username"] . '/'. $row["avatar"] . '">';
+                echo '<div class="info">';
+                echo '<span>' . $row["username"] . '</span>';
+                echo '<small>' . $distance . '</small>';
+                echo '</div>';
+                echo '<div class="mask"></div>';
+                echo '</div>';
+            } else {
+                echo "<p>Não foi possível calcular a distância.</p>";
+            }
         }
         echo '</div>';
         echo '<div class="space"></div>';
@@ -43,16 +61,6 @@ if ($userLocation && isset($userLocation['latitude'], $userLocation['longitude']
     }
 } else {
     echo "<p>Você precisa ativar sua localização para ver outros usuários</p>";
-}
-
-function calculateDistance($lat1, $lon1, $lat2, $lon2) {
-    $earth_radius = 6371; // Raio da Terra em quilômetros
-    $dLat = deg2rad($lat2 - $lat1);
-    $dLon = deg2rad($lon2 - $lon1);
-    $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * sin($dLon/2) * sin($dLon/2);
-    $c = 2 * atan2(sqrt($a), sqrt(1-$a));
-    $distance = $earth_radius * $c; // Distância em quilômetros
-    return $distance;
 }
 ?>
 <div id="customModal" class="modal">
