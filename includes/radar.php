@@ -1,28 +1,16 @@
 <?php
 $loggedUserId = $_SESSION['user_id'];
+$sql = "SELECT id, username, city, maritalStatus, avatar FROM users WHERE id != $loggedUserId";
+$result = $conn->query($sql);
 
-$sql = "SELECT u.id, u.username, u.city, u.maritalStatus, u.avatar
-        FROM users u
-        WHERE u.id != ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $loggedUserId);
-$stmt->execute();
-$result = $stmt->get_result();
-
-$users = [];
-
-while ($row = $result->fetch_assoc()) {
-    $users[] = $row;
-}
-
-if (count($users) > 0) {
+if ($result->num_rows > 0) {
     echo '<div class="scroll">';
-    foreach ($users as $user) {
-        echo '<div class="user" data-id="' . $user["id"] . '">';
-        echo '<img src="'. $base_url .'assets/uploads/' . $user["avatar"] . '">';
+    while ($row = $result->fetch_assoc()) {
+        echo '<div class="user" data-id="' . $row["id"] . '">';
+        echo '<img src="'. $base_url .'assets/uploads/users/' . $row["username"] . '/'. $row["avatar"] . '">';
         echo '<div class="info">';
-        echo '<span>' . $user["username"] . '</span>';
-        echo '<small>' . $user["city"] . '</small>';
+        echo '<span>' . $row["username"] . '</span>';
+        echo '<small>' . $row["city"] . '</small>';
         echo '</div>';
         echo '<div class="mask"></div>';
         echo '</div>';
