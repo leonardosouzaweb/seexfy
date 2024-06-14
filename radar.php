@@ -32,7 +32,7 @@ $conn->close();
                     <img src="<?php echo $base_url; ?>assets/images/icons/IconRadar2x.svg">
                     <h2>Radar</h2>
                     <p>Clique no botão abaixo para encontrar pessoas próximas a você.</p>
-                    <button>Ativar localização</button>
+                    <button id="activeLocation">Ativar localização</button>
                 </div>
             </div>
         </div>
@@ -42,5 +42,53 @@ $conn->close();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/js/functions.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('button#activeLocation').click(function() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var latitude = position.coords.latitude;
+                        var longitude = position.coords.longitude;
+                        var address = "";
+
+                        obterEndereco(latitude, longitude, function(address) {
+                            $.ajax({
+                                url: 'api/saveLocation.php',
+                                method: 'POST',
+                                data: {
+                                    latitude: latitude,
+                                    longitude: longitude,
+                                    address: address
+                                },
+                                success: function(response) {
+                                    window.location.href = 'explorar.php';
+                                },
+                                error: function(xhr, status, error) {
+                                    alert('Erro ao salvar localização.');
+                                    console.error(xhr.responseText);
+                                }
+                            });
+                        });
+                    });
+                } else {
+                    alert('Geolocalização não é suportada por este navegador.');
+                }
+            });
+
+            function obterEndereco(latitude, longitude, callback) {
+                var apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&key=AIzaSyBdpWnU3SpD_Tk3wT2QF0Myo6U-TiUmQRg';
+
+                $.getJSON(apiUrl, function(data) {
+                    if (data && data.results && data.results.length > 0) {
+                        var address = data.results[0].formatted_address;
+                        callback(address);
+                    } else {
+                        callback('Endereço não encontrado');
+                    }
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>

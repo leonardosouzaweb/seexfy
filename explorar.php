@@ -17,7 +17,16 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
+// Buscar endereço do usuário logado
+$sqlLocation = "SELECT address FROM user_locations WHERE user_id = ?";
+$stmtLocation = $conn->prepare($sqlLocation);
+$stmtLocation->bind_param("i", $user_id);
+$stmtLocation->execute();
+$resultLocation = $stmtLocation->get_result();
+$location = $resultLocation->fetch_assoc();
+
 $stmt->close();
+$stmtLocation->close();
 ?>
 <body>
     <div class="empty">
@@ -29,9 +38,10 @@ $stmt->close();
         <div class="wrapper">
             <div class="content">
                 <h2>Explorar</h2>
-                <?php 
-                    include_once 'includes/radar.php'
-                ?>
+                <?php if ($location && isset($location['address'])): ?>
+                    <p>Você está em: <?php echo $location['address']; ?></p>
+                <?php endif; ?>
+                <?php include_once 'includes/radar.php'; ?>
             </div>
         </div>
     </div>
