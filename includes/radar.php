@@ -15,7 +15,7 @@ if ($userLocation && isset($userLocation['latitude'], $userLocation['longitude']
     $userLatitude = $userLocation['latitude'];
     $userLongitude = $userLocation['longitude'];
 
-    $sql = "SELECT id, username, city, maritalStatus, avatar, latitude, longitude FROM user_locations WHERE user_id != ?";
+    $sql = "SELECT users.id, users.username, users.city, users.maritalStatus, users.avatar, user_locations.latitude, user_locations.longitude FROM users INNER JOIN user_locations ON users.id = user_locations.user_id WHERE users.id != ? AND user_locations.latitude IS NOT NULL AND user_locations.longitude IS NOT NULL";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $loggedUserId);
