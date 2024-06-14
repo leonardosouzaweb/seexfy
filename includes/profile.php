@@ -132,20 +132,27 @@
                     <?php endif; ?>
 
                     <div class="photo-grid">
-                        <?php
-                            $username = $_GET['username'];
-                            $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
-                                SELECT id FROM users WHERE username = ?
-                            )";
-                            $stmtPhotos = $conn->prepare($sqlPhotos);
-                            $stmtPhotos->bind_param("s", $username);
-                            $stmtPhotos->execute();
-                            $resultPhotos = $stmtPhotos->get_result();
+                    <?php
+                        $username = $_GET['username'];
+                        $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
+                            SELECT id FROM users WHERE username = ?
+                        )";
+                        $stmtPhotos = $conn->prepare($sqlPhotos);
+                        $stmtPhotos->bind_param("s", $username);
+                        $stmtPhotos->execute();
+                        $resultPhotos = $stmtPhotos->get_result();
 
+                        // Verificar se há fotos
+                        if ($resultPhotos->num_rows > 0) {
+                            echo '<div class="photo-grid">';
                             while ($photo = $resultPhotos->fetch_assoc()) {
-                                echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                                echo '<div class="photo-item"><img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
                             }
-                        ?>
+                            echo '</div>';
+                        } else {
+                            echo '<p>Você não publicou nenhuma foto!</p>';
+                        }
+                    ?>
                     </div>
                 </div>
                 <!-- // -->
@@ -186,20 +193,27 @@
                     <?php endif; ?>
 
                     <div class="photo-grid">
-                        <?php
-                            $username = $_GET['username'];
-                            $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
-                                SELECT id FROM users WHERE username = ?
-                            )";
-                            $stmtPhotos = $conn->prepare($sqlPhotos);
-                            $stmtPhotos->bind_param("s", $username);
-                            $stmtPhotos->execute();
-                            $resultPhotos = $stmtPhotos->get_result();
+                    <?php
+                        $username = $_GET['username'];
+                        $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
+                            SELECT id FROM users WHERE username = ?
+                        )";
+                        $stmtPhotos = $conn->prepare($sqlPhotos);
+                        $stmtPhotos->bind_param("s", $username);
+                        $stmtPhotos->execute();
+                        $resultPhotos = $stmtPhotos->get_result();
 
+                        // Verificar se há fotos
+                        if ($resultPhotos->num_rows > 0) {
+                            echo '<div class="photo-grid">';
                             while ($photo = $resultPhotos->fetch_assoc()) {
-                                echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                                echo '<div class="photo-item"><img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
                             }
-                        ?>
+                            echo '</div>';
+                        } else {
+                            echo '<p>Você não publicou nenhuma foto!</p>';
+                        }
+                    ?>
                     </div>
                 </div>
                 <!-- // -->
@@ -216,20 +230,27 @@
                     <?php endif; ?>
 
                     <div class="photo-grid">
-                        <?php
-                            $username = $_GET['username'];
-                            $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
-                                SELECT id FROM users WHERE username = ?
-                            )";
-                            $stmtPhotos = $conn->prepare($sqlPhotos);
-                            $stmtPhotos->bind_param("s", $username);
-                            $stmtPhotos->execute();
-                            $resultPhotos = $stmtPhotos->get_result();
+                    <?php
+                        $username = $_GET['username'];
+                        $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
+                            SELECT id FROM users WHERE username = ?
+                        )";
+                        $stmtPhotos = $conn->prepare($sqlPhotos);
+                        $stmtPhotos->bind_param("s", $username);
+                        $stmtPhotos->execute();
+                        $resultPhotos = $stmtPhotos->get_result();
 
+                        // Verificar se há fotos
+                        if ($resultPhotos->num_rows > 0) {
+                            echo '<div class="photo-grid">';
                             while ($photo = $resultPhotos->fetch_assoc()) {
-                                echo '<div class="photo-item"><img src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                                echo '<div class="photo-item"><img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
                             }
-                        ?>
+                            echo '</div>';
+                        } else {
+                            echo '<p>Você não publicou nenhuma foto!</p>';
+                        }
+                    ?>
                     </div>
                 </div>
                 <!-- // -->

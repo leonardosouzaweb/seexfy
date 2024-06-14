@@ -53,43 +53,22 @@ menuIcon.addEventListener("click", function() {
 function setActiveClass() {
     var path = window.location.pathname;
     console.log('Current path:', path); // Log para depurar o caminho atual
+    var fileName = path.split('/').pop().split('.')[0];
+    console.log('File name:', fileName); // Log para depurar o nome do arquivo
     var menuItems = document.querySelectorAll('.bottomMenu div');
 
     menuItems.forEach(function(item) {
         var icon = item.querySelector('.menu-icon');
         if (icon) {
-            if (path.includes('/home') && item.id === 'home') {
+            if (item.id === fileName) {
                 item.classList.add('active');
-                icon.src = 'assets/images/icons/iconHomeActive.svg';
-            } else if (path.includes('/eventos') && item.id === 'eventos') {
-                item.classList.add('active');
-                icon.src = 'assets/images/icons/iconEventActive.svg';
-            } else if (path.includes('/radar') && item.id === 'radar') {
-                item.classList.add('active');
-                icon.src = 'assets/images/icons/iconRadarActive.svg';
-            } else if (path.includes('/chat') && item.id === 'chat') {
-                item.classList.add('active');
-                console.log('Adding active class to chat'); // Log para depurar a adição da classe active para chat
-                icon.src = 'assets/images/icons/iconChatActive.svg';
+                console.log('Adding active class to:', item.id); // Log para depurar a adição da classe active
+                // Trocar a imagem para a versão ativa
+                icon.src = icon.getAttribute('data-src-active');
             } else {
                 item.classList.remove('active');
-                // Voltar para a imagem original quando não estiver ativo
-                switch (item.id) {
-                    case 'home':
-                        icon.src = 'assets/images/icons/iconHome.svg';
-                        break;
-                    case 'eventos':
-                        icon.src = 'assets/images/icons/iconEvent.svg';
-                        break;
-                    case 'radar':
-                        icon.src = 'assets/images/icons/iconRadar.svg';
-                        break;
-                    case 'chat':
-                        icon.src = 'assets/images/icons/iconChat.svg';
-                        break;
-                    default:
-                        break;
-                }
+                // Voltar para a imagem original (inativa)
+                icon.src = icon.getAttribute('data-src-inactive');
             }
         }
     });
@@ -97,6 +76,7 @@ function setActiveClass() {
 
 document.addEventListener('DOMContentLoaded', setActiveClass);
 window.addEventListener('popstate', setActiveClass);
+
 
 
 
