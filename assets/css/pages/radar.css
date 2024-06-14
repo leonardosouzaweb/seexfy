@@ -7,6 +7,9 @@
     .home .content .radar button:disabled { opacity: 0.5; }
     .home .content .radar button.active { background: #2ecc71; }
     .home .content .radar .btn-active-location:disabled { cursor: not-allowed; }
+
+    .home .content p.location { font-size: 11px; background: #f1f1f1; padding: 10px 15px; border-radius: 15px; font-weight: 600; }
+    .home .content p.location small { font-size: 11px; font-weight: 400; }
 }
 
 

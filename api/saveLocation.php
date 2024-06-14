@@ -13,7 +13,7 @@ if (isset($_POST['latitude'], $_POST['longitude'], $_POST['address'])) {
     $longitude = $_POST['longitude'];
     $address = $_POST['address'];
 
-    // Verifica se já existe uma entrada com os mesmos valores de latitude, longitude e endereço
+    // Verifica se já existe uma entrada com os mesmos valores de latitude, longitude e endereço (desconsiderando a hora de criação)
     $sql_check = "SELECT COUNT(*) AS total FROM user_locations WHERE user_id = ? AND latitude = ? AND longitude = ? AND address = ?";
     $stmt_check = $conn->prepare($sql_check);
     $stmt_check->bind_param("idds", $user_id, $latitude, $longitude, $address);

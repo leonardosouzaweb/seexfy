@@ -53,7 +53,7 @@ if ($userLocation && isset($userLocation['address'])) {
         echo '</div>';
         echo '<div class="space"></div>';
     } else {
-        echo "<p>Nenhum usuário encontrado</p>";
+        echo "<p>Nenhum usuário próximo a você</p>";
     }
 } else {
     echo "<p>Você precisa ativar sua localização para ver outros usuários</p>";

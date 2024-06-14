@@ -39,7 +39,7 @@ $stmtLocation->close();
             <div class="content">
                 <h2>Explorar</h2>
                 <?php if ($location && isset($location['address'])): ?>
-                    <p>Você está em: <?php echo $location['address']; ?></p>
+                    <p class="location">Você está em: <small><?php echo $location['address']; ?></small></p>
                 <?php endif; ?>
                 <?php include_once 'includes/radar.php'; ?>
             </div>
