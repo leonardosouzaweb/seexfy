@@ -3,7 +3,7 @@ $loggedUserId = $_SESSION['user_id'];
 
 // Função para calcular a distância entre dois endereços usando a API do Google Maps
 function calculateDistance($origin, $destination) {
-    $apiKey = 'AIzaSyBdpWnU3SpD_Tk3wT2QF0Myo6U-TiUmQRg'; // Sua chave da API do Google Maps
+    $apiKey = 'AIzaSyBdpWnU3SpD_Tk3wT2QF0Myo6U-TiUmQRg';
     $origin = urlencode($origin);
     $destination = urlencode($destination);
     $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=$origin&destinations=$destination&key=$apiKey";
@@ -16,48 +16,53 @@ function calculateDistance($origin, $destination) {
     }
 }
 
-// Obter o endereço do usuário logado
-$sqlLocation = "SELECT address FROM user_locations WHERE user_id = ?";
-$stmtLocation = $conn->prepare($sqlLocation);
-$stmtLocation->bind_param("i", $loggedUserId);
-$stmtLocation->execute();
-$resultLocation = $stmtLocation->get_result();
-$userLocation = $resultLocation->fetch_assoc();
-$stmtLocation->close();
+// Verificar se a localização está ativada
+if (isset($_SESSION['location_activated']) && $_SESSION['location_activated'] === true) {
+    // Obter o endereço do usuário logado
+    $sqlLocation = "SELECT address FROM user_locations WHERE user_id = ?";
+    $stmtLocation = $conn->prepare($sqlLocation);
+    $stmtLocation->bind_param("i", $loggedUserId);
+    $stmtLocation->execute();
+    $resultLocation = $stmtLocation->get_result();
+    $userLocation = $resultLocation->fetch_assoc();
+    $stmtLocation->close();
 
-// Verificar se o usuário possui endereço registrado
-if ($userLocation && isset($userLocation['address'])) {
-    $userAddress = $userLocation['address'];
+    // Se o usuário já tiver um endereço registrado, calcular distâncias
+    if ($userLocation && isset($userLocation['address'])) {
+        $userAddress = $userLocation['address'];
 
-    $sql = "SELECT users.id, users.username, users.city, users.maritalStatus, users.avatar, user_locations.address AS user_address FROM users INNER JOIN user_locations ON users.id = user_locations.user_id WHERE users.id != ? AND user_locations.address IS NOT NULL";
+        $sql = "SELECT users.id, users.username, users.city, users.maritalStatus, users.avatar, user_locations.address AS user_address FROM users INNER JOIN user_locations ON users.id = user_locations.user_id WHERE users.id != ? AND user_locations.address IS NOT NULL";
 
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $loggedUserId);
-    $stmt->execute();
-    $result = $stmt->get_result();
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $loggedUserId);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        echo '<div class="scroll">';
-        while ($row = $result->fetch_assoc()) {
-            // Calcular a distância entre os endereços
-            $distance = calculateDistance($userAddress, $row['user_address']);
-            if ($distance !== false) {
-                echo '<div class="user" data-id="' . $row["id"] . '">';
-                echo '<img src="'. $base_url .'assets/uploads/users/' . $row["username"] . '/'. $row["avatar"] . '">';
-                echo '<div class="info">';
-                echo '<span>' . $row["username"] . '</span>';
-                echo '<small>' . $distance . '</small>';
-                echo '</div>';
-                echo '<div class="mask"></div>';
-                echo '</div>';
-            } else {
-                echo "<p>Não foi possível calcular a distância.</p>";
+        if ($result->num_rows > 0) {
+            echo '<div class="scroll">';
+            while ($row = $result->fetch_assoc()) {
+                // Calcular a distância entre os endereços
+                $distance = calculateDistance($userAddress, $row['user_address']);
+                if ($distance !== false) {
+                    echo '<div class="user" data-id="' . $row["id"] . '">';
+                    echo '<img src="'. $base_url .'assets/uploads/users/' . $row["username"] . '/'. $row["avatar"] . '">';
+                    echo '<div class="info">';
+                    echo '<span>' . $row["username"] . '</span>';
+                    echo '<small>' . $distance . '</small>';
+                    echo '</div>';
+                    echo '<div class="mask"></div>';
+                    echo '</div>';
+                } else {
+                    echo "<p>Não foi possível calcular a distância.</p>";
+                }
             }
+            echo '</div>';
+            echo '<div class="space"></div>';
+        } else {
+            echo "<p>Nenhum usuário encontrado</p>";
         }
-        echo '</div>';
-        echo '<div class="space"></div>';
     } else {
-        echo "<p>Nenhum usuário encontrado</p>";
+        echo "<p>Você precisa ativar sua localização para ver outros usuários</p>";
     }
 } else {
     echo "<p>Você precisa ativar sua localização para ver outros usuários</p>";
