@@ -32,7 +32,7 @@ $conn->close();
                     <img src="<?php echo $base_url; ?>assets/images/icons/IconRadar2x.svg">
                     <h2>Radar</h2>
                     <p>Clique no botão abaixo para encontrar pessoas próximas a você.</p>
-                    <button id="activeLocation">Ativar localização</button>
+                    <button>Ativar localização</button>
                 </div>
             </div>
         </div>
@@ -41,44 +41,6 @@ $conn->close();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#activeLocation").click(function(){
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function(position) {
-                        console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
-                        $("#activeLocation").text("Localização Ativada").addClass("active");
-
-                        // Enviar localização para o servidor
-                        $.ajax({
-                            url: 'api/saveLocation.php',
-                            type: 'POST',
-                            data: {
-                                latitude: position.coords.latitude,
-                                longitude: position.coords.longitude
-                            },
-                            success: function(response) {
-                                console.log("Localização salva com sucesso:", response);
-                                setTimeout(function() {
-                                    window.location.href = "explorar.php";
-                                }, 2000);
-                            },
-                            error: function(xhr, status, error) {
-                                console.error("Erro ao salvar a localização:", error);
-                                alert("Ocorreu um erro ao salvar a sua localização. Por favor, tente novamente.");
-                            }
-                        });
-
-                    }, function(error) {
-                        console.error("Erro ao obter a localização:", error);
-                        alert("Para utilizar esta funcionalidade, por favor, habilite a geolocalização no seu navegador.");
-                    });
-                } else {
-                    alert("Desculpe, seu navegador não suporta geolocalização.");
-                }
-            });
-        });
-    </script>
     <script src="assets/js/functions.js"></script>
 </body>
 </html>

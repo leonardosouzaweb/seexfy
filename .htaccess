@@ -2,6 +2,7 @@ RewriteEngine On
 RewriteRule ^registro$ registro.php [L]
 RewriteRule ^entrar$ entrar.php [L]
 RewriteRule ^home$ home.php [L]
+RewriteRule ^explorar$ explorar.php [L]
 RewriteRule ^eventos$ eventos.php [L]
 RewriteRule ^radar$ radar.php [L]
 RewriteRule ^pesquisar$ pesquisar.php [L]
