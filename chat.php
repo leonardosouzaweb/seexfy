@@ -37,113 +37,86 @@ $user = $result->fetch_assoc();
     <?php include_once 'includes/bottomMenu.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-document.addEventListener("DOMContentLoaded", function() {
-    function iniciarInteracao(username, receiverId) {
-        var chatHeader = document.querySelector('.chatHeader');
+        document.addEventListener("DOMContentLoaded", function() {
+            function iniciarInteracao(username, receiverId) {
+                var chatHeader = document.querySelector('.chatHeader');
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'api/getUserInfo.php?id=' + receiverId, true);
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                var userData = JSON.parse(xhr.responseText);
-                console.log("UserData:", userData); 
-                var receiverAvatar = userData.avatar;
-                var maritalStatus = userData.maritalStatus;
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'api/getUserInfo.php?id=' + receiverId, true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        var userData = JSON.parse(xhr.responseText);
+                        var receiverAvatar = userData.avatar;
+                        var maritalStatus = userData.maritalStatus;
 
-                var avatarUrl = "<?php echo $base_url; ?>assets/uploads/users/" + username + "/" + receiverAvatar;
-                chatHeader.innerHTML = `
-                    <img src="${avatarUrl}">
-                    <p>${username} <small>${maritalStatus}</small></p>
-                `;
+                        var avatarUrl = "<?php echo $base_url; ?>assets/uploads/users/" + username + "/" + receiverAvatar;
+                        chatHeader.innerHTML = `
+                            <img src="${avatarUrl}">
+                            <p>${username} <small>${maritalStatus}</small></p>
+                        `;
 
-                document.querySelector('.chatList').style.display = 'none';
-                document.querySelector('.chat').style.display = 'block';
+                        document.querySelector('.chatList').style.display = 'none';
+                        document.querySelector('.chat').style.display = 'block';
 
-                document.getElementById('receiverId').value = receiverId;
-                carregarMensagens();
-            } else {
-                console.log("Erro ao buscar informações do usuário. Status: " + xhr.status);
+                        document.getElementById('receiverId').value = receiverId;
+                        carregarMensagens();
+                    } else {
+                        console.log("Erro ao buscar informações do usuário. Status: " + xhr.status);
+                    }
+                };
+                xhr.send();
             }
-        };
-        xhr.send();
-    }
 
-    var profileLinks = document.querySelectorAll('.navGoUser');
-    profileLinks.forEach(function(link) {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            var username = link.dataset.username;
-            var receiverId = link.dataset.userid;
-            iniciarInteracao(username, receiverId);
+            var profileLinks = document.querySelectorAll('.navGoUser');
+            profileLinks.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var username = link.dataset.username;
+                    var receiverId = link.dataset.userid;
+                    iniciarInteracao(username, receiverId);
+                });
+            });
+
+            document.getElementById('messageForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var messageInput = document.getElementById('messageInput').value;
+                var receiverId = document.getElementById('receiverId').value;
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'api/messages.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        document.getElementById('messageInput').value = '';
+                        carregarMensagens();
+                        if (/Mobi|Android/i.test(navigator.userAgent)) {
+                            document.activeElement.blur();
+                        }
+                    }
+                };
+                xhr.send('message=' + encodeURIComponent(messageInput) + '&receiver_id=' + encodeURIComponent(receiverId));
+            });
+
+            function carregarMensagens() {
+                var receiverId = document.getElementById('receiverId').value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'api/loadMessages.php?receiver_id=' + encodeURIComponent(receiverId), true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        document.querySelector('.chatMessage').innerHTML = xhr.responseText;
+                        setTimeout(carregarMensagens, 3000);
+                    } else {
+                        console.log("Erro ao carregar mensagens. Status: " + xhr.status);
+                        setTimeout(carregarMensagens, 5000);
+                    }
+                };
+                xhr.onerror = function() {
+                    setTimeout(carregarMensagens, 5000);
+                };
+                xhr.send();
+            }
+            carregarMensagens();
         });
-    });
-
-    document.getElementById('messageForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        var messageInput = document.getElementById('messageInput').value;
-        var receiverId = document.getElementById('receiverId').value;
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'api/messages.php', true);
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                document.getElementById('messageInput').value = '';
-                carregarMensagens();
-                if (/Mobi|Android/i.test(navigator.userAgent)) {
-                    document.activeElement.blur();
-                }
-            }
-        };
-        xhr.send('message=' + encodeURIComponent(messageInput) + '&receiver_id=' + encodeURIComponent(receiverId));
-    });
-
-    function carregarMensagens() {
-        var receiverId = document.getElementById('receiverId').value;
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'api/loadMessages.php?receiver_id=' + encodeURIComponent(receiverId), true);
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                console.log("Mensagens carregadas com sucesso!");
-                var messagesContainer = document.querySelector('.chatMessage');
-                messagesContainer.innerHTML = xhr.responseText;
-                formatarHoraMensagens(messagesContainer); // Formatar hora das mensagens
-                // setTimeout(carregarMensagens, 3000);
-            } else {
-                console.log("Erro ao carregar mensagens. Status: " + xhr.status);
-                setTimeout(carregarMensagens, 5000);
-            }
-        };
-        xhr.onerror = function() {
-            console.log("Erro de rede ao tentar carregar mensagens.");
-            setTimeout(carregarMensagens, 5000);
-        };
-        xhr.send();
-    }
-
-    // Função para formatar a hora das mensagens
-    function formatarHoraMensagens(container) {
-        var messages = container.querySelectorAll('.message');
-        messages.forEach(function(message) {
-            var sentAt = message.getAttribute('data-sent-at');
-            var sentTimeFormatted = formatarHora(sentAt);
-            message.querySelector('small').textContent = sentTimeFormatted;
-        });
-    }
-
-    // Função para formatar hora
-    function formatarHora(sentAt) {
-        var date = new Date(sentAt);
-        var hours = date.getHours();
-        var minutes = date.getMinutes();
-        // Adicionar zero à esquerda para minutos menores que 10
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        return hours + ':' + minutes;
-    }
-
-    carregarMensagens();
-});
-</script>
-
+    </script>
 </body>
 </html>
