@@ -47,12 +47,10 @@ $conn->close();
         $('button#activeLocation').click(function() {
             var button = $(this);
 
-            // Verifica se o botão já está em processo de carregamento para evitar cliques repetidos
             if (button.hasClass('loading') || button.is(':disabled')) {
-                return; // Se estiver em processo de carregamento ou desabilitado, sai da função
+                return; 
             }
 
-            // Adiciona classe de carregamento, muda o texto e desabilita o botão
             button.addClass('loading').text('Carregando...').attr('disabled', 'disabled');
 
             if (navigator.geolocation) {
@@ -86,7 +84,6 @@ $conn->close();
                 });
             } else {
                 alert('Geolocalização não é suportada por este navegador.');
-                // Remove classe de carregamento, restaura o texto e habilita o botão novamente
                 button.removeClass('loading').text('Ativar localização').removeAttr('disabled');
             }
         });

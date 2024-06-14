@@ -13,18 +13,32 @@ if (isset($_POST['latitude'], $_POST['longitude'], $_POST['address'])) {
     $longitude = $_POST['longitude'];
     $address = $_POST['address'];
 
-    // Query para inserir os dados no banco
-    $sql = "INSERT INTO user_locations (user_id, latitude, longitude, address) VALUES (?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("idds", $user_id, $latitude, $longitude, $address);
-    
-    if ($stmt->execute()) {
-        echo 'Localização salva com sucesso!';
+    // Verifica se já existe uma entrada com os mesmos valores de latitude, longitude e endereço
+    $sql_check = "SELECT COUNT(*) AS total FROM user_locations WHERE user_id = ? AND latitude = ? AND longitude = ? AND address = ?";
+    $stmt_check = $conn->prepare($sql_check);
+    $stmt_check->bind_param("idds", $user_id, $latitude, $longitude, $address);
+    $stmt_check->execute();
+    $result_check = $stmt_check->get_result();
+    $row = $result_check->fetch_assoc();
+
+    if ($row['total'] > 0) {
+        echo 'Essa localização já foi salva anteriormente.';
     } else {
-        echo 'Erro ao salvar localização.';
+        // Se não existir, insere os dados no banco
+        $sql_insert = "INSERT INTO user_locations (user_id, latitude, longitude, address) VALUES (?, ?, ?, ?)";
+        $stmt_insert = $conn->prepare($sql_insert);
+        $stmt_insert->bind_param("idds", $user_id, $latitude, $longitude, $address);
+
+        if ($stmt_insert->execute()) {
+            echo 'Localização salva com sucesso!';
+        } else {
+            echo 'Erro ao salvar localização.';
+        }
+
+        $stmt_insert->close();
     }
 
-    $stmt->close();
+    $stmt_check->close();
     $conn->close();
 } else {
     echo 'Parâmetros inválidos.';
