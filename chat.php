@@ -104,7 +104,7 @@ $user = $result->fetch_assoc();
                 xhr.onload = function() {
                     if (xhr.status === 200) {
                         document.querySelector('.chatMessage').innerHTML = xhr.responseText;
-                        setTimeout(carregarMensagens, 3000);
+                        // setTimeout(carregarMensagens, 3000);
                     } else {
                         console.log("Erro ao carregar mensagens. Status: " + xhr.status);
                         setTimeout(carregarMensagens, 5000);
