@@ -10,7 +10,7 @@ if (isset($data['photo_id']) && isset($_SESSION['user_id'])) {
     $userId = $_SESSION['user_id'];
 
     // Verifica se a foto pertence ao usuário
-    $sqlCheckOwner = "SELECT id, is_hidden FROM users_photos WHERE id = ? AND user_id = ?";
+    $sqlCheckOwner = "SELECT id, is_hidden, is_public FROM users_photos WHERE id = ? AND user_id = ?";
     $stmtCheckOwner = $conn->prepare($sqlCheckOwner);
     $stmtCheckOwner->bind_param("ii", $photoId, $userId);
     $stmtCheckOwner->execute();
