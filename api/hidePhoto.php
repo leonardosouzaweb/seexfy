@@ -27,7 +27,11 @@ if (isset($data['photo_id']) && isset($_SESSION['user_id'])) {
         $stmtToggleHide->bind_param("iii", $newHiddenStatus, $isPublic, $photoId);
         $stmtToggleHide->execute();
 
-        echo json_encode(['success' => true, 'is_hidden' => $newHiddenStatus]);
+        // Busca novamente as informações da foto após a atualização
+        $stmtCheckOwner->execute();
+        $row = $stmtCheckOwner->get_result()->fetch_assoc();
+
+        echo json_encode(['success' => true, 'is_hidden' => $row['is_hidden'], 'is_public' => $row['is_public']]);
     } else {
         echo json_encode(['success' => false, 'message' => 'Unauthorized action']);
     }
