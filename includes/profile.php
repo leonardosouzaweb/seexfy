@@ -70,10 +70,9 @@
 
                     if ($resultPhotos->num_rows > 0) {
                         while ($photo = $resultPhotos->fetch_assoc()) {
-                            $hiddenClass = $photo['is_hidden'] ? ' hidden' : '';
                             $iconClass = $photo['is_hidden'] ? 'bi-eye-slash-fill' : 'bi-eye-fill';
                             echo '<div class="photo-item">';
-                            echo '<img class="modal-trigger' . $hiddenClass . '" src="' . $photo['photo_path'] . '" alt="User Photo">';
+                            echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
                             echo '<div class="photo-actions">';
                             echo '<button class="like-button" data-photo-id="' . $photo['id'] . '">';
                             echo '<i class="bi bi-heart-fill"></i>';

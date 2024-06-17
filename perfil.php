@@ -74,25 +74,13 @@
                         var likeButton = document.querySelector('.like-button[data-photo-id="' + photoId + '"]');
                         likeButton.classList.add('liked');
                     }
-                    
-                    // Verifica se a foto está oculta e adiciona overlay se necessário
-                    if (data.success && data.is_hidden) {
-                        var photoItem = document.querySelector('.photo-item[data-photo-id="' + photoId + '"]');
-                        var overlay = photoItem.querySelector('.overlay');
-                        if (!overlay) {
-                            overlay = document.createElement('div');
-                            overlay.className = 'overlay';
-                            overlay.innerHTML = '<img src="../assets/images/icons/iconLockedWhite.svg"> <span>Foto Privada</span>';
-                            photoItem.appendChild(overlay);
-                        }
-                    }
                 });
             }
 
             document.querySelectorAll('.photo-item').forEach(function(photoItem) {
                 var photoId = photoItem.getAttribute('data-photo-id');
                 if (photoId) {
-                    checkLikedStatus(photoId); 
+                    checkLikedStatus(photoId);
                 }
             });
 
