@@ -36,6 +36,13 @@
         $displayGroup = "none";
     }
     
+    // Verifica se a foto é pública e não está oculta
+    $sqlPhotos = "SELECT id, filename FROM users_photos WHERE user_id = ? AND is_hidden = 0 AND is_public = 1";
+    $stmtPhotos = $conn->prepare($sqlPhotos);
+    $stmtPhotos->bind_param("i", $_SESSION['user_id']);
+    $stmtPhotos->execute();
+    $resultPhotos = $stmtPhotos->get_result();
+    $publicPhotos = $resultPhotos->fetch_all(MYSQLI_ASSOC);
 
     $stmt->close();
 ?>
