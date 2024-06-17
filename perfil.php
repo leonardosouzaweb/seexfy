@@ -58,6 +58,110 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pica/5.0.0/pica.min.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function checkLikedStatus(photoId) {
+                fetch('<?php echo $base_url; ?>/api/checkLike.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ photo_id: photoId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.liked) {
+                        // Armazenar o status de curtida no localStorage
+                        localStorage.setItem('photo_' + photoId + '_liked', 'true');
+                        // Adicionar classe 'liked' ao botão de curtida
+                        var likeButton = document.querySelector('.like-button[data-photo-id="' + photoId + '"]');
+                        likeButton.classList.add('liked');
+                    }
+                });
+            }
+
+            document.querySelectorAll('.photo-item').forEach(function(photoItem) {
+                var photoId = photoItem.getAttribute('data-photo-id');
+                checkLikedStatus(photoId);
+            });
+
+            document.querySelectorAll('.like-button').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var photoId = this.getAttribute('data-photo-id');
+                    var likeCount = this.querySelector('.like-count');
+                    
+                    fetch('<?php echo $base_url; ?>/api/likePhoto.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ photo_id: photoId })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            likeCount.textContent = data.likes;
+                            this.classList.add('liked');
+                            // Atualizar status de curtida no localStorage
+                            localStorage.setItem('photo_' + photoId + '_liked', 'true');
+                        }
+                    });
+                });
+            });
+
+            // Aplicar classes 'liked' aos botões de curtida ao recarregar a página
+            document.querySelectorAll('.like-button').forEach(function(button) {
+                var photoId = button.getAttribute('data-photo-id');
+                var isLiked = localStorage.getItem('photo_' + photoId + '_liked');
+                if (isLiked === 'true') {
+                    button.classList.add('liked');
+                }
+            });
+
+            document.querySelectorAll('.hide-button').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var photoId = this.getAttribute('data-photo-id');
+                    var photoItem = this.closest('.photo-item');
+                    var icon = this.querySelector('i');
+                    
+                    fetch('<?php echo $base_url; ?>/api/hidePhoto.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ photo_id: photoId })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            var overlay = photoItem.querySelector('.overlay');
+                            if (!overlay) {
+                                overlay = document.createElement('div');
+                                overlay.className = 'overlay';
+                                overlay.innerHTML = '<img src="../assets/images/icons/iconLockedWhite.svg"> <span>Foto Privada</span>';
+                                photoItem.appendChild(overlay);
+                                icon.classList.remove('bi-eye-fill');
+                                icon.classList.add('bi-eye-slash-fill');
+                            } else {
+                                photoItem.removeChild(overlay);
+                                icon.classList.remove('bi-eye-slash-fill');
+                                icon.classList.add('bi-eye-fill');
+                            }
+                        }
+                    });
+                });
+            });
+
+            document.querySelectorAll('.photo-item').forEach(function(photoItem) {
+                photoItem.querySelector('.modal-trigger').addEventListener('click', function(event) {
+                    if (photoItem.querySelector('.overlay')) {
+                        event.preventDefault();
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
         document.getElementById('interactButton').addEventListener('click', function() {
             var username = this.getAttribute('data-username');
             if (username) {
@@ -355,7 +459,6 @@
         document.getElementById("smokesInputPartner").addEventListener("input", checkFieldsPartner);
         document.getElementById("drinkInputPartner").addEventListener("input", checkFieldsPartner);
         document.getElementById("experienceInputPartner").addEventListener("input", checkFieldsPartner);
-
     </script>
 </body>
 </html>

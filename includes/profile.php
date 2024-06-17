@@ -58,27 +58,39 @@
             <?php endif; ?>
 
             <div class="photo-grid">
-            <?php
-                $username = $_GET['username'];
-                $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
-                    SELECT id FROM users WHERE username = ?
-                )";
-                $stmtPhotos = $conn->prepare($sqlPhotos);
-                $stmtPhotos->bind_param("s", $username);
-                $stmtPhotos->execute();
-                $resultPhotos = $stmtPhotos->get_result();
+                <?php
+                    $username = $_GET['username'];
+                    $sqlPhotos = "SELECT id, photo_path, likes, is_hidden FROM users_photos WHERE user_id = (
+                        SELECT id FROM users WHERE username = ?
+                    )";
+                    $stmtPhotos = $conn->prepare($sqlPhotos);
+                    $stmtPhotos->bind_param("s", $username);
+                    $stmtPhotos->execute();
+                    $resultPhotos = $stmtPhotos->get_result();
 
-                // Verificar se há fotos
-                if ($resultPhotos->num_rows > 0) {
-                    echo '<div class="photo-grid">';
-                    while ($photo = $resultPhotos->fetch_assoc()) {
-                        echo '<div class="photo-item"><img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                    if ($resultPhotos->num_rows > 0) {
+                        while ($photo = $resultPhotos->fetch_assoc()) {
+                            $hiddenClass = $photo['is_hidden'] ? ' hidden' : '';
+                            $iconClass = $photo['is_hidden'] ? 'bi-eye-slash-fill' : 'bi-eye-fill';
+                            echo '<div class="photo-item">';
+                            echo '<img class="modal-trigger' . $hiddenClass . '" src="' . $photo['photo_path'] . '" alt="User Photo">';
+                            echo '<div class="photo-actions">';
+                            echo '<button class="like-button" data-photo-id="' . $photo['id'] . '">';
+                            echo '<i class="bi bi-heart-fill"></i>';
+                            echo '<span class="like-count">' . $photo['likes'] . '</span>';
+                            echo '</button>';
+                            if ($isOwner) {
+                                echo '<button class="hide-button" data-photo-id="' . $photo['id'] . '">';
+                                echo '<i class="bi ' . $iconClass . '"></i>';
+                                echo '</button>';
+                            }
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    } else {
+                        echo '<p>Você não publicou nenhuma foto!</p>';
                     }
-                    echo '</div>';
-                } else {
-                    echo '<p>Você não publicou nenhuma foto!</p>';
-                }
-            ?>
+                ?>
             </div>
         </div>
     </div>
@@ -185,37 +197,42 @@
 
                 <span>Galeria de Fotos</span>
                 <div class="gallery">
-                    <?php if ($isOwner): ?>
-                    <form id="uploadForm" enctype="multipart/form-data">
-                        <input type="file" id="photoInput" class="inputfile" name="photoInput" accept="image/*" multiple/>
-                        <label for="photoInput"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Selecionar foto</span></label>
-                    </form>
-                    <?php endif; ?>
+                <?php if ($isOwner): ?>
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <input type="file" id="photoInput" class="inputfile" name="photoInput" accept="image/*" multiple/>
+                    <label for="photoInput"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Selecionar foto</span></label>
+                </form>
+                <?php endif; ?>
 
-                    <div class="photo-grid">
-                    <?php
-                        $username = $_GET['username'];
-                        $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
-                            SELECT id FROM users WHERE username = ?
-                        )";
-                        $stmtPhotos = $conn->prepare($sqlPhotos);
-                        $stmtPhotos->bind_param("s", $username);
-                        $stmtPhotos->execute();
-                        $resultPhotos = $stmtPhotos->get_result();
+                <div class="photo-grid">
+                <?php
+                    $username = $_GET['username'];
+                    $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
+                        SELECT id FROM users WHERE username = ?
+                    )";
+                    $stmtPhotos = $conn->prepare($sqlPhotos);
+                    $stmtPhotos->bind_param("s", $username);
+                    $stmtPhotos->execute();
+                    $resultPhotos = $stmtPhotos->get_result();
 
-                        // Verificar se há fotos
-                        if ($resultPhotos->num_rows > 0) {
-                            echo '<div class="photo-grid">';
-                            while ($photo = $resultPhotos->fetch_assoc()) {
-                                echo '<div class="photo-item"><img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                    if ($resultPhotos->num_rows > 0) {
+                        echo '<div class="photo-grid">';
+                        while ($photo = $resultPhotos->fetch_assoc()) {
+                            echo '<div class="photo-item">';
+                            echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
+                            if ($isOwner) {
+                                echo '<button class="hide-button" data-photo-id="' . $photo['photo_path'] . '"><i class="bi bi-eye-fill"></i></button>';
                             }
                             echo '</div>';
-                        } else {
-                            echo '<p>Você não publicou nenhuma foto!</p>';
                         }
-                    ?>
-                    </div>
+                        echo '</div>';
+                    } else {
+                        echo '<p>Você não publicou nenhuma foto!</p>';
+                    }
+                ?>
                 </div>
+            </div>
+
                 <!-- // -->
             </div>
             <div class="tab-pane fade filter" id="couple-tab-pane" role="tabpanel" aria-labelledby="couple-tab" tabindex="0">
