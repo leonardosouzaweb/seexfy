@@ -70,9 +70,7 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success && data.liked) {
-                        // Armazenar o status de curtida no localStorage
                         localStorage.setItem('photo_' + photoId + '_liked', 'true');
-                        // Adicionar classe 'liked' ao botão de curtida
                         var likeButton = document.querySelector('.like-button[data-photo-id="' + photoId + '"]');
                         likeButton.classList.add('liked');
                     }
@@ -101,14 +99,12 @@
                         if (data.success) {
                             likeCount.textContent = data.likes;
                             this.classList.add('liked');
-                            // Atualizar status de curtida no localStorage
                             localStorage.setItem('photo_' + photoId + '_liked', 'true');
                         }
                     });
                 });
             });
 
-            // Aplicar classes 'liked' aos botões de curtida ao recarregar a página
             document.querySelectorAll('.like-button').forEach(function(button) {
                 var photoId = button.getAttribute('data-photo-id');
                 var isLiked = localStorage.getItem('photo_' + photoId + '_liked');

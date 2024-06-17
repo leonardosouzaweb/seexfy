@@ -21,10 +21,9 @@ if (isset($data['photo_id']) && isset($_SESSION['user_id'])) {
         $newHiddenStatus = $row['is_hidden'] ? 0 : 1;
 
         // Atualiza o campo is_hidden na tabela users_photos
-        $sqlToggleHide = "UPDATE users_photos SET is_hidden = ?, is_public = ? WHERE id = ?";
+        $sqlToggleHide = "UPDATE users_photos SET is_hidden = ? WHERE id = ?";
         $stmtToggleHide = $conn->prepare($sqlToggleHide);
-        $isPublic = $newHiddenStatus ? 0 : 1; // Se estiver ocultando, não é público
-        $stmtToggleHide->bind_param("iii", $newHiddenStatus, $isPublic, $photoId);
+        $stmtToggleHide->bind_param("ii", $newHiddenStatus, $photoId);
         $stmtToggleHide->execute();
 
         echo json_encode(['success' => true, 'is_hidden' => $newHiddenStatus]);
