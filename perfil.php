@@ -114,27 +114,33 @@
                 });
             }
 
-            // Event listeners para botões de ocultar e verificar estado de ocultação ao carregar
-            document.querySelectorAll('.hide-button').forEach(function(button) {
-                var photoId = button.getAttribute('data-photo-id');
-                var photoItem = button.closest('.photo-item');
-                var icon = button.querySelector('i');
+            // Verificar se o perfil visitado é do próprio usuário ou de outro usuário
+            var isOwner = <?php echo json_encode($isOwner); ?>;
+            var visitedUsername = '<?php echo $username; ?>'; // Obtém o nome de usuário do perfil visitado
 
-                // Verifica e aplica o estado de ocultação ao carregar a página
-                var isHidden = localStorage.getItem('photo_' + photoId + '_hidden');
-                applyHiddenState(photoItem, icon, isHidden === 'true');
-
-                // Event listener para ocultar/desocultar a foto
-                button.addEventListener('click', function() {
-                    if (isHidden === 'true') {
-                        unhidePhoto(photoId, photoItem, icon);
-                        isHidden = 'false'; // Atualiza isHidden localmente para refletir mudança imediata
-                    } else {
-                        hidePhoto(photoId, photoItem, icon);
-                        isHidden = 'true'; // Atualiza isHidden localmente para refletir mudança imediata
+            if (!isOwner) {
+                // Caso o perfil visitado não seja do próprio usuário, verificar e aplicar estado de ocultação
+                document.querySelectorAll('.photo-item').forEach(function(photoItem) {
+                    var photoId = photoItem.getAttribute('data-photo-id');
+                    if (photoId) {
+                        fetch('<?php echo $base_url; ?>/api/checkPhoto.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ photo_id: photoId })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                var isHidden = data.isHidden;
+                                var icon = photoItem.querySelector('.hide-button i');
+                                applyHiddenState(photoItem, icon, isHidden);
+                            }
+                        });
                     }
                 });
-            });
+            }
 
             // Evitar abrir o modal para fotos ocultas
             document.querySelectorAll('.photo-item').forEach(function(photoItem) {
@@ -172,33 +178,41 @@
                 }
             });
 
-            // Verificar se o perfil visitado é do próprio usuário ou de outro usuário
-            var isOwner = <?php echo json_encode($isOwner); ?>;
-
-            if (!isOwner) {
-                // Caso o perfil visitado não seja do próprio usuário, verificar e aplicar estado de ocultação
-                document.querySelectorAll('.photo-item').forEach(function(photoItem) {
-                    var photoId = photoItem.getAttribute('data-photo-id');
-                    if (photoId) {
-                        fetch('<?php echo $base_url; ?>/api/checkPhoto.php', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ photo_id: photoId })
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                var isHidden = data.isHidden;
-                                var icon = photoItem.querySelector('.hide-button i');
-                                applyHiddenState(photoItem, icon, isHidden);
-                            }
-                        });
-                    }
+            // Event listener para curtir uma foto
+            document.querySelectorAll('.like-button').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var photoId = this.getAttribute('data-photo-id');
+                    var likeCount = this.querySelector('.like-count');
+                    
+                    fetch('<?php echo $base_url; ?>/api/likePhoto.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ photo_id: photoId })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            likeCount.textContent = data.likes;
+                            this.classList.add('liked');
+                            localStorage.setItem('photo_' + photoId + '_liked', 'true');
+                        }
+                    });
                 });
-            }
+            });
+
+            // Verificar e aplicar estado de curtida ao carregar
+            document.querySelectorAll('.like-button').forEach(function(button) {
+                var photoId = button.getAttribute('data-photo-id');
+                var isLiked = localStorage.getItem('photo_' + photoId + '_liked');
+                if (isLiked === 'true') {
+                    button.classList.add('liked');
+                }
+            });
         });
+
+    
     </script>
 
     <script>
