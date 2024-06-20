@@ -70,10 +70,15 @@
 
                     if ($resultPhotos->num_rows > 0) {
                         while ($photo = $resultPhotos->fetch_assoc()) {
-                            // Verifica se a foto é pública ou se o usuário logado é o proprietário
                             if ($photo['is_public'] || $isOwner || $photo['is_hidden'] == 0) {
                                 $iconClass = $photo['is_hidden'] ? 'bi-eye-slash-fill' : 'bi-eye-fill';
                                 echo '<div class="photo-item">';
+                                if ($photo['is_hidden']) {
+                                    echo '<div class="overlay">';
+                                    echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
+                                    echo '<span>Foto Privada</span>';
+                                    echo '</div>';
+                                }
                                 echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
                                 echo '<div class="photo-actions">';
                                 echo '<button class="like-button" data-photo-id="' . $photo['id'] . '">';
@@ -85,6 +90,14 @@
                                     echo '<i class="bi ' . $iconClass . '"></i>';
                                     echo '</button>';
                                 }
+                                echo '</div>';
+                                echo '</div>';
+                            } else {
+                                // Caso a foto seja privada e o usuário não seja o dono do perfil, exibe apenas o bloco de imagem bloqueada
+                                echo '<div class="photo-item">';
+                                echo '<div class="overlay">';
+                                echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
+                                echo '<span>Foto Privada</span>';
                                 echo '</div>';
                                 echo '</div>';
                             }

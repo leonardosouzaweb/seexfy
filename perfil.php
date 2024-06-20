@@ -57,7 +57,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pica/5.0.0/pica.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Função para verificar e aplicar estado de ocultação
             function applyHiddenState(photoItem, icon, isHidden) {
                 var overlay = photoItem.querySelector('.overlay');
                 if (isHidden) {
@@ -78,7 +77,6 @@
                 }
             }
 
-            // Função para marcar a foto como oculta e salvar no localStorage
             function hidePhoto(photoId, photoItem, icon) {
                 fetch('<?php echo $base_url; ?>/api/hidePhoto.php', {
                     method: 'POST',
@@ -96,7 +94,6 @@
                 });
             }
 
-            // Função para desmarcar a foto como oculta e atualizar localStorage
             function unhidePhoto(photoId, photoItem, icon) {
                 fetch('<?php echo $base_url; ?>/api/unhidePhoto.php', {
                     method: 'POST',
@@ -114,29 +111,25 @@
                 });
             }
 
-            // Event listeners para botões de ocultar e verificar estado de ocultação ao carregar
             document.querySelectorAll('.hide-button').forEach(function(button) {
                 var photoId = button.getAttribute('data-photo-id');
                 var photoItem = button.closest('.photo-item');
                 var icon = button.querySelector('i');
 
-                // Verifica e aplica o estado de ocultação ao carregar a página
                 var isHidden = localStorage.getItem('photo_' + photoId + '_hidden');
                 applyHiddenState(photoItem, icon, isHidden === 'true');
 
-                // Event listener para ocultar/desocultar a foto
                 button.addEventListener('click', function() {
                     if (isHidden === 'true') {
                         unhidePhoto(photoId, photoItem, icon);
-                        isHidden = 'false'; // Atualiza isHidden localmente para refletir mudança imediata
+                        isHidden = 'false'; 
                     } else {
                         hidePhoto(photoId, photoItem, icon);
-                        isHidden = 'true'; // Atualiza isHidden localmente para refletir mudança imediata
+                        isHidden = 'true'; 
                     }
                 });
             });
 
-            // Evitar abrir o modal para fotos ocultas
             document.querySelectorAll('.photo-item').forEach(function(photoItem) {
                 photoItem.querySelector('.modal-trigger').addEventListener('click', function(event) {
                     if (photoItem.querySelector('.overlay')) {
@@ -145,7 +138,6 @@
                 });
             });
 
-            // Função para verificar e aplicar estado de curtida ao carregar
             function checkLikedStatus(photoId) {
                 fetch('<?php echo $base_url; ?>/api/checkLike.php', {
                     method: 'POST',
@@ -164,7 +156,6 @@
                 });
             }
 
-            // Verificar e aplicar estado de curtida ao carregar
             document.querySelectorAll('.photo-item').forEach(function(photoItem) {
                 var photoId = photoItem.getAttribute('data-photo-id');
                 if (photoId) {
@@ -172,7 +163,6 @@
                 }
             });
 
-            // Event listener para curtir uma foto
             document.querySelectorAll('.like-button').forEach(function(button) {
                 button.addEventListener('click', function() {
                     var photoId = this.getAttribute('data-photo-id');
@@ -196,7 +186,6 @@
                 });
             });
 
-            // Verificar e aplicar estado de curtida ao carregar
             document.querySelectorAll('.like-button').forEach(function(button) {
                 var photoId = button.getAttribute('data-photo-id');
                 var isLiked = localStorage.getItem('photo_' + photoId + '_liked');
