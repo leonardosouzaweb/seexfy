@@ -14,8 +14,15 @@
     .home .content .infoProfile { width: 100%; margin-top: 20px; }
 
     /* SINGLE */
+    .home .content .infoProfile { position: relative; }
+    .home .content .infoProfile .payment { position: absolute; top: 0; width: 100%; text-align: center; height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1; }
+    .home .content .infoProfile .payment h2 { font-size: 18px; padding: 0px 10%; margin-top: 20px; margin-bottom: 10px; }
+    .home .content .infoProfile .payment p { margin-bottom: 0; font-size: 15px; font-weight: 500; margin-bottom: 20px; opacity: 0.6; }
+    .home .content .infoProfile .payment img { width: 65%; margin: 0 auto; display: block; margin-bottom: 0; }
+    .home .content .infoProfile .payment button { background: #E74C3C; width: 60%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 10px 0px; border-radius: 15px; }
+
     .home .content .infoProfile .detailProfileSingle { width: 100% !important;}
-    .home .content .infoProfile .detailProfileSingle.filter { filter: blur(0.2rem); }
+    .home .content .infoProfile .detailProfileSingle.filter { filter: blur(0.8rem); user-select: none; pointer-events: none; }
     .home .content .infoProfile .detailProfileSingle .nav-tabs { justify-content: space-between; }
     .home .content .infoProfile .detailProfileSingle .nav-tabs .nav-item .nav-link { font-weight: 500; font-size: 14px; padding: 10px 0px; background: transparent; border-radius: 0px; border: none; color: #000; }
     .home .content .infoProfile .detailProfileSingle .nav-tabs .nav-item .nav-link.active { border-bottom: 2px solid #E74C3C; color: #E74C3C; font-weight: 600; }

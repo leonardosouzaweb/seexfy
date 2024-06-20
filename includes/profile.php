@@ -23,7 +23,7 @@
 </div>
 
 <div class="infoProfile">
-    <div class="detailProfileSingle <?php echo $classSingle; ?>" style="display:<?php echo $displaySingle; ?>;">
+    <div class="detailProfileSingle <?php echo $showFilterClass; ?>" style="display:<?php echo $displaySingle; ?>;">
         <span>Informações 
         <?php if ($isOwner): ?>
             <img src="<?php echo $base_url; ?>assets/images/icons/icEdit.svg" data-bs-toggle="modal" data-bs-target="#modalEditUser">
@@ -109,7 +109,7 @@
         </div>
     </div>
 
-    <div class="detailProfileGroup <?php echo $classGroup; ?>" style="display:<?php echo $displayGroup; ?>;">
+    <div class="detailProfileGroup <?php echo $showFilterClass; ?>" style="display:<?php echo $displayGroup; ?>;">
         <ul class="nav nav-tabs" id="infoProfile" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="woman-tab" data-bs-toggle="tab" data-bs-target="#woman-tab-pane" type="button" role="tab" aria-controls="woman-tab-pane" aria-selected="false">Mulher</button>
@@ -209,7 +209,7 @@
                 </div>
                 <!-- // -->
             </div>
-            <div class="tab-pane fade filter" id="man-tab-pane" role="tabpanel" aria-labelledby="man-tab" tabindex="0">
+            <div class="tab-pane fade" id="man-tab-pane" role="tabpanel" aria-labelledby="man-tab" tabindex="0">
                 <!-- HOMEM -->
                 <span>Informações 
                 <?php if ($isOwner): ?>
@@ -294,7 +294,7 @@
                     ?>
                 </div>
             </div>
-            <div class="tab-pane fade filter" id="couple-tab-pane" role="tabpanel" aria-labelledby="couple-tab" tabindex="0">
+            <div class="tab-pane fade" id="couple-tab-pane" role="tabpanel" aria-labelledby="couple-tab" tabindex="0">
                 <!-- CASAL -->
                 <span>Galeria de Fotos</span>
                 <div class="gallery">
@@ -545,6 +545,14 @@
     </div>
 </div>
 
+<?php if ($showPaymentDiv): ?>
+    <div class="payment">
+        <img src="../assets/images/creditcard.png">
+        <h2>Para visualizar as informações seja um assinante</h2>
+        <p>Seja um assinante agora mesmo! E tenha benefícios exclusivos.</p>
+        <button>Quero assinar</button>
+    </div>
+<?php endif; ?>
 <!-- Modal -->
 <div id="photoModal" class="modal">
     <div class="modal-dialog modal-dialog-centered">

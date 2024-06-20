@@ -36,6 +36,23 @@
         $displayGroup = "none";
     }
     $stmt->close();
+
+    $user_id = $_SESSION['user_id']; 
+    $sqlPayment = "SELECT status FROM payments WHERE user_id = ? ORDER BY payment_date DESC LIMIT 1";
+    $stmt = $conn->prepare($sqlPayment);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $payment = $result->fetch_assoc();
+    $stmt->close();
+
+    $showPaymentDiv = true; 
+    $showFilterClass = "filter"; 
+
+    if ($payment && $payment['status'] == 1) {
+        $showPaymentDiv = false; 
+        $showFilterClass = "";
+    }
 ?>
 <body>
     <div class="empty">
