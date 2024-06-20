@@ -70,9 +70,10 @@
 
                     if ($resultPhotos->num_rows > 0) {
                         while ($photo = $resultPhotos->fetch_assoc()) {
-                            // Verifica se a foto é pública ou se o usuário logado é o proprietário
-                            if ($photo['is_public'] || $isOwner || $photo['is_hidden'] == 0) {
-                                $iconClass = $photo['is_hidden'] ? 'bi-eye-slash-fill' : 'bi-eye-fill';
+                            $iconClass = $photo['is_hidden'] ? 'bi-eye-slash-fill' : 'bi-eye-fill';
+
+                            // Verifica se a foto é pública, se o usuário logado é o proprietário, ou se é uma foto bloqueada do visitante
+                            if ($photo['is_public'] || $isOwner || ($photo['is_hidden'] && !$isOwner)) {
                                 echo '<div class="photo-item">';
                                 echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
                                 echo '<div class="photo-actions">';
@@ -85,6 +86,12 @@
                                     echo '<i class="bi ' . $iconClass . '"></i>';
                                     echo '</button>';
                                 }
+                                if ($photo['is_hidden'] && !$isOwner) {
+                                    echo '<div class="overlay">';
+                                    echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
+                                    echo '<span>Foto Privada</span>';
+                                    echo '</div>';
+                                }
                                 echo '</div>';
                                 echo '</div>';
                             }
@@ -94,9 +101,6 @@
                     }
                 ?>
             </div>
-
-        </div>
-
         </div>
     </div>
 
