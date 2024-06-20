@@ -57,6 +57,43 @@
             </form>
             <?php endif; ?>
 
+            <div class="photo-grid">
+                <?php
+                    $username = $_GET['username'];
+                    $sqlPhotos = "SELECT id, photo_path, likes, is_hidden, is_public FROM users_photos WHERE user_id = (
+                        SELECT id FROM users WHERE username = ?
+                    )";
+                    $stmtPhotos = $conn->prepare($sqlPhotos);
+                    $stmtPhotos->bind_param("s", $username);
+                    $stmtPhotos->execute();
+                    $resultPhotos = $stmtPhotos->get_result();
+
+                    if ($resultPhotos->num_rows > 0) {
+                        while ($photo = $resultPhotos->fetch_assoc()) {
+                            // Verifica se a foto é pública ou se o usuário logado é o proprietário
+                            if ($photo['is_public'] || $isOwner || $photo['is_hidden'] == 0) {
+                                $iconClass = $photo['is_hidden'] ? 'bi-eye-slash-fill' : 'bi-eye-fill';
+                                echo '<div class="photo-item">';
+                                echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
+                                echo '<div class="photo-actions">';
+                                echo '<button class="like-button" data-photo-id="' . $photo['id'] . '">';
+                                echo '<i class="bi bi-heart-fill"></i>';
+                                echo '<span class="like-count">' . $photo['likes'] . '</span>';
+                                echo '</button>';
+                                if ($isOwner) {
+                                    echo '<button class="hide-button" data-photo-id="' . $photo['id'] . '">';
+                                    echo '<i class="bi ' . $iconClass . '"></i>';
+                                    echo '</button>';
+                                }
+                                echo '</div>';
+                                echo '</div>';
+                            }
+                        }
+                    } else {
+                        echo '<p>Você não publicou nenhuma foto!</p>';
+                    }
+                ?>
+            </div>
         </div>
     </div>
 
