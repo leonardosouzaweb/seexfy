@@ -71,7 +71,7 @@
                     if ($resultPhotos->num_rows > 0) {
                         while ($photo = $resultPhotos->fetch_assoc()) {
                             // Verifica se a foto é pública ou se o usuário logado é o proprietário
-                            if ($photo['is_public'] || $isOwner) {
+                            if ($photo['is_public'] || $isOwner || $photo['is_hidden'] == 0) {
                                 $iconClass = $photo['is_hidden'] ? 'bi-eye-slash-fill' : 'bi-eye-fill';
                                 echo '<div class="photo-item">';
                                 echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
@@ -94,6 +94,8 @@
                     }
                 ?>
             </div>
+
+        </div>
 
         </div>
     </div>
