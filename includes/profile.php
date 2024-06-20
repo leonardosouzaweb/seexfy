@@ -93,7 +93,6 @@
                                 echo '</div>';
                                 echo '</div>';
                             } else {
-                                // Caso a foto seja privada e o usuário não seja o dono do perfil, exibe apenas o bloco de imagem bloqueada
                                 echo '<div class="photo-item">';
                                 echo '<div class="overlay">';
                                 echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
@@ -159,27 +158,53 @@
                     <?php endif; ?>
 
                     <div class="photo-grid">
-                    <?php
-                        $username = $_GET['username'];
-                        $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
-                            SELECT id FROM users WHERE username = ?
-                        )";
-                        $stmtPhotos = $conn->prepare($sqlPhotos);
-                        $stmtPhotos->bind_param("s", $username);
-                        $stmtPhotos->execute();
-                        $resultPhotos = $stmtPhotos->get_result();
+                        <?php
+                            $username = $_GET['username'];
+                            $sqlPhotos = "SELECT id, photo_path, likes, is_hidden, is_public FROM users_photos WHERE user_id = (
+                                SELECT id FROM users WHERE username = ?
+                            )";
+                            $stmtPhotos = $conn->prepare($sqlPhotos);
+                            $stmtPhotos->bind_param("s", $username);
+                            $stmtPhotos->execute();
+                            $resultPhotos = $stmtPhotos->get_result();
 
-                        // Verificar se há fotos
-                        if ($resultPhotos->num_rows > 0) {
-                            echo '<div class="photo-grid">';
-                            while ($photo = $resultPhotos->fetch_assoc()) {
-                                echo '<div class="photo-item"><img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                            if ($resultPhotos->num_rows > 0) {
+                                while ($photo = $resultPhotos->fetch_assoc()) {
+                                    if ($photo['is_public'] || $isOwner || $photo['is_hidden'] == 0) {
+                                        $iconClass = $photo['is_hidden'] ? 'bi-eye-slash-fill' : 'bi-eye-fill';
+                                        echo '<div class="photo-item">';
+                                        if ($photo['is_hidden']) {
+                                            echo '<div class="overlay">';
+                                            echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
+                                            echo '<span>Foto Privada</span>';
+                                            echo '</div>';
+                                        }
+                                        echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
+                                        echo '<div class="photo-actions">';
+                                        echo '<button class="like-button" data-photo-id="' . $photo['id'] . '">';
+                                        echo '<i class="bi bi-heart-fill"></i>';
+                                        echo '<span class="like-count">' . $photo['likes'] . '</span>';
+                                        echo '</button>';
+                                        if ($isOwner) {
+                                            echo '<button class="hide-button" data-photo-id="' . $photo['id'] . '">';
+                                            echo '<i class="bi ' . $iconClass . '"></i>';
+                                            echo '</button>';
+                                        }
+                                        echo '</div>';
+                                        echo '</div>';
+                                    } else {
+                                        echo '<div class="photo-item">';
+                                        echo '<div class="overlay">';
+                                        echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
+                                        echo '<span>Foto Privada</span>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+                                }
+                            } else {
+                                echo '<p>Você não publicou nenhuma foto!</p>';
                             }
-                            echo '</div>';
-                        } else {
-                            echo '<p>Você não publicou nenhuma foto!</p>';
-                        }
-                    ?>
+                        ?>
                     </div>
                 </div>
                 <!-- // -->
@@ -220,35 +245,54 @@
                 <?php endif; ?>
 
                 <div class="photo-grid">
-                <?php
-                    $username = $_GET['username'];
-                    $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
-                        SELECT id FROM users WHERE username = ?
-                    )";
-                    $stmtPhotos = $conn->prepare($sqlPhotos);
-                    $stmtPhotos->bind_param("s", $username);
-                    $stmtPhotos->execute();
-                    $resultPhotos = $stmtPhotos->get_result();
+                    <?php
+                        $username = $_GET['username'];
+                        $sqlPhotos = "SELECT id, photo_path, likes, is_hidden, is_public FROM users_photos WHERE user_id = (
+                            SELECT id FROM users WHERE username = ?
+                        )";
+                        $stmtPhotos = $conn->prepare($sqlPhotos);
+                        $stmtPhotos->bind_param("s", $username);
+                        $stmtPhotos->execute();
+                        $resultPhotos = $stmtPhotos->get_result();
 
-                    if ($resultPhotos->num_rows > 0) {
-                        echo '<div class="photo-grid">';
-                        while ($photo = $resultPhotos->fetch_assoc()) {
-                            echo '<div class="photo-item">';
-                            echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
-                            if ($isOwner) {
-                                echo '<button class="hide-button" data-photo-id="' . $photo['photo_path'] . '"><i class="bi bi-eye-fill"></i></button>';
+                        if ($resultPhotos->num_rows > 0) {
+                            while ($photo = $resultPhotos->fetch_assoc()) {
+                                if ($photo['is_public'] || $isOwner || $photo['is_hidden'] == 0) {
+                                    $iconClass = $photo['is_hidden'] ? 'bi-eye-slash-fill' : 'bi-eye-fill';
+                                    echo '<div class="photo-item">';
+                                    if ($photo['is_hidden']) {
+                                        echo '<div class="overlay">';
+                                        echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
+                                        echo '<span>Foto Privada</span>';
+                                        echo '</div>';
+                                    }
+                                    echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
+                                    echo '<div class="photo-actions">';
+                                    echo '<button class="like-button" data-photo-id="' . $photo['id'] . '">';
+                                    echo '<i class="bi bi-heart-fill"></i>';
+                                    echo '<span class="like-count">' . $photo['likes'] . '</span>';
+                                    echo '</button>';
+                                    if ($isOwner) {
+                                        echo '<button class="hide-button" data-photo-id="' . $photo['id'] . '">';
+                                        echo '<i class="bi ' . $iconClass . '"></i>';
+                                        echo '</button>';
+                                    }
+                                    echo '</div>';
+                                    echo '</div>';
+                                } else {
+                                    echo '<div class="photo-item">';
+                                    echo '<div class="overlay">';
+                                    echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
+                                    echo '<span>Foto Privada</span>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                }
                             }
-                            echo '</div>';
+                        } else {
+                            echo '<p>Você não publicou nenhuma foto!</p>';
                         }
-                        echo '</div>';
-                    } else {
-                        echo '<p>Você não publicou nenhuma foto!</p>';
-                    }
-                ?>
+                    ?>
                 </div>
-            </div>
-
-                <!-- // -->
             </div>
             <div class="tab-pane fade filter" id="couple-tab-pane" role="tabpanel" aria-labelledby="couple-tab" tabindex="0">
                 <!-- CASAL -->
@@ -262,27 +306,53 @@
                     <?php endif; ?>
 
                     <div class="photo-grid">
-                    <?php
-                        $username = $_GET['username'];
-                        $sqlPhotos = "SELECT photo_path FROM users_photos WHERE user_id = (
-                            SELECT id FROM users WHERE username = ?
-                        )";
-                        $stmtPhotos = $conn->prepare($sqlPhotos);
-                        $stmtPhotos->bind_param("s", $username);
-                        $stmtPhotos->execute();
-                        $resultPhotos = $stmtPhotos->get_result();
+                        <?php
+                            $username = $_GET['username'];
+                            $sqlPhotos = "SELECT id, photo_path, likes, is_hidden, is_public FROM users_photos WHERE user_id = (
+                                SELECT id FROM users WHERE username = ?
+                            )";
+                            $stmtPhotos = $conn->prepare($sqlPhotos);
+                            $stmtPhotos->bind_param("s", $username);
+                            $stmtPhotos->execute();
+                            $resultPhotos = $stmtPhotos->get_result();
 
-                        // Verificar se há fotos
-                        if ($resultPhotos->num_rows > 0) {
-                            echo '<div class="photo-grid">';
-                            while ($photo = $resultPhotos->fetch_assoc()) {
-                                echo '<div class="photo-item"><img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo"></div>';
+                            if ($resultPhotos->num_rows > 0) {
+                                while ($photo = $resultPhotos->fetch_assoc()) {
+                                    if ($photo['is_public'] || $isOwner || $photo['is_hidden'] == 0) {
+                                        $iconClass = $photo['is_hidden'] ? 'bi-eye-slash-fill' : 'bi-eye-fill';
+                                        echo '<div class="photo-item">';
+                                        if ($photo['is_hidden']) {
+                                            echo '<div class="overlay">';
+                                            echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
+                                            echo '<span>Foto Privada</span>';
+                                            echo '</div>';
+                                        }
+                                        echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
+                                        echo '<div class="photo-actions">';
+                                        echo '<button class="like-button" data-photo-id="' . $photo['id'] . '">';
+                                        echo '<i class="bi bi-heart-fill"></i>';
+                                        echo '<span class="like-count">' . $photo['likes'] . '</span>';
+                                        echo '</button>';
+                                        if ($isOwner) {
+                                            echo '<button class="hide-button" data-photo-id="' . $photo['id'] . '">';
+                                            echo '<i class="bi ' . $iconClass . '"></i>';
+                                            echo '</button>';
+                                        }
+                                        echo '</div>';
+                                        echo '</div>';
+                                    } else {
+                                        echo '<div class="photo-item">';
+                                        echo '<div class="overlay">';
+                                        echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
+                                        echo '<span>Foto Privada</span>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+                                }
+                            } else {
+                                echo '<p>Você não publicou nenhuma foto!</p>';
                             }
-                            echo '</div>';
-                        } else {
-                            echo '<p>Você não publicou nenhuma foto!</p>';
-                        }
-                    ?>
+                        ?>
                     </div>
                 </div>
                 <!-- // -->
