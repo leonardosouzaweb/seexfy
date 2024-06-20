@@ -57,129 +57,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pica/5.0.0/pica.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    // Função para verificar e aplicar estado de ocultação
-    function applyHiddenState(photoItem, icon, isHidden) {
-        var overlay = photoItem.querySelector('.overlay');
-        if (isHidden) {
-            if (!overlay) {
-                overlay = document.createElement('div');
-                overlay.className = 'overlay';
-                overlay.innerHTML = '<img src="../assets/images/icons/iconLockedWhite.svg"> <span>Foto Privada</span>';
-                photoItem.appendChild(overlay);
-                icon.classList.remove('bi-eye-fill');
-                icon.classList.add('bi-eye-slash-fill');
+            // Função para verificar e aplicar estado de ocultação
+            function applyHiddenState(photoItem, icon, isHidden) {
+                var overlay = photoItem.querySelector('.overlay');
+                if (isHidden) {
+                    if (!overlay) {
+                        overlay = document.createElement('div');
+                        overlay.className = 'overlay';
+                        overlay.innerHTML = '<img src="../assets/images/icons/iconLockedWhite.svg"> <span>Foto Privada</span>';
+                        photoItem.appendChild(overlay);
+                        icon.classList.remove('bi-eye-fill');
+                        icon.classList.add('bi-eye-slash-fill');
+                    }
+                } else {
+                    if (overlay) {
+                        photoItem.removeChild(overlay);
+                        icon.classList.remove('bi-eye-slash-fill');
+                        icon.classList.add('bi-eye-fill');
+                    }
+                }
             }
-        } else {
-            if (overlay) {
-                photoItem.removeChild(overlay);
-                icon.classList.remove('bi-eye-slash-fill');
-                icon.classList.add('bi-eye-fill');
+
+            // Função para marcar a foto como oculta e salvar no localStorage
+            function hidePhoto(photoId, photoItem, icon) {
+                fetch('<?php echo $base_url; ?>/api/hidePhoto.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ photo_id: photoId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        localStorage.setItem('photo_' + photoId + '_hidden', 'true');
+                        applyHiddenState(photoItem, icon, true);
+                    }
+                });
             }
-        }
-    }
 
-    // Função para marcar a foto como oculta e salvar no localStorage
-    function hidePhoto(photoId, photoItem, icon) {
-        fetch('<?php echo $base_url; ?>/api/hidePhoto.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ photo_id: photoId })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                localStorage.setItem('photo_' + photoId + '_hidden', 'true');
-                applyHiddenState(photoItem, icon, true);
-            }
-        });
-    }
-
-    // Função para desmarcar a foto como oculta e atualizar localStorage
-    function unhidePhoto(photoId, photoItem, icon) {
-        fetch('<?php echo $base_url; ?>/api/unhidePhoto.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ photo_id: photoId })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                localStorage.removeItem('photo_' + photoId + '_hidden');
-                applyHiddenState(photoItem, icon, false);
-            }
-        });
-    }
-
-    // Event listeners para botões de ocultar e verificar estado de ocultação ao carregar
-    document.querySelectorAll('.hide-button').forEach(function(button) {
-        var photoId = button.getAttribute('data-photo-id');
-        var photoItem = button.closest('.photo-item');
-        var icon = button.querySelector('i');
-
-        // Verifica e aplica o estado de ocultação ao carregar a página
-        var isHidden = localStorage.getItem('photo_' + photoId + '_hidden');
-        applyHiddenState(photoItem, icon, isHidden === 'true');
-
-        // Event listener para ocultar/desocultar a foto
-        button.addEventListener('click', function() {
-            if (isHidden === 'true') {
-                unhidePhoto(photoId, photoItem, icon);
-                isHidden = 'false'; // Atualiza isHidden localmente para refletir mudança imediata
-            } else {
-                hidePhoto(photoId, photoItem, icon);
-                isHidden = 'true'; // Atualiza isHidden localmente para refletir mudança imediata
-            }
-        });
-    });
-
-    // Evitar abrir o modal para fotos ocultas
-    document.querySelectorAll('.photo-item').forEach(function(photoItem) {
-        photoItem.querySelector('.modal-trigger').addEventListener('click', function(event) {
-            if (photoItem.querySelector('.overlay')) {
-                event.preventDefault();
-            }
-        });
-    });
-
-    // Função para verificar e aplicar estado de curtida ao carregar
-    function checkLikedStatus(photoId) {
-        fetch('<?php echo $base_url; ?>/api/checkLike.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ photo_id: photoId })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success && data.liked) {
-                localStorage.setItem('photo_' + photoId + '_liked', 'true');
-                var likeButton = document.querySelector('.like-button[data-photo-id="' + photoId + '"]');
-                likeButton.classList.add('liked');
-            }
-        });
-    }
-
-    // Verificar e aplicar estado de curtida ao carregar
-    document.querySelectorAll('.photo-item').forEach(function(photoItem) {
-        var photoId = photoItem.getAttribute('data-photo-id');
-        if (photoId) {
-            checkLikedStatus(photoId);
-        }
-    });
-
-    // Verificar se o perfil visitado é do próprio usuário ou de outro usuário
-    var isOwner = <?php echo json_encode($isOwner); ?>;
-
-    if (!isOwner) {
-        // Caso o perfil visitado não seja do próprio usuário, verificar e aplicar estado de ocultação
-        document.querySelectorAll('.photo-item').forEach(function(photoItem) {
-            var photoId = photoItem.getAttribute('data-photo-id');
-            if (photoId) {
+            // Função para desmarcar a foto como oculta e atualizar localStorage
+            function unhidePhoto(photoId, photoItem, icon) {
                 fetch('<?php echo $base_url; ?>/api/checkPhoto.php', {
                     method: 'POST',
                     headers: {
@@ -190,16 +108,97 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        var isHidden = data.isHidden;
-                        var icon = photoItem.querySelector('.hide-button i');
-                        applyHiddenState(photoItem, icon, isHidden);
+                        localStorage.removeItem('photo_' + photoId + '_hidden');
+                        applyHiddenState(photoItem, icon, false);
+                    }
+                });
+            }
+
+            // Event listeners para botões de ocultar e verificar estado de ocultação ao carregar
+            document.querySelectorAll('.hide-button').forEach(function(button) {
+                var photoId = button.getAttribute('data-photo-id');
+                var photoItem = button.closest('.photo-item');
+                var icon = button.querySelector('i');
+
+                // Verifica e aplica o estado de ocultação ao carregar a página
+                var isHidden = localStorage.getItem('photo_' + photoId + '_hidden');
+                applyHiddenState(photoItem, icon, isHidden === 'true');
+
+                // Event listener para ocultar/desocultar a foto
+                button.addEventListener('click', function() {
+                    if (isHidden === 'true') {
+                        unhidePhoto(photoId, photoItem, icon);
+                        isHidden = 'false'; // Atualiza isHidden localmente para refletir mudança imediata
+                    } else {
+                        hidePhoto(photoId, photoItem, icon);
+                        isHidden = 'true'; // Atualiza isHidden localmente para refletir mudança imediata
+                    }
+                });
+            });
+
+            // Evitar abrir o modal para fotos ocultas
+            document.querySelectorAll('.photo-item').forEach(function(photoItem) {
+                photoItem.querySelector('.modal-trigger').addEventListener('click', function(event) {
+                    if (photoItem.querySelector('.overlay')) {
+                        event.preventDefault();
+                    }
+                });
+            });
+
+            // Função para verificar e aplicar estado de curtida ao carregar
+            function checkLikedStatus(photoId) {
+                fetch('<?php echo $base_url; ?>/api/checkLike.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ photo_id: photoId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.liked) {
+                        localStorage.setItem('photo_' + photoId + '_liked', 'true');
+                        var likeButton = document.querySelector('.like-button[data-photo-id="' + photoId + '"]');
+                        likeButton.classList.add('liked');
+                    }
+                });
+            }
+
+            // Verificar e aplicar estado de curtida ao carregar
+            document.querySelectorAll('.photo-item').forEach(function(photoItem) {
+                var photoId = photoItem.getAttribute('data-photo-id');
+                if (photoId) {
+                    checkLikedStatus(photoId);
+                }
+            });
+
+            // Verificar se o perfil visitado é do próprio usuário ou de outro usuário
+            var isOwner = <?php echo json_encode($isOwner); ?>;
+
+            if (!isOwner) {
+                // Caso o perfil visitado não seja do próprio usuário, verificar e aplicar estado de ocultação
+                document.querySelectorAll('.photo-item').forEach(function(photoItem) {
+                    var photoId = photoItem.getAttribute('data-photo-id');
+                    if (photoId) {
+                        fetch('<?php echo $base_url; ?>/api/checkPhoto.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ photo_id: photoId })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                var isHidden = data.isHidden;
+                                var icon = photoItem.querySelector('.hide-button i');
+                                applyHiddenState(photoItem, icon, isHidden);
+                            }
+                        });
                     }
                 });
             }
         });
-    }
-});
-
     </script>
 
     <script>
