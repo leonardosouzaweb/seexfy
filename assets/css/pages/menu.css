@@ -21,7 +21,7 @@
     .bottomMenu div.active img { margin: 0 auto; display: block; position: relative; z-index: 1; opacity: 1; top: -7px; }
     .bottomMenu div img { margin: 0 auto; display: block; position: relative; z-index: 1; opacity: 0.5; width: 23px; }
     .bottomMenu div img.icHome { width: 19px; }
-    .bottomMenu div img.icEvent { width: 25px; margin-left: 29px; }
+    .bottomMenu div img.icEvent { width: 25px; }
     .bottomMenu div img.icRadar { width: 21px; }
     .bottomMenu div img.icChat { width: 27px; }
 }
