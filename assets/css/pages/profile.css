@@ -39,7 +39,7 @@
     .home .content .infoProfile .detailProfileSingle p { font-size: 13px; line-height: 22px; margin: 0; margin-bottom: 15px; }
     .home .content .infoProfile .detailProfileSingle .divider { border: 1px solid #f1f1f1; margin: 10px 0; }
 
-    .home .content .infoProfile .detailProfileSingle .gallery { width: 100%; margin-top: 10px; margin-bottom: 100px; }
+    .home .content .infoProfile .detailProfileSingle .gallery { width: 100%; margin-top: 10px; }
     .home .content .infoProfile .detailProfileSingle .gallery .inputfile { width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
     .home .content .infoProfile .detailProfileSingle .gallery .inputfile + label { max-width: 100%; width: 100%; font-size: 20px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; display: flex; align-items: center; overflow: hidden; padding: 0.625rem 1.25rem; gap: 10px; justify-content: center; }
     .home .content .infoProfile .detailProfileSingle .gallery .inputfile + label { color: #000; background-color: transparent; border: 2px dashed #d2d2d2; border-radius: 15px; margin-bottom: 20px; }
@@ -47,7 +47,7 @@
     .home .content .infoProfile .detailProfileSingle .gallery .inputfile + label span { color: #000; }
 
     
-    .home .content .infoProfile .detailProfileSingle .gallery .photo-grid { width: 100%; display: flex; flex-wrap: nowrap; gap: 20px; overflow-x: auto; overflow-y: hidden; }
+    .home .content .infoProfile .detailProfileSingle .gallery .photo-grid { width: 100%; display: flex; flex-wrap: nowrap; gap: 20px; overflow-x: auto; overflow-y: hidden; height: 220px; }
     .home .content .infoProfile .detailProfileSingle .gallery .photo-grid .photo-item { flex: 0 0 40%; position: relative; }
     .home .content .infoProfile .detailProfileSingle .gallery .photo-grid .photo-item .overlay { background: rgba(0,0,0,0.9); width: 100%; height: 100%; position: absolute; top: 0; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 0; }
     .home .content .infoProfile .detailProfileSingle .gallery .photo-grid .photo-item .overlay img { width: 20px; height: auto; object-fit: initial; border-radius: 0;}
@@ -68,7 +68,7 @@
 
 
     /* COUPLE */
-    .home .content .infoProfile .detailProfileGroup { width: 100% !important; margin-top: 10px; margin-bottom: 100px;}
+    .home .content .infoProfile .detailProfileGroup { width: 100% !important; }
     .home .content .infoProfile .detailProfileGroup.filter { filter: blur(0.2rem); }
     .home .content .infoProfile .detailProfileGroup .nav-tabs { justify-content: space-between; margin-top: -20px; margin-bottom: 20px; }
     .home .content .infoProfile .detailProfileGroup .nav-tabs .nav-item { width: 33%; }
@@ -86,7 +86,7 @@
     .home .content .infoProfile .detailProfileGroup p { font-size: 13px; line-height: 22px; margin: 0; margin-bottom: 15px; }
     .home .content .infoProfile .detailProfileGroup .divider { border: 1px solid #f1f1f1; margin: 10px 0; }
 
-    .home .content .infoProfile .detailProfileGroup .gallery { width: 100%; margin-top: 10px; margin-bottom: 50px; }
+    .home .content .infoProfile .detailProfileGroup .gallery { width: 100%; margin-top: 10px; height: 220px;  }
     .home .content .infoProfile .detailProfileGroup .gallery .inputfile { width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
     .home .content .infoProfile .detailProfileGroup .gallery .inputfile + label { max-width: 100%; width: 100%; font-size: 20px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; display: flex; align-items: center; overflow: hidden; padding: 0.625rem 1.25rem; gap: 10px; }
     .home .content .infoProfile .detailProfileGroup .gallery .inputfile + label { color: #fff; background-color: #e74c3c; border-radius: 15px; margin-bottom: 20px; }
@@ -94,9 +94,21 @@
     .home .content .infoProfile .detailProfileGroup .gallery .inputfile + label span { color: #fff; }
 
     
-    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid { width: 100%; display: flex; flex-wrap: nowrap; gap: 20px; overflow-x: auto; overflow-y: hidden; }
-    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item { flex: 0 0 40%; }
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid { width: 100%; display: flex; flex-wrap: nowrap; gap: 20px; overflow-x: auto; overflow-y: hidden; height: 220px; }
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item { flex: 0 0 40%; position: relative; }
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item .overlay { background: rgba(0,0,0,0.9); width: 100%; height: 100%; position: absolute; top: 0; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 0; }
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item .overlay img { width: 20px; height: auto; object-fit: initial; border-radius: 0;}
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item .overlay span { color: #fff; font-size: 12px; display: block; margin-top: 8px; }
     .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item img { width: 100%; height: 220px; border-radius: 20px; object-fit: cover; }
+
+
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item .photo-actions { position: absolute; bottom: 10px; width: 100%; left: 10px; }
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item .photo-actions .like-button { border: none; width: auto; display: flex; align-items: center; background: #000; border-radius: 20px; gap: 5px; justify-content: center; }
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item .photo-actions .like-button.liked i { color: #e74c3b; }
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item .photo-actions .like-button i { color: #fff; font-size: 11px; line-height: 10px; margin-left: 2px; }
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item .photo-actions .like-button span { color: #fff; font-size: 12px; font-weight: bold; }
+
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item .photo-actions .hide-button { position: absolute; top: -180px; right: 19px; background: #e74c3b; border: none; border-radius: 12px; color: #fff; padding: 3px 7px; z-index: 1;}
 
 }
 
