@@ -76,7 +76,6 @@
                                 if ($photo['is_hidden']) {
                                     echo '<div class="overlay">';
                                     echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
-                                    echo '<span>Foto Privada</span>';
                                     echo '</div>';
                                 }
                                 echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
@@ -96,7 +95,6 @@
                                 echo '<div class="photo-item">';
                                 echo '<div class="overlay">';
                                 echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
-                                echo '<span>Foto Privada</span>';
                                 echo '</div>';
                                 echo '</div>';
                             }
@@ -177,7 +175,6 @@
                                         if ($photo['is_hidden']) {
                                             echo '<div class="overlay">';
                                             echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
-                                            echo '<span>Foto Privada</span>';
                                             echo '</div>';
                                         }
                                         echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
@@ -197,7 +194,6 @@
                                         echo '<div class="photo-item">';
                                         echo '<div class="overlay">';
                                         echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
-                                        echo '<span>Foto Privada</span>';
                                         echo '</div>';
                                         echo '</div>';
                                     }
@@ -264,7 +260,6 @@
                                     if ($photo['is_hidden']) {
                                         echo '<div class="overlay">';
                                         echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
-                                        echo '<span>Foto Privada</span>';
                                         echo '</div>';
                                     }
                                     echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
@@ -284,7 +279,6 @@
                                     echo '<div class="photo-item">';
                                     echo '<div class="overlay">';
                                     echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
-                                    echo '<span>Foto Privada</span>';
                                     echo '</div>';
                                     echo '</div>';
                                 }
@@ -325,7 +319,6 @@
                                         if ($photo['is_hidden']) {
                                             echo '<div class="overlay">';
                                             echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
-                                            echo '<span>Foto Privada</span>';
                                             echo '</div>';
                                         }
                                         echo '<img class="modal-trigger" src="' . $photo['photo_path'] . '" alt="User Photo">';
@@ -345,7 +338,6 @@
                                         echo '<div class="photo-item">';
                                         echo '<div class="overlay">';
                                         echo '<img src="../assets/images/icons/iconLockedWhite.svg">';
-                                        echo '<span>Foto Privada</span>';
                                         echo '</div>';
                                         echo '</div>';
                                     }

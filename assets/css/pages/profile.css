@@ -1,5 +1,5 @@
 @media only screen and (max-width:899px) {
-    .home .content .headProfile { width: 100%; display: flex; align-items: center; gap: 20px; border-bottom: 1px solid #e8e8e8; padding-bottom: 15px; margin-top: 65px;}
+    .home .content .headProfile { width: 100%; display: flex; align-items: center; gap: 20px; margin-top: 65px;}
     .home .content .headProfile div:nth-child(1) { width: 80%; display: flex; gap: 10px; }
     .home .content .headProfile div:nth-child(1) .avatarProfile { width: 100%; position: relative; }
     .home .content .headProfile div:nth-child(1) .avatarProfile img.upload { position: absolute; width: 20px; height: auto; bottom: 0; right: 0px; left: 35px; object-fit: cover; }
@@ -11,7 +11,7 @@
     .home .content .headProfile div button { float: right; }
     .home .content .headProfile div button { background: #E74C3C; width:100%; font-size: 14px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 5px 0px; border-radius: 15px; }
     
-    .home .content .infoProfile { width: 100%; margin-top: 20px; }
+    .home .content .infoProfile { width: 100%; margin-top: 10px; }
 
     /* SINGLE */
     .home .content .infoProfile { position: relative; }
@@ -33,11 +33,12 @@
 
     .home .content .infoProfile .detailProfileSingle span { font-weight: 600; color: #E74C3C; font-size: 16px; display: flex; justify-content: space-between; align-items: center; }
     .home .content .infoProfile .detailProfileSingle span img { width: 23px; }
-    .home .content .infoProfile .detailProfileSingle ul { list-style: none; margin: 0; padding: 0; margin-top: 5px; }
+    .home .content .infoProfile .detailProfileSingle ul { list-style: none; margin: 0; margin-top: 10px; background: #f1f1f1; padding: 10px 20px; border-radius: 20px; }
     .home .content .infoProfile .detailProfileSingle ul li { display: flex; align-items: center; justify-content: space-between; font-weight: 600; line-height: 30px; font-size: 13px; }
-    .home .content .infoProfile .detailProfileSingle ul li span { color: initial; font-weight: initial; font-size: 14px; opacity: 0.6; }
+    .home .content .infoProfile .detailProfileSingle ul li span { color: initial; font-weight: initial; font-size: 13px; opacity: 0.6; }
     .home .content .infoProfile .detailProfileSingle p { font-size: 13px; line-height: 22px; margin: 0; margin-bottom: 15px; }
-    .home .content .infoProfile .detailProfileSingle .divider { border: 1px solid #f1f1f1; margin: 10px 0; }
+    .home .content .infoProfile .detailProfileSingle .divider { border: 1px solid #f1f1f1; margin: 15px 0; }
+    .home .content .infoProfile .detailProfileSingle .divider:nth-child(3) {border: none; margin-top: 10px; }
 
     .home .content .infoProfile .detailProfileSingle .gallery { width: 100%; margin-top: 10px; }
     .home .content .infoProfile .detailProfileSingle .gallery .inputfile { width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
@@ -61,7 +62,7 @@
     .home .content .infoProfile .detailProfileSingle .gallery .photo-grid .photo-item .photo-actions .like-button i { color: #fff; font-size: 11px; line-height: 10px; margin-left: 2px; }
     .home .content .infoProfile .detailProfileSingle .gallery .photo-grid .photo-item .photo-actions .like-button span { color: #fff; font-size: 12px; font-weight: bold; }
 
-    .home .content .infoProfile .detailProfileSingle .gallery .photo-grid .photo-item .photo-actions .hide-button { position: absolute; top: -180px; right: 19px; background: #e74c3b; border: none; border-radius: 12px; color: #fff; padding: 3px 7px; z-index: 1;}
+    .home .content .infoProfile .detailProfileSingle .gallery .photo-grid .photo-item .photo-actions .hide-button { position: absolute; top: -180px; right: 19px; background: #e74c3b; border: none; border-radius: 12px; color: #fff; padding: 1px 7px; z-index: 1;}
 
 
 
@@ -82,9 +83,11 @@
     .home .content .infoProfile .detailProfileGroup span img { width: 23px; }
     .home .content .infoProfile .detailProfileGroup ul { list-style: none; margin: 0; padding: 0; margin-top: 5px; }
     .home .content .infoProfile .detailProfileGroup ul li { display: flex; align-items: center; justify-content: space-between; font-weight: 600; line-height: 30px; font-size: 13px; }
-    .home .content .infoProfile .detailProfileGroup ul li span { color: initial; font-weight: initial; font-size: 14px; opacity: 0.6; }
+    .home .content .infoProfile .detailProfileGroup ul li span { color: initial; font-weight: initial; font-size: 13px; opacity: 0.6; }
     .home .content .infoProfile .detailProfileGroup p { font-size: 13px; line-height: 22px; margin: 0; margin-bottom: 15px; }
-    .home .content .infoProfile .detailProfileGroup .divider { border: 1px solid #f1f1f1; margin: 10px 0; }
+    .home .content .infoProfile .detailProfileGroup .divider { border: 1px solid #f1f1f1; margin: 15px 0; }
+    .home .content .infoProfile .detailProfileGroup .divider:nth-child(3) {border: none; margin-top: 10px; }
+
 
     .home .content .infoProfile .detailProfileGroup .gallery { width: 100%; margin-top: 10px; height: 220px;  }
     .home .content .infoProfile .detailProfileGroup .gallery .inputfile { width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
@@ -108,7 +111,7 @@
     .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item .photo-actions .like-button i { color: #fff; font-size: 11px; line-height: 10px; margin-left: 2px; }
     .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item .photo-actions .like-button span { color: #fff; font-size: 12px; font-weight: bold; }
 
-    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item .photo-actions .hide-button { position: absolute; top: -180px; right: 19px; background: #e74c3b; border: none; border-radius: 12px; color: #fff; padding: 3px 7px; z-index: 1;}
+    .home .content .infoProfile .detailProfileGroup .gallery .photo-grid .photo-item .photo-actions .hide-button { position: absolute; top: -180px; right: 19px; background: #e74c3b; border: none; border-radius: 12px; color: #fff; padding: 1px 7px; z-index: 1;}
 
 }
 

@@ -80,7 +80,7 @@
                     if (!overlay) {
                         overlay = document.createElement('div');
                         overlay.className = 'overlay';
-                        overlay.innerHTML = '<img src="../assets/images/icons/iconLockedWhite.svg"> <span>Foto Privada</span>';
+                        overlay.innerHTML = '<img src="../assets/images/icons/iconLockedWhite.svg">';
                         photoItem.appendChild(overlay);
                         icon.classList.remove('bi-eye-fill');
                         icon.classList.add('bi-eye-slash-fill');
