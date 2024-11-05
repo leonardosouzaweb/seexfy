@@ -229,11 +229,11 @@ main { display: none; }
 
     .chatP #chatWindow .card { border: none !important; height: 100%; }
     .chatP #chatWindow .card .head { display: flex; align-items: center; gap: 10px; position: fixed; z-index: 1; background: #fff; width: 100%; left: 0; padding: 20px 20px 10px 20px; top: 47px; }
-    .chatP #chatWindow .card .head img { width: 40px; border-radius: 20px; }
+    .chatP #chatWindow .card .head img { width: 35px; border-radius: 20px; }
     .chatP #chatWindow .card .head img.icon { width: 30px; }
     .chatP #chatWindow .card .head span { font-weight: bold; color: #3d4654; font-size: 14px; }
 
-    .chatP #chatWindow .card .body { margin-top: 65px; padding-bottom: 5px; }
+    .chatP #chatWindow .card .body { margin-top: 55px; padding-bottom: 5px; }
 
     .chatP #chatWindow .card .body .receipt { background: #fafafa; padding: 10px 15px; border: 1px solid #f1f1f1; border-radius: 15px; position: relative; width: 80%; }
     .chatP #chatWindow .card .body .receipt span { font-weight: bold; color: #3d4654; font-size: 14px; }
@@ -253,6 +253,11 @@ main { display: none; }
     .chatP #chatWindow .card .message form .form-control { border: 1px solid #f0f0f0; padding: 7px 18px; border-radius: 40px; width: 100%; height: auto; font-size: 14px; }
     .chatP #chatWindow .card .message form button { position: absolute; right: 10px; top: 5px; }
     .chatP #chatWindow .card .message form button img { width: 15px; }
+
+    .chatP #extraOptions .bar { background: #fff; padding: 40px 20px; position: absolute; bottom: 0; width: 100%; left: 0; right: 0; margin: 0 auto; border-radius: 20px 20px 0px 0px; }
+    .chatP #extraOptions .actions { display: flex; align-items: center; justify-content: space-between; width: 80%; margin: 0 auto; }
+    .chatP #extraOptions .actions div img { display: block; background: #f1f1f1; margin: 0 auto; padding: 15px; border-radius: 30px; }
+    .chatP #extraOptions .actions div span { font-size: 13px; display: block; margin-top: 10px; }
 
 
 

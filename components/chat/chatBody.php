@@ -86,10 +86,21 @@
         </div>
 
         <div id="extraOptions" style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; height:100%; background-color: rgba(0, 0, 0, 0.5); z-index: 10;">
-            <div>
-                <button>Enviar Foto</button>
-                <button>Enviar Localização</button>
-                <button>Enviar Presente</button>
+            <div class="bar">
+                <div class="actions">
+                    <div>
+                        <img src="../images/icons/black/iconUploadPhoto.svg">
+                        <span>Imagem</span>
+                    </div>
+                    <div>
+                        <img src="../images/icons/black/iconLocation.svg">
+                        <span>Localização</span>
+                    </div>
+                    <div>
+                        <img src="../images/icons/black/iconGift.svg">
+                        <span>Presentear</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
