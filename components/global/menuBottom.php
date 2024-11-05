@@ -11,8 +11,8 @@ $current_page = basename($_SERVER['REQUEST_URI']);
         </div>
 
         <div>
-            <a href="<?php echo $base_url; ?>/events">
-                <img src="<?php echo $base_url; ?>/images/icons/<?php echo ($current_page == 'events') ? 'active' : 'black'; ?>/iconEvent.svg" class="icon2">
+            <a href="<?php echo $base_url; ?>/feed">
+                <img src="<?php echo $base_url; ?>/images/icons/<?php echo ($current_page == 'feed') ? 'active' : 'black'; ?>/iconFeed.svg" class="icon2">
             </a>
         </div>
 

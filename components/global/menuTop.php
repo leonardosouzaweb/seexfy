@@ -43,8 +43,8 @@
                 </a>
             </li>
             <li>
-                <a href="<?php echo $base_url; ?>/events">
-                    <img src="<?php echo $base_url; ?>/images/icons/black/iconEvent.svg"> Eventos
+                <a href="<?php echo $base_url; ?>/feed">
+                    <img src="<?php echo $base_url; ?>/images/icons/black/iconFeed.svg"> Feed
                 </a>
             </li>
             <li>
