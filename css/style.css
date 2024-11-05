@@ -228,12 +228,12 @@ main { display: none; }
     .chatP #chatList ul li div .infoUser small { font-size: 12px; }
 
     .chatP #chatWindow .card { border: none !important; height: 100%; }
-    .chatP #chatWindow .card .head { display: flex; align-items: center; gap: 10px; }
+    .chatP #chatWindow .card .head { display: flex; align-items: center; gap: 10px; position: fixed; z-index: 1; background: #fff; width: 100%; left: 0; padding: 20px 20px 10px 20px; top: 47px; }
     .chatP #chatWindow .card .head img { width: 40px; border-radius: 20px; }
     .chatP #chatWindow .card .head img.icon { width: 30px; }
     .chatP #chatWindow .card .head span { font-weight: bold; color: #3d4654; font-size: 14px; }
 
-    .chatP #chatWindow .card .body { margin-top: 15px; padding-bottom: 5px; }
+    .chatP #chatWindow .card .body { margin-top: 65px; padding-bottom: 5px; }
 
     .chatP #chatWindow .card .body .receipt { background: #fafafa; padding: 10px 15px; border: 1px solid #f1f1f1; border-radius: 15px; position: relative; width: 80%; }
     .chatP #chatWindow .card .body .receipt span { font-weight: bold; color: #3d4654; font-size: 14px; }
