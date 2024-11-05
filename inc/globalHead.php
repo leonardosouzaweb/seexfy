@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
     <title>Seexfy | Rede de encontros e descobertas</title>
     <?php
         if ($_SERVER['HTTP_HOST'] == 'localhost') {
