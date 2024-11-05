@@ -233,7 +233,7 @@ main { display: none; }
     .chatP #chatWindow .card .head img.icon { width: 30px; }
     .chatP #chatWindow .card .head span { font-weight: bold; color: #3d4654; font-size: 14px; }
 
-    .chatP #chatWindow .card .body { height: 70dvh; margin-top: 15px; overflow-y: scroll; padding-bottom: 45px; }
+    .chatP #chatWindow .card .body { margin-top: 15px; overflow-y: scroll; padding-bottom: 5px; height: calc(750px - 100px); background: #0000001a; }
 
     .chatP #chatWindow .card .body .receipt { background: #fafafa; padding: 10px 15px; border: 1px solid #f1f1f1; border-radius: 15px; position: relative; width: 80%; }
     .chatP #chatWindow .card .body .receipt span { font-weight: bold; color: #3d4654; font-size: 14px; }
