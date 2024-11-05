@@ -6,7 +6,7 @@
     <title>Seexfy | Rede de encontros e descobertas</title>
     <?php
         if ($_SERVER['HTTP_HOST'] == 'localhost') {
-            $base_url = "http://localhost/seexfy-front";
+            $base_url = "http://localhost/seexfy";
         } else {
             $base_url = "https://seexfy.com";
         }

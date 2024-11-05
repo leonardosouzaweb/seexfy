@@ -143,8 +143,8 @@ function updateNextButtonState() {
 function checkUsernameAvailability(username) {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: '/username/verify',
-            type: 'POST',
+            url: 'http://localhost:3000/api/register',
+            type: 'GET',
             data: { username: username },
             success: function(response) {
                 if (response.exists) {

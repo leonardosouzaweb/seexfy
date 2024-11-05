@@ -48,7 +48,7 @@ main { display: none; }
     .heading .container .group .avatar { width: 25px; height: 25px; background: #b7bcc2; border-radius: 20px; position: relative; right: -5px;}
     .heading .container .group .avatar img { width: 100%; border-radius: 40px; }
 
-    .bottom { background: #fff; width: 100%; position: fixed; bottom: 0; z-index: 5; padding: 9px 0; -webkit-box-shadow: 0px -5px 34px -11px rgba(0, 0, 0, 0.75); -moz-box-shadow: 0px -5px 34px -11px rgba(0, 0, 0, 0.45); box-shadow: 0px -5px 34px -11px rgba(0, 0, 0, 0.75); }
+    .bottom { background: #fff; width: 100%; position: fixed; bottom: 0; z-index: 5; padding: 9px 0; -webkit-box-shadow: 0px -5px 34px -17px rgba(0, 0, 0, 0.75); -moz-box-shadow: 0px -5px 34px -11px rgba(0, 0, 0, 0.45); box-shadow: 0px -5px 34px -11px rgba(0, 0, 0, 0.75); }
     .bottom .container { display: flex; align-items: center; justify-content: space-between; }
     .bottom .container div { width: 20%; }
     .bottom .container div img { margin: 0 auto; display: block; width: 25px; }
@@ -106,8 +106,6 @@ main { display: none; }
     .notificationP .container .toast .toast-body p { font-size: 13px; margin: 0; opacity: 0.9; color: #3d4654; }
     .notificationP .container .toast .toast-body small { font-size: 11px; font-weight: 600; opacity: 0.7; display: block; margin: 5px 0; }
 
-    .chatP { padding-top: 70px; }
-    .chatP .container h1 { font-size: 25px; font-weight: 600; margin: 10px 0; color: #3d4654; }
 
     .eventsP { padding-top: 70px; }
     .eventsP .container h1 { font-size: 25px; font-weight: 600; margin: 0px 0; color: #3d4654; display: flex; align-items: center; justify-content: space-between; }
@@ -211,6 +209,50 @@ main { display: none; }
 
     .radarP .feed { margin-top: 10px; }
     .radarP .feed .container { padding: 0; }
+
+
+    .chatP { padding-top: 70px; position: relative;  }
+    .chatP .nav-tabs { display: flex; align-items: center; }
+    .chatP .nav-tabs .nav-item { width: 33%; }
+    .chatP .nav-tabs .nav-item .nav-link { width: 100%; border-radius: 20px 20px 0px 0px; color: #3d4654a2; font-size: 14px; }
+    .chatP .nav-tabs .nav-item .nav-link img { width: 15px; margin-right: 10px; }
+    .chatP .nav-tabs .nav-item .nav-link.active { color: #3d4654; font-weight: bold; }
+
+    .chatP #chatList ul { margin: 0; padding: 0; margin-top: 30px; }
+    .chatP #chatList ul li { list-style: none; margin-bottom: 20px; border-bottom: 1px solid #f1f1f1; padding-bottom: 20px; }
+    .chatP #chatList ul li div { display: flex; align-items: center; gap: 20px; }
+    .chatP #chatList ul li div img { width: 45px; border-radius: 30px; }
+
+    .chatP #chatList ul li div .infoUser { display: flex; flex-direction: column; align-items: first baseline; gap: 0; }
+    .chatP #chatList ul li div .infoUser strong { font-size: 16px; color: #3d4654; }
+    .chatP #chatList ul li div .infoUser small { font-size: 12px; }
+
+    .chatP #chatWindow .card { border: none !important; height: 100%; }
+    .chatP #chatWindow .card .head { display: flex; align-items: center; gap: 10px; }
+    .chatP #chatWindow .card .head img { width: 40px; border-radius: 20px; }
+    .chatP #chatWindow .card .head img.icon { width: 30px; }
+    .chatP #chatWindow .card .head span { font-weight: bold; color: #3d4654; font-size: 14px; }
+
+    .chatP #chatWindow .card .body { height: 70dvh; margin-top: 15px; overflow-y: scroll; padding-bottom: 45px; }
+
+    .chatP #chatWindow .card .body .receipt { background: #fafafa; padding: 10px 15px; border: 1px solid #f1f1f1; border-radius: 15px; position: relative; width: 80%; }
+    .chatP #chatWindow .card .body .receipt span { font-weight: bold; color: #3d4654; font-size: 14px; }
+    .chatP #chatWindow .card .body .receipt p { margin: 0; padding: 0; font-size: 12px; }
+    .chatP #chatWindow .card .body .receipt small { font-size: 10px; position: absolute; right: 20px; bottom: 8px; }
+
+
+    .chatP #chatWindow .card .body .send { background: #e74c3c14; padding: 10px 15px; border: 1px solid #fceceb; border-radius: 15px; position: relative; margin: 20px 0px; width: 70%; right: -95px; }
+    .chatP #chatWindow .card .body .send span { font-weight: bold; color: #3d4654; font-size: 14px; }
+    .chatP #chatWindow .card .body .send p { margin: 0; padding: 0; font-size: 12px; }
+    .chatP #chatWindow .card .body .send small { font-size: 10px; position: absolute; right: 20px; bottom: 8px; }
+
+    .chatP #chatWindow .card .message { display: flex; align-items: center; position: fixed; bottom: 47px; width: 100%; background: #fafafa; left: 0; padding: 20px; border-top: 1px solid #f1f1f1; }
+    .chatP #chatWindow .card .message button { background: transparent; border: none; }
+    .chatP #chatWindow .card .message form { width: 100%; position: relative; }
+    .chatP #chatWindow .card .message form .form-control { border: 1px solid #f0f0f0; padding: 7px 18px; border-radius: 40px; width: 100%; height: auto; font-size: 14px; }
+    .chatP #chatWindow .card .message form button { position: absolute; right: 10px; top: 5px; }
+    .chatP #chatWindow .card .message form button img { width: 15px; }
+
 
 
 

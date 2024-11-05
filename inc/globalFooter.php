@@ -8,6 +8,8 @@
         echo '<script src="' . $base_url . '/js/register.js"></script>';
     } elseif (strpos($current_path, '/search/') !== false) {
         echo '<script src="' . $base_url . '/js/results.js"></script>';
+    } elseif (strpos($current_path, '/chat/') !== false) {
+        echo '<script src="' . $base_url . '/js/chat.js"></script>';
     }
 ?>
 

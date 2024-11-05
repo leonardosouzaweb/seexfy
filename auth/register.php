@@ -150,7 +150,9 @@
 <?php include_once '../inc/globalFooter.php'?>
 
 <script>
-    document.getElementById('submitRegister').addEventListener('click', function () {
+    document.getElementById('submitRegister').addEventListener('click', function (event) {
+        event.preventDefault(); // Impede o recarregamento da página
+
         const formData = new FormData(document.getElementById('registerForm'));
         const interests = Array.from(document.querySelectorAll('input[name="interests[]"]:checked')).map(checkbox => checkbox.value);
 
@@ -176,19 +178,21 @@
             body: JSON.stringify(data),
         })
         .then(response => {
-            console.log(response); // Adicione este log
+            console.log('Status da resposta:', response.status);
             if (!response.ok) {
-                throw new Error('Erro na rede');
+                return response.json().then(errorData => {
+                    console.log('Erro:', errorData); // Log detalhado do erro
+                    throw new Error('Erro na rede');
+                });
             }
             return response.json();
         })
         .then(result => {
-            console.log(result); // Veja o resultado aqui
-            alert('Registro concluído com sucesso!');
+            console.log('Sucesso:', result); // Exibe o resultado de sucesso no console
+            window.location.href = '../auth/login.php';
         })
         .catch(error => {
-            console.error('Erro:', error);
-            alert('Erro ao concluir o registro. Tente novamente.');
+            console.error('Erro:', error.message); // Exibe o erro no console sem recarregar a página
         });
     });
 </script>
