@@ -38,6 +38,11 @@
         </div>
         <ul>
             <li>
+                <a href="<?php echo $base_url; ?>/monetization">
+                    <img src="<?php echo $base_url; ?>/images/icons/black/iconCreator.svg"> Monetize
+                </a>
+            </li>
+            <li>
                 <a href="<?php echo $base_url; ?>/home">
                     <img src="<?php echo $base_url; ?>/images/icons/black/iconHome.svg"> Explorar
                 </a>
