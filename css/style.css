@@ -60,7 +60,7 @@ main { display: none; }
     .feed h1 { font-size: 25px; font-weight: 600; margin: 15px 0; color: #0B0B0B; }
     .feed .container { padding: 0px 25px; }
     .feed .container .cards { width: 100%; display: flex; gap: 10px; flex-wrap: wrap; overflow: hidden; padding-bottom: 70px; }
-    .feed .container .cards div { width: 47.2%; background: #b7bcc2; border-radius: 30px; position: relative; }
+    .feed .container .cards div { width: 48.5%; background: #b7bcc2; border-radius: 30px; position: relative; }
     .feed .container .cards div img { width: 100%; margin: 0 auto; border-radius: 30px; }
     .feed .container .cards div .info { position: absolute; z-index: 2; width: 80%; height: 50px; left: 0px; right: 0; bottom: 10px; margin: 0 auto; border-radius: 0; background: transparent; }
     .feed .container .cards div .info span { color: #fff; display: block; font-weight: 600; font-size: 14px; }
@@ -131,10 +131,6 @@ main { display: none; }
     .eventsP .event .detail .confirm img { width: 30px; border-radius: 50px; margin-left: -10px; border: 2px solid #fff; }
     .eventsP .event .detail .confirm div:nth-child(2) { position: relative; }
     .eventsP .event .detail .confirm div:nth-child(2) div { background: #2ecc71; border: 2px solid #fff; width: 30px; height: 30px; border-radius: 50px; text-align: center; color: #fff; font-size: 11px; font-weight: bold; padding-top: 6px; position: absolute; right: -25px; top: 0;}
-
-
-
-
 
     .profileP { padding-top: 70px; }
     .profileP .container h1 { font-size: 25px; font-weight: 600; margin: 0px 0; color: #0B0B0B; }
@@ -209,7 +205,6 @@ main { display: none; }
 
     .radarP .feed { margin-top: 10px; }
     .radarP .feed .container { padding: 0; }
-
 
     .chatP { padding-top: 70px; position: relative;  }
     .chatP .nav-tabs { display: flex; align-items: center; }
@@ -290,6 +285,28 @@ main { display: none; }
     .feedP .card .emoji-list ul li { color: initial; display: inline-block;  border: 1px solid #64748b1c; width: 15%; text-align: center; border-radius: 30px; padding: 5px; }
     .feedP .card .emoji-list ul li.active { background: #f1f1f1; border: 1px solid transparent; }
 
+
+    .paymentP { padding-top: 70px; position: relative; }
+    .paymentP .container h1 { font-size: 25px; font-weight: 600; margin: 0px 0; color: #0B0B0B; margin-bottom: 20px; }
+
+    .paymentP .step1 .form-check { margin-bottom: 20px; background: #fff; padding: 6px 0px 11px 40px; border-radius: 15px; display: flex; align-items: center; gap: 10px; border: 1px solid #64748b2e; }
+    .paymentP .step1 .form-check.active { border: 1px solid #d2d2d2; }
+    .paymentP .step1 .form-check .form-check-label { font-weight: 500; font-size: 14px; margin-top: 5px; color: #0B0B0B; justify-content: space-between; display: flex; width: 100%; align-items: center; }
+    .paymentP .step1 .form-check .form-check-label span { background:#e74d3c17; color: #E74C3C; margin-right: 10px; display: block; padding: 3px 15px; border-radius: 20px; font-weight: bold; }
+    .paymentP .step1 .form-check .form-check-input { width: 20px; height: 20px; }
+    .paymentP .step1 .form-check .form-check-input:checked { background-color: #E74C3C; border: 1px solid #E74C3C; }
+    .paymentP .step1 .form-check .form-check-input:focus { box-shadow: none; border: 1px solid #dee2e6; }
+
+    .paymentP .step2 ul { margin: 0; padding: 0; list-style: none; border-bottom: 1px solid #d2d2d2; margin-bottom: 20px; padding-bottom: 20px; }
+    .paymentP .step2 ul li { font-size: 14px; line-height: 32px; }
+
+    .paymentP .step2 h5 { color: #0B0B0B; font-weight: 600; font-size: 16px; }
+    .paymentP .step2 h3 { color: #0B0B0B; font-weight: bold; font-size: 45px; margin-bottom: 20px; }
+    .paymentP .step2 .form-control { border: 1px solid #64748b2e; padding: 7px 18px; border-radius: 40px; width: 100%; height: auto; font-size: 14px; margin-top: 20px; }
+    .paymentP .step2 .form-control:focus { box-shadow: none; border: 1px solid #64748b58; }
+
+    .paymentP .step2 span { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px;  font-size: 15px;}
+    .paymentP .step2 button { background: #E74C3C; width: 100%; font-size: 15px; color: #fff; text-align: center; border: none; font-weight: 700; padding: 9px 0px; margin-top: 30px; border-radius: 15px; margin-bottom: 0; }
 
 
 

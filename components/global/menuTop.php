@@ -53,21 +53,19 @@
                 </a>
             </li>
             <li>
-                <a href="<?php echo $base_url; ?>/home">
+                <a href="<?php echo $base_url; ?>/payment">
                     <img src="<?php echo $base_url; ?>/images/icons/black/iconAss.svg"> Assinatura
                 </a>
             </li>
             <li>
-                <a href="<?php echo $base_url; ?>/home">
+                <a href="<?php echo $base_url; ?>/help">
                     <img src="<?php echo $base_url; ?>/images/icons/black/iconHelp.svg"> Ajuda
                 </a>
             </li>
             <li>
-                <form id="logoutUser" action="logout" method="post" onsubmit="logout()">
-                    <button type="submit" id="logoutBtn">
-                        <img src="<?php echo $base_url; ?>/images/icons/black/iconLogout.svg"> Sair
-                    </button>
-                </form>
+                <a href="<?php echo $base_url; ?>/">
+                    <img src="<?php echo $base_url; ?>/images/icons/black/iconLogout.svg"> Sair
+                </a>
             </li>
         </ul>
     </div>

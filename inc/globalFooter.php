@@ -10,6 +10,8 @@
         echo '<script src="' . $base_url . '/js/results.js"></script>';
     } elseif (strpos($current_path, '/chat/') !== false) {
         echo '<script src="' . $base_url . '/js/chat.js"></script>';
+    } elseif (strpos($current_path, '/payment/') !== false) {
+        echo '<script src="' . $base_url . '/js/payment.js"></script>';
     }
 ?>
 
