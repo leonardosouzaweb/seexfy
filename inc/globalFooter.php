@@ -12,7 +12,11 @@
         echo '<script src="' . $base_url . '/js/chat.js"></script>';
     } elseif (strpos($current_path, '/payment/') !== false) {
         echo '<script src="' . $base_url . '/js/payment.js"></script>';
+    } elseif (strpos($current_path, '/profile/') !== false) {
+        echo "<script src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js'></script>";
     }
+    
+
 ?>
 
 <script>

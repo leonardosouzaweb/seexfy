@@ -4,7 +4,7 @@
             <div>
                 <img src="<?php echo $base_url; ?>/images/defaultAvatar.svg">
                 <div class="upload">
-                    <img src="<?php echo $base_url; ?>/images/icons/normal/icUpload.svg">
+                    <img src="<?php echo $base_url; ?>/images/icons/black/iconUpload.svg">
                 </div>
             </div>
             <div>
@@ -17,7 +17,7 @@
         </div>
 
         <div class="profileDetailtSingle">
-            <h3>Informações <img src="<?php echo $base_url; ?>/images/icons/normal/icEditProfile.svg" data-bs-toggle="modal" data-bs-target="#modalEditUser"></h3>
+            <h3>Informações <img src="<?php echo $base_url; ?>/images/icons/black/iconEditProfile.svg" data-bs-toggle="modal" data-bs-target="#modalEditUser"></h3>
             <ul>
                 <li>Idade: <span></span></li>
                 <li>Orientação Sexual: <span></span></li>
@@ -29,13 +29,9 @@
             </ul>
 
             <h3>Interesses</h3>
-            <p></p>
+            <p>Mulheres</p>
 
             <h3>Galeria de Fotos</h3>
-            <div class="empty" style="display:none">
-                <img src="<?php echo $base_url; ?>/images/icons/normal/icImage.svg">
-                <span>Adicionar imagens</span>
-            </div>
             <div class="photos">
                 <?php include_once '../components/gallery.php' ?>
             </div>

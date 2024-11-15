@@ -440,3 +440,15 @@ main { display: none; }
 .infoDesktop img { margin-bottom: 50px; width: 150px; }
 .infoDesktop h1 { font-size: 40px; color: #E74C3C; }
 .infoDesktop p { font-size: 18px; margin-top: 30px; }
+
+
+/* SWIPER */
+swiper-container { width: 100%; height: 100%; }
+swiper-slide { position: relative; }
+swiper-slide .emoji-list { padding-top: 10px; margin-top: 10px; border-top: 1px solid #64748b2e; }
+swiper-slide .emoji-list ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; justify-content: space-between; }
+swiper-slide .emoji-list ul li { color: initial; display: inline-block;  border: 1px solid #64748b1c; width: 20%; text-align: center; border-radius: 30px; padding: 5px; }
+swiper-slide .emoji-list ul li.active { background: #f1f1f1; border: 1px solid transparent; }
+
+
+swiper-slide img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
