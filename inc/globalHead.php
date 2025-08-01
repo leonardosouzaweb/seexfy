@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 if ($_SERVER['HTTP_HOST'] == 'localhost') {
     $base_url = "http://localhost/seexfy";
 } else {
-    $base_url = "https://leonardosouza.com.br/seexfy/";
+    $base_url = "https://leonardosouza.com.br/seexfy";
 }
 ?>
 <!doctype html>
