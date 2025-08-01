@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /seexfy/
+
+# Redireciona /profile/leo para /profile/index.php?username=leo
+RewriteRule ^profile/([^/]+)/?$ profile/index.php?username=$1 [L,QSA]
