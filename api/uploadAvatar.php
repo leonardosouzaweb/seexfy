@@ -12,11 +12,10 @@ if (!isset($_SESSION['user_id']) || !isset($_FILES['avatar'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Validar e mover o arquivo
+// Diretório de upload
 $uploadDir = '../uploads/';
-$filename = uniqid() . '_' . basename($_FILES['avatar']['name']);
-$targetFile = $uploadDir . $filename;
 
+// Tipos permitidos
 $allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
 $fileType = mime_content_type($_FILES['avatar']['tmp_name']);
 
@@ -24,10 +23,56 @@ if (!in_array($fileType, $allowedTypes)) {
     die('Formato inválido');
 }
 
-if (move_uploaded_file($_FILES['avatar']['tmp_name'], $targetFile)) {
+$ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+$filename = uniqid() . '.' . strtolower($ext);
+$targetFile = $uploadDir . $filename;
+
+// Função para comprimir e salvar imagem otimizada
+function compressImage($source, $destination, $quality) {
+    $info = getimagesize($source);
+
+    if ($info === false) {
+        return false;
+    }
+
+    $mime = $info['mime'];
+
+    switch ($mime) {
+        case 'image/jpeg':
+        case 'image/jpg':
+            $image = imagecreatefromjpeg($source);
+            imagejpeg($image, $destination, $quality);
+            break;
+
+        case 'image/png':
+            $image = imagecreatefrompng($source);
+            // Para PNG a qualidade é invertida (0-9)
+            $pngQuality = 9 - floor(($quality / 100) * 9);
+            imagepng($image, $destination, $pngQuality);
+            break;
+
+        case 'image/webp':
+            $image = imagecreatefromwebp($source);
+            imagewebp($image, $destination, $quality);
+            break;
+
+        default:
+            return false;
+    }
+
+    imagedestroy($image);
+    return true;
+}
+
+$quality = 75; // qualidade de compressão (%)
+
+// Comprimir e salvar no destino
+if (compressImage($_FILES['avatar']['tmp_name'], $targetFile, $quality)) {
     // Atualiza o avatar no banco
     $stmt = $pdo->prepare("UPDATE users SET avatar = ? WHERE id = ?");
     $stmt->execute([$filename, $user_id]);
+} else {
+    die('Erro ao processar a imagem.');
 }
 
 header('Location: ../profile');
