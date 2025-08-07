@@ -144,7 +144,7 @@ $emoji_map = [
   }
 
   /* Classe para aplicar blur suave nas imagens dos posts */
-  .blurred-post-images img {
+  .blurred-post-images .contentImage img {
     filter: blur(6px);
     transition: filter 0.5s ease;
   }
