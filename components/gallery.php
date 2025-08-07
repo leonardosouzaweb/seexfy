@@ -15,12 +15,14 @@ $remainingSlots = $totalSlots - $currentCount;
 
 <div class="photo-grid">
   <?php foreach ($galleryPhotos as $index => $photo): ?>
-    <div class="photo-slot filled" onclick="openGallery(<?= $index ?>)">
+    <div class="photo-slot filled" onclick="openGallery(<?= $index ?>)" style="position:relative;">
       <img src="<?= $base_url . '/uploads/gallery/' . htmlspecialchars($photo['filename']) ?>" alt="Foto">
       <?php if ($isOwnProfile): ?>
-        <form method="POST" action="../api/deletePhotoProfile.php" onsubmit="return confirm('Deseja remover esta foto?');">
+        <form method="POST" action="../api/deletePhotoProfile.php" onsubmit="return confirm('Deseja remover esta foto?');" onclick="event.stopPropagation()">
           <input type="hidden" name="photo_id" value="<?= $photo['id'] ?>">
-          <button type="submit" class="remove-btn">×</button>
+          <button type="submit" class="remove-btn" aria-label="Remover foto" title="Remover foto" onclick="event.stopPropagation()">
+            <i class="ph ph-x"></i>
+          </button>
         </form>
       <?php endif; ?>
     </div>
@@ -30,9 +32,9 @@ $remainingSlots = $totalSlots - $currentCount;
     <?php for ($i = 0; $i < $remainingSlots; $i++): ?>
       <div class="photo-slot empty">
         <form action="../api/uploadPhotoProfile.php" method="POST" enctype="multipart/form-data">
-          <label class="add-btn">
+          <label class="add-btn" aria-label="Adicionar foto" title="Adicionar foto">
             <input type="file" name="photo" accept="image/*" onchange="this.form.submit()" hidden>
-            +
+            <i class="ph ph-plus"></i>
           </label>
         </form>
       </div>
@@ -64,7 +66,6 @@ function openGallery(startIndex = 0) {
 
   modal.showModal();
 
-  // Aplica estilo diretamente via JavaScript dentro do Shadow DOM
   setTimeout(() => {
     try {
       const nextBtn = swiper.shadowRoot.querySelector(".swiper-button-next");
@@ -97,6 +98,4 @@ function closeGallery() {
     modal.close();
   }
 }
-
-
 </script>

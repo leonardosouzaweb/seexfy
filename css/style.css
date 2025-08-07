@@ -170,6 +170,7 @@ main { display: none; }
     .profileP .profileDetailtSingle .photos .photo-slot { position: relative; width: 100%; height: 150px; aspect-ratio: 1 / 2; border-radius: 12px; }
     .profileP .profileDetailtSingle .photos .photo-slot.filled img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
     .profileP .profileDetailtSingle .photos .remove-btn { position: absolute; bottom: 6px; right: 6px; background: rgb(231 76 59); border: none; border-radius: 30%; color: white; font-size: 18px; font-weight: bold; width: 28px; height: 28px; line-height: 26px; cursor: pointer; }
+    .profileP .profileDetailtSingle .photos .remove-btn i { color:#fff; position: relative; top: 2px; left: -2px; }
     .profileP .profileDetailtSingle .photos .add-btn { width: 100%; height: 150px; font-size: 45px; color: #ff5a5f; display: flex; justify-content: center; align-items: center; cursor: pointer; border: 2px dashed #ccc; border-radius: 12px; }
 
 
@@ -190,6 +191,7 @@ main { display: none; }
     .profileP .profileDetailGroup .photos .photo-slot { position: relative; width: 100%; height: 150px; aspect-ratio: 1 / 2; border-radius: 12px; }
     .profileP .profileDetailGroup .photos .photo-slot.filled img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
     .profileP .profileDetailGroup .photos .remove-btn { position: absolute; bottom: 6px; right: 6px; background: rgb(231 76 59); border: none; border-radius: 30%; color: white; font-size: 18px; font-weight: bold; width: 28px; height: 28px; line-height: 26px; cursor: pointer; }
+    .profileP .profileDetailGroup .photos .remove-btn i { color:#fff; position: relative; top: 2px; left: -2px; }
     .profileP .profileDetailGroup .photos .add-btn { width: 100%; height: 150px; font-size: 45px; color: #ff5a5f; display: flex; justify-content: center; align-items: center; cursor: pointer; border: 2px dashed #ccc; border-radius: 12px; }
 
 
