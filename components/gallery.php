@@ -44,7 +44,7 @@ $remainingSlots = $totalSlots - $currentCount;
 
 <!-- Galeria Modal Swiper -->
 <dialog id="galleryModal" class="gallery-modal">
-  <swiper-container id="swiperGallery" loop="true" navigation="true">
+  <swiper-container id="swiperGallery" loop="true">
     <?php foreach ($galleryPhotos as $photo): ?>
       <swiper-slide>
         <img src="<?= $base_url . '/uploads/gallery/' . htmlspecialchars($photo['filename']) ?>" alt="Foto grande" />
@@ -53,7 +53,6 @@ $remainingSlots = $totalSlots - $currentCount;
   </swiper-container>
   <button onclick="closeGallery()" class="close-gallery">×</button>
 </dialog>
-
 
 <script>
 function openGallery(startIndex = 0) {
@@ -65,31 +64,6 @@ function openGallery(startIndex = 0) {
   }
 
   modal.showModal();
-
-  setTimeout(() => {
-    try {
-      const nextBtn = swiper.shadowRoot.querySelector(".swiper-button-next");
-      const prevBtn = swiper.shadowRoot.querySelector(".swiper-button-prev");
-
-      if (nextBtn) {
-        nextBtn.style.color = "#fff";
-        nextBtn.style.fontSize = "32px";
-        nextBtn.style.width = "25px";
-        nextBtn.style.height = "25px";
-        nextBtn.style.marginRight = "20px";
-      }
-
-      if (prevBtn) {
-        prevBtn.style.color = "#fff";
-        prevBtn.style.fontSize = "32px";
-        prevBtn.style.width = "25px";
-        prevBtn.style.height = "25px";
-        prevBtn.style.marginLeft = "20px";
-      }
-    } catch (e) {
-      console.warn("Erro ao aplicar estilo nos botões do swiper:", e);
-    }
-  }, 300);
 }
 
 function closeGallery() {
