@@ -1,4 +1,8 @@
 * { font-family: "Figtree", sans-serif !important; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html, body {
+  -webkit-overflow-scrolling: touch;
+}
+
 :disabled { opacity: 0.5; }
 /* LOGIN */
 .login { width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; }
