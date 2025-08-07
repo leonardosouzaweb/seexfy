@@ -37,7 +37,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <div class="container">
-      <h1>Explorar</h1>
+      <h1>Explorar2</h1>
 
       <div class="cards">
         <?php foreach ($users as $user): ?>
