@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['photo'])) {
 
     $photo = $_FILES['photo'];
     $allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
-    $maxSize = 5 * 1024 * 1024; // 5MB
+    $maxSize = 5 * 1024 * 1024;
 
     if (!in_array($photo['type'], $allowedTypes)) {
         die('Tipo de arquivo não permitido.');
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['photo'])) {
     $filename = uniqid('profile_', true) . '.' . strtolower($ext);
     $destPath = $uploadDir . $filename;
 
-    // Pegar nome do usuário para marca d'água
+    // Buscar nome do usuário para marca d’água
     $stmt = $pdo->prepare("SELECT username FROM users WHERE id = ?");
     $stmt->execute([$userId]);
     $user = $stmt->fetch();
@@ -42,9 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['photo'])) {
     }
     $watermarkText = $user['username'];
 
-    // Função que adiciona marca d'água repetida e comprime
     function addWatermarkRepeated($source, $destination, $text, $quality) {
         $info = getimagesize($source);
+        if ($info === false) return false;
         $mime = $info['mime'];
 
         if ($mime == 'image/jpeg' || $mime == 'image/jpg') {
@@ -60,27 +60,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['photo'])) {
         $width = imagesx($image);
         $height = imagesy($image);
 
-        // Cor branca com transparência alfa (0 = opaco, 127 = transparente)
-        $white = imagecolorallocatealpha($image, 255, 255, 255, 100);
+        // Cor branca com transparência suave (alfa 110)
+        $alpha = 85;
+        $white = imagecolorallocatealpha($image, 255, 255, 255, $alpha);
 
-        // Fonte TTF - ajuste o caminho da fonte no seu servidor
-        $fontPath = __DIR__ . '/arial.ttf';
+        $fontPath = __DIR__ . '/../uploads/fonts/arial.ttf';
         if (!file_exists($fontPath)) {
             imagedestroy($image);
             die("Fonte para marca d'água não encontrada.");
         }
 
-        $fontSize = 15;
-        $angle = 45;
+        $fontSize = 12;
+        $angle = 0;
 
-        // Repetir texto diagonal pela imagem
-        for ($x = -$width; $x < $width * 2; $x += 150) {
-            for ($y = -$height; $y < $height * 2; $y += 150) {
-                imagettftext($image, $fontSize, $angle, $x, $y, $white, $fontPath, $text);
+        $stepX = 80;
+        $stepY = 50;
+
+        for ($y = 0; $y < $height; $y += $stepY) {
+            $offsetX = ($y / $stepY) % 2 == 0 ? 0 : intval($stepX / 2);
+            for ($x = -$stepX; $x < $width + $stepX; $x += $stepX) {
+                imagettftext($image, $fontSize, $angle, $x + $offsetX, $y + intval($fontSize * 1.2), $white, $fontPath, $text);
             }
         }
 
-        // Salvar imagem comprimida
         if ($mime == 'image/jpeg' || $mime == 'image/jpg') {
             imagejpeg($image, $destination, $quality);
         } elseif ($mime == 'image/png') {
@@ -96,12 +98,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['photo'])) {
 
     $quality = 75;
 
-    // Processa imagem com marca d'água e compressão
     if (!addWatermarkRepeated($photo['tmp_name'], $destPath, $watermarkText, $quality)) {
         die('Erro ao processar a imagem.');
     }
 
-    // Salva no banco
     $stmt = $pdo->prepare("INSERT INTO user_photos (user_id, filename) VALUES (?, ?)");
     $stmt->execute([$userId, $filename]);
 
