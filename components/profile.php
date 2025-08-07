@@ -44,7 +44,7 @@ $username = htmlspecialchars($user['username']);
 $city = htmlspecialchars($user['city']);
 $marital = strtolower($user['marital_status']);
 $interests = safeJsonDecode($user['interests'] ?? '[]');
-$avatar = $user['avatar'] ? $base_url . '/uploads/avatars/' . $user['avatar'] : $base_url . '/uploads/images/defaultAvatar.svg';
+$avatar = $user['avatar'] ? $base_url . '/uploads/' . $user['avatar'] : $base_url . '/uploads/images/defaultAvatar.svg';
 
 $idade = htmlspecialchars($user['idade'] ?? '');
 $orientacao = htmlspecialchars($user['orientacao'] ?? '');
