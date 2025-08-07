@@ -82,7 +82,9 @@ document.querySelectorAll('.user-card').forEach(card => {
 
     const btnQueroConhecer = modal.querySelector('#queroConhecerBtn');
     if (btnQueroConhecer) {
-      btnQueroConhecer.href = `<?= $base_url ?>/profile/${encodeURIComponent(card.dataset.username)}`;
+      // Codifica o username e substitui %20 por +
+      const username = encodeURIComponent(card.dataset.username).replace(/%20/g, '+');
+      btnQueroConhecer.href = `<?= $base_url ?>/profile/${username}`;
     }
 
     modal.querySelector('.info span[data-field="idade"]').textContent = card.dataset.idade || '-';
@@ -105,5 +107,4 @@ document.querySelectorAll('.user-card').forEach(card => {
     modal.querySelector('.info .descricao').textContent = card.dataset.descricao || '-';
   });
 });
-
 </script>
