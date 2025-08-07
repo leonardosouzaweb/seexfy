@@ -16,7 +16,7 @@ if ($user_id) {
     if ($user) {
         $username = htmlspecialchars($user['username']);
         if (!empty($user['avatar'])) {
-            $avatar = $base_url . '/uploads/' . $user['avatar'];
+            $avatar = $base_url . '/uploads/3' . $user['avatar'];
         }
     }
 
