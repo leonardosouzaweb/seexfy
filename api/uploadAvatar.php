@@ -12,8 +12,13 @@ if (!isset($_SESSION['user_id']) || !isset($_FILES['avatar'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Diretório de upload
-$uploadDir = '../uploads/';
+// Diretório de upload: pasta avatars dentro de uploads
+$uploadDir = '../uploads/avatars/';
+
+// Garante que a pasta exista
+if (!is_dir($uploadDir)) {
+    mkdir($uploadDir, 0755, true);
+}
 
 // Tipos permitidos
 $allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
@@ -69,11 +74,17 @@ $quality = 75; // qualidade de compressão (%)
 // Comprimir e salvar no destino
 if (compressImage($_FILES['avatar']['tmp_name'], $targetFile, $quality)) {
     // Atualiza o avatar no banco
+    // Salvamos só o nome do arquivo, para construir o caminho na exibição
     $stmt = $pdo->prepare("UPDATE users SET avatar = ? WHERE id = ?");
     $stmt->execute([$filename, $user_id]);
 } else {
     die('Erro ao processar a imagem.');
 }
 
-header('Location: ../profile');
+// Busca o username para redirecionar
+$stmt = $pdo->prepare("SELECT username FROM users WHERE id = ?");
+$stmt->execute([$user_id]);
+$username = $stmt->fetchColumn();
+
+header('Location: ../profile/' . rawurlencode($username));
 exit;

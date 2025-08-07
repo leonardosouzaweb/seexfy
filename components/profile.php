@@ -28,11 +28,23 @@ if (!$user) {
     exit;
 }
 
+function safeJsonDecode($jsonString) {
+    $jsonString = trim($jsonString);
+    if ($jsonString === '' || $jsonString === 'null') {
+        return [];
+    }
+    $decoded = json_decode($jsonString, true);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        return [];
+    }
+    return $decoded;
+}
+
 $username = htmlspecialchars($user['username']);
 $city = htmlspecialchars($user['city']);
 $marital = strtolower($user['marital_status']);
-$interests = json_decode($user['interests'] ?? '[]', true);
-$avatar = $user['avatar'] ? $base_url . '/uploads/' . $user['avatar'] : $base_url . '/images/defaultAvatar.svg';
+$interests = safeJsonDecode($user['interests'] ?? '[]');
+$avatar = $user['avatar'] ? $base_url . '/uploads/avatars/' . $user['avatar'] : $base_url . '/uploads/images/defaultAvatar.svg';
 
 $idade = htmlspecialchars($user['idade'] ?? '');
 $orientacao = htmlspecialchars($user['orientacao'] ?? '');
@@ -49,7 +61,7 @@ if (in_array($marital, ['casado', 'casada'])) {
     $stmt = $pdo->prepare("SELECT * FROM partner_profiles WHERE user_id = ?");
     $stmt->execute([$user['id']]);
     $partner = $stmt->fetch() ?: [];
-    $partnerInterests = json_decode($partner['interests'] ?? '[]', true);
+    $partnerInterests = safeJsonDecode($partner['interests'] ?? '[]');
 }
 ?>
 
@@ -115,7 +127,7 @@ if (in_array($marital, ['casado', 'casada'])) {
           </ul>
 
           <h3>Interesses</h3>
-          <p><?= !empty($interests) ? implode(', ', array_map('htmlspecialchars', $interests)) : '-' ?></p>
+          <p><?= !empty($interests) ? implode(', ', array_map('htmlspecialchars', $interests)) : 'Sem interesses cadastrados' ?></p>
         </div>
 
         <!-- Aba Mulher -->
@@ -137,7 +149,7 @@ if (in_array($marital, ['casado', 'casada'])) {
           </ul>
 
           <h3>Interesses</h3>
-          <p><?= !empty($partnerInterests) ? implode(', ', array_map('htmlspecialchars', $partnerInterests)) : '-' ?></p>
+          <p><?= !empty($partnerInterests) ? implode(', ', array_map('htmlspecialchars', $partnerInterests)) : 'Sem interesses cadastrados' ?></p>
         </div>
       </div>
 
@@ -165,7 +177,7 @@ if (in_array($marital, ['casado', 'casada'])) {
       </ul>
 
       <h3>Interesses</h3>
-      <p><?= !empty($interests) ? implode(', ', array_map('htmlspecialchars', $interests)) : '-' ?></p>
+      <p><?= !empty($interests) ? implode(', ', array_map('htmlspecialchars', $interests)) : 'Sem interesses cadastrados' ?></p>
 
       <h3 class="mt-4">Galeria de Fotos</h3>
       <div class="photos"><?php include_once '../components/gallery.php'; ?></div>

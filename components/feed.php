@@ -126,6 +126,7 @@ $emoji_map = [
     align-items: center;
     box-shadow: 0 4px 8px rgb(13 110 253 / 0.4);
     z-index: 10000;
+    display:none;
   "
   aria-pressed="false"
 >

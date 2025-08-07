@@ -91,7 +91,6 @@ else {
     $fuma        = trim($_POST['fuma'] ?? '');
     $bebe        = trim($_POST['bebe'] ?? '');
     $experiencia = trim($_POST['experiencia'] ?? '');
-    $interesses  = $_POST['interests'] ?? [];
 
     if (!is_numeric($idade) || $idade < 18 || $idade > 120) {
         $errors[] = 'Idade inválida.';
@@ -102,6 +101,16 @@ else {
     if (empty($fuma))        $errors[] = 'Informe se fuma.';
     if (empty($bebe))        $errors[] = 'Informe se bebe.';
     if (empty($experiencia)) $errors[] = 'Informe sua experiência no meio liberal.';
+
+    // Tratamento do campo interests para manter valor anterior se não enviado ou vazio
+    if (isset($_POST['interests']) && !empty($_POST['interests'])) {
+        $interestsJson = json_encode($_POST['interests']);
+    } else {
+        // Busca o valor atual do banco para manter
+        $stmt = $pdo->prepare("SELECT interests FROM users WHERE id = ?");
+        $stmt->execute([$user_id]);
+        $interestsJson = $stmt->fetchColumn() ?: '[]';
+    }
 
     if (!$errors) {
         try {
@@ -125,7 +134,7 @@ else {
                 ':fuma'        => $fuma,
                 ':bebe'        => $bebe,
                 ':experiencia' => $experiencia,
-                ':interests'   => json_encode($interesses),
+                ':interests'   => $interestsJson,
                 ':id'          => $user_id
             ]);
         } catch (PDOException $e) {

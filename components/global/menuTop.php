@@ -3,7 +3,7 @@ include_once '../inc/db.php';
 
 $user_id = $_SESSION['user_id'] ?? null;
 
-$avatar = $base_url . '/images/defaultAvatar.svg';
+$avatar = $base_url . '/uploads/images/defaultAvatar.svg';
 $username = 'Usuário';
 $notification_count = 0;
 
@@ -16,7 +16,7 @@ if ($user_id) {
     if ($user) {
         $username = htmlspecialchars($user['username']);
         if (!empty($user['avatar'])) {
-            $avatar = $base_url . '/uploads/' . $user['avatar'];
+            $avatar = $base_url . '/uploads/avatars/' . $user['avatar'];
         }
     }
 

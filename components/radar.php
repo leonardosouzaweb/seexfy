@@ -52,6 +52,10 @@ document.getElementById('activateLocation').addEventListener('click', function (
                             const distance = parseFloat(user.distance);
                             const idadeTexto = user.idade ? `, ${user.idade}` : '';
 
+                            const avatarUrl = (user.avatar && (user.avatar.startsWith('http://') || user.avatar.startsWith('https://')))
+                                ? user.avatar
+                                : (user.avatar ? "<?php echo $base_url; ?>/" + user.avatar : "<?php echo $base_url; ?>/images/defaultAvatar.svg");
+
                             const card = document.createElement('div');
                             card.className = 'user-card';
                             card.style.cursor = 'pointer';
@@ -60,7 +64,7 @@ document.getElementById('activateLocation').addEventListener('click', function (
                             });
 
                             card.innerHTML = `
-                                <img src="${user.avatar}" class="card-img-top" alt="${user.username}">
+                                <img src="${avatarUrl}" class="card-img-top" alt="${user.username}">
                                 <div class="info">
                                     <span>${user.username}${idadeTexto}</span>
                                     <small>${distance.toFixed(1)} km</small>
