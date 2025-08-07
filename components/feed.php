@@ -108,7 +108,31 @@ $emoji_map = [
   </div>
 </div>
 
-<!-- CSS para animação -->
+<!-- Botão flutuante para modo discreto -->
+<button id="toggleBlurBtn" title="Ativar modo discreto" 
+  style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border: none;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgb(13 110 253 / 0.4);
+    z-index: 10000;
+  "
+  aria-pressed="false"
+>
+  <i class="ph-eye" style="font-size: 24px;"></i>
+</button>
+
+<!-- CSS para animação e blur -->
 <style>
   .emoji-animate {
     pointer-events: none;
@@ -117,6 +141,12 @@ $emoji_map = [
     will-change: transform, opacity;
     font-size: 24px;
     z-index: 9999;
+  }
+
+  /* Classe para aplicar blur suave nas imagens dos posts */
+  .blurred-post-images img {
+    filter: blur(6px);
+    transition: filter 0.5s ease;
   }
 </style>
 
@@ -273,4 +303,25 @@ class EmojiAnimate {
 }
 
 const emojiAnimate = new EmojiAnimate();
+
+// Botão flutuante modo discreto
+const toggleBlurBtn = document.getElementById('toggleBlurBtn');
+let blurActive = false;
+
+toggleBlurBtn.addEventListener('click', () => {
+  blurActive = !blurActive;
+  const postsDiv = document.querySelector('.posts');
+
+  if (blurActive) {
+    postsDiv.classList.add('blurred-post-images');
+    toggleBlurBtn.title = "Desativar modo discreto";
+    toggleBlurBtn.setAttribute('aria-pressed', 'true');
+    toggleBlurBtn.innerHTML = '<i class="ph-eye-slash" style="font-size: 24px;"></i>';
+  } else {
+    postsDiv.classList.remove('blurred-post-images');
+    toggleBlurBtn.title = "Ativar modo discreto";
+    toggleBlurBtn.setAttribute('aria-pressed', 'false');
+    toggleBlurBtn.innerHTML = '<i class="ph-eye" style="font-size: 24px;"></i>';
+  }
+});
 </script>
