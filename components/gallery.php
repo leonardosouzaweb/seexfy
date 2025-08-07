@@ -75,6 +75,7 @@ function openGallery(startIndex = 0) {
         nextBtn.style.fontSize = "32px";
         nextBtn.style.width = "25px";
         nextBtn.style.height = "25px";
+        nextBtn.style.marginRight = "20px";
       }
 
       if (prevBtn) {
@@ -82,11 +83,12 @@ function openGallery(startIndex = 0) {
         prevBtn.style.fontSize = "32px";
         prevBtn.style.width = "25px";
         prevBtn.style.height = "25px";
+        prevBtn.style.marginLeft = "20px";
       }
     } catch (e) {
       console.warn("Erro ao aplicar estilo nos botões do swiper:", e);
     }
-  }, 200);
+  }, 300);
 }
 
 function closeGallery() {
