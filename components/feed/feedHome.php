@@ -56,7 +56,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
               data-experiencia="<?php echo $user['experiencia'] ?? ''; ?>"
               data-interests="<?php echo htmlspecialchars($user['interests'] ?? ''); ?>"
               data-descricao="<?php echo htmlspecialchars($user['descricao'] ?? ''); ?>">
-            <img src="<?php echo !empty($user['avatar']) ? $base_url . '/uploads3/' . $user['avatar'] : $base_url . '/uploads/images/defaultAvatar.svg'; ?>" alt="Avatar">
+            <img src="<?php echo !empty($user['avatar']) ? $base_url . '/uploads/' . $user['avatar'] : $base_url . '/uploads/images/defaultAvatar.svg'; ?>" alt="Avatar">
             <div class="info">
               <span><?php echo htmlspecialchars($user['username']); ?></span>
               <small><?php echo htmlspecialchars($user['city']); ?></small>
