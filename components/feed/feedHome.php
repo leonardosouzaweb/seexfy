@@ -73,15 +73,17 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php include_once '../inc/globalFooter.php'; ?>
 
 <script>
-  document.querySelectorAll('.user-card').forEach(card => {
+document.querySelectorAll('.user-card').forEach(card => {
   card.addEventListener('click', () => {
     const modal = document.getElementById('modalUser');
     modal.querySelector('.avatar img').src = card.dataset.avatar;
     modal.querySelector('.avatar span').textContent = card.dataset.username;
     modal.querySelector('.avatar p').textContent = card.dataset.city;
 
-    // ✅ Atualiza link do botão "Quero conhecer"
-    modal.querySelector('#queroConhecerBtn').href = `<?= $base_url ?>/profile/${encodeURIComponent(card.dataset.username)}`;
+    const btnQueroConhecer = modal.querySelector('#queroConhecerBtn');
+    if (btnQueroConhecer) {
+      btnQueroConhecer.href = `<?= $base_url ?>/profile/${encodeURIComponent(card.dataset.username)}`;
+    }
 
     modal.querySelector('.info span[data-field="idade"]').textContent = card.dataset.idade || '-';
     modal.querySelector('.info span[data-field="orientacao"]').textContent = card.dataset.orientacao || '-';
@@ -103,4 +105,5 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     modal.querySelector('.info .descricao').textContent = card.dataset.descricao || '-';
   });
 });
+
 </script>
