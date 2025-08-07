@@ -1,8 +1,7 @@
-
 <div class="notificationP">
   <div class="container">
     <h1>Notificações</h1>
-    <div id="notifications-container">
+    <div id="notifications-container" style="min-height: 70vh;">
       <p class="text-center text-muted">Carregando notificações...</p>
     </div>
   </div>
@@ -10,6 +9,19 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('notifications-container');
+
+  // Função para aplicar estilos de centralização ao container
+  function centralizarContainer() {
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+    container.style.justifyContent = 'center';
+    container.style.alignItems = 'center';
+    container.style.height = '70vh';
+    container.style.textAlign = 'center';
+    container.style.color = '#6c757d';
+  }
+
   fetch('./../api/getNotifications.php')
     .then(response => {
       if (!response.ok) throw new Error('Erro na requisição');
@@ -17,18 +29,26 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(data => {
       console.log('🔔 Notificações recebidas:', data);
-      const container = document.getElementById('notifications-container');
       container.innerHTML = '';
 
       if (!Array.isArray(data) || data.length === 0) {
+        centralizarContainer();
+
         container.innerHTML = `
-          <div class="text-center mt-4">
-            <img src="../images/no-notifications.svg" alt="Sem notificações" style="max-width: 120px;">
-            <p class="mt-2 text-muted">Você não tem notificações no momento.</p>
-          </div>
+          <i class="ph ph-bell-slash" style="font-size: 70px; color: #adb5bd; margin-bottom: 16px;"></i>
+          <p class="mt-2 text-muted">Você não tem notificações no momento.</p>
         `;
         return;
       }
+
+      // Remove estilos de centralização para lista de notificações
+      container.style.display = '';
+      container.style.flexDirection = '';
+      container.style.justifyContent = '';
+      container.style.alignItems = '';
+      container.style.height = '';
+      container.style.textAlign = '';
+      container.style.color = '';
 
       data.forEach(notification => {
         const toast = document.createElement('div');
@@ -38,9 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
         toast.setAttribute('aria-atomic', 'true');
         toast.setAttribute('data-id', notification.id);
 
+        const avatarHTML = notification.avatar 
+          ? `<img src="../uploads/${notification.avatar}" class="rounded me-2" width="20" height="20" alt="Avatar">`
+          : `<i class="ph ph-user-circle me-2" style="font-size: 20px; color: #6c757d;"></i>`;
+
         toast.innerHTML = `
           <div class="toast-header">
-            <img src="${notification.avatar ? '../uploads/' + notification.avatar : '../images/defaultAvatar.svg'}" class="rounded me-2" width="20" height="20">
+            ${avatarHTML}
             <strong class="me-auto">${notification.username}</strong>
             <small class="text-muted">${new Date(notification.created_at).toLocaleString('pt-BR')}</small>
             <button type="button" class="btn-close ms-2 mb-1 remove-notification" data-id="${notification.id}" aria-label="Fechar"></button>
@@ -53,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(toast);
       });
 
-      // Adiciona eventos para os botões de fechar
       document.querySelectorAll('.remove-notification').forEach(btn => {
         btn.addEventListener('click', (e) => {
           const id = e.currentTarget.dataset.id;
@@ -66,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
           .then(res => res.json())
           .then(res => {
             if (res.success) {
-              // Recarrega a página após a exclusão
               window.location.reload();
             } else {
               alert('Erro ao excluir notificação.');
@@ -80,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => {
       console.error('Erro ao carregar notificações:', error);
-      document.getElementById('notifications-container').innerHTML = '<p class="text-danger">Erro ao carregar notificações.</p>';
+      container.innerHTML = '<p class="text-danger">Erro ao carregar notificações.</p>';
     });
 });
 </script>

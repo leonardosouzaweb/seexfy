@@ -45,9 +45,7 @@ document.getElementById('activateLocation').addEventListener('click', function (
 
                     if (data.users.length === 0) {
                         radarResults.innerHTML = `
-                            <div class="col-12 text-center">
-                                <p class="text-muted">Nenhuma pessoa próxima foi encontrada no momento.</p>
-                            </div>
+                            <p class="text-muted">Nenhuma pessoa próxima foi encontrada no momento.</p>
                         `;
                     } else {
                         data.users.forEach(user => {

@@ -3,19 +3,21 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <?php
-    $current_path = $_SERVER['REQUEST_URI'];
+$current_path = $_SERVER['REQUEST_URI'];
 
-    if (strpos($current_path, '/auth/register.php') !== false) {
-        echo '<script src="' . $base_url . '/js/register.js"></script>';
-    } elseif (strpos($current_path, '/search/') !== false) {
-        echo '<script src="' . $base_url . '/js/results.js"></script>';
-    } elseif (strpos($current_path, '/chat/') !== false) {
-        echo '<script src="' . $base_url . '/js/chat.js"></script>';
-    } elseif (strpos($current_path, '/payment/') !== false) {
-        echo '<script src="' . $base_url . '/js/payment.js"></script>';
-    } elseif (strpos($current_path, '/profile/') !== false) {
-        echo "<script src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js'></script>";
-    }
+if (strpos($current_path, '/auth/register.php') !== false) {
+    echo '<script src="' . $base_url . '/js/register.js"></script>';
+} elseif (strpos($current_path, '/search/') !== false) {
+    echo '<script src="' . $base_url . '/js/results.js"></script>';
+} elseif (strpos($current_path, '/chat/') !== false) {
+    echo '<script src="' . $base_url . '/js/chat.js"></script>';
+} elseif (strpos($current_path, '/payment/') !== false) {
+    echo '<script src="' . $base_url . '/js/payment.js"></script>';
+} elseif (strpos($current_path, '/profile/') !== false) {
+    echo "<script src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js'></script>";
+} elseif (strpos($current_path, '/feed.php') !== false) {
+    echo '<script src="' . $base_url . '/js/like.js"></script>';
+}
 ?>
 
 <script>

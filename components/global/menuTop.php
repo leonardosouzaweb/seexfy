@@ -37,8 +37,8 @@ if ($user_id) {
 
         <div class="group">
             <div class="search">
-                <a href="<?php echo $base_url; ?>/search">
-                    <img src="<?php echo $base_url; ?>/images/icons/black/iconSearch.svg" alt="Buscar">
+                <a href="<?php echo $base_url; ?>/search" title="Buscar">
+                    <i class="ph ph-magnifying-glass"></i>
                 </a>
             </div>
 
@@ -46,8 +46,8 @@ if ($user_id) {
                 <?php if ($notification_count > 0): ?>
                     <span><?= $notification_count ?></span>
                 <?php endif; ?>
-                <a href="<?php echo $base_url; ?>/notification">
-                    <img src="<?php echo $base_url; ?>/images/icons/black/iconNotification.svg" alt="Notificações">
+                <a href="<?php echo $base_url; ?>/notification" title="Notificações">
+                    <i class="ph ph-bell"></i>
                 </a>
             </div>
 
@@ -77,37 +77,37 @@ if ($user_id) {
         <ul>
             <li>
                 <a href="<?php echo $base_url; ?>/monetization">
-                    <img src="<?php echo $base_url; ?>/images/icons/black/iconCreator.svg"> Monetize
+                    <i class="ph ph-coins"></i> Monetize
                 </a>
             </li>
             <li>
                 <a href="<?php echo $base_url; ?>/home">
-                    <img src="<?php echo $base_url; ?>/images/icons/black/iconHome.svg"> Explorar
+                    <i class="ph ph-house"></i> Explorar
                 </a>
             </li>
             <li>
                 <a href="<?php echo $base_url; ?>/feed">
-                    <img src="<?php echo $base_url; ?>/images/icons/black/iconFeed.svg"> Feed
+                    <i class="ph ph-newspaper"></i> Feed
                 </a>
             </li>
             <li>
                 <a href="<?php echo $base_url; ?>/radar">
-                    <img src="<?php echo $base_url; ?>/images/icons/black/iconRadar.svg"> Radar
+                    <i class="ph ph-map-pin"></i> Radar
                 </a>
             </li>
             <li>
                 <a href="<?php echo $base_url; ?>/payment">
-                    <img src="<?php echo $base_url; ?>/images/icons/black/iconAss.svg"> Assinatura
+                    <i class="ph ph-credit-card"></i> Assinatura
                 </a>
             </li>
             <li>
                 <a href="<?php echo $base_url; ?>/help">
-                    <img src="<?php echo $base_url; ?>/images/icons/black/iconHelp.svg"> Ajuda
+                    <i class="ph ph-question"></i> Ajuda
                 </a>
             </li>
             <li>
                 <a href="<?= $base_url ?>/api/logout.php">
-                    <img src="<?= $base_url; ?>/images/icons/black/iconLogout.svg"> Sair
+                    <i class="ph ph-sign-out"></i> Sair
                 </a>
             </li>
         </ul>

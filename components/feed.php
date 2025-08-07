@@ -22,8 +22,9 @@ $emoji_map = [
         </div>
 
         <div class="d-flex justify-content-between align-items-center mt-2">
-          <label class="d-flex align-items-center gap-2">
-            <span id="fileLabelText">Selecione uma foto</span>
+          <label class="d-flex align-items-center gap-2" for="fileInput" style="cursor:pointer;">
+            <i class="ph ph-image" style="font-size: 20px;"></i>
+            <span id="fileLabelText">Selecione...</span>
             <input type="file" name="image" accept="image/*" hidden id="fileInput">
           </label>
 
@@ -40,7 +41,7 @@ $emoji_map = [
 
       if (count($posts) === 0): ?>
         <div class="text-center my-5">
-          <img src="<?php echo $base_url; ?>/images/no-posts.png" alt="Sem publicações" style="width: 120px;">
+          <i class="ph ph-newspaper" style="font-size: 120px; color: #adb5bd;"></i>
           <span class="d-block mt-3 text-muted">Não existem publicações</span>
         </div>
       <?php endif; ?>
@@ -57,7 +58,11 @@ $emoji_map = [
         <div class="card">
           <div class="head">
             <div>
-              <img src="<?php echo $base_url . '/uploads/' . ($post['avatar'] ?: 'images/defaultAvatar.svg'); ?>" width="40" height="40" class="rounded-circle">
+              <?php if (!empty($post['avatar'])): ?>
+                <img src="<?php echo $base_url . '/uploads/' . $post['avatar']; ?>" width="40" height="40" class="rounded-circle" alt="Avatar">
+              <?php else: ?>
+                <i class="ph ph-user-circle" style="font-size: 40px; color: #6c757d;"></i>
+              <?php endif; ?>
             </div>
             <div>
               <span><?php echo htmlspecialchars($post['username']); ?></span>
@@ -71,7 +76,7 @@ $emoji_map = [
           <div class="content">
             <div class="contentImage">
               <?php if (!empty($post['image'])): ?>
-                <img src="<?php echo $base_url . '/' . $post['image']; ?>">
+                <img src="<?php echo $base_url . '/' . $post['image']; ?>" alt="Imagem do post">
               <?php endif; ?>
               <div class="mask"></div>
             </div>
@@ -103,6 +108,19 @@ $emoji_map = [
   </div>
 </div>
 
+<!-- CSS para animação -->
+<style>
+  .emoji-animate {
+    pointer-events: none;
+    user-select: none;
+    position: fixed;
+    will-change: transform, opacity;
+    font-size: 24px;
+    z-index: 9999;
+  }
+</style>
+
+<!-- Scripts JS -->
 <script>
 let offset = 10;
 let loading = false;
@@ -122,6 +140,7 @@ window.addEventListener('scroll', () => {
           document.querySelector('.posts').insertAdjacentHTML('beforeend', html);
           offset += 10;
           attachReactions(); // Reanexar eventos às novas reações
+          emojiAnimate.attachListeners(); // Reanexar evento da animação nos novos emojis
         } else {
           document.getElementById('loadingMore').innerHTML = '<span class="text-muted">Nenhuma publicação adicional.</span>';
         }
@@ -130,12 +149,26 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Mostrar nome do arquivo
+// Mostrar nome do arquivo no label
 const fileInput = document.getElementById('fileInput');
 const fileLabelText = document.getElementById('fileLabelText');
 fileInput.addEventListener('change', function () {
-  const fileName = this.files[0]?.name || 'Selecione uma foto';
-  fileLabelText.textContent = fileName;
+  const files = this.files;
+  let text = 'Selecione';
+
+  if (files.length === 1) {
+    // Só o nome do arquivo, sem caminho
+    text = files[0].name;
+  } else if (files.length > 1) {
+    text = `${files[0].name} +${files.length - 1} arquivos`;
+  }
+
+  // Limitar tamanho do texto para evitar quebra
+  if (text.length > 30) {
+    text = text.substring(0, 27) + '...';
+  }
+
+  fileLabelText.textContent = text;
 });
 
 // Função para anexar evento de reação
@@ -168,4 +201,76 @@ function attachReactions() {
   });
 }
 attachReactions();
+
+// Classe para animação do emoji
+class EmojiAnimate {
+  constructor() {
+    this.emojis = document.querySelectorAll(".reaction-btn");
+    this.container = document.querySelector(".emoji-container");
+    if (!this.container) {
+      this.container = document.createElement('div');
+      this.container.className = 'emoji-container';
+      this.container.style.position = 'fixed';
+      this.container.style.left = 0;
+      this.container.style.top = 0;
+      this.container.style.width = '100vw';
+      this.container.style.height = '100vh';
+      this.container.style.pointerEvents = 'none';
+      this.container.style.overflow = 'visible';
+      this.container.style.zIndex = '9999';
+      document.body.appendChild(this.container);
+    }
+    this.handleEmojiClick = this.handleEmojiClick.bind(this);
+    this.addEventListeners();
+  }
+
+  addEventListeners() {
+    this.emojis.forEach(emoji =>
+      emoji.addEventListener("click", this.handleEmojiClick)
+    );
+  }
+
+  attachListeners() {
+    this.emojis = document.querySelectorAll(".reaction-btn");
+    this.addEventListeners();
+  }
+
+  handleEmojiClick(e) {
+    const emojiSpan = e.currentTarget.querySelector('.emoji');
+    if (!emojiSpan) return;
+
+    const emojiEl = document.createElement("div");
+    emojiEl.classList.add("emoji-animate");
+    emojiEl.style.position = 'fixed';
+    emojiEl.style.left = '0';
+    emojiEl.style.top = '0';
+    emojiEl.style.fontSize = '24px';
+    emojiEl.style.willChange = 'transform, opacity';
+    emojiEl.innerHTML = emojiSpan.innerHTML;
+
+    this.container.appendChild(emojiEl);
+
+    const { left, top, width, height } = emojiSpan.getBoundingClientRect();
+
+    const endX = window.innerWidth / 2 - width / 2;
+    const endY = 50;
+
+    emojiEl.style.transform = `translate(${left}px, ${top}px)`;
+
+    const animation = emojiEl.animate(
+      [
+        { opacity: 1, transform: `translate(${left}px, ${top}px) scale(1)` },
+        { opacity: 0, transform: `translate(${endX}px, ${endY}px) scale(2)` }
+      ],
+      {
+        duration: 2000,
+        easing: "cubic-bezier(.60,.48,.44,.86)"
+      }
+    );
+
+    animation.onfinish = () => emojiEl.remove();
+  }
+}
+
+const emojiAnimate = new EmojiAnimate();
 </script>
