@@ -24,7 +24,7 @@ $emoji_map = [
         <div class="d-flex justify-content-between align-items-center mt-2">
           <label class="d-flex align-items-center gap-2" for="fileInput" style="cursor:pointer;">
             <i class="ph ph-image" style="font-size: 20px;"></i>
-            <span id="fileLabelText">Selecione...</span>
+            <span id="fileLabelText">Selecionar Foto</span>
             <input type="file" name="image" accept="image/*" hidden id="fileInput">
           </label>
 
@@ -154,7 +154,7 @@ const fileInput = document.getElementById('fileInput');
 const fileLabelText = document.getElementById('fileLabelText');
 fileInput.addEventListener('change', function () {
   const files = this.files;
-  let text = 'Selecione';
+  let text = 'Selecionar Foto';
 
   if (files.length === 1) {
     // Só o nome do arquivo, sem caminho
