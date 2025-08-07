@@ -46,7 +46,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
               data-bs-target="#modalUser"
               data-username="<?php echo htmlspecialchars($user['username']); ?>"
               data-city="<?php echo htmlspecialchars($user['city']); ?>"
-              data-avatar="<?php echo !empty($user['avatar']) ? $base_url . '/uploads/' . $user['avatar'] : $base_url . '/uploads/images/defaultAvatar.svg'; ?>"
+              data-avatar="<?php echo !empty($user['avatar']) ? $base_url . '/uploads/avatars' . $user['avatar'] : $base_url . '/uploads/images/defaultAvatar.svg'; ?>"
               data-idade="<?php echo $user['idade'] ?? ''; ?>"
               data-orientacao="<?php echo $user['orientacao'] ?? ''; ?>"
               data-signo="<?php echo $user['signo'] ?? ''; ?>"
@@ -56,7 +56,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
               data-experiencia="<?php echo $user['experiencia'] ?? ''; ?>"
               data-interests="<?php echo htmlspecialchars($user['interests'] ?? ''); ?>"
               data-descricao="<?php echo htmlspecialchars($user['descricao'] ?? ''); ?>">
-            <img src="<?php echo !empty($user['avatar']) ? $base_url . '/uploads/' . $user['avatar'] : $base_url . '/uploads/images/defaultAvatar.svg'; ?>" alt="Avatar">
+            <img src="<?php echo !empty($user['avatar']) ? $base_url . '/uploads/avatars' . $user['avatar'] : $base_url . '/uploads/images/defaultAvatar.svg'; ?>" alt="Avatar">
             <div class="info">
               <span><?php echo htmlspecialchars($user['username']); ?></span>
               <small><?php echo htmlspecialchars($user['city']); ?></small>
