@@ -29,11 +29,11 @@ $(function () {
             const profileUrl = `/seexfy/profile/${encodeURIComponent(user.username)}`;
 
             $('#results').append(`
-              <a href="${profileUrl}" class="user-result" style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; text-decoration: none; color: inherit;">
-                <img src="${avatar}" alt="Avatar" style="border-radius: 50%; width: 50px; height: 50px;">
+              <a href="${profileUrl}" class="user-result" style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px; text-decoration: none; color: inherit;">
+                <img src="${avatar}" alt="Avatar" style="border-radius: 10px; width: 45px; height: 45px;">
                 <div>
                   <strong>${user.username}</strong><br>
-                  <small style="color: gray;">${user.city}</small>
+                  <small style="color: gray; display:block; margin-top:-2px;">${user.city}</small>
                 </div>
               </a>
             `);

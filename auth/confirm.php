@@ -48,7 +48,7 @@ if ($errors) {
 $hashed = password_hash($password, PASSWORD_BCRYPT);
 
 try {
-    // único email e username
+    // verifica único email e username
     $stmt = $pdo->prepare("SELECT id FROM users WHERE email = :email OR username = :username");
     $stmt->execute([':email' => $email, ':username' => $username]);
     if ($stmt->fetch()) {
@@ -71,7 +71,8 @@ try {
       ':password'  => $hashed
     ]);
 
-    header('Location: success.php');
+    // Redireciona direto para a página de login (pode ser alterado)
+    header('Location: ../auth/login.php');
     exit;
 } catch (PDOException $e) {
     http_response_code(500);

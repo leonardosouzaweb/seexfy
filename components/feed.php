@@ -40,8 +40,8 @@ $emoji_map = [
       $posts = $stmt->fetchAll();
 
       if (count($posts) === 0): ?>
-        <div class="text-center my-5">
-          <i class="ph ph-newspaper" style="font-size: 120px; color: #adb5bd;"></i>
+        <div class="text-center" style="margin-top:100px">
+          <i class="ph ph-newspaper" style="font-size: 70px; color: #adb5bd;"></i>
           <span class="d-block mt-3 text-muted">Não existem publicações</span>
         </div>
       <?php endif; ?>
@@ -68,9 +68,7 @@ $emoji_map = [
               <span><?php echo htmlspecialchars($post['username']); ?></span>
               <small><?php echo date('d/m/Y \à\s H:i', strtotime($post['created_at'])); ?>h</small>
             </div>
-            <div>
-              <button>Interagir</button>
-            </div>
+            <div></div>
           </div>
 
           <div class="content">
@@ -112,25 +110,24 @@ $emoji_map = [
 <button id="toggleBlurBtn" title="Ativar modo discreto" 
   style="
     position: fixed;
-    bottom: 20px;
+    bottom: 70px;
     right: 20px;
     border: none;
-    background-color: #0d6efd;
+    background-color: #e74c3d;
     color: white;
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 38px;
+    height: 38px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 8px rgb(13 110 253 / 0.4);
-    z-index: 10000;
-    display:none;
+    box-shadow: 0 4px 8px rgb(231 76 61);
+    z-index: 20;
   "
   aria-pressed="false"
 >
-  <i class="ph-eye" style="font-size: 24px;"></i>
+  <i class="ph ph-eye" style="font-size: 24px;"></i>
 </button>
 
 <!-- CSS para animação e blur -->
@@ -154,30 +151,38 @@ $emoji_map = [
 <script>
 let offset = 10;
 let loading = false;
-let reactionCooldown = {}; // Para evitar spam de reações por post
+let hasMorePosts = true; // controla se ainda tem posts para carregar
 
-// Scroll infinito
 window.addEventListener('scroll', () => {
-  if (loading) return;
+  if (loading || !hasMorePosts) return;
+
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
   if (scrollTop + clientHeight >= scrollHeight - 100) {
     loading = true;
     document.getElementById('loadingMore').style.display = 'block';
+
     fetch(`../api/loadMorePost.php?offset=${offset}`)
       .then(res => res.text())
       .then(html => {
         if (html.trim()) {
           document.querySelector('.posts').insertAdjacentHTML('beforeend', html);
           offset += 10;
-          attachReactions(); // Reanexar eventos às novas reações
-          emojiAnimate.attachListeners(); // Reanexar evento da animação nos novos emojis
+          attachReactions(); // reaplica eventos de reação
+          emojiAnimate.attachListeners(); // reaplica animações
+          loading = false;
         } else {
+          // Sem posts adicionais para carregar
+          hasMorePosts = false;
           document.getElementById('loadingMore').innerHTML = '<span class="text-muted">Nenhuma publicação adicional.</span>';
         }
+      })
+      .catch(() => {
+        // Em caso de erro, libera o loading para tentar de novo
         loading = false;
       });
   }
 });
+
 
 // Mostrar nome do arquivo no label
 const fileInput = document.getElementById('fileInput');
@@ -316,12 +321,13 @@ toggleBlurBtn.addEventListener('click', () => {
     postsDiv.classList.add('blurred-post-images');
     toggleBlurBtn.title = "Desativar modo discreto";
     toggleBlurBtn.setAttribute('aria-pressed', 'true');
-    toggleBlurBtn.innerHTML = '<i class="ph-eye-slash" style="font-size: 24px;"></i>';
+    toggleBlurBtn.innerHTML = '<i class="ph ph-eye-slash" style="font-size: 24px;"></i>'; // ícone ligado (blur ativo)
   } else {
     postsDiv.classList.remove('blurred-post-images');
     toggleBlurBtn.title = "Ativar modo discreto";
     toggleBlurBtn.setAttribute('aria-pressed', 'false');
-    toggleBlurBtn.innerHTML = '<i class="ph-eye" style="font-size: 24px;"></i>';
+    toggleBlurBtn.innerHTML = '<i class="ph ph-eye" style="font-size: 24px;"></i>'; // ícone desligado (blur desativado)
   }
 });
+
 </script>
